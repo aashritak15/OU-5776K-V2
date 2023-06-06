@@ -1,6 +1,6 @@
 #include "main.h"
 #include "ports.hpp"
-//
+
 using namespace okapi;
 
 Motor right(rightPort, false, AbstractMotor::gearset::blue,
