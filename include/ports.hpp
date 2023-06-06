@@ -6,5 +6,6 @@
 using namespace okapi;
 
 // d-train ports
-const std::uint8_t rightPort = ##;
-const std::uint8_t leftPort = ##;
+
+const std::uint8_t leftPort = 11;
+const std::uint8_t rightPort = 12;

@@ -1,10 +1,10 @@
 #include "main.h"
+#include "ports.hpp"
 
 using namespace okapi;
 
-extern Motor right(rightPort, false, AbstractMotor::gearset::blue,
+Motor right(rightPort, false, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
-
 Motor left(leftPort, false, AbstractMotor::gearset::blue,
            AbstractMotor::encoderUnits::degrees);
 
@@ -18,6 +18,8 @@ std::shared_ptr<OdomChassisController> drive =
         // (360)
         .withOdometry({{2.75_in, 7.5_in, 1_in, 2.75_in}, quadEncoderTPR})
         .buildOdometry();
+
+static Controller controller = Controller();
 
 void updateDrive() {
   drive->getModel()->tank(controller.getAnalog(ControllerAnalog::leftY),
