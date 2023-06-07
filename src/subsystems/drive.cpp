@@ -1,6 +1,7 @@
 #include "main.h"
 #include "ports.hpp"
-//
+
+
 using namespace okapi;
 
 Motor right(rightPort, false, AbstractMotor::gearset::green,
@@ -12,7 +13,7 @@ std::shared_ptr<OdomChassisController> drive =
     ChassisControllerBuilder()
         .withMotors({left}, {right})
         .withDimensions(AbstractMotor::gearset::green,
-                        {{4_in, 11.5_in}, imev5BlueTPR})
+                        {{4_in, 7_in}, imev5BlueTPR})
         .withSensors(left.getEncoder(), right.getEncoder())
         // Specify the tracking wheels diam (2.75 in), track (7 in), and TPR
         // (360)

@@ -1,6 +1,7 @@
 #include "main.h"
 #include "subsystems/drive.hpp"
-
+#include "subsystems/odom.hpp"
+#include "subsystems/auton.hpp"
 
 /**
  * A callback function for LLEMU's center button.
