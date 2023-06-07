@@ -9,7 +9,7 @@ IntegratedEncoder rightEncoder(right);
 void movePID(float target, float maxV) {
   leftEncoder.reset();
   rightEncoder.reset();
-  float kP = 0;
+  float kP = 0.75;
   float kI = 0;
   float kD = 0;
 
@@ -33,7 +33,7 @@ void movePID(float target, float maxV) {
     // Calculate power using PID
     power = (error * kP) + (totalError * kI) + ((error - prevError) * kD);
     prevError = error;
-    drive->getModel()->tank(power * maxV , power * maxV);
+    drive->getModel()->tank(power * maxV -.13f , power * maxV);
     pros::delay(100);
 }
 

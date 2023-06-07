@@ -1,5 +1,6 @@
 #include "main.h"
 #include "ports.hpp"
+#include "subsystems/odom.hpp"
 
 
 using namespace okapi;
@@ -28,4 +29,8 @@ void updateDrive() {
 
   left.setBrakeMode(AbstractMotor::brakeMode::hold);
   right.setBrakeMode(AbstractMotor::brakeMode::hold);
-};
+
+  if (controller.getDigital(ControllerDigital::Y) == 1) {
+    movePID(24, 1);
+  }
+}
