@@ -9,9 +9,9 @@ IntegratedEncoder rightEncoder(right);
 void movePID(float target, float maxV) {
   leftEncoder.reset();
   rightEncoder.reset();
-  float kP = 0.3;
+  float kP = 0.52;
   float kI = 0;
-  float kD = 0.08;
+  float kD = 0.04;
 
   float power = 0;
   float totalError = 0;
