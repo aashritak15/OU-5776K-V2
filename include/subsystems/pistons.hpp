@@ -1,4 +1,12 @@
-extern pros::ADIDigitalOut pistonPTO1;
-extern pros::ADIDigitalOut pistonPTO2;
+#include "main.h"
 
-void pistons();
+
+using namespace okapi;
+
+
+extern pros::ADIDigitalOut pistonPTO1;
+
+
+void pistonsInnit();
+void updatePistons();
+

@@ -1,15 +1,30 @@
-pros:ADIDigitalOut pistionPTO1(pistonPTO1Port);
-pros:ADIDigitalOut pistionPTO2(pistonPTO2Port);
+#include "main.h"
+#include "ports.hpp"
 
-void pistons(){
-    if (controller[okapi::ControllerDigital::up].isPressed()){
-        pistonPTO1.set_value(true);
-        pros::delay(300);
-        pistonPTO1.set_value(false);
-    }
-    if (controller[okapi::ControllerDigital::down].isPressed()){
-        pistonPTO2.set_value(true);
-        pros::delay(300);
-        pistonPTO2.set_value(false);
-    }
+//
+using namespace okapi;
+
+
+pros:ADIDigitalOut pistionPTO1(pistonPTO1Port);
+
+
+bool sharing;
+
+
+void pistonsInnit() {
+pistionPTO1.set_value(false);
+sharing = false;
+}
+
+
+void updatePistons(){
+if (controller.getDigital(ControllerDigital::down) == 1){
+if (!sharing){
+pistonPTO1.set_value(true);
+sharing = true;
+} else {
+pistonPTO1.set_value(false);
+sharing = false;
+}
+}
 }
