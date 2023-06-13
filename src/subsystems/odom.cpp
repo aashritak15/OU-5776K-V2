@@ -83,7 +83,7 @@ drive->stop();
 
 
 //turn PID
-void turnpid(float degree , bool CW) {
+void turnPID(float degree , bool CW, int ms) {
  float taredRotation = (imu1.get() + imu2.get())/2;
  int timer = 0;
  float turnkP = 0;
@@ -97,11 +97,11 @@ void turnpid(float degree , bool CW) {
   float targetVal = currentVal + degree;    // [deg]
   
  
-  while (true){
-    
+  while (timer < ms){
     // Compute PID values from current wheel travel measurements
-      currentVal = ((imu1.get() + imu2.get())/2);
-      float error = targetTravel - currentTravel;
+      currentVal = ((imu1.get() + imu2.get())/2) - taredRotation;
+      float error = targetVal - currentVal;
+       if (error < 1.5){break;}
       if(error != 0){
     	totalError += error;		
       }else{
@@ -111,14 +111,13 @@ void turnpid(float degree , bool CW) {
     // Calculate power using PID
     power = (error * kP) + (totalError * kI) + ((error - prevError) * kD);
     prevError = error;
-    if (target >= 0){
-      drive->getModel()->tank(power * (maxV *0.75f) , power * -maxV);
+    if (CW){
+      drive->getModel()->tank(power * 0.75f , -1.0f * power);
     } else {
-      drive->getModel()->tank(power * (-maxV *0.75f) , power * maxV);
+      drive->getModel()->tank(-1.0f * power * 0.75f , power);
     }
-    pros::delay(100);
-
-
+    timer += 10;
+    pros::delay(10);
 }
 drive->stop();
 }
