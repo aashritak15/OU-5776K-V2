@@ -9,3 +9,5 @@ using namespace okapi;
 
 const std::uint8_t leftPort = 11;
 const std::uint8_t rightPort = 12;
+const std::uint8_t imuPort1 = 5; // assign port val
+const std::uint8_t imuPort2 = 4;
