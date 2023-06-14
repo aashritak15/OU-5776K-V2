@@ -1,6 +1,7 @@
 #include "main.h"
 #include "subsystems/drive.hpp"
 #include "subsystems/ports.hpp"
+#include "subsystems/odom.hpp"
 
 using namespace okapi;
 
@@ -34,16 +35,16 @@ void resetImu(bool print = true) {
 }
 
 void imuInnit() {
-  setChassisBrakeMode(AbstractMotor::brakeMode::brake);
+  //setBrakeMode(okapi::AbstractMotor::brakeMode::brake);
   resetImu();
 }
 
 void IEInnit() {
   //left
-  pros::c::motor_set_encoder_units(leftTopPort, pros::E_MOTOR_ENCODER_DEGREES);
+  pros::c::motor_set_encoder_units(imuPort1, pros::E_MOTOR_ENCODER_DEGREES);
  
   //right
-  pros::c::motor_set_encoder_units(rightTopPort, pros::E_MOTOR_ENCODER_DEGREES);
+  pros::c::motor_set_encoder_units(imuPort2, pros::E_MOTOR_ENCODER_DEGREES);
   
   leftEncoder.reset();
   rightEncoder.reset();
@@ -89,7 +90,7 @@ void turnPID(float degree , bool CW, int ms) {
  int timer = 0;
  float turnkP = 0.1;
  float turnkI = 0;
- float turnkD = 0;
+ float turnkD = 0.01;
 
   float power = 0;
   float prevError = 0;
