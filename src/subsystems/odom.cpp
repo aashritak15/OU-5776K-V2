@@ -1,5 +1,6 @@
 #include "main.h"
 #include "subsystems/drive.hpp"
+#include "subsystems/ports.hpp"
 
 using namespace okapi;
 
@@ -51,9 +52,9 @@ void IEInnit() {
 void movePID(float target, float maxV) {
   leftEncoder.reset();
   rightEncoder.reset();
-  float kP = 0.6;
+  float kP = 0;
   float kI = 0;
-  float kD = 0.085;
+  float kD = 0;
 
   float power = 0;
   float totalError = 0;
@@ -86,7 +87,7 @@ drive->stop();
 void turnPID(float degree , bool CW, int ms) {
  float taredRotation = (imu1.get() + imu2.get())/2;
  int timer = 0;
- float turnkP = 0;
+ float turnkP = 0.1;
  float turnkI = 0;
  float turnkD = 0;
 
