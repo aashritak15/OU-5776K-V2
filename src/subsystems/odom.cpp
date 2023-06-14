@@ -109,7 +109,7 @@ void turnPID(float degree , bool CW, int ms) {
       }
 
     // Calculate power using PID
-    power = (error * kP) + (totalError * kI) + ((error - prevError) * kD);
+    power = (error * turnkP) + (totalError * turnkI) + ((error - prevError) * turnkD);
     prevError = error;
     if (CW){
       drive->getModel()->tank(power * 0.75f , -1.0f * power);
