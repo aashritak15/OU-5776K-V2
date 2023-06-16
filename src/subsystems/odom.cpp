@@ -87,7 +87,7 @@ drive->stop();
 //turn PID
 void turnPID(float degree , bool CW, int ms) {
  float taredRotation = (imu1.get() + imu2.get())/2;
- int timer = 200;
+ int timer = 0;
  float turnkP = 0.3;
  float turnkI = 0;
  float turnkD = 0.05;
@@ -111,15 +111,16 @@ void turnPID(float degree , bool CW, int ms) {
       }
 
     // Calculate power using PID
-    power = (error * turnkP) + (totalError * turnkI) + ((error - prevError) * turnkD);
+      power = (error * turnkP) + (totalError * turnkI) + ((error - prevError) * turnkD);
     prevError = error;
-    if (CW){
+      if (CW){
       drive->getModel()->tank(power * 0.75f , -1.0f * power);
     } else {
       drive->getModel()->tank(-1.0f * power * 0.75f , power);
     }
-    timer += 10;
-    pros::delay(10);
+    
+     timer += 10;
+      pros::delay(10);
 }
 drive->stop();
 }
