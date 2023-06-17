@@ -53,9 +53,9 @@ void IEInnit() {
 void movePID(float target, float maxV) {
   leftEncoder.reset();
   rightEncoder.reset();
-  float kP = 0.6;
+  float kP = 0.45;
   float kI = 0;
-  float kD = 0.085;
+  float kD = 0.09;
 
   float power = 0;
   float totalError = 0;
