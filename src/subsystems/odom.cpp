@@ -95,13 +95,14 @@ void turnPID(float degree , bool CW, int ms) {
   float prevError = 0;
   float totalError = 0;
 
-  float targetVal = currentVal + degree;    // [deg]
+    // [deg]
 
   float integral = 0;
  
   while (timer < ms){
     // Compute PID values from current wheel travel measurements
       float currentVal = ((imu1.get() + imu2.get())/2) - taredRotation;
+      float targetVal = currentVal + degree;
       float error = targetVal - currentVal;
        if (error < 1.5){break;}
        float derivative = error - prevError;
