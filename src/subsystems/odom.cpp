@@ -65,7 +65,7 @@ void movePID(float target, float maxV) {
  
   while (true){
     // Compute PID values from current wheel travel measurements
-    currentTravel = ((leftEncoder.get() + rightEncoder.get())/2 * (4 * M_PI)) /840.0f;
+    currentTravel = ((leftEncoder.get() + rightEncoder.get())/2);
        float error = targetTravel - currentTravel;
       if(error != 0){
     	totalError += error;		
@@ -88,12 +88,12 @@ drive->stop();
 void turnPID(float degree , bool CW, int ms) {
  float taredRotation = (imu1.get() + imu2.get())/2;
  int timer = 0;
- float turnkP = 0.3;
+ float turnkP = 0.01;
  float turnkI = 0;
- float turnkD = 0.05;
+ float turnkD = 0;
 
   float prevError = 0;
-  float totalError = 0;
+  //float totalError = 0;
 
     // [deg]
 
@@ -101,10 +101,10 @@ void turnPID(float degree , bool CW, int ms) {
  
   while (timer < ms){
     // Compute PID values from current wheel travel measurements
-      float currentVal = ((imu1.get() + imu2.get())/2) - taredRotation;
-      float targetVal = currentVal + degree;
-      float error = targetVal - currentVal;
-       if (error < 1.5){break;}
+      float currentVal = (imu1.get() + imu2.get())/2 - taredRotation;
+      //float targetVal = currentVal + degree;
+      float error = degree - currentVal;
+       if (error < 0.1){break;}
        float derivative = error - prevError;
        prevError = error;
        integral += error;
@@ -112,8 +112,8 @@ void turnPID(float degree , bool CW, int ms) {
 
     // Calculate power using PID
     float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
-    prevError = error;
-      if (CW){
+    //prevError = error;
+    if (CW){
       drive->getModel()->tank(power * 0.75f , (-1.0f * power));
     } else {
       drive->getModel()->tank((-1.0f * power * 0.75f) , power);

@@ -9,6 +9,6 @@ using namespace okapi;
 
 const std::uint8_t leftPort = 11;
 const std::uint8_t rightPort = 12;
-const std::uint8_t imuPort1 = 10; // assign port val
-const std::uint8_t imuPort2 = 9;
+const std::uint8_t imuPort1 = 9; // assign port val
+const std::uint8_t imuPort2 = 10;
 const std::uint8_t pistonPTO1Port = 8; 
