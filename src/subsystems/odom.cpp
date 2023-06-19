@@ -92,36 +92,36 @@ void turnPID(float degree , bool CW, int ms) {
  float turnkI = 0;
  float turnkD = 0.05;
 
-  float power = 0;
   float prevError = 0;
   float totalError = 0;
-  float currentVal = 0; // [deg]
+
   float targetVal = currentVal + degree;    // [deg]
-  
+
+  float integral = 0;
  
   while (timer < ms){
     // Compute PID values from current wheel travel measurements
-      currentVal = ((imu1.get() + imu2.get())/2) - taredRotation;
+      float currentVal = ((imu1.get() + imu2.get())/2) - taredRotation;
       float error = targetVal - currentVal;
        if (error < 1.5){break;}
-      if(error != 0){
-    	totalError += error;		
-      }else{
-      	totalError = 0;	
-      }
+       float derivative = error - prevError;
+       prevError = error;
+       integral += error;
+       
 
     // Calculate power using PID
-      power = (error * turnkP) + (totalError * turnkI) + ((error - prevError) * turnkD);
+    float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
     prevError = error;
       if (CW){
-      drive->getModel()->tank(power * 0.75f , -1.0f * power);
+      drive->getModel()->tank(power * 0.75f , (-1.0f * power));
     } else {
-      drive->getModel()->tank(-1.0f * power * 0.75f , power);
+      drive->getModel()->tank((-1.0f * power * 0.75f) , power);
     }
     
-     timer += 10;
-      pros::delay(10);
+    timer += 10;
+    pros::delay(10);
 }
+
 drive->stop();
 }
 
