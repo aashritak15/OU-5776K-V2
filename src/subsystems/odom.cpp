@@ -88,9 +88,9 @@ drive->stop();
 void turnPID(float degree , bool CW, int ms) {
  float taredRotation = (imu1.get() + imu2.get())/2;
  int timer = 0;
- float turnkP = 0.01;
+ float turnkP = 0.0125;
  float turnkI = 0;
- float turnkD = 0;
+ float turnkD = 0.01;
 
   float prevError = 0;
   //float totalError = 0;
