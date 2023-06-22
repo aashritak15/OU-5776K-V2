@@ -4,6 +4,7 @@
 #include "subsystems/auton.hpp"
 #include "subsystems/pistons.hpp"
 #include "subsystems/ports.hpp"
+#include "subsystems/intake.hpp"
 
 
 /**

@@ -1,7 +1,5 @@
 #include "main.h"
 
-
-
 using namespace okapi;
 
 extern Motor right;
