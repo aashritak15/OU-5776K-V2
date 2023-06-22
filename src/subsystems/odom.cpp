@@ -81,8 +81,51 @@ void movePID(float target, float maxV) {
   }
 drive->stop();
 }
-//
 
+
+/*
+okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.09); //kP, kI, kD
+
+okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack});    
+okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack});
+
+bool isMoving(){
+    return abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10; 
+} 
+
+okapi::Rate rate; 
+
+
+
+void drive(double target){
+
+    pid.setTarget(target);
+
+    while( abs(displacement - target) > 0.1){
+    
+
+    double dX = drivetrain->getState().x.convert(okapi::foot);
+    double dY = drivetrain->getState().x.convert(okapi::foot);
+
+    double displacement = std::sqrt(powf(dX,2)) + powf(dY,2);
+
+     if (target < 0){
+        displacement = -1 * displacement; 
+     }
+
+     double pid_value = pid.step(displacement);
+
+    drivetrain->getModel()->tank(pid_value, pid_value); 
+
+    rate.delay(100_Hz);
+
+    
+
+}
+    drivetrain->getModel()->tank(0,0);
+   
+
+}*/
 
 //turn PID
 void turnPID(float degree , bool CW, int ms) {
