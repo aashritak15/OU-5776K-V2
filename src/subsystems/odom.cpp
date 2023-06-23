@@ -105,8 +105,8 @@ void drive(double target){
     while( abs(displacement - target) > 0.1){
     
 
-    double dX = drivetrain->getState().x.convert(okapi::foot);
-    double dY = drivetrain->getState().x.convert(okapi::foot);
+    double dX = drive->getState().x.convert(okapi::foot);
+    double dY = drive->getState().x.convert(okapi::foot);
 
     double displacement = std::sqrt(powf(dX,2)) + powf(dY,2);
 
@@ -116,14 +116,13 @@ void drive(double target){
 
      double pid_value = pid.step(displacement);
 
-    drivetrain->getModel()->tank(pid_value, pid_value); 
+    drive->getModel()->tank(pid_value, pid_value); 
 
     rate.delay(100_Hz);
 
-    
-
 }
-    drivetrain->getModel()->tank(0,0);
+
+    drive->getModel()->tank(0,0);
    
 }
 
