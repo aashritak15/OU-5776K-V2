@@ -50,6 +50,7 @@ void IEInnit() {
   rightEncoder.reset();
 }
 
+/*
 void movePID(float target, float maxV) {
   leftEncoder.reset();
   rightEncoder.reset();
@@ -81,10 +82,9 @@ void movePID(float target, float maxV) {
   }
 drive->stop();
 }
+*/
 
 
-/*
-void movePID{
 okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.09); //kP, kI, kD
 
 okapi::MotorGroup driveLeft = okapi::MotorGroup({left});    
@@ -127,8 +127,8 @@ void drive(double target){
    
 }
 
-}
-*/
+
+
 
 //turn PID
 void turnPID(float degree , bool CW, int ms) {
