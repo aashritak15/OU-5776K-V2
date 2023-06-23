@@ -33,17 +33,17 @@ void updateDrive() {
   left.setBrakeMode(AbstractMotor::brakeMode::hold);
   right.setBrakeMode(AbstractMotor::brakeMode::hold);
 
-/*
+
   if (controller.getDigital(ControllerDigital::Y) == 1) {
     movePID(24, 1);
   }
-*/
 
 
 
-if(controller.getDigital(ControllerDigital::Y) == 1){
+
+/*if(controller.getDigital(ControllerDigital::Y) == 1){
   drive(24.0);
-}
+}*/
 
 
   if (controller.getDigital(ControllerDigital::B) == 1){
