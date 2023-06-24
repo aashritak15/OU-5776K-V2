@@ -5,8 +5,10 @@
 
 using namespace okapi;
 
-IntegratedEncoder leftEncoder(left);
-IntegratedEncoder rightEncoder(right);
+IntegratedEncoder leftEncoder(leftFront);
+IntegratedEncoder rightEncoder(rightFront);
+
+/*
 
 IMU imu1(imuPort1, IMUAxes::z);
 IMU imu2(imuPort2, IMUAxes::z);
@@ -49,7 +51,7 @@ void IEInnit() {
   leftEncoder.reset();
   rightEncoder.reset();
 }
-
+*/
 
 
 void movePID(float target, float maxV) {
@@ -131,6 +133,7 @@ void drive(double target){
 */
 
 
+/*
 //turn PID
 void turnPID(float degree , bool CW, int ms) {
  float taredRotation = (imu1.get() + imu2.get())/2;
@@ -172,4 +175,6 @@ void turnPID(float degree , bool CW, int ms) {
 
 drive->stop();
 }
+
+*/
 

@@ -5,7 +5,7 @@
 
 using namespace okapi;
 
-Motor intakeMotor(intakePort, true, AbstractMotor::gearset::green,
+Motor intakeMotor(intakePort, true, AbstractMotor::gearset::blue,
            AbstractMotor::encoderUnits::degrees);
 
 void updateIntake(){

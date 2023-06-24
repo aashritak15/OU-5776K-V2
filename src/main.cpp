@@ -31,8 +31,8 @@ pros::lcd::clear_line(2);
 * to keep execution time for this mode under a few seconds.
 */
 void initialize() {
-IEInnit();
-imuInnit();
+//IEInnit();
+//imuInnit();
 pistonsInnit();
 }
 
@@ -88,7 +88,7 @@ void opcontrol() {
 while (true) {
 updateDrive();
 updatePistons();
-imuInnit();
-IEInnit();
+//imuInnit();
+//IEInnit();
 }
 }
