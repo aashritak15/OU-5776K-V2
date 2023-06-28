@@ -97,11 +97,11 @@ okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID
 okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack, leftTop});    
 okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTop});
 
-
+/*
 bool isMoving(){
     return abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10; 
 } 
-
+*/
 
 
 
@@ -114,7 +114,7 @@ void drivetrain(double target){
 
     double displacement = 0;
 
-    while( abs(target - displacement) > 0.1 || isMoving()){
+    while( abs(target - displacement) > 0.1 || abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10){
     
 
     double dX1 = drive->getState().x.convert(okapi::foot) - dX;
