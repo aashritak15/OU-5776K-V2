@@ -10,7 +10,10 @@ extern Motor leftFront;
 extern Motor leftBack;
 extern Motor leftTop;
 
-static Controller controller;
+extern okapi::MotorGroup left;
+extern okapi::MotorGroup right;
+
+//static Controller controller;
 
 
 

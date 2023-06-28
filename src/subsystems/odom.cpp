@@ -3,10 +3,12 @@
 #include "subsystems/ports.hpp"
 #include "subsystems/odom.hpp"
 
+
 using namespace okapi;
 
-IntegratedEncoder leftEncoder(leftFront);
-IntegratedEncoder rightEncoder(rightFront);
+
+IntegratedEncoder leftEncoder(leftFrontPort, true);
+IntegratedEncoder rightEncoder(rightFrontPort, false);
 
 /*
 
@@ -40,26 +42,27 @@ void imuInnit() {
   //setBrakeMode(okapi::AbstractMotor::brakeMode::brake);
   resetImu();
 }
-
+*/
 void IEInnit() {
   //left
-  pros::c::motor_set_encoder_units(imuPort1, pros::E_MOTOR_ENCODER_DEGREES);
+  pros::c::motor_set_encoder_units(leftFrontPort, pros::E_MOTOR_ENCODER_DEGREES);
  
   //right
-  pros::c::motor_set_encoder_units(imuPort2, pros::E_MOTOR_ENCODER_DEGREES);
+  pros::c::motor_set_encoder_units(rightFrontPort, pros::E_MOTOR_ENCODER_DEGREES);
   
   leftEncoder.reset();
   rightEncoder.reset();
 }
-*/
 
 
+
+/*
 void movePID(float target, float maxV) {
   leftEncoder.reset();
   rightEncoder.reset();
-  float kP = 0.45;
+  float kP = 0;
   float kI = 0;
-  float kD = 0.09;
+  float kD = 0;
 
   float power = 0;
   float totalError = 0;
@@ -80,40 +83,44 @@ void movePID(float target, float maxV) {
     // Calculate power using PID
     power = (error * kP) + (totalError * kI) + ((error - prevError) * kD);
     prevError = error;
-    drive->getModel()->tank(power * (maxV *0.75f) , power * maxV);
+    drive->getModel()->tank(power * maxV  , power * maxV);
     pros::delay(100);
   }
 drive->stop();
 }
+*/
 
 
-/*
 
+okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD
 
-okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.09); //kP, kI, kD
+okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack, leftTop});    
+okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTop});
 
-okapi::MotorGroup driveLeft = okapi::MotorGroup({left});    
-okapi::MotorGroup driveRight = okapi::MotorGroup({right});
 
 bool isMoving(){
     return abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10; 
 } 
 
-okapi::Rate rate; 
 
 
 
-void drive(double target){
+void drivetrain(double target){
 
     pid.setTarget(target);
-
-    while( abs(displacement - target) > 0.1){
-    
 
     double dX = drive->getState().x.convert(okapi::foot);
     double dY = drive->getState().x.convert(okapi::foot);
 
-    double displacement = std::sqrt(powf(dX,2)) + powf(dY,2);
+    double displacement = 0;
+
+    while( abs(target - displacement) > 0.1 || isMoving()){
+    
+
+    double dX1 = drive->getState().x.convert(okapi::foot) - dX;
+    double dY1 = drive->getState().x.convert(okapi::foot) - dY;
+
+    displacement = std::sqrt(powf(dX,2)) + powf(dY,2);
 
      if (target < 0){
         displacement = -1 * displacement; 
@@ -123,17 +130,18 @@ void drive(double target){
 
     drive->getModel()->tank(pid_value, pid_value); 
 
-    rate.delay(100_Hz);
+    pros::delay(10);
+
+    
 
 }
-
     drive->getModel()->tank(0,0);
-   
 }
-*/
 
 
 /*
+
+
 //turn PID
 void turnPID(float degree , bool CW, int ms) {
  float taredRotation = (imu1.get() + imu2.get())/2;

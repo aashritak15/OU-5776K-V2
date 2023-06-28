@@ -2,25 +2,29 @@
 
 using namespace okapi;
 
-void encoderAvg();
+//void encoderAvg();
 void movePID(float target, float maxV);
 
-void turnPID(float target, bool CW, int ms);
+//void turnPID(float target, bool CW, int ms);
 
-/*extern double displacement; 
+extern double displacement; 
 
-void drive(double target);
+void drivetrain(double target);
 
-bool isMoving();
-*/
 
+
+//bool isMoving();
+
+/*
 void imuInnit();
+*/
 void IEInnit(); 
 
 
 /*
 void turnPID(float target, bool CW, int ms);
 void imuInnit();
-void IEInnit(); 
 */
+
+
 
