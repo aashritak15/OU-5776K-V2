@@ -16,7 +16,7 @@
 */
 void initialize() {
 IEInnit();
-//imuInnit();
+imuInnit();
 //.pistonsInnit();
 }
 
@@ -73,7 +73,7 @@ while (true) {
 updateDrive();
 //updatePistons();
 updateIntake();
-//imuInnit();
+imuInnit();
 IEInnit();
 }
 }

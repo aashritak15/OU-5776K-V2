@@ -15,8 +15,8 @@ const std::uint8_t leftBackPort = 11; //drivetrain motor 2
 const std::uint8_t rightTopPort = 19; //drivetrain motor 2
 const std::uint8_t leftTopPort = 16; //drivetrain motor 2
 
-//const std::uint8_t imuPort1 = 9; //imu port #1
-//const std::uint8_t imuPort2 = 10; //imu port#2
+const std::uint8_t imuPort1 = 3; //imu port #1
+const std::uint8_t imuPort2 = 18; //imu port#2
 
 const std::uint8_t pistonPTO1Port = 8; //piston port
 const std::uint8_t intakePort = 3; //intake port

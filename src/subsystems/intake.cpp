@@ -14,7 +14,7 @@ void updateIntake(){
 
     intakeMotor.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 
-    if (/*controller.getDigital(ControllerDigital::L1) == 1*/ intakeButton.changedToPressed()){
+    if(/*controller.getDigital(ControllerDigital::L1) == 1*/ intakeButton.changedToPressed()){
         intakeMotor.moveVelocity(600);
         
     } 

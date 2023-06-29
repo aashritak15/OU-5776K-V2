@@ -10,7 +10,7 @@ using namespace okapi;
 IntegratedEncoder leftEncoder(leftFrontPort, true);
 IntegratedEncoder rightEncoder(rightFrontPort, false);
 
-/*
+
 
 IMU imu1(imuPort1, IMUAxes::z);
 IMU imu2(imuPort2, IMUAxes::z);
@@ -42,7 +42,7 @@ void imuInnit() {
   //setBrakeMode(okapi::AbstractMotor::brakeMode::brake);
   resetImu();
 }
-*/
+
 void IEInnit() {
   //left
   pros::c::motor_set_encoder_units(leftFrontPort, pros::E_MOTOR_ENCODER_DEGREES);
@@ -92,18 +92,14 @@ drive->stop();
 
 
 
-okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD
+okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD              
 
 okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack, leftTop});    
 okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTop});
 
-/*
 bool isMoving(){
     return abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10; 
 } 
-*/
-
-
 
 void drivetrain(double target){
 
@@ -114,14 +110,17 @@ void drivetrain(double target){
 
     double displacement = 0;
 
-    while( abs(target - displacement) > 0.1 || abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10){
+    //runs as long as displacement 
+    while( abs(target - displacement) > 0.1 || isMoving()){
     
-
+    //calculates change in position
     double dX1 = drive->getState().x.convert(okapi::foot) - dX;
     double dY1 = drive->getState().x.convert(okapi::foot) - dY;
 
-    displacement = std::sqrt(powf(dX,2)) + powf(dY,2);
+   //pythagorean theorem to calculate displacement 
+    displacement = std::sqrt(powf(dX1,2)) + powf(dY1,2);
 
+  // negative target -> negative displacement 
      if (target < 0){
         displacement = -1 * displacement; 
      }
@@ -132,14 +131,12 @@ void drivetrain(double target){
 
     pros::delay(10);
 
-    
-
 }
     drive->getModel()->tank(0,0);
 }
 
 
-/*
+
 
 
 //turn PID
@@ -184,5 +181,5 @@ void turnPID(float degree , bool CW, int ms) {
 drive->stop();
 }
 
-*/
+
 
