@@ -72,12 +72,15 @@ void autonomous() {
 */
 void opcontrol() {
 while (true) {
-updateDrive();
-//updatePistons();
-updateIntake();
-imuInnit();
-IEInnit();
-intakeInit();
-//intakeInnit();
+    updateDrive();
+    //updatePistons();
+    updateIntake();
+    imuInnit();
+    IEInnit();
+    intakeInit();
+    //intakeInnit();
+    okapi::Rate rate;
+
+    rate.delay(100_Hz);
 }
 }

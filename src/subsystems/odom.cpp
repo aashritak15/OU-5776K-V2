@@ -31,7 +31,7 @@ void resetImu(bool print = true) {
       }
       break;
     }
-    pros::delay(100);
+    pros::delay(10);
   }
   if (print) {
     printf("IMU Calibrated in %d [ms]\n", iter - time);
