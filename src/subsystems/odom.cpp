@@ -92,15 +92,20 @@ drive->stop();
 
 
 
-okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD              
 
-okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack, leftTop});    
-okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTop});
+//okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD              
 
+//okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack /*leftTop*/});    
+//okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTop});
+
+
+/*
 bool isMoving(){
     return abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10; 
 } 
+*/
 
+/*
 void drivetrain(double target){
 
     pid.setTarget(target);
@@ -111,7 +116,7 @@ void drivetrain(double target){
     double displacement = 0;
 
     //runs as long as displacement 
-    while( abs(target - displacement) > 0.1 || isMoving()){
+    while( abs(target - displacement) > 0.1 || abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10){
     
     //calculates change in position
     double dX1 = drive->getState().x.convert(okapi::foot) - dX;
@@ -135,7 +140,7 @@ void drivetrain(double target){
     drive->getModel()->tank(0,0);
 }
 
-
+*/
 
 
 
@@ -180,6 +185,7 @@ void turnPID(float degree , bool CW, int ms) {
 
 drive->stop();
 }
+
 
 
 

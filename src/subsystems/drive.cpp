@@ -21,8 +21,10 @@ Motor leftFront(leftFrontPort, true, AbstractMotor::gearset::blue,
 Motor leftBack(leftBackPort, true, AbstractMotor::gearset::blue,
            AbstractMotor::encoderUnits::degrees);
 
+
 Motor leftTop(leftTopPort, true, AbstractMotor::gearset::blue,
-           AbstractMotor::encoderUnits::degrees);
+           AbstractMotor::encoderUnits::degrees); 
+          
 
 okapi::MotorGroup left({leftFront, leftTop, leftBack});
 okapi::MotorGroup right({rightFront, rightTop, rightBack});
@@ -35,7 +37,7 @@ std::shared_ptr<OdomChassisController> drive =
         .withSensors(leftFront.getEncoder(), rightFront.getEncoder())
         // Specify the tracking wheels diam (2.75 in), track (7 in), and TPR
         // (360)
-        .withOdometry({{2.75_in, 7.5_in, 1_in, 2.75_in}, quadEncoderTPR})
+        .withOdometry({{3.25_in, 14.5_in, 7.25_in, 3.25_in}, quadEncoderTPR})
         .buildOdometry();
 
 
@@ -70,7 +72,7 @@ void updateDrive() {
 
   if (controller.getDigital(ControllerDigital::Y) == 1) {
     //movePID(24.0f, 1.0f);
-    drivetrain(1);
+   //drivetrain(3);
   }
 
 

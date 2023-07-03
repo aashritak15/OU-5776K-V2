@@ -52,7 +52,9 @@ void competition_initialize() {}
 * will be stopped. Re-enabling the robot will restart the task, not re-start it
 * from where it left off.
 */
-void autonomous() {}
+void autonomous() {
+    //updateAuton(1);
+}
 
 
 /**
@@ -75,5 +77,7 @@ updateDrive();
 updateIntake();
 imuInnit();
 IEInnit();
+intakeInit();
+//intakeInnit();
 }
 }
