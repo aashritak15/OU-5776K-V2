@@ -48,7 +48,7 @@ void updateDrive() {
   drive->getModel()->tank(controller.getAnalog(ControllerAnalog::leftY),
                           controller.getAnalog(ControllerAnalog::rightY));
 
-    
+   /*
   if (controller.getDigital(ControllerDigital::left) == 1) {
     leftFront.setBrakeMode(AbstractMotor::brakeMode::hold);
     leftTop.setBrakeMode(AbstractMotor::brakeMode::hold);
@@ -68,11 +68,11 @@ void updateDrive() {
     rightTop.setBrakeMode(AbstractMotor::brakeMode::coast);
     rightBack.setBrakeMode(AbstractMotor::brakeMode::coast);
   }
-
+*/
 
   if (controller.getDigital(ControllerDigital::Y) == 1) {
     //movePID(24.0f, 1.0f);
-   //drivetrain(3);
+    //drivetrain(3);
   }
 
 
