@@ -40,6 +40,13 @@ else if(version == 2){
     drive->getModel()->tank(0,0);
 }
 
+else if(version == 3){
+    turnPID(300, flase, 3000);
+    drivetrain(0.1)l
+    intakeMotor1.moveVelocity(200);
+    
+}
+
 else{
     drive->getModel()->tank(0,0);
 }

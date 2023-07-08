@@ -12,7 +12,9 @@ enum class IntakeState{
     STOPPED = 0,
     INTAKING = 1, 
     OUTTAKING = 2,
+    
 };
+
 
 extern IntakeState getIntakeState();
 extern void setIntakeState(IntakeState IState);

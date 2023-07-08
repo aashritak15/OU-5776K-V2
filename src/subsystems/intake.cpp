@@ -71,9 +71,10 @@ Motor intakeMotor2(intakePort2, false, AbstractMotor::gearset::blue,
 
 
 
-ControllerButton intakeButton = ControllerButton(ControllerDigital::L1);
-ControllerButton outakeButton = ControllerButton(ControllerDigital::L2);
+ControllerButton intakeButton = ControllerButton(ControllerDigital::R1);
+ControllerButton outakeButton = ControllerButton(ControllerDigital::R2);
 //ControllerButton halfInButton = ControllerButton(ControllerDigital::up);
+
 
 void intakeInit() { 
   intakeMotor1.setBrakeMode(AbstractMotor::brakeMode::coast); 
@@ -85,12 +86,6 @@ void updateIntake() {
   static IntakeState currentIntakeState = IntakeState::STOPPED;
   static IntakeState previousIntakeState = IntakeState::STOPPED;
 
-  // if (outakeButton.changedToPressed()) {
-  //   previousIntakeState = currentIntakeState;
-  //   currentIntakeState = IntakeState::OUTTAKING;
-  // } else if (outakeButton.changedToReleased()) {
-  //   currentIntakeState = previousIntakeState;
-  // }
 
   if (intakeButton.changedToPressed()) {
     if (currentIntakeState == IntakeState::INTAKING) {
@@ -101,16 +96,7 @@ void updateIntake() {
       currentIntakeState = IntakeState::INTAKING;
     }
   } 
-  /*
-  if (halfInButton.changedToPressed()) {
-    if (currentIntakeState == IntakeState::HALF) {
-      previousIntakeState = currentIntakeState;
-      currentIntakeState = IntakeState::STOPPED;
-    } else {
-      previousIntakeState = currentIntakeState;
-      currentIntakeState = IntakeState::HALF;
-    }
-  }*/
+
   if (outakeButton.changedToPressed()) {
     if (currentIntakeState == IntakeState::OUTTAKING) {
       previousIntakeState = currentIntakeState;
@@ -121,27 +107,25 @@ void updateIntake() {
     }
   }
 
-
-
   switch (currentIntakeState) {
+
   case IntakeState::STOPPED:
     intakeMotor1.moveVoltage(0);
     intakeMotor2.moveVoltage(0);
     break;
+
   case IntakeState::INTAKING:
     intakeMotor1.moveVoltage(12000);
     intakeMotor2.moveVoltage(12000);
     break;
+
   case IntakeState::OUTTAKING:
     intakeMotor1.moveVoltage(-12000);
     intakeMotor2.moveVoltage(-12000);
     break;
-  //case IntakeState::HALF:
-    
     
   }
 }
-
  
 IntakeState getIntakeState() { 
   return currentIntakeState; 
