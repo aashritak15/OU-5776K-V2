@@ -50,23 +50,23 @@ void updateDrive() {
 
    
   if (controller.getDigital(ControllerDigital::left) == 1) {
-    leftFront.setBrakeMode(AbstractMotor::brakeMode::hold);
-    leftTop.setBrakeMode(AbstractMotor::brakeMode::hold);
-    leftBack.setBrakeMode(AbstractMotor::brakeMode::hold);
+    leftFront.setBrakeMode(AbstractMotor::brakeMode::coast);
+    leftTop.setBrakeMode(AbstractMotor::brakeMode::coast);
+    leftBack.setBrakeMode(AbstractMotor::brakeMode::coast);
 
-    rightFront.setBrakeMode(AbstractMotor::brakeMode::hold);
-    rightTop.setBrakeMode(AbstractMotor::brakeMode::hold);
-    rightBack.setBrakeMode(AbstractMotor::brakeMode::hold);
+    rightFront.setBrakeMode(AbstractMotor::brakeMode::coast);
+    rightTop.setBrakeMode(AbstractMotor::brakeMode::coast);
+    rightBack.setBrakeMode(AbstractMotor::brakeMode::coast);
   } 
   
   else if (controller.getDigital(ControllerDigital::right) == 1) {
-    leftFront.setBrakeMode(AbstractMotor::brakeMode::hold);
-    leftTop.setBrakeMode(AbstractMotor::brakeMode::hold);
-    leftBack.setBrakeMode(AbstractMotor::brakeMode::hold);
+    leftFront.setBrakeMode(AbstractMotor::brakeMode::coast);
+    leftTop.setBrakeMode(AbstractMotor::brakeMode::coast);
+    leftBack.setBrakeMode(AbstractMotor::brakeMode::coast);
 
-    rightFront.setBrakeMode(AbstractMotor::brakeMode::hold);
-    rightTop.setBrakeMode(AbstractMotor::brakeMode::hold);
-    rightBack.setBrakeMode(AbstractMotor::brakeMode::hold);
+    rightFront.setBrakeMode(AbstractMotor::brakeMode::coast);
+    rightTop.setBrakeMode(AbstractMotor::brakeMode::coast);
+    rightBack.setBrakeMode(AbstractMotor::brakeMode::coast);
   }
 
 

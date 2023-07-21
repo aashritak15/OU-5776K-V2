@@ -81,6 +81,6 @@ while (true) {
     //intakeInnit();
     okapi::Rate rate;
 
-    rate.delay(50_Hz);
+    rate.delay(100_Hz);
 }
 }
