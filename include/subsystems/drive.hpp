@@ -15,7 +15,6 @@ extern okapi::MotorGroup right;
 
 static Controller controller;
 
-
 extern std::shared_ptr<OdomChassisController> drive;
 
 void updateDrive();
