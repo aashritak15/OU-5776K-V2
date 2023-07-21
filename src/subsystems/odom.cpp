@@ -93,13 +93,12 @@ drive->stop();
 
 
 
-//okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD              
+okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD              
 
-//okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack /*leftTop*/});    
-//okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTop});
+okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack /*leftTop*/});    
+okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTop});
 
 
-/*
 bool isMoving(){
     return abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10; 
 } 
@@ -139,7 +138,7 @@ void drivetrain(double target){
 }
     drive->getModel()->tank(0,0);
 }
-*/
+
 
 
 

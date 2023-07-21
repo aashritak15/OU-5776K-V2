@@ -13,7 +13,7 @@ void drivetrain(double target);
 
 
 
-//bool isMoving();
+bool isMoving();
 
 
 void imuInnit();
