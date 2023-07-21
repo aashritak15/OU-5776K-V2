@@ -7,8 +7,8 @@
 using namespace okapi;
 
 
-IntegratedEncoder leftEncoder(leftFrontPort, true);
-IntegratedEncoder rightEncoder(rightFrontPort, false);
+IntegratedEncoder leftEncoder(leftTopPort, true);
+IntegratedEncoder rightEncoder(rightTopPort, false);
 
 
 
@@ -24,7 +24,7 @@ void resetImu(bool print = true) {
     if (print) {
       printf("IMU Calibrating... %d [ms]\n", iter);
     }
-    iter += 100;
+    iter += 200;
     if (iter >= 2500) { // IMU should not take more than 2500 ms to calibrate
       if (print) {
         printf("IMU Calibration Failed!\n");
