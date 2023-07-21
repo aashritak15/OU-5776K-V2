@@ -45,10 +45,10 @@ void imuInnit() {
 
 void IEInnit() {
   //left
-  pros::c::motor_set_encoder_units(leftFrontPort, pros::E_MOTOR_ENCODER_DEGREES);
+  pros::c::motor_set_encoder_units(leftTopPort, pros::E_MOTOR_ENCODER_DEGREES);
  
   //right
-  pros::c::motor_set_encoder_units(rightFrontPort, pros::E_MOTOR_ENCODER_DEGREES);
+  pros::c::motor_set_encoder_units(rightTopPort, pros::E_MOTOR_ENCODER_DEGREES);
   
   leftEncoder.reset();
   rightEncoder.reset();
@@ -95,7 +95,7 @@ drive->stop();
 
 okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD              
 
-okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack /*leftTop*/});    
+okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack, leftTop});    
 okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTop});
 
 
