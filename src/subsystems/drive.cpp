@@ -1,6 +1,7 @@
 #include "main.h"
 #include "subsystems/ports.hpp"
 #include "subsystems/odom.hpp"
+#include "subsystems/drive.hpp"
 
 
 using namespace okapi;
@@ -42,7 +43,7 @@ std::shared_ptr<OdomChassisController> drive =
 
 
 
-static Controller controller = Controller();
+//static Controller controller = Controller();
 
 void updateDrive() {
   drive->getModel()->tank(controller.getAnalog(ControllerAnalog::leftY),
@@ -50,9 +51,9 @@ void updateDrive() {
 
    
   if (controller.getDigital(ControllerDigital::left) == 1) {
-    leftFront.setBrakeMode(AbstractMotor::brakeMode::coast);
-    leftTop.setBrakeMode(AbstractMotor::brakeMode::coast);
-    leftBack.setBrakeMode(AbstractMotor::brakeMode::coast);
+    leftFront.setBrakeMode(AbstractMotor::brakeMode::hold);
+    leftTop.setBrakeMode(AbstractMotor::brakeMode::hold);
+    leftBack.setBrakeMode(AbstractMotor::brakeMode::hold);
 
     rightFront.setBrakeMode(AbstractMotor::brakeMode::coast);
     rightTop.setBrakeMode(AbstractMotor::brakeMode::coast);
@@ -60,9 +61,9 @@ void updateDrive() {
   } 
   
   else if (controller.getDigital(ControllerDigital::right) == 1) {
-    leftFront.setBrakeMode(AbstractMotor::brakeMode::coast);
-    leftTop.setBrakeMode(AbstractMotor::brakeMode::coast);
-    leftBack.setBrakeMode(AbstractMotor::brakeMode::coast);
+    leftFront.setBrakeMode(AbstractMotor::brakeMode::hold);
+    leftTop.setBrakeMode(AbstractMotor::brakeMode::hold);
+    leftBack.setBrakeMode(AbstractMotor::brakeMode::hold);
 
     rightFront.setBrakeMode(AbstractMotor::brakeMode::coast);
     rightTop.setBrakeMode(AbstractMotor::brakeMode::coast);

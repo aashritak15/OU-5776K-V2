@@ -1,7 +1,6 @@
 #include "main.h"
 #include "okapi/impl/device/rotarysensor/IMU.hpp"
 #include "okapi/impl/device/rotarysensor/adiEncoder.hpp"
-#include <chrono>
 
 using namespace okapi;
 

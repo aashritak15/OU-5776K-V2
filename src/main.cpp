@@ -1,10 +1,7 @@
 #include "main.h"
 #include "subsystems/drive.hpp"
 #include "subsystems/odom.hpp"
-#include "subsystems/auton.hpp"
-#include "subsystems/pistons.hpp"
 #include "subsystems/ports.hpp"
-#include "subsystems/intake.hpp"
 
 
 
@@ -74,10 +71,10 @@ void opcontrol() {
 while (true) {
     updateDrive();
     //updatePistons();
-    updateIntake();
+    //updateIntake();
     imuInnit();
     IEInnit();
-    intakeInit();
+    //intakeInit();
     //intakeInnit();
     okapi::Rate rate;
 
