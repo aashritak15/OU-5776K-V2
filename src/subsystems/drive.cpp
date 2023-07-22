@@ -69,20 +69,12 @@ void updateDrive() {
     rightTop.setBrakeMode(AbstractMotor::brakeMode::coast);
     rightBack.setBrakeMode(AbstractMotor::brakeMode::coast);
   }
-
+*/
 
   if (controller.getDigital(ControllerDigital::Y) == 1) {
     //movePID(24.0f, 1.0f);
-    drivetrain(3);
+    //drivetrain(3);
   }
-
-
-
-/*if(controller.getDigital(ControllerDigital::Y) == 1){
-  drive(24.0);
-}*/
-
-
 
   if (controller.getDigital(ControllerDigital::B) == 1){
     turnPID(90, true, 3000);

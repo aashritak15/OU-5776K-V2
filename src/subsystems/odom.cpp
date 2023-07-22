@@ -13,9 +13,10 @@ IntegratedEncoder leftEncoder(leftTopPort, true);
 IntegratedEncoder rightEncoder(rightTopPort, false);
 
 
-
 IMU imu1(imuPort1, IMUAxes::z);
 IMU imu2(imuPort2, IMUAxes::z);
+
+
 
 void resetImu(bool print = true) {
   imu1.reset();
@@ -41,7 +42,6 @@ void resetImu(bool print = true) {
 }
 
 void imuInnit() {
-  //setBrakeMode(okapi::AbstractMotor::brakeMode::brake);
   resetImu();
 }
 
@@ -95,6 +95,7 @@ drive->stop();
 
 
 
+
 okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD              
 
 okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack, leftTop});    
@@ -114,7 +115,7 @@ void drivetrain(double target){
     double dX = drive->getState().x.convert(okapi::foot);
     double dY = drive->getState().x.convert(okapi::foot);
 
-    double displacement = 0;
+    double displacement = 0.0;
 
     //runs as long as displacement 
     while( abs(target - displacement) > 0.1 || abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10){
@@ -147,7 +148,7 @@ void drivetrain(double target){
 
 //turn PID
 void turnPID(float degree , bool CW, int ms) {
- float taredRotation = (imu1.get() + imu2.get())/2;
+ float taredRotation = (imu1.get() + imu2.get()) / 2;
  int timer = 0;
  float turnkP = 0.0125;
  float turnkI = 0;
@@ -164,8 +165,12 @@ void turnPID(float degree , bool CW, int ms) {
     // Compute PID values from current wheel travel measurements
       float currentVal = (imu1.get() + imu2.get())/2 - taredRotation;
       //float targetVal = currentVal + degree;
+
       float error = degree - currentVal;
-       if (error < 0.1){break;}
+       if (error < 0.1){
+        break;
+        }
+
        float derivative = error - prevError;
        prevError = error;
        integral += error;
@@ -175,9 +180,9 @@ void turnPID(float degree , bool CW, int ms) {
     float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
     //prevError = error;
     if (CW){
-      drive->getModel()->tank(power * 0.75f , (-1.0f * power));
+      drive->getModel()->tank(power * 0.75f , (-1.0f * power)); //goes clockwise 
     } else {
-      drive->getModel()->tank((-1.0f * power * 0.75f) , power);
+      drive->getModel()->tank((-1.0f * power * 0.75f) , power); //goes counterclockwise 
     }
     
     timer += 10;
