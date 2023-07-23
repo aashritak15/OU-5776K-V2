@@ -19,7 +19,7 @@ const std::uint8_t imuPort2 = 18; //imu port#2
 
 const std::uint8_t pistonPort1 = 8;
 
-const std::uint8_t intakeMotor1 = 7;
-const std::uint8_t intakeMotor2 = 13;
+const std::uint8_t intakePort1 = 7;
+const std::uint8_t intakePort2 = 13;
 
 const std::uint8_t cataMotorPort = 14;

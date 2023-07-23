@@ -1,12 +1,13 @@
 #include "main.h"
 #include "subsystems/ports.hpp"
 #include "subsystems/drive.hpp"
+#include "subsystems/pistons.hpp"
 
 
 using namespace okapi;
 
 
-pros::ADIDigitalOut pistonPTO1(pistonPTO1Port);
+pros::ADIDigitalOut pistonPTO1(pistonPort1);
 
 
 bool sharing;

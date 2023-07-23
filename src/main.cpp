@@ -3,7 +3,8 @@
 #include "subsystems/odom.hpp"
 #include "subsystems/ports.hpp"
 #include "subsystems/intake.hpp"
-#include "subsystems/pistons.cpp"
+#include "subsystems/pistons.hpp"
+#include "subsystems/cata.hpp"
 
 
 
@@ -16,7 +17,7 @@
 void initialize() {
     IEInnit();
     imuInnit();
-    intakeInnit();
+    //intakeInnit();
     pistonsInnit();
 }
 
@@ -75,8 +76,6 @@ while (true) {
     updateDrive();
     updatePistons();
     updateIntake();
-    imuInnit();
-    IEInnit();
     okapi::Rate rate;
 
     rate.delay(100_Hz);
