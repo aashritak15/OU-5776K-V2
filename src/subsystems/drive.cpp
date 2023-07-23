@@ -70,8 +70,7 @@ void updateDrive() {
 
 
   if (controller.getDigital(ControllerDigital::Y) == 1) {
-    //movePID(24.0f, 1.0f);
-    //drivetrain(3);
+    drivetrain(3);
   }
 //
 

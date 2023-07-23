@@ -21,3 +21,5 @@ const std::uint8_t pistonPort1 = 8;
 
 const std::uint8_t intakeMotor1 = 7;
 const std::uint8_t intakeMotor2 = 13;
+
+const std::uint8_t cataMotorPort = 14;
