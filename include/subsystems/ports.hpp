@@ -16,3 +16,8 @@ const std::uint8_t leftTopPort = 10;
 
 const std::uint8_t imuPort1 = 4; //imu port #1
 const std::uint8_t imuPort2 = 18; //imu port#2
+
+const std::uint8_t pistonPort1 = 8;
+
+const std::uint8_t intakeMotor1 = 7;
+const std::uint8_t intakeMotor2 = 13;

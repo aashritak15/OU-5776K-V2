@@ -2,6 +2,8 @@
 #include "subsystems/drive.hpp"
 #include "subsystems/odom.hpp"
 #include "subsystems/ports.hpp"
+#include "subsystems/intake.hpp"
+#include "subsystems/pistons.cpp"
 
 
 
@@ -12,9 +14,10 @@
 * to keep execution time for this mode under a few seconds.
 */
 void initialize() {
-IEInnit();
-imuInnit();
-//.pistonsInnit();
+    IEInnit();
+    imuInnit();
+    intakeInnit();
+    pistonsInnit();
 }
 
 
@@ -70,12 +73,10 @@ void autonomous() {
 void opcontrol() {
 while (true) {
     updateDrive();
-    //updatePistons();
-    //updateIntake();
+    updatePistons();
+    updateIntake();
     imuInnit();
     IEInnit();
-    //intakeInit();
-    //intakeInnit();
     okapi::Rate rate;
 
     rate.delay(100_Hz);

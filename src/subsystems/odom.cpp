@@ -12,7 +12,6 @@ using namespace okapi;
 IntegratedEncoder leftEncoder(leftTopPort, true);
 IntegratedEncoder rightEncoder(rightTopPort, false);
 
-
 IMU imu1(imuPort1, IMUAxes::z);
 IMU imu2(imuPort2, IMUAxes::z);
 
@@ -101,11 +100,9 @@ okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID
 okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack, leftTop});    
 okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTop});
 
-
 bool isMoving(){
     return abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10; 
 } 
-
 
 
 void drivetrain(double target){
@@ -174,6 +171,8 @@ void turnPID(float degree , bool CW, int ms) {
        float derivative = error - prevError;
        prevError = error;
        integral += error;
+
+
        
 
     // Calculate power using PID
