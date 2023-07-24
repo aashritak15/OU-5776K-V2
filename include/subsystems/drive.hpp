@@ -16,7 +16,6 @@ extern Motor leftTop;
 extern okapi::MotorGroup left;
 extern okapi::MotorGroup right;
 
-static Controller controller;
 
 extern std::shared_ptr<OdomChassisController> drive;
 

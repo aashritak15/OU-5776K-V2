@@ -1,6 +1,8 @@
 #include "main.h"
 #include "subsystems/ports.hpp"
 #include "subsystems/odom.hpp"
+#include "subsystems/drive.hpp"
+#include "globals.hpp"
 
 using namespace okapi;
 
@@ -41,7 +43,7 @@ std::shared_ptr<OdomChassisController> drive =
 
 
 
-static Controller controller = Controller();
+
 
 void updateDrive() {
   drive->getModel()->tank(controller.getAnalog(ControllerAnalog::leftY),
@@ -72,8 +74,6 @@ void updateDrive() {
   if (controller.getDigital(ControllerDigital::Y) == 1) {
     drivetrain(3);
   }
-//
-
 
 /*if(controller.getDigital(ControllerDigital::Y) == 1){
   drive(24.0);

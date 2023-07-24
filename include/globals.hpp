@@ -2,4 +2,5 @@
 
 using namespace okapi;
 
-void updateAuton(int side);
+static Controller controller;
+
