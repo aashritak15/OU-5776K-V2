@@ -9,6 +9,13 @@ IntegratedEncoder rightEncoder(rightTopPort, false);
 IMU imu1(imuPort1, IMUAxes::z);
 IMU imu2(imuPort2, IMUAxes::z);
 
+/* stuff left to do:
+    finding distance between points 
+    curvature
+    velocities 
+    and then we can work on stuff to make the robot acc follow the path 
+*/
+
 
 //quintic spline to smoothen out the curve 
 waypoint quinticSpline(const waypoint& p0, const waypoint& p1, float t){
