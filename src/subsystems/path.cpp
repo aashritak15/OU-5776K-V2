@@ -5,6 +5,7 @@
 
 
 class waypoint {
+private:
     float x;
     float y;
     float theta;
@@ -12,7 +13,8 @@ class waypoint {
     float vel;
     float curv;
 
-    waypoint1(float x1, float y1){
+public:
+    waypoint(float x1, float y1){
         this->x = x1;
         this->y = y1;
         this->theta = 0;
@@ -21,7 +23,7 @@ class waypoint {
         this->curv = 0;
     }
 
-    waypoint2(float x1, float y1, float angle){
+    waypoint(float x1, float y1, float angle){
         this->x = x1;
         this->y = y1;
         this->theta = angle;
@@ -81,7 +83,5 @@ class waypoint {
 
 };
 
-void moveCurv(float newMoveCurv){
-    this->curv = newMoveCurv;
-}
+
 
