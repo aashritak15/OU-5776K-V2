@@ -1,4 +1,6 @@
 #include "path.hpp"
+#include "ports.hpp"
+#include "drive.hpp"
 #include <vector>
 #include <math.h>
 #include <cmath>
@@ -35,7 +37,7 @@ waypoint quinticSpline(const waypoint& p0, const waypoint& p1, float t){
     float x = a * powf(t, 5) + b * powf(t, 4) + c * powf(t, 3) + d * powf(t, 2) + e * t + f;
     float y = 0 //needa do the polynomial for this too 
 
-    return waypoint(x,y);
+    return waypoint(x, y);
 
 }
 
@@ -51,9 +53,9 @@ std::vector<waypoint> path(std::vector<waypoint> followPath, float maxVel, float
         waypoint start = followPath[i];
         waypoint end = followPath[i + 1];
 
-        waypoint vector = end_point - start_point;
+        waypoint vector = end - start;
 
-        int num_points_that_fit = std::ceil(vector.magnitude() / spacing);
+        int num_points_that_fit = std::ceil(abs(vector) / spacing);
 
         vector = vector.normalize() * spacing;
 

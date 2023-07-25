@@ -32,11 +32,11 @@ public:
     }
 
     float getX() const {
-        return this->x
+        return this->x;
     }
 
     float getY() const {
-        return this->y
+        return this->y;
     }
 
     float getAngle() const{
@@ -78,8 +78,7 @@ public:
     void setCurv(float newCurv) {
         this->curv = newCurv;
     }
-
-i
+    
 };
 
 
