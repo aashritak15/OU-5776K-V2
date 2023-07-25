@@ -12,12 +12,24 @@ IMU imu1(imuPort1, IMUAxes::z);
 IMU imu2(imuPort2, IMUAxes::z);
 
 /* stuff left to do:
-    finding distance between points 
-    curvature
-    velocities 
+    velocities
+    - Max velocities 
+    - Acceleration limits 
+    - calculations
     and then we can work on stuff to make the robot acc follow the path 
 */
 
+//curvature
+waypoint curvature(float x1, float y1, float x2, float y2, float x3, float y3){
+    float k1 = (0.5 * (powf(x1, 2) + powf(y1, 2) - powf(x2, 2)- powf(y2, 2)))/(x1 - x2);
+    float k2 = (y1-y2)/(x1 - x2);
+    float b = 0.5 * (powf(x2, 2) - 2 * x2 * k1 + powf(y2, 2) - powf(x3, 2) + 2 * x3 * k1 - powf(y3, 2))/(x3 * k2 - y3 + y2 - x2 * k2);
+    float a = k1 - k2 * b;
+    float r = sqrt(powf(x1-a, 2) + powf(y1-b, 2));
+    float curvature = 1/r;
+
+    return curvature; 
+}
 
 //quintic spline to smoothen out the curve 
 waypoint quinticSpline(const waypoint& p0, const waypoint& p1, float t){
@@ -41,12 +53,22 @@ waypoint quinticSpline(const waypoint& p0, const waypoint& p1, float t){
 
 }
 
+//finding distance between the points 
+
+float distance(const waypoint& p1, const waypoint& p2){
+    float dX = p2.getX() - p1.getX();
+    float dY = p2.getY() - p1.getY();
+
+    return std::sqrt(powf(dX1,2)) + powf(dY1,2); //distance formula
+}
 
 std::vector<waypoint> path(std::vector<waypoint> followPath, float maxVel, float maxA, float curv){
     // 1. injecting points 
     int spacing = 6;
 
     std::vector<waypoint> newPath; 
+
+    float total_distance = 0.0f;
 
     for(int i = 0; i < followPath.size() - 1; i++){
         //points between the waypoint 
@@ -60,11 +82,34 @@ std::vector<waypoint> path(std::vector<waypoint> followPath, float maxVel, float
         vector = vector.normalize() * spacing;
 
         for(int j = 0; j < num_points_that_fit; j++){
-            newPath.push_back(start + vector * j)
+            
+            waypoint newpoint = start + vector * j;
+            newPath.push_back(newpoint);
+
+            float dx1 = newpoint.getX() - newPath[j].getX();
+            float dy1 = newpoint.getY() - newPath[j].getY();
+
+            total_distance += std::sqrt(powf(dx1,2)) + powf(dy1,2);
         }
+        newPath.setDistance(total_distance);
     }
     newPath.push_back(followPath.back());
 
     return newPath;
 
 }
+
+
+//velocities 
+
+void targetVelocities(std::vector<waypoint>& path, float maxVelocity, float k){
+    path.back().setVelocity(0);
+
+    
+
+
+
+
+}
+
+
