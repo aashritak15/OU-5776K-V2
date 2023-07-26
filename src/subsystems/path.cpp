@@ -12,15 +12,13 @@ IMU imu1(imuPort1, IMUAxes::z);
 IMU imu2(imuPort2, IMUAxes::z);
 
 /* stuff left to do:
-    velocities
-    - Max velocities 
-    - Acceleration limits 
-    - calculations
+    velocities ~ aashrita 
+
     and then we can work on stuff to make the robot acc follow the path 
 */
 
 //curvature
-waypoint curvature(float x1, float y1, float x2, float y2, float x3, float y3){
+float curvature(float x1, float y1, float x2, float y2, float x3, float y3){
     float k1 = (0.5 * (powf(x1, 2) + powf(y1, 2) - powf(x2, 2)- powf(y2, 2)))/(x1 - x2);
     float k2 = (y1-y2)/(x1 - x2);
     float b = 0.5 * (powf(x2, 2) - 2 * x2 * k1 + powf(y2, 2) - powf(x3, 2) + 2 * x3 * k1 - powf(y3, 2))/(x3 * k2 - y3 + y2 - x2 * k2);
@@ -47,7 +45,8 @@ waypoint quinticSpline(const waypoint& p0, const waypoint& p1, float t){
     float f = x0;
 
     float x = a * powf(t, 5) + b * powf(t, 4) + c * powf(t, 3) + d * powf(t, 2) + e * t + f;
-    float y = 0 //needa do the polynomial for this too 
+    float y = a * powf(t, 5) + b * powf(t, 4) + c * powf (t, 3) + d * powf(t, 2) + e * t + f; 
+    float z = a * powf(t, 5) + b * powf(t, 4) + c * powf(t, 3) //needa do the polynomial for this too 
 
     return waypoint(x, y);
 
@@ -62,6 +61,11 @@ float distance(const waypoint& p1, const waypoint& p2){
     return std::sqrt(powf(dX1,2)) + powf(dY1,2); //distance formula
 }
 
+float distance2(const waypoint& p3, const waypoint& p4){
+    float dX = p3.getX() - p3.getX()
+}
+
+
 std::vector<waypoint> path(std::vector<waypoint> followPath, float maxVel, float maxA, float curv){
     // 1. injecting points 
     int spacing = 6;
@@ -70,12 +74,15 @@ std::vector<waypoint> path(std::vector<waypoint> followPath, float maxVel, float
 
     float total_distance = 0.0f;
 
+    
+
     for(int i = 0; i < followPath.size() - 1; i++){
         //points between the waypoint 
         waypoint start = followPath[i];
         waypoint end = followPath[i + 1];
 
         waypoint vector = end - start;
+
 
         int num_points_that_fit = std::ceil(abs(vector) / spacing);
 
@@ -86,12 +93,17 @@ std::vector<waypoint> path(std::vector<waypoint> followPath, float maxVel, float
             waypoint newpoint = start + vector * j;
             newPath.push_back(newpoint);
 
+            newPath.move(spacing + 2); //double check number 
+
+
+
             float dx1 = newpoint.getX() - newPath[j].getX();
             float dy1 = newpoint.getY() - newPath[j].getY();
 
             total_distance += std::sqrt(powf(dx1,2)) + powf(dy1,2);
         }
         newPath.setDistance(total_distance);
+        newPath = std::sqrt(powf(dx1, 2) + powf(dx2, 2));
     }
     newPath.push_back(followPath.back());
 
@@ -103,13 +115,10 @@ std::vector<waypoint> path(std::vector<waypoint> followPath, float maxVel, float
 //velocities 
 
 void targetVelocities(std::vector<waypoint>& path, float maxVelocity, float k){
-    path.back().setVelocity(0);
+    path.back().setVel(0);
 
-    
-
-
+    }
 
 
-}
 
 
