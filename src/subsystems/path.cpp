@@ -17,6 +17,42 @@ IMU imu2(imuPort2, IMUAxes::z);
     and then we can work on stuff to make the robot acc follow the path 
 */
 
+waypoint followPath(float x, float y){
+    //closest point
+
+    //lookahead point
+    float a = d.Dot( d ) ;
+    float b = 2*f.Dot( d ) ;
+    float c = f.Dot( f ) - r*r ;
+
+    float discriminant = b*b-4*a*c;
+    if( discriminant < 0 )
+    {
+    // no intersection
+    }
+    else
+    {
+
+    discriminant = sqrt( discriminant );
+
+    float t1 = (-b - discriminant)/(2*a);
+    float t2 = (-b + discriminant)/(2*a);
+    
+    if( t1 >= 0 && t1 <= 1 )
+    {
+    
+        return true ;
+    }
+
+    if( t2 >= 0 && t2 <= 1 )
+    {
+        return true ;
+  }
+  
+    return false ;
+ }
+}
+
 //curvature
 float curvature(float x1, float y1, float x2, float y2, float x3, float y3){
     float k1 = (0.5 * (powf(x1, 2) + powf(y1, 2) - powf(x2, 2)- powf(y2, 2)))/(x1 - x2);
@@ -31,7 +67,7 @@ float curvature(float x1, float y1, float x2, float y2, float x3, float y3){
 
 //quintic spline to smoothen out the curve 
 waypoint quinticSpline(const waypoint& p0, const waypoint& p1, float t){
-    float x0 = p0.getX();
+    float x0= p0.getX();
     float y0 = p0.getY();
     
     float x1 = p1.getX();
