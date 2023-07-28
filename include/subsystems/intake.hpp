@@ -8,7 +8,7 @@ extern Motor intakeMotor2;
 void intakeInnit();
 void updateIntake();
 
-void gradualStop();
+//void gradualStop();
 
 enum class IntakeState{
     STOPPED = 0,

@@ -81,6 +81,7 @@ void intakeInit() {
   intakeMotor2.setBrakeMode(AbstractMotor::brakeMode::coast); 
   }
 
+/*
 void gradualStop() {
   int stopTime = 5000;
   int voltage = 200;
@@ -97,6 +98,7 @@ void gradualStop() {
    }
 
 }
+*/
 
 void updateIntake() {
 
@@ -141,8 +143,9 @@ void updateIntake() {
 
   switch (currentIntakeState) {
     case IntakeState::STOPPED:
+      intakeMotor1.moveVoltage(0);
+      intakeMotor2.moveVoltage(0);
       gradualStop();
-      break;
     case IntakeState::INTAKING:
       intakeMotor1.moveVoltage(12000);
       intakeMotor2.moveVoltage(12000);
