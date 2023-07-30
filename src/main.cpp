@@ -76,6 +76,7 @@ while (true) {
     updateDrive();
     updatePistons();
     updateIntake();
+    flapjackCode();
     okapi::Rate rate;
 
     rate.delay(100_Hz);

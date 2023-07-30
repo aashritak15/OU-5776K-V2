@@ -8,4 +8,8 @@ extern pros::ADIDigitalOut pistonPTO1;
 
 void pistonsInnit();
 void updatePistons();
+void extendFlapjack();
+void retractFlapjack();
+void stopFlapjack();
+void flapjackCode();
 
