@@ -1,3 +1,4 @@
+
 #include "path.hpp"
 #include "ports.hpp"
 #include "drive.hpp"
@@ -5,6 +6,24 @@
 #include <math.h>
 #include <cmath>
 
+//Linear Motion 
+
+/*
+turnPID(45, false, 2000);
+pros::delay(100);
+drivetrain(3);
+pros::delay(100);
+turnPID(90, true, 3000);
+pros::delay(200);
+drivetrain(0.6)
+//shoot 
+pros::delay(100);
+turnPID(180, true, 5000);
+*/
+
+
+// pure pursuit -  curve
+/*
 IntegratedEncoder leftEncoder(leftTopPort, true);
 IntegratedEncoder rightEncoder(rightTopPort, false);
 
@@ -17,6 +36,7 @@ IMU imu2(imuPort2, IMUAxes::z);
     and then we can work on stuff to make the robot acc follow the path 
 */
 
+/*
 waypoint followPath(float x, float y){
     //closest point
 
@@ -42,6 +62,7 @@ waypoint followPath(float x, float y){
     {
     
         return true ;
+
     }
 
     if( t2 >= 0 && t2 <= 1 )
@@ -155,6 +176,6 @@ void targetVelocities(std::vector<waypoint>& path, float maxVelocity, float k){
 
     }
 
-
+*/
 
 

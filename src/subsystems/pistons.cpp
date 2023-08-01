@@ -3,19 +3,26 @@
 #include "subsystems/drive.hpp"
 #include "subsystems/pistons.hpp"
 #include "globals.hpp"
-#include "subsystems/ports.hpp"
 
 
 using namespace okapi;
 
 ControllerButton extendButton = ControllerButton(ControllerDigital::R1);
+
 ControllerButton retractButton = ControllerButton(ControllerDigital::R2);
 
-//flapjack
-pros::ADIDigitalOut flapjack1 (flapjackPort1);
-pros::ADIDigitalOut flapjack2 (flapjackPort2);
+pros::ADIDigitalOut flapjack1 = pros::ADIDigitalOut(flapjackPort1);
+pros::ADIDigitalOut flapjack2 = pros::ADIDigitalOut(flapjackPort2);
 
-pros::ADIDigitalOut pistonPTO1(pistonPort1);
+
+
+//flapjack
+//pros::ADIDigitalOut flapjack1(flapjackPort1);
+//pros::ADIDigitalOut flapjack2(flapjackPort2);
+
+//pros::ADIDigitalOut pistonPTO1(pistonPort1);
+pros::ADIDigitalOut pistonPTO1 = pros::ADIDigitalOut(pistonPort1);
+
 
 
 bool sharing;
@@ -38,6 +45,7 @@ void updatePistons(){
             sharing = false;
         }
     }
+
 }
 
 void extendFlapjack(){
@@ -67,9 +75,10 @@ void flapjackCode(){
             pros::delay(500);
             stopFlapjack();
             flapjackOutwards = false;
-        } else (!extendButton.isPressed() && !retractButton.isPressed()){
+        } else if((!extendButton.isPressed()) && (!retractButton.isPressed())){
             stopFlapjack();
             flapjackOutwards = false;
         }
     }
 }
+

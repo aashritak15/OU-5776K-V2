@@ -3,7 +3,7 @@
 using namespace okapi;
 
 
-extern pros::ADIDigitalOut pistonPTO1;
+//extern pros::ADIDigitalOut pistonPTO1;
 
 
 void pistonsInnit();
@@ -11,5 +11,5 @@ void updatePistons();
 void extendFlapjack();
 void retractFlapjack();
 void stopFlapjack();
-void flapjackCode();
+//void flapjackCode();
 

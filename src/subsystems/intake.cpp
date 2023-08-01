@@ -70,6 +70,9 @@ Motor intakeMotor1(intakePort1, true, AbstractMotor::gearset::blue,
 Motor intakeMotor2(intakePort2, false, AbstractMotor::gearset::blue,
                AbstractMotor::encoderUnits::degrees);
 
+//Motor flapjack1(flapjackPort1);
+//Motor flapjack2(flapjackPort2);
+
 
 
 ControllerButton intakeButton = ControllerButton(ControllerDigital::L1);
@@ -81,7 +84,7 @@ void intakeInit() {
   intakeMotor2.setBrakeMode(AbstractMotor::brakeMode::coast); 
   }
 
-/*
+
 void gradualStop() {
   int stopTime = 5000;
   int voltage = 200;
@@ -98,7 +101,7 @@ void gradualStop() {
    }
 
 }
-*/
+
 
 void updateIntake() {
 

@@ -1,7 +1,7 @@
 #include "main.h"
+#include "subsystems/ports.hpp"
 #include "subsystems/drive.hpp"
 #include "subsystems/odom.hpp"
-#include "subsystems/ports.hpp"
 #include "subsystems/intake.hpp"
 #include "subsystems/pistons.hpp"
 #include "subsystems/cata.hpp"
@@ -17,7 +17,7 @@
 void initialize() {
     IEInnit();
     imuInnit();
-    //intakeInnit();
+    intakeInit();
     pistonsInnit();
 }
 
@@ -76,7 +76,7 @@ while (true) {
     updateDrive();
     updatePistons();
     updateIntake();
-    flapjackCode();
+    //flapjackCode();
     okapi::Rate rate;
 
     rate.delay(100_Hz);
