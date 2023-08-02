@@ -89,9 +89,6 @@ void intakeInit() {
   }
 
 /*
-=======
-
->>>>>>> 8e4267a2d59b1da6124cdef653260e72ff9a29d7
 void gradualStop() {
   int stopTime = 5000;
   int voltage = 200;
@@ -116,12 +113,7 @@ void updateIntake() {
   static IntakeState currentIntakeState = IntakeState::STOPPED;
   static IntakeState previousIntakeState = IntakeState::STOPPED;
 
-  // if (outakeButton.changedToPressed()) {
-  //   previousIntakeState = currentIntakeState;
-  //   currentIntakeState = IntakeState::OUTTAKING;
-  // } else if (outakeButton.changedToReleased()) {
-  //   currentIntakeState = previousIntakeState;
-  // }
+
 
   if (intakeButton.changedToPressed()) {
     if (currentIntakeState == IntakeState::INTAKING) {

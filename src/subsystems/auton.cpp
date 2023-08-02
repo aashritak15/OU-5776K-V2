@@ -4,6 +4,7 @@
 #include "subsystems/path.hpp"
 #include "subsystems/intake.hpp"
 #include "subsystems/pistons.hpp"
+#include "subsystems/cata.hpp"
 
 #include "globals.hpp"
 
@@ -34,36 +35,97 @@ void intakeAuton(IntakeState currentIntakeState){
   }
 }
 
+
+
+void cataAuton(CataState currentCataState) {
+    static CataState currentCataState = CataState::STOPPED;
+     switch (currentCataState) {
+    case CataState::STOPPED:
+      break;
+      cataMotor.moveVoltage(0);
+    case CataState::CONTINUE:
+      cataMotor.moveVoltage(12000);
+      break;
+}
+}
+
 void updateAuton(int side){
     if (side == 1){
-        turnPID(90, false, 3000);
-        pros::delay(100);
-        drivetrain(0.75);
-        pros::delay(100);
+      //intake
         turnPID(45, false, 3000);
         pros::delay(100);
+        drivetrain(9);
+        pros::delay(100);
+        turnPID(45, true, 3000);
+        pros::delay(100);
+        intakeAuton(IntakeState::OUTTAKING);
+        pros::delay(50);
+        intakeAuton(IntakeState::STOPPED);
+        pros::delay(100);
+        turnPID(180, true, 3000);
+        pros::delay(100);
+        drivetrain(7);
+        pros::delay(100);
+        turnPID(45, true, 3000);
+        pros::delay(100);
         autonFlipout.set_value(true);
-        drivetrain(-0.75);
         pros::delay(100);
-        
+        drivetrain(-3);
         pros::delay(100);
-        turnPID(135, true, 3000);
+        autonFlipout.set_value(false);
         pros::delay(100);
-        drivetrain(0.7);
+        turnPID(135, false, 3000);
         pros::delay(100);
-        turnPID(90, true, 3000);
+        drivetrain(8);
         pros::delay(100);
-        drivetrain(2);
-        pros::delay(100);
-        
-        turnPID(135, true, 3000);
-        pros::delay(100);
-        drivetrain(4.2);
-
     }
 
     if (side == 2){
-        drivetrain(-4);
+        turnPID(10, false, 3000);
+        pros::delay(100);
+        drivetrain(11);
+        pros::delay(100);
+        intakeAuton(IntakeState::INTAKING);
+        turnPID(100, true, 3000);
+        pros::delay(100);
+        drivetrain(6);
+        pros::delay(100);
+        intakeAuton(IntakeState::OUTTAKING);
         
+        drivetrain(2);
+        
+        pros::delay(100);
+        
+        pros::delay(100);
+        turnPID(180, false, 3000);
+        pros::delay(100);
+        drivetrain(12);
+        pros::delay(100);
+        intakeAuton(IntakeState::INTAKING);
+        turnPID(190, false, 3000);
+        pros::delay(100);
+        drivetrain(12);
+        intakeAuton(IntakeState::OUTTAKING);
+        pros::delay(100);
+        turnPID(135, true, 3000);
+        pros::delay(100);
+        drivetrain(11);
+        pros::delay(100);
+        intakeAuton(IntakeState::INTAKING);
+        pros::delay(100);
+        turnPID(180, false, 3000);
+        pros::delay(100);
+        drivetrain(11);
+        pros::delay(100);
+        intakeAuton(IntakeState::OUTTAKING);
+        pros::delay(100);
+        turnPID()
+        flapjack1.set_value(true);
+        flapjack2.set_value(true);
+        pros::delay(100);
+        //drive forward and push the lil stuf fin ~ RIA
+        flapjack1.set_value(false);
+        flapjack2.set_value(false);
+        //LSF WE FINISHED AUTON 
     }
 }
