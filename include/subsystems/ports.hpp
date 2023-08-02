@@ -22,6 +22,6 @@ const std::uint8_t flapjackPort1 = 3;
 const std::uint8_t flapjackPort2 = 12;
 
 const std::uint8_t intakePort1 = 7;
-const std::uint8_t intakePort2 = 13;
+const std::uint8_t autonFlipoutPort = 13;
 
 const std::uint8_t cataMotorPort = 14;

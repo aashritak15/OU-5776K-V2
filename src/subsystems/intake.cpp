@@ -157,8 +157,6 @@ void updateIntake() {
       //gradualStop();
       break;
       intakeMotor1.moveVoltage(0);
-      intakeMotor2.moveVoltage(0);
-      gradualStop();
     case IntakeState::INTAKING:
       intakeMotor1.moveVoltage(12000);
       //intakeMotor2.moveVoltage(12000);
