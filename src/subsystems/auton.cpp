@@ -16,9 +16,26 @@ Auton plan (try to test in 4 days maybe like Friday)
     3. flipout -> to touch the bar (aashrita)
 */
 
+void intakeAuton(IntakeState currentIntakeState){
+    switch (currentIntakeState) {
+    case IntakeState::STOPPED:
+      //gradualStop();
+      break;
+      intakeMotor1.moveVoltage(0);
+    case IntakeState::INTAKING:
+      intakeMotor1.moveVoltage(12000);
+      //intakeMotor2.moveVoltage(12000);
+      break;
+    case IntakeState::OUTTAKING:
+      intakeMotor1.moveVoltage(-12000);
+      //intakeMotor2.moveVoltage(-12000);
+      break;
+  //case IntakeState::HALF:
+  }
+}
+
 void updateAuton(int side){
     if (side == 1){
-        
         turnPID(90, false, 3000);
         pros::delay(100);
         drivetrain(0.75);
@@ -28,8 +45,7 @@ void updateAuton(int side){
         autonFlipout.set_value(true);
         drivetrain(-0.75);
         pros::delay(100);
-        previousIntakeState = currentIntakeState;
-        currentIntakeState = IntakeState::STOPPED;
+        
         pros::delay(100);
         turnPID(135, true, 3000);
         pros::delay(100);
@@ -39,8 +55,7 @@ void updateAuton(int side){
         pros::delay(100);
         drivetrain(2);
         pros::delay(100);
-        previousIntakeState = currentIntakeState;
-        currentIntakeState = IntakeState::STOPPED;
+        
         turnPID(135, true, 3000);
         pros::delay(100);
         drivetrain(4.2);
