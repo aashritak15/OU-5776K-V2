@@ -12,18 +12,22 @@ Motor intakeMotor1(intakePort1, true, AbstractMotor::gearset::blue,
 Motor intakeMotor2(intakePort2, false, AbstractMotor::gearset::blue,
            AbstractMotor::encoderUnits::degrees);
 
+
+
 ControllerButton intakeButton = ControllerButton(ControllerDigital::L1);
 ControllerButton outakeButton = ControllerButton(ControllerDigital::L2);
 
+*/
 
 //bool toggle;
 
+
 void intakeInnit(){
     intakeMotor1.setBrakeMode(AbstractMotor::brakeMode::coast);
-    intakeMotor2.setBrakeMode(AbstractMotor::brakeMode::coast);
+    //intakeMotor2.setBrakeMode(AbstractMotor::brakeMode::coast);
    //toggle = false; 
 }
-*/
+
 
 /*
 void updateIntake(){
@@ -67,8 +71,8 @@ void updateIntake(){
 Motor intakeMotor1(intakePort1, true, AbstractMotor::gearset::blue,
                AbstractMotor::encoderUnits::degrees);
 
-Motor intakeMotor2(intakePort2, false, AbstractMotor::gearset::blue,
-               AbstractMotor::encoderUnits::degrees);
+/*Motor intakeMotor2(intakePort2, false, AbstractMotor::gearset::blue,
+               AbstractMotor::encoderUnits::degrees);*/
 
 //Motor flapjack1(flapjackPort1);
 //Motor flapjack2(flapjackPort2);
@@ -80,11 +84,14 @@ ControllerButton outakeButton = ControllerButton(ControllerDigital::L2);
 //ControllerButton halfInButton = ControllerButton(ControllerDigital::up);
 
 void intakeInit() { 
-  intakeMotor1.setBrakeMode(AbstractMotor::brakeMode::coast); 
-  intakeMotor2.setBrakeMode(AbstractMotor::brakeMode::coast); 
+  intakeMotor1.setBrakeMode(AbstractMotor::brakeMode::hold); 
+  //intakeMotor2.setBrakeMode(AbstractMotor::brakeMode::hold); 
   }
 
+/*
+=======
 
+>>>>>>> 8e4267a2d59b1da6124cdef653260e72ff9a29d7
 void gradualStop() {
   int stopTime = 5000;
   int voltage = 200;
@@ -101,6 +108,7 @@ void gradualStop() {
    }
 
 }
+*/
 
 
 void updateIntake() {
@@ -146,16 +154,18 @@ void updateIntake() {
 
   switch (currentIntakeState) {
     case IntakeState::STOPPED:
+      //gradualStop();
+      break;
       intakeMotor1.moveVoltage(0);
       intakeMotor2.moveVoltage(0);
       gradualStop();
     case IntakeState::INTAKING:
       intakeMotor1.moveVoltage(12000);
-      intakeMotor2.moveVoltage(12000);
+      //intakeMotor2.moveVoltage(12000);
       break;
     case IntakeState::OUTTAKING:
       intakeMotor1.moveVoltage(-12000);
-      intakeMotor2.moveVoltage(-12000);
+      //intakeMotor2.moveVoltage(-12000);
       break;
   //case IntakeState::HALF:
     

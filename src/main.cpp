@@ -19,6 +19,7 @@ void initialize() {
     imuInnit();
     intakeInit();
     pistonsInnit();
+    flipoutMechInnit(); 
 }
 
 
@@ -72,13 +73,19 @@ void autonomous() {
 * task, not resume it from where it left off.
 */
 void opcontrol() {
+
 while (true) {
     updateDrive();
     updatePistons();
     updateIntake();
     //flapjackCode();
     okapi::Rate rate;
+    while (true) {
+        updateDrive();
+        updatePistons();
+        updateIntake();
+        flipoutMech();
 
-    rate.delay(100_Hz);
+        rate.delay(100_Hz);
 }
 }

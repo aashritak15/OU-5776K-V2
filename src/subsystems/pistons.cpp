@@ -1,3 +1,5 @@
+//pistons.cpp
+
 #include "main.h"
 #include "subsystems/ports.hpp"
 #include "subsystems/drive.hpp"
@@ -22,6 +24,28 @@ pros::ADIDigitalOut flapjack2 = pros::ADIDigitalOut(flapjackPort2);
 
 //pros::ADIDigitalOut pistonPTO1(pistonPort1);
 pros::ADIDigitalOut pistonPTO1 = pros::ADIDigitalOut(pistonPort1);
+
+pros::ADIDigitalOut autonFlipout = pros::ADIDigitalOut(autonFlipoutPort);
+
+bool toggle; 
+
+void flipoutMechInnit(){
+    autonFlipout.set_value(false);
+    toggle = false;
+}
+
+void flipoutMech(){
+    if (controller.getDigital(ControllerDigital::up) == 1){
+        if(!toggle){
+            autonFlipout.set_value(true);
+            toggle = true;
+        }
+        else{
+            autonFlipout.set_value(false);
+            toggle = false;
+        }
+    }
+}
 
 
 
