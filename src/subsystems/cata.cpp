@@ -8,10 +8,31 @@ Motor cataMotor(cataMotorPort, true, AbstractMotor::gearset::blue,
 
 ADIButton limitSwitch('A', true);
 
-//need to add a limit switch 
+
 
 void updateCata(){
-    
+
+    // without limit switch 
+
+    bool catapult = false;
+
+    if (controller.getDigital(ControllerDigital::R1) == 1){
+        catapult = !catapult;
+
+        if(catapult){
+            cataMotor.moveVoltage(12000);
+        }
+        else{
+            cataMotor.moveVoltage(0);
+        }
+    pros::delay(100);
+
+    }
+
+
+
+    /* with limit switch (if we end up added) 
+
     if (controller.getDigital(ControllerDigital::R1) == 1){
         while (!limitSwitch.isPressed()) {
             cataMotor.moveVoltage(12000);
@@ -29,4 +50,6 @@ void updateCata(){
             cataMotor.moveVoltage(0);
         }
     }
+    
+    */
 }
