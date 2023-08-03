@@ -10,6 +10,22 @@
 
 using namespace okapi;
 
+std::shared_ptr<AsyncMotionProfileController> profileController =
+  AsyncMotionProfileControllerBuilder()
+    .withLimits({
+      1.0, // Maximum linear velocity of the Chassis in m/s
+      2.0, // Maximum linear acceleration of the Chassis in m/s/s
+      10.0 // Maximum linear jerk of the Chassis in m/s/s/s
+    })
+    .withOutput(drive)
+    .buildMotionProfileController();
+
+profileController->generatePath({
+  {0_ft, 0_ft, 0_deg},  // Profile starting position, this will normally be (0, 0, 0)
+  {3_ft, 0_ft, 0_deg}}, // The next point in the profile, 3 feet forward
+  "A" // Profile name
+);
+
 /*
 Auton plan (try to test in 4 days maybe like Friday)
     1. drive moving (ria sugar bear)
