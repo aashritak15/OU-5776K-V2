@@ -1,4 +1,4 @@
-#include "pathfinder.h"
+/*#include "pathfinder.h"
 #include <stdio.h>
 
 // CONVERSIONS //
@@ -257,3 +257,4 @@ int pathfinder_get_file_length(FILE *fp) {
 
     return line_n;
 }
+*/

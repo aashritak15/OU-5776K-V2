@@ -1,4 +1,4 @@
-#include "pathfinder.h"
+/*#include "pathfinder.h"
 
 double pathfinder_follow_encoder(EncoderConfig c, EncoderFollower *follower, Segment *trajectory, int trajectory_length, int encoder_tick) {
     int segment = follower->segment;
@@ -34,3 +34,4 @@ double pathfinder_follow_encoder2(EncoderConfig c, EncoderFollower *follower, Se
         return 0.0;
     }
 }
+*/

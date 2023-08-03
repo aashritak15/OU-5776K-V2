@@ -5,6 +5,7 @@
 #include "subsystems/intake.hpp"
 #include "subsystems/pistons.hpp"
 #include "subsystems/cata.hpp"
+#include "subsystems/auton.hpp"
 
 
 
@@ -55,7 +56,7 @@ void competition_initialize() {}
 * from where it left off.
 */
 void autonomous() {
-    //updateAuton(1);
+    updateAuton(1);
 }
 
 
@@ -78,6 +79,7 @@ while (true) {
     updateDrive();
     updatePistons();
     updateIntake();
+    updateCata();
     //flapjackCode();
     okapi::Rate rate;
     while (true) {
@@ -85,6 +87,7 @@ while (true) {
         updatePistons();
         updateIntake();
         flipoutMech();
+        updateCata();
 
         rate.delay(100_Hz);
 }

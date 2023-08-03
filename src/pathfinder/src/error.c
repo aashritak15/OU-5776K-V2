@@ -1,5 +1,6 @@
-#include "pathfinder/error.h"
+//#include "pathfinder/error.h"
 
+/*
 #include "string.h"
 
 #include <stdio.h>
@@ -24,3 +25,4 @@ void pathfinder_clear_errors() {
 int pathfinder_has_error() {
   return has_error;
 }
+*/

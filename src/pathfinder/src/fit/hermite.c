@@ -1,5 +1,5 @@
-#include "pathfinder.h"
-
+//#include "pathfinder.h"
+/*
 void pf_fit_hermite_cubic(Waypoint a, Waypoint b, Spline *s) {
     pf_fit_hermite_pre(a, b, s);
     
@@ -34,3 +34,4 @@ void pf_fit_hermite_pre(Waypoint a, Waypoint b, Spline *s) {
     (*s).knot_distance = delta;
     (*s).angle_offset = atan2(b.y - a.y, b.x - a.x);
 }
+*/

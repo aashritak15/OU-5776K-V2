@@ -1,4 +1,4 @@
-#include "pathfinder.h"
+/*#include "pathfinder.h"
 
 void pathfinder_modify_tank(Segment *original, int length, Segment *left_traj, Segment *right_traj, double wheelbase_width) {
     double w = wheelbase_width / 2;
@@ -48,3 +48,4 @@ void pathfinder_modify_tank(Segment *original, int length, Segment *left_traj, S
         right_traj[i] = right;
     }
 }
+*/

@@ -1,4 +1,4 @@
-#include "pathfinder.h"
+/*#include "pathfinder.h"
 
 Coord pf_spline_coords(Spline s, double percentage) {
     percentage = MAX(MIN(percentage, 1), 0);
@@ -88,3 +88,4 @@ double pf_spline_progress_for_distance(Spline s, double distance, int sample_cou
     }
     return interpolated;
 }
+*/

@@ -1,4 +1,4 @@
-#include "pathfinder/mathutil.h"
+/*#include "pathfinder/mathutil.h"
 
 double bound_radians(double angle) {
     double newAngle = fmod(angle, TAU);
@@ -13,3 +13,4 @@ double r2d(double angleInRads) {
 double d2r(double angleInDegrees) {
     return angleInDegrees * PI / 180;
 }
+*/

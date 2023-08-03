@@ -1,4 +1,4 @@
-#include "pathfinder.h"
+/*include "pathfinder.h"
 
 double pathfinder_follow_distance(FollowerConfig c, DistanceFollower *follower, Segment *trajectory, int trajectory_length, double distance) {
     int segment = follower->segment;
@@ -31,3 +31,4 @@ double pathfinder_follow_distance2(FollowerConfig c, DistanceFollower *follower,
         return 0.0;
     }
 }
+*/

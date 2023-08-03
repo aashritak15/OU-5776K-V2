@@ -72,9 +72,8 @@ void updateDrive() {
 
 
   if (controller.getDigital(ControllerDigital::Y) == 1) {
-    drivetrain(3);
+    drivetrain(6);
   }
-
 /*if(controller.getDigital(ControllerDigital::Y) == 1){
   drive(24.0);
 }*/

@@ -62,9 +62,9 @@ void IEInnit() {
 void movePID(float target, float maxV) {
   leftEncoder.reset();
   rightEncoder.reset();
-  float kP = 0;
+  float kP = 0.45;
   float kI = 0;
-  float kD = 0;
+  float kD = 0.009;
 
   float power = 0;
   float totalError = 0;
@@ -92,8 +92,38 @@ drive->stop();
 }
 */
 
+/*
+void driveForward(double distance) {
+    okapi::IterativePosPIDController drivePID = okapi::IterativeControllerFactory::posPID(0.8, 0., 0.007); //create a new drive object with specified pid
 
+    const double target = distance; //idk why not just use distance
 
+    drivePID.setTarget(target); //tels PROS: to move the drive using pid to distance
+
+    double orgPosX = drive->getState().x.convert(okapi::foot); //store the orginal position
+    double orgPosY = drive->getState().y.convert(okapi::foot);
+
+    double distTravelled = 0;
+
+    while (abs(target-distTravelled) >= 0.2 || abs(left.getActualVelocity())>10) {//pid shit i think idk
+    // condition :abs(target-distTravelled) >= 0.2
+        double dx = drive->getState().x.convert(okapi::foot) - orgPosX;
+        double dy = drive->getState().y.convert(okapi::foot) - orgPosY;
+
+        distTravelled = sqrt(dx*dx + dy*dy);
+        
+        double vel = drivePID.step(distTravelled);
+
+        drive -> getModel() -> tank(vel, vel);
+
+        pros::delay(10);
+         pros::lcd::set_text(1, std::to_string(drive->getState().x.convert(okapi::foot))); //displays the X coordinate on the LCD of the screen per tick
+         pros::lcd::set_text(2, std::to_string(drive->getState().y.convert(okapi::foot))); //displays the X coordinate on the LCD of the screen per tick
+
+    }
+}
+
+*/
 
 
 okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD              

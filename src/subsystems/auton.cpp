@@ -10,6 +10,8 @@
 
 using namespace okapi;
 
+/*
+
 std::shared_ptr<AsyncMotionProfileController> profileController =
   AsyncMotionProfileControllerBuilder()
     .withLimits({
@@ -26,12 +28,9 @@ profileController->generatePath({
   "A" // Profile name
 );
 
-/*
-Auton plan (try to test in 4 days maybe like Friday)
-    1. drive moving (ria sugar bear)
-    2. intake/cata (aashrita)
-    3. flipout -> to touch the bar (aashrita)
 */
+
+
 
 void intakeAuton(IntakeState currentIntakeState){
     switch (currentIntakeState) {
@@ -52,24 +51,28 @@ void intakeAuton(IntakeState currentIntakeState){
 }
 
 
-
+/*
 void cataAuton(CataState currentCataState) {
     static CataState currentCataState = CataState::STOPPED;
      switch (currentCataState) {
     case CataState::STOPPED:
       break;
-      cataMotor.moveVoltage(0);
+      //cataMotor.moveVoltage(0);
     case CataState::CONTINUE:
-      cataMotor.moveVoltage(12000);
+     // cataMotor.moveVoltage(12000);
       break;
 }
 }
+*/
 
 void updateAuton(int side){
     if (side == 1){
       //intake
         turnPID(45, false, 3000);
         pros::delay(100);
+    }
+}
+        /*
         drivetrain(9);
         pros::delay(100);
         turnPID(45, true, 3000);
@@ -94,8 +97,9 @@ void updateAuton(int side){
         pros::delay(100);
         drivetrain(8);
         pros::delay(100);
-    }
-
+        */
+    
+/*
     if (side == 2){
         turnPID(10, false, 3000);
         pros::delay(100);
@@ -135,7 +139,7 @@ void updateAuton(int side){
         pros::delay(100);
         intakeAuton(IntakeState::OUTTAKING);
         pros::delay(100);
-        turnPID()
+        turnPID();
         flapjack1.set_value(true);
         flapjack2.set_value(true);
         pros::delay(100);
@@ -144,4 +148,6 @@ void updateAuton(int side){
         flapjack2.set_value(false);
         //LSF WE FINISHED AUTON 
     }
-}
+    */
+
+

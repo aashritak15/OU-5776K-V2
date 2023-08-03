@@ -1,4 +1,4 @@
-#include "pathfinder.h"
+/*#include "pathfinder.h"
 
 #include <stdlib.h>
 
@@ -58,7 +58,8 @@ int pathfinder_prepare(const Waypoint *path, int path_length, void (*fit)(Waypoi
 *   Instead, we keep it in the DLL memory and return a length instead of a status so we 
 *   an allow LabVIEW to create the segments array.
 *********************************************************************************************/
-int pathfinder_prepare_LabVIEW(const Waypoint *path, int path_length, int sample_count, double dt,
+
+/*int pathfinder_prepare_LabVIEW(const Waypoint *path, int path_length, int sample_count, double dt,
         double max_velocity, double max_acceleration, double max_jerk)
 {
     return pathfinder_prepare(path,path_length,FIT_HERMITE_CUBIC,sample_count,dt,max_velocity,max_acceleration,max_jerk,&cand_LV);
@@ -118,3 +119,4 @@ int pathfinder_generate(TrajectoryCandidate *c, Segment *segments) {
     
     return trajectory_length;
 }
+*/

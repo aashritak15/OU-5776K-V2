@@ -20,14 +20,28 @@ void updateCata(){
         catapult = !catapult;
 
         if(catapult){
-            cataMotor.moveVoltage(12000);
+            cataMotor.moveVoltage(-4000);
         }
         else{
             cataMotor.moveVoltage(0);
         }
-    pros::delay(100);
-
     }
+
+    else if (controller.getDigital(ControllerDigital::R2) == 1){
+        catapult =!catapult;
+
+        if(catapult){
+            cataMotor.moveVoltage(-6000);
+        }
+        else{
+            cataMotor.moveVoltage(0);
+        }
+    }
+
+}
+    
+
+    
 
 
 
@@ -52,4 +66,3 @@ void updateCata(){
     }
     
     */
-}
