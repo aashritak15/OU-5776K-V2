@@ -17,24 +17,26 @@ void updateCata(){
     bool catapult = false;
 
     if (controller.getDigital(ControllerDigital::R1) == 1){
-        catapult = !catapult;
-
-        if(catapult){
+        if(!catapult){
             cataMotor.moveVoltage(-4000);
+            catapult = true;
         }
         else{
             cataMotor.moveVoltage(0);
+            catapult = false; 
         }
     }
 
     else if (controller.getDigital(ControllerDigital::R2) == 1){
-        catapult =!catapult;
+        catapult = false; 
 
-        if(catapult){
+        if(!catapult){
             cataMotor.moveVoltage(-6000);
+            catapult = true;
         }
         else{
             cataMotor.moveVoltage(0);
+            catapult = false; 
         }
     }
 
