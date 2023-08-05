@@ -67,40 +67,46 @@ void cataAuton(CataState currentCataState) {
 
 void updateAuton(int side){
     if (side == 1){
-      //intake
-        turnPID(45, false, 3000);
-        pros::delay(100);
+      //intake preload
+      intakeAuton(IntakeState::INTAKING);
+      pros::delay(100);
+
+      //going to shoot preload 
+      turnPID(15, false, 3000);
+      pros::delay(100);
+      drivetrain(1);
+      pros::delay(100);
+      turnPID(15, true, 3000);
+      pros::delay(100);
+
+      //outtaking and pushin in preload 
+      intakeAuton(IntakeState::OUTTAKING);
+      pros::delay(100);
+      flapjack1.set_value(true);
+      flapjack2.set_value(true);
+      pros::delay(100);
+      drivetrain(1);
+      pros::delay(100);
+
+      //going to get the matchload 
+      drivetrain(-1.5);
+      pros::delay(100);
+      turnPID(180, true, 3000);
+      pros::delay(100);
+
+      //intake matchload 
+      intakeAuton(IntakeState::INTAKING);
+      pros::delay(100);
+
+      //going to the bar 
+      turnPID(90, true, 3000);
+      //intake flipout push 
+      drivetrain(6);
+      //prolly need to turn just a little bit so the flipout touches the bar 
+
     }
-}
-        /*
-        drivetrain(9);
-        pros::delay(100);
-        turnPID(45, true, 3000);
-        pros::delay(100);
-        intakeAuton(IntakeState::OUTTAKING);
-        pros::delay(50);
-        intakeAuton(IntakeState::STOPPED);
-        pros::delay(100);
-        turnPID(180, true, 3000);
-        pros::delay(100);
-        drivetrain(7);
-        pros::delay(100);
-        turnPID(45, true, 3000);
-        pros::delay(100);
-        autonFlipout.set_value(true);
-        pros::delay(100);
-        drivetrain(-3);
-        pros::delay(100);
-        autonFlipout.set_value(false);
-        pros::delay(100);
-        turnPID(135, false, 3000);
-        pros::delay(100);
-        drivetrain(8);
-        pros::delay(100);
-        */
-    
-/*
-    if (side == 2){
+
+    if(side == 2){
         turnPID(10, false, 3000);
         pros::delay(100);
         drivetrain(11);
@@ -111,11 +117,7 @@ void updateAuton(int side){
         drivetrain(6);
         pros::delay(100);
         intakeAuton(IntakeState::OUTTAKING);
-        
         drivetrain(2);
-        
-        pros::delay(100);
-        
         pros::delay(100);
         turnPID(180, false, 3000);
         pros::delay(100);
@@ -139,15 +141,17 @@ void updateAuton(int side){
         pros::delay(100);
         intakeAuton(IntakeState::OUTTAKING);
         pros::delay(100);
-        turnPID();
         flapjack1.set_value(true);
         flapjack2.set_value(true);
         pros::delay(100);
-        //drive forward and push the lil stuf fin ~ RIA
+        drivetrain(3);
         flapjack1.set_value(false);
         flapjack2.set_value(false);
         //LSF WE FINISHED AUTON 
     }
-    */
+    
 
+
+}
+    
 
