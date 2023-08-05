@@ -6,20 +6,6 @@
 #include <math.h>
 #include <cmath>
 
-//Linear Motion 
-
-/*
-turnPID(45, false, 2000);
-pros::delay(100);
-drivetrain(3);
-pros::delay(100);
-turnPID(90, true, 3000);
-pros::delay(200);
-drivetrain(0.6)
-//shoot 
-pros::delay(100);
-turnPID(180, true, 5000);
-*/
 
 
 // pure pursuit -  curve

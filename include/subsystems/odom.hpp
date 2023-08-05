@@ -12,10 +12,13 @@ void turnPID(float target, bool CW, int ms);
 
 void drivetrain(double target);
 
+//void turnCounterclockwise(float degree, int ms);
+//void turnClockwise(float degree, int ms);
+
 
 bool isMoving();
 
-
+void resetEncoders();
 void imuInnit();
 
 void IEInnit(); 

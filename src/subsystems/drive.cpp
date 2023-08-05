@@ -38,6 +38,10 @@ std::shared_ptr<OdomChassisController> drive =
         .withSensors(leftFront.getEncoder(), rightFront.getEncoder())
         // Specify the tracking wheels diam (2.75 in), track (7 in), and TPR
         // (360)
+        .withGains(
+          {0.001, 0, 0.0001}, 
+          {0.001, 0, 0.0001},  
+          {0.001, 0, 0.0001})  
         .withOdometry({{3.25_in, 14.5_in, 7.25_in, 3.25_in}, quadEncoderTPR})
         .buildOdometry();
 
@@ -72,14 +76,16 @@ void updateDrive() {
 
 
   if (controller.getDigital(ControllerDigital::Y) == 1) {
-    drivetrain(6);
+    resetEncoders();
+    drivetrain(1);
   }
 /*if(controller.getDigital(ControllerDigital::Y) == 1){
   drive(24.0);
 }*/
 
   if (controller.getDigital(ControllerDigital::B) == 1){
-    turnPID(90, true, 3000);
-  }
+    turnPID(90, false, 3000);
+    //turnCounterclockwise(90, 3000);
+  } 
 
 }

@@ -9,12 +9,10 @@ Motor cataMotor(cataMotorPort, true, AbstractMotor::gearset::blue,
 ADIButton limitSwitch('A', true);
 
 
-
+bool catapult = false;
 void updateCata(){
 
     // without limit switch 
-
-    bool catapult = false;
 
     if (controller.getDigital(ControllerDigital::R1) == 1){
         if(!catapult){

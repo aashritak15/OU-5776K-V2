@@ -25,3 +25,5 @@ const std::uint8_t intakePort1 = 7;
 const std::uint8_t autonFlipoutPort = 13;
 
 const std::uint8_t cataMotorPort = 19;
+
+//imu is 13 

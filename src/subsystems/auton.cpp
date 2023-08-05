@@ -68,13 +68,20 @@ void cataAuton(CataState currentCataState) {
 void updateAuton(int side){
     if (side == 1){
       //intake preload
+
+      /*
       intakeAuton(IntakeState::INTAKING);
       pros::delay(100);
+      */
 
       //going to shoot preload 
-      turnPID(15, false, 3000);
+      turnPID(65, false, 1000);
+      drivetrain(-0.7);
+      turnPID(100, true, 1000);
       pros::delay(100);
-      drivetrain(1);
+
+
+      /*
       pros::delay(100);
       turnPID(15, true, 3000);
       pros::delay(100);
@@ -82,10 +89,8 @@ void updateAuton(int side){
       //outtaking and pushin in preload 
       intakeAuton(IntakeState::OUTTAKING);
       pros::delay(100);
-      flapjack1.set_value(true);
-      flapjack2.set_value(true);
-      pros::delay(100);
-      drivetrain(1);
+      //flapjacks too big to use 
+      drivetrain(3); //test 
       pros::delay(100);
 
       //going to get the matchload 
@@ -98,12 +103,13 @@ void updateAuton(int side){
       intakeAuton(IntakeState::INTAKING);
       pros::delay(100);
 
+
       //going to the bar 
       turnPID(90, true, 3000);
       //intake flipout push 
       drivetrain(6);
       //prolly need to turn just a little bit so the flipout touches the bar 
-
+*/
     }
 
     if(side == 2){
