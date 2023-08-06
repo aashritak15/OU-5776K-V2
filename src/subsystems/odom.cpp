@@ -59,6 +59,7 @@ void IEInnit() {
   
   leftEncoder.reset();
   rightEncoder.reset();
+
 }
 
 
@@ -136,47 +137,39 @@ okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID
 okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack, leftTop});    
 okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTop});
 
-bool isMoving(){
-    return abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10; 
-} 
-
-
 void drivetrain(double target){
 
     pid.setTarget(target);
 
     double dX = drive->getState().x.convert(okapi::foot);
-    double dY = drive->getState().x.convert(okapi::foot);
+    double dY = drive->getState().y.convert(okapi::foot);
 
     double displacement = 0.0;
 
     //runs as long as displacement 
     while( abs(target - displacement) > 0.1 || abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10){
     
-    //calculates change in position
-    double dX1 = drive->getState().x.convert(okapi::foot) - dX;
-    double dY1 = drive->getState().x.convert(okapi::foot) - dY;
+      //calculates change in position
+      double dX1 = drive->getState().x.convert(okapi::foot) - dX;
+      double dY1 = drive->getState().y.convert(okapi::foot) - dY;
 
-   //pythagorean theorem to calculate displacement 
-    displacement = std::sqrt(powf((dX1 * 3) / 5 ,2)) + powf((dY1 * 3) / 5 , 2);
+    //pythagorean theorem to calculate displacement 
+      displacement = std::sqrt(powf((dX1 * 3) / 5 , 2)) + powf((dY1 * 3) / 5 , 2);
 
-  // negative target -> negative displacement 
-     if (target < 0){
-        displacement = -1 * displacement; 
-     }
+    // negative target -> negative displacement 
+      if (target < 0){
+          displacement = -1 * displacement; 
+      }
 
-     double pid_value = pid.step(displacement);
+      double pid_value = pid.step(displacement);
 
-    drive->getModel()->tank(pid_value, pid_value); 
+      drive->getModel()->tank(pid_value, pid_value); 
 
-    pros::delay(10);
+      pros::delay(10);
 
 }
     drive->getModel()->tank(0,0);
 }
-
-
-
 
 
 //turn PID

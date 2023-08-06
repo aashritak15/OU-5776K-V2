@@ -159,6 +159,7 @@ std::vector<waypoint> path(std::vector<waypoint> followPath, float maxVel, float
 
 void targetVelocities(std::vector<waypoint>& path, float maxVelocity, float k){
     path.back().setVel(0);
+    
 
     }
 

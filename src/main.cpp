@@ -21,6 +21,8 @@ void initialize() {
     intakeInit();
     pistonsInnit();
     flipoutMechInnit(); 
+    resetEncoders();
+
 }
 
 

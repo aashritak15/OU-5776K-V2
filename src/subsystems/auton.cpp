@@ -24,7 +24,7 @@ std::shared_ptr<AsyncMotionProfileController> profileController =
 
 profileController->generatePath({
   {0_ft, 0_ft, 0_deg},  // Profile starting position, this will normally be (0, 0, 0)
-  {3_ft, 0_ft, 0_deg}}, // The next point in the profile, 3 feet forward
+  {1_ft, 0_ft, 0_deg}}, // The next point in the profile, 3 feet forward
   "A" // Profile name
 );
 
@@ -34,6 +34,7 @@ profileController->generatePath({
 
 void intakeAuton(IntakeState currentIntakeState){
     switch (currentIntakeState) {
+
     case IntakeState::STOPPED:
       //gradualStop();
       break;
@@ -47,6 +48,7 @@ void intakeAuton(IntakeState currentIntakeState){
       //intakeMotor2.moveVoltage(-12000);
       break;
   //case IntakeState::HALF:
+
   }
 }
 
@@ -81,16 +83,12 @@ void updateAuton(int side){
       pros::delay(100);
 
 
-      /*
-      pros::delay(100);
-      turnPID(15, true, 3000);
-      pros::delay(100);
-
+      
       //outtaking and pushin in preload 
       intakeAuton(IntakeState::OUTTAKING);
       pros::delay(100);
       //flapjacks too big to use 
-      drivetrain(3); //test 
+      drivetrain(3); 
       pros::delay(100);
 
       //going to get the matchload 
@@ -106,13 +104,15 @@ void updateAuton(int side){
 
       //going to the bar 
       turnPID(90, true, 3000);
-      //intake flipout push 
+      //intake flipout push out 
       drivetrain(6);
       //prolly need to turn just a little bit so the flipout touches the bar 
-*/
+
     }
 
     if(side == 2){
+      //triball focused route 
+
         turnPID(10, false, 3000);
         pros::delay(100);
         drivetrain(11);
@@ -154,8 +154,13 @@ void updateAuton(int side){
         flapjack1.set_value(false);
         flapjack2.set_value(false);
         //LSF WE FINISHED AUTON 
+
     }
     
+    if(side == 3){
+      //awp but other side 
+
+    }
 
 
 }

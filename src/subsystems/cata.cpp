@@ -10,6 +10,7 @@ ADIButton limitSwitch('A', true);
 
 
 bool catapult = false;
+
 void updateCata(){
 
     // without limit switch 
@@ -26,7 +27,7 @@ void updateCata(){
     }
 
     else if (controller.getDigital(ControllerDigital::R2) == 1){
-        catapult = false; 
+        //catapult = false; 
 
         if(!catapult){
             cataMotor.moveVoltage(-6000);

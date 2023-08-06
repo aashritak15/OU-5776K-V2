@@ -16,7 +16,7 @@ void drivetrain(double target);
 //void turnClockwise(float degree, int ms);
 
 
-bool isMoving();
+
 
 void resetEncoders();
 void imuInnit();
