@@ -110,17 +110,18 @@ void gradualStop() {
 
 void updateIntake() {
 
+
   static IntakeState currentIntakeState = IntakeState::STOPPED;
-  static IntakeState previousIntakeState = IntakeState::STOPPED;
+  //static IntakeState previousIntakeState = IntakeState::STOPPED;
 
 
 
   if (intakeButton.changedToPressed()) {
     if (currentIntakeState == IntakeState::INTAKING) {
-      previousIntakeState = currentIntakeState;
+      //previousIntakeState = currentIntakeState;
       currentIntakeState = IntakeState::STOPPED;
     } else {
-      previousIntakeState = currentIntakeState;
+      //previousIntakeState = currentIntakeState;
       currentIntakeState = IntakeState::INTAKING;
     }
   } 
@@ -136,10 +137,10 @@ void updateIntake() {
   }*/
   if (outakeButton.changedToPressed()) {
     if (currentIntakeState == IntakeState::OUTTAKING) {
-      previousIntakeState = currentIntakeState;
+      //previousIntakeState = currentIntakeState;
       currentIntakeState = IntakeState::STOPPED;
     } else {
-      previousIntakeState = currentIntakeState;
+      //previousIntakeState = currentIntakeState;
       currentIntakeState = IntakeState::OUTTAKING;
     }
   }
@@ -147,8 +148,8 @@ void updateIntake() {
   switch (currentIntakeState) {
     case IntakeState::STOPPED:
       //gradualStop();
-      break;
       intakeMotor1.moveVoltage(0);
+      break;
     case IntakeState::INTAKING:
       intakeMotor1.moveVoltage(12000);
       //intakeMotor2.moveVoltage(12000);

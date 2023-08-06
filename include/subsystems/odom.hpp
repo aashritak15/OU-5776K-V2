@@ -4,7 +4,9 @@ using namespace okapi;
 //void encoderAvg();
 //void movePID(float target, float maxV);
 
-void turnPID(float target, bool CW, int ms);
+void turnClock(float degree, int ms);
+
+void turnCounter(float degree, int ms);
 
 //extern double displacement; 
 

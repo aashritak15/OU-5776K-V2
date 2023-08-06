@@ -70,18 +70,21 @@ void cataAuton(CataState currentCataState) {
 void updateAuton(int side){
     if (side == 1){
       //intake preload
+      /*
       intakeFlipout.set_value(true);
       intakeAuton(IntakeState::INTAKING);
       pros::delay(100);
-
+*/
       //going to shoot preload 
-      turnPID(65, false, 1000);
-      drivetrain(-0.7);
-      turnPID(100, true, 1000);
+      turnCounter(65, 1000);
+      pros::delay(20);
+      drivetrain(-1);
+      pros::delay(50);
+      turnClock(100, 1000);
       pros::delay(100);
-
-
-      
+    }
+}
+      /*
       //outtaking and pushin in preload 
       intakeAuton(IntakeState::OUTTAKING);
       pros::delay(100);
@@ -107,7 +110,9 @@ void updateAuton(int side){
       //prolly need to turn just a little bit so the flipout touches the bar 
 
     }
+*/
 
+/*
     if(side == 2){
       //triball focused route 
 
@@ -163,4 +168,4 @@ void updateAuton(int side){
 
 }
     
-
+*/

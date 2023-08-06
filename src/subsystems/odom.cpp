@@ -139,7 +139,7 @@ okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTo
 
 void drivetrain(double target){
 
-    okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD              
+    okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.7, 0.0, 0.009); //kP, kI, kD              
 
     pid.setTarget(target);
 
@@ -175,7 +175,52 @@ void drivetrain(double target){
 
 
 //turn PID
-void turnPID(float degree , bool CW, int ms) {
+void turnClock(float degree, int ms) {
+ float taredRotation = (imu1.get() + imu2.get()) / 2;
+ int timer = 0;
+ float turnkP = 0.0125;
+ float turnkI = 0;
+ float turnkD = 0.01;
+
+  float prevError = 0;
+  //float totalError = 0;
+
+    // [deg]
+
+  float integral = 0;
+ 
+  while (timer < ms){
+    // Compute PID values from current wheel travel measurements
+      float currentVal = (imu1.get() + imu2.get())/2 - taredRotation;
+
+      //float targetVal = currentVal + degree;
+
+      float error = degree - currentVal;
+       if (error < 0.1){
+        break;
+        }
+
+       float derivative = error - prevError;
+       prevError = error;
+       integral += error;
+
+
+       
+
+    // Calculate power using PID
+    float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
+    //prevError = error;
+      drive->getModel()->tank(power * 0.75f , (-1.0f * power)); //goes clockwise 
+    
+    timer += 10;
+    pros::delay(10);
+}
+
+drive->stop();
+}
+
+
+void turnCounter(float degree, int ms) {
  float taredRotation = (imu1.get() + imu2.get()) / 2;
  int timer = 0;
  float turnkP = 0.0125;
@@ -210,11 +255,9 @@ void turnPID(float degree , bool CW, int ms) {
     // Calculate power using PID
     float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
     //prevError = error;
-    if (CW){
-      drive->getModel()->tank(power * 0.75f , (-1.0f * power)); //goes clockwise 
-    } else {
-      drive->getModel()->tank((-1.0f * power * 0.75f) , power); //goes counterclockwise 
-    }
+
+    drive->getModel()->tank(power * 0.75f , (-1.0f * power));//goes counterclockwise 
+    
     
     timer += 10;
     pros::delay(10);
@@ -222,83 +265,4 @@ void turnPID(float degree , bool CW, int ms) {
 
 drive->stop();
 }
-
-
-/*
-//two seperate functions? 
-
-void turnClockwise(float degree, int ms) {
-    float taredRotation = (imu1.get() + imu2.get()) / 2;
-    int timer = 0;
-    float turnkP = 0.0125;
-    float turnkI = 0;
-    float turnkD = 0.01;
-
-    float prevError = 0;
-    float integral = 0;
-
-    while (timer < ms) {
-        float currentVal = (imu1.get() + imu2.get()) / 2 - taredRotation;
-        float error = degree - currentVal;
-        
-        if (error < 0.1) {
-            break;
-        }
-
-        float derivative = error - prevError;
-        prevError = error;
-        integral += error;
-
-        float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
-
-        drive->getModel()->tank(power * 0.75f, (-1.0f * power));
-
-        timer += 10;
-        pros::delay(10);
-    }
-
-    drive->stop();
-}
-
-void turnCounterclockwise(float degree, int ms) {
-    degree -= 180.0f;  // Subtract 180 degrees from the target angle
-
-    float taredRotation = (imu1.get() + imu2.get()) / 2;
-    int timer = 0;
-    float turnkP = 0.0125;
-    float turnkI = 0;
-    float turnkD = 0.01;
-
-    float prevError = 0;
-    float integral = 0;
-
-    while (timer < ms) {
-        float currentVal = (imu1.get() + imu2.get()) / 2 - taredRotation;
-        float error = degree - currentVal;
-
-        if (error < 0.1) {
-            break;
-        }
-
-        float derivative = error - prevError;
-        prevError = error;
-        integral += error;
-
-        float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
-
-        power = std::min(std::max(power, -1.0f), 1.0f); // Overshooting control
-
-        drive->getModel()->tank((-1.0f * power * 0.75f), power);
-
-        timer += 10;
-        pros::delay(10);
-    }
-
-    drive->stop();
-}
-
-*/
-
-
-
 

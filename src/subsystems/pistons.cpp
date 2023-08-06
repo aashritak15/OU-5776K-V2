@@ -9,9 +9,9 @@
 
 using namespace okapi;
 
-ControllerButton extendButton = ControllerButton(ControllerDigital::R1);
+ControllerButton extendButton = ControllerButton(ControllerDigital::right);
 
-ControllerButton retractButton = ControllerButton(ControllerDigital::R2);
+ControllerButton retractButton = ControllerButton(ControllerDigital::left);
 
 pros::ADIDigitalOut flapjack1 = pros::ADIDigitalOut(flapjackPort1);
 //pros::ADIDigitalOut flapjack2 = pros::ADIDigitalOut(flapjackPort2);
@@ -50,23 +50,12 @@ bool sharing;
 bool flapjackOutwards = false;
 
 
-void pistonsInnit() {
-    //pistonPTO1.set_value(false);
-    intakeFlipout.set_value(false);
-    //autonFlipout.set_value(false);
-    sharing = false;
-}
-
-void updateIntakeFlipout(){
-    if (controller.getDigital(ControllerDigital::up) == 1){
-        if(!sharing){
-            intakeFlipout.set_value(true);
-            sharing = true;
-        }
-        else{
-            intakeFlipout.set_value(false);
-            sharing = false; 
-        }
+void UpdateIntakeFlipout(){
+     if (controller.getDigital(ControllerDigital::up) == 1) {
+        intakeFlipout.set_value(true);
+  }
+    if(controller.getDigital(ControllerDigital::down) == 1) {
+        intakeFlipout.set_value(false);
     }
 }
 
@@ -87,6 +76,18 @@ void updatePistons(){
 }
 */
 
+void updateFlapjack(){
+    if (controller.getDigital(ControllerDigital::right) == 1) {
+        flapjack1.set_value(true);
+  }
+    if(controller.getDigital(ControllerDigital::left) == 1) {
+        flapjack1.set_value(false);
+    }
+}
+
+
+
+/*
 void extendFlapjack(){
     flapjack1.set_value(true);
    // flapjack2.set_value(true);
@@ -120,4 +121,4 @@ void flapjackCode(){
         }
     }
 }
-
+*/

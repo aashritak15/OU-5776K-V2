@@ -85,7 +85,7 @@ void updateDrive() {
 }*/
 
   if (controller.getDigital(ControllerDigital::B) == 1){
-    turnPID(90, false, 3000);
+    turnClock(90, 3000);
     //turnCounterclockwise(90, 3000);
   } 
 
