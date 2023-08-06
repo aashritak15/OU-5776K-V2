@@ -19,9 +19,9 @@ void initialize() {
     IEInnit();
     imuInnit();
     intakeInit();
-    //pistonsInnit();
     //flipoutMechInnit(); 
     resetEncoders();
+    //pistonsInnit();
 
 }
 
@@ -85,9 +85,10 @@ while (true) {
         //updatePistons();
         updateIntake();
         updateCata();
-        rate.delay(100_Hz);
         updateFlapjack();
         UpdateIntakeFlipout();
+
+        rate.delay(100_Hz); 
 }
 }
 }

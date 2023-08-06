@@ -19,7 +19,7 @@ const std::uint8_t imuPort2 = 18; //imu port#2
 
 //const std::uint8_t pistonPort1 = 8;
 const std::uint8_t flapjackPort1 = 'A';
-const std::uint8_t intakeFlipoutPort = 'B';
+const std::uint8_t intakeFlipoutPort = 'C';
 
 const std::uint8_t intakePort1 = 1;
 //const std::uint8_t autonFlipoutPort = 'A';

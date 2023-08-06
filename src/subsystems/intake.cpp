@@ -29,44 +29,6 @@ void intakeInnit(){
 }
 
 
-/*
-void updateIntake(){
-
-    if(/*controller.getDigital(ControllerDigital::L1) == 1*/ /*intakeButton.changedToPressed()){
-        intakeMotor1.moveVelocity(-600);
-        intakeMotor2.moveVelocity(-600);*/
-
-        /*
-        //if(!toggle){
-            
-            toggle = true; 
-       //}
-        else{
-            intakeMotor1.moveVelocity(0);
-            intakeMotor2.moveVelocity(0);
-            toggle = false; 
-        }
-        */
-    /*
-    } 
-    //else if (controller.getDigital(ControllerDigital::L2) == 1){
-      //  intakeMotor.moveVelocity(-600);
-    //}
-
-    else if(outakeButton.changedToPressed()){
-        intakeMotor1.moveVelocity(600);
-        intakeMotor2.moveVelocity(600);
-    }
-
-    else{
-        intakeMotor1.moveVelocity(0);
-        intakeMotor2.moveVelocity(0);
-    }
-
-    }
-*/
-
-
 
 Motor intakeMotor1(intakePort1, true, AbstractMotor::gearset::blue,
                AbstractMotor::encoderUnits::degrees);

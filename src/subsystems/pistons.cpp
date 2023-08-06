@@ -28,7 +28,10 @@ pros::ADIDigitalOut intakeFlipout = pros::ADIDigitalOut(intakeFlipoutPort);
 //pros::ADIDigitalOut autonFlipout = pros::ADIDigitalOut(autonFlipoutPort);
 
 
-
+void pistonsInnit(){
+    intakeFlipout.set_value(false);
+    flapjack1.set_value(false);
+}
 
 /*
 void flipoutMech(){
@@ -51,7 +54,7 @@ bool flapjackOutwards = false;
 
 
 void UpdateIntakeFlipout(){
-     if (controller.getDigital(ControllerDigital::up) == 1) {
+    if (controller.getDigital(ControllerDigital::up) == 1) {
         intakeFlipout.set_value(true);
   }
     if(controller.getDigital(ControllerDigital::down) == 1) {
@@ -59,22 +62,6 @@ void UpdateIntakeFlipout(){
     }
 }
 
-
-
-/*
-void updatePistons(){
-    if (controller.getDigital(ControllerDigital::down) == 1){
-        if (!sharing){
-            pistonPTO1.set_value(true);
-            sharing = true;
-        } else {
-            pistonPTO1.set_value(false);
-            sharing = false;
-        }
-    }
-
-}
-*/
 
 void updateFlapjack(){
     if (controller.getDigital(ControllerDigital::right) == 1) {

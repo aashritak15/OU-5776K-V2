@@ -82,6 +82,7 @@ void updateAuton(int side){
       pros::delay(50);
       turnClock(100, 1000);
       pros::delay(100);
+      
     }
 }
       /*
