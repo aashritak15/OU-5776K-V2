@@ -20,7 +20,7 @@ void initialize() {
     imuInnit();
     intakeInit();
     pistonsInnit();
-    flipoutMechInnit(); 
+    //flipoutMechInnit(); 
     resetEncoders();
 
 }
@@ -78,19 +78,14 @@ void autonomous() {
 void opcontrol() {
 
 while (true) {
-    updateDrive();
-    updatePistons();
-    updateIntake();
-    updateCata();
     //flapjackCode();
     okapi::Rate rate;
     while (true) {
         updateDrive();
-        updatePistons();
+        //updatePistons();
         updateIntake();
-        flipoutMech();
         updateCata();
-
+        updateIntakeFlipout();
         rate.delay(100_Hz);
 }
 }

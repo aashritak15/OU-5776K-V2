@@ -70,11 +70,9 @@ void cataAuton(CataState currentCataState) {
 void updateAuton(int side){
     if (side == 1){
       //intake preload
-
-      /*
+      intakeFlipout.set_value(true);
       intakeAuton(IntakeState::INTAKING);
       pros::delay(100);
-      */
 
       //going to shoot preload 
       turnPID(65, false, 1000);
@@ -148,11 +146,11 @@ void updateAuton(int side){
         intakeAuton(IntakeState::OUTTAKING);
         pros::delay(100);
         flapjack1.set_value(true);
-        flapjack2.set_value(true);
+        //flapjack2.set_value(true);
         pros::delay(100);
         drivetrain(3);
         flapjack1.set_value(false);
-        flapjack2.set_value(false);
+        //flapjack2.set_value(false);
         //LSF WE FINISHED AUTON 
 
     }

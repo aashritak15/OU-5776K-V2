@@ -139,6 +139,8 @@ okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTo
 
 void drivetrain(double target){
 
+    okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD              
+
     pid.setTarget(target);
 
     double dX = drive->getState().x.convert(okapi::foot);
@@ -154,7 +156,7 @@ void drivetrain(double target){
       double dY1 = drive->getState().y.convert(okapi::foot) - dY;
 
     //pythagorean theorem to calculate displacement 
-      displacement = std::sqrt(powf((dX1 * 3) / 5 , 2)) + powf((dY1 * 3) / 5 , 2);
+      displacement = std::sqrt(powf(dX1, 2) + powf(dY1 , 2));
 
     // negative target -> negative displacement 
       if (target < 0){
@@ -163,7 +165,7 @@ void drivetrain(double target){
 
       double pid_value = pid.step(displacement);
 
-      drive->getModel()->tank(pid_value, pid_value); 
+      drive->getModel()->tank((pid_value * 3) / 5 , (pid_value * 3) / 5); 
 
       pros::delay(10);
 
