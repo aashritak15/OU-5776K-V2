@@ -47,11 +47,20 @@ std::shared_ptr<OdomChassisController> drive =
 
 
 
-
+bool reverse = false; 
 
 void updateDrive() {
-  drive->getModel()->tank(controller.getAnalog(ControllerAnalog::leftY),
-                          controller.getAnalog(ControllerAnalog::rightY));
+  int constant = 1;
+
+  if (controller.getDigital(ControllerDigital::B) == 1){
+    reverse = !reverse;
+    if(reverse){
+      constant = -1;
+    }
+  }
+
+  drive->getModel()->tank( constant * controller.getAnalog(ControllerAnalog::leftY),
+                           constant * controller.getAnalog(ControllerAnalog::rightY));
 
   
   if (controller.getDigital(ControllerDigital::left) == 1) {
