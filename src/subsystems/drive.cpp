@@ -45,23 +45,78 @@ std::shared_ptr<OdomChassisController> drive =
         .withOdometry({{3.25_in, 14.5_in, 7.25_in, 3.25_in}, quadEncoderTPR})
         .buildOdometry();
 
+//////
+// reverse
 
+
+Motor RVrightFront(rightFrontPort, true, AbstractMotor::gearset::blue,
+            AbstractMotor::encoderUnits::degrees);
+
+Motor RVrightTop(rightTopPort, true, AbstractMotor::gearset::blue,
+            AbstractMotor::encoderUnits::degrees);
+
+Motor RVrightBack(rightBackPort, true, AbstractMotor::gearset::blue,
+            AbstractMotor::encoderUnits::degrees);
+
+Motor RVleftFront(leftFrontPort, false, AbstractMotor::gearset::blue,
+           AbstractMotor::encoderUnits::degrees);
+
+Motor RVleftBack(leftBackPort, false, AbstractMotor::gearset::blue,
+           AbstractMotor::encoderUnits::degrees);
+
+
+Motor RVleftTop(leftTopPort, false, AbstractMotor::gearset::blue,
+           AbstractMotor::encoderUnits::degrees); 
+          
+
+okapi::MotorGroup RVleft({RVleftFront, RVleftTop, RVleftBack});
+okapi::MotorGroup RVright({RVrightFront, RVrightTop, RVrightBack});
+
+std::shared_ptr<OdomChassisController> RVdrive =
+    ChassisControllerBuilder()
+        .withMotors(RVleft, RVright)
+        .withDimensions(AbstractMotor::gearset::blue,
+                        {{3.25_in, 10._in}, imev5BlueTPR})
+        .withSensors(leftFront.getEncoder(), rightFront.getEncoder())
+        // Specify the tracking wheels diam (2.75 in), track (7 in), and TPR
+        // (360)
+        /*/.withGains(
+          {0.001, 0, 0.0001}, 
+          {0.001, 0, 0.0001},  
+          {0.001, 0, 0.0001})*/  
+        .withOdometry({{3.25_in, 14.5_in, 7.25_in, 3.25_in}, quadEncoderTPR})
+        .buildOdometry();
+
+std::shared_ptr<OdomChassisController> driveTemp;
+    
 
 bool reverse = false; 
 
 void updateDrive() {
-  int constant = 1;
+  bool reverse = false;
+
+  driveTemp = drive;
+
+
+  driveTemp->getModel()->tank(controller.getAnalog(ControllerAnalog::leftY),
+                          controller.getAnalog(ControllerAnalog::rightY));
+
+  
 
   if (controller.getDigital(ControllerDigital::X) == 1){
-    reverse = !reverse;
-    if(reverse){
-      constant = -1;
+    if(!reverse){
+      driveTemp = RVdrive;
+      driveTemp->getModel()->tank(controller.getAnalog(ControllerAnalog::leftY),
+                          controller.getAnalog(ControllerAnalog::rightY));
+    } else {
+      driveTemp = drive;
+      driveTemp->getModel()->tank(controller.getAnalog(ControllerAnalog::leftY),
+                          controller.getAnalog(ControllerAnalog::rightY));
     }
+    reverse = !reverse;
   }
 
-  drive->getModel()->tank( constant * controller.getAnalog(ControllerAnalog::leftY),
-                           constant * controller.getAnalog(ControllerAnalog::rightY));
-
+  
   
   if (controller.getDigital(ControllerDigital::left) == 1) {
     leftFront.setBrakeMode(AbstractMotor::brakeMode::coast);
