@@ -52,7 +52,7 @@ bool reverse = false;
 void updateDrive() {
   int constant = 1;
 
-  if (controller.getDigital(ControllerDigital::B) == 1){
+  if (controller.getDigital(ControllerDigital::X) == 1){
     reverse = !reverse;
     if(reverse){
       constant = -1;
