@@ -80,9 +80,10 @@ void updateAuton(int side){
       pros::delay(20);
       drivetrain(-1);
       pros::delay(50);
-      turnClock(100, 1000);
-      pros::delay(100);
-      
+      turnClock(65, 1000);
+      pros::delay(10);
+      turnClock(180, 1000);
+      drivetrain(-3);
     }
 }
       /*

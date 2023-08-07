@@ -228,10 +228,6 @@ void turnCounter(float degree, int ms) {
  float turnkD = 0.01;
 
   float prevError = 0;
-  //float totalError = 0;
-
-    // [deg]
-
   float integral = 0;
  
   while (timer < ms){
@@ -248,11 +244,7 @@ void turnCounter(float degree, int ms) {
        float derivative = error - prevError;
        prevError = error;
        integral += error;
-
-
        
-
-    // Calculate power using PID
     float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
     //prevError = error;
 
