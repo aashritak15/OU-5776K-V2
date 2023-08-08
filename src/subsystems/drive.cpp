@@ -7,23 +7,23 @@
 using namespace okapi;
 
 
-Motor rightFront(rightFrontPort, false, AbstractMotor::gearset::blue,
+Motor rightFront(rightFrontPort, true, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
 
-Motor rightTop(rightTopPort, false, AbstractMotor::gearset::blue,
+Motor rightTop(rightTopPort, true, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
 
-Motor rightBack(rightBackPort, false, AbstractMotor::gearset::blue,
+Motor rightBack(rightBackPort, true, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
 
-Motor leftFront(leftFrontPort, true, AbstractMotor::gearset::blue,
+Motor leftFront(leftFrontPort, false, AbstractMotor::gearset::blue,
            AbstractMotor::encoderUnits::degrees);
 
-Motor leftBack(leftBackPort, true, AbstractMotor::gearset::blue,
+Motor leftBack(leftBackPort, false, AbstractMotor::gearset::blue,
            AbstractMotor::encoderUnits::degrees);
 
 
-Motor leftTop(leftTopPort, true, AbstractMotor::gearset::blue,
+Motor leftTop(leftTopPort, false, AbstractMotor::gearset::blue,
            AbstractMotor::encoderUnits::degrees); 
           
 
@@ -46,8 +46,8 @@ std::shared_ptr<OdomChassisController> drive =
 
 
 void updateDrive() {
-  drive->getModel()->tank(controller.getAnalog(ControllerAnalog::leftY),
-                          controller.getAnalog(ControllerAnalog::rightY));
+  drive->getModel()->tank(controller.getAnalog(ControllerAnalog::rightY),
+                          controller.getAnalog(ControllerAnalog::leftY));
 
   
   if (controller.getDigital(ControllerDigital::left) == 1) {
