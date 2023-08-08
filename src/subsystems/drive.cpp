@@ -38,12 +38,54 @@ std::shared_ptr<OdomChassisController> drive =
         .withSensors(leftFront.getEncoder(), rightFront.getEncoder())
         // Specify the tracking wheels diam (2.75 in), track (7 in), and TPR
         // (360)
-        /*/.withGains(
-          {0.001, 0, 0.0001}, 
-          {0.001, 0, 0.0001},  
-          {0.001, 0, 0.0001})*/  
         .withOdometry({{3.25_in, 14.5_in, 7.25_in, 3.25_in}, quadEncoderTPR})
         .buildOdometry();
+
+
+
+
+
+void updateDrive() {
+  drive->getModel()->tank(controller.getAnalog(ControllerAnalog::leftY),
+                          controller.getAnalog(ControllerAnalog::rightY));
+
+  
+  if (controller.getDigital(ControllerDigital::left) == 1) {
+    leftFront.setBrakeMode(AbstractMotor::brakeMode::coast);
+    leftTop.setBrakeMode(AbstractMotor::brakeMode::coast);
+    leftBack.setBrakeMode(AbstractMotor::brakeMode::coast);
+
+    rightFront.setBrakeMode(AbstractMotor::brakeMode::coast);
+    rightTop.setBrakeMode(AbstractMotor::brakeMode::coast);
+    rightBack.setBrakeMode(AbstractMotor::brakeMode::coast);
+  } 
+  
+  else if (controller.getDigital(ControllerDigital::right) == 1) {
+    leftFront.setBrakeMode(AbstractMotor::brakeMode::coast);
+    leftTop.setBrakeMode(AbstractMotor::brakeMode::coast);
+    leftBack.setBrakeMode(AbstractMotor::brakeMode::coast);
+
+    rightFront.setBrakeMode(AbstractMotor::brakeMode::coast);
+    rightTop.setBrakeMode(AbstractMotor::brakeMode::coast);
+    rightBack.setBrakeMode(AbstractMotor::brakeMode::coast);
+  }
+
+
+  if (controller.getDigital(ControllerDigital::Y) == 1) {
+    drivetrain(3);
+  }
+
+/*if(controller.getDigital(ControllerDigital::Y) == 1){
+  drive(24.0);
+}*/
+
+  if (controller.getDigital(ControllerDigital::B) == 1){
+    turnClock(90, 3000);
+  }
+
+}
+
+
 
 //////
 // reverse
@@ -118,38 +160,3 @@ void updateDrive() {
 
   */
   
-  if (controller.getDigital(ControllerDigital::left) == 1) {
-    leftFront.setBrakeMode(AbstractMotor::brakeMode::coast);
-    leftTop.setBrakeMode(AbstractMotor::brakeMode::coast);
-    leftBack.setBrakeMode(AbstractMotor::brakeMode::coast);
-
-    rightFront.setBrakeMode(AbstractMotor::brakeMode::coast);
-    rightTop.setBrakeMode(AbstractMotor::brakeMode::coast);
-    rightBack.setBrakeMode(AbstractMotor::brakeMode::coast);
-  } 
-  
-  else if (controller.getDigital(ControllerDigital::right) == 1) {
-    leftFront.setBrakeMode(AbstractMotor::brakeMode::coast);
-    leftTop.setBrakeMode(AbstractMotor::brakeMode::coast);
-    leftBack.setBrakeMode(AbstractMotor::brakeMode::coast);
-
-    rightFront.setBrakeMode(AbstractMotor::brakeMode::coast);
-    rightTop.setBrakeMode(AbstractMotor::brakeMode::coast);
-    rightBack.setBrakeMode(AbstractMotor::brakeMode::coast);
-  }
-
-
-  if (controller.getDigital(ControllerDigital::Y) == 1) {
-    resetEncoders();
-    pros::delay(100);
-    drivetrain(2);
-  }
-/*if(controller.getDigital(ControllerDigital::Y) == 1){
-  drive(24.0);
-}*/
-
-  if (controller.getDigital(ControllerDigital::B) == 1){
-    turnClock(90, 3000);
-  } 
-
-}
