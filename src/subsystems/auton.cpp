@@ -63,28 +63,33 @@ void cataAuton(CataState currentCataState) {
     case CataState::CONTINUE:
      // cataMotor.moveVoltage(12000);
       break;
-}
+}`
 }
 */
 
 void updateAuton(int side){
     if (side == 1){
-<<<<<<< HEAD
-      //intake preload
-      /*
-      intakeFlipout.set_value(true);
-      intakeAuton(IntakeState::INTAKING);
-      pros::delay(100);
-*/
-      //going to shoot preload 
-      turnCounter(65, 1000);
-      pros::delay(20);
-      drivetrain(-1);
-      pros::delay(50);
-      turnClock(65, 1000);
+      intakeFlipout.set_value(false);
       pros::delay(10);
-      turnClock(180, 1000);
-      drivetrain(-3);
+      intakeAuton(IntakeState::INTAKING);
+      pros::delay(10);
+      drivetrain(3, 7000);
+      pros::delay(500);
+      drivetrain(-0.6, 7000);
+      pros::delay(500);
+      turnClock(180, 7000);
+      drivetrain(1, 7000);
+      pros::delay(500);
+      turnClock(25, 7000);
+      pros::delay(100);
+      
+      pros::delay(100);
+      drivetrain(-1, 7000);
+      /*
+      drivetrain(-0.6, 7000);
+      turnClock(180, 7000);
+      */
+      //turnCounter(55, 1000);
     }
 }
       /*
@@ -119,42 +124,6 @@ void updateAuton(int side){
     if(side == 2){
       //triball focused route 
 
-=======
-      //intake
-        turnPID(45, false, 3000);
-        pros::delay(100);
-    }
-}
-        /*
-        drivetrain(9);
-        pros::delay(100);
-        turnPID(45, true, 3000);
-        pros::delay(100);
-        intakeAuton(IntakeState::OUTTAKING);
-        pros::delay(50);
-        intakeAuton(IntakeState::STOPPED);
-        pros::delay(100);
-        turnPID(180, true, 3000);
-        pros::delay(100);
-        drivetrain(7);
-        pros::delay(100);
-        turnPID(45, true, 3000);
-        pros::delay(100);
-        autonFlipout.set_value(true);
-        pros::delay(100);
-        drivetrain(-3);
-        pros::delay(100);
-        autonFlipout.set_value(false);
-        pros::delay(100);
-        turnPID(135, false, 3000);
-        pros::delay(100);
-        drivetrain(8);
-        pros::delay(100);
-        */
-    
-/*
-    if (side == 2){
->>>>>>> parent of 66b404c (clockwise works LFG)
         turnPID(10, false, 3000);
         pros::delay(100);
         drivetrain(11);
@@ -165,11 +134,7 @@ void updateAuton(int side){
         drivetrain(6);
         pros::delay(100);
         intakeAuton(IntakeState::OUTTAKING);
-        
         drivetrain(2);
-        
-        pros::delay(100);
-        
         pros::delay(100);
         turnPID(180, false, 3000);
         pros::delay(100);
@@ -193,17 +158,15 @@ void updateAuton(int side){
         pros::delay(100);
         intakeAuton(IntakeState::OUTTAKING);
         pros::delay(100);
-        turnPID();
         flapjack1.set_value(true);
         //flapjack2.set_value(true);
         pros::delay(100);
-        //drive forward and push the lil stuf fin ~ RIA
+        drivetrain(3);
         flapjack1.set_value(false);
         //flapjack2.set_value(false);
         //LSF WE FINISHED AUTON 
 
     }
-<<<<<<< HEAD
     
     if(side == 3){
       //awp but other side 
@@ -214,8 +177,3 @@ void updateAuton(int side){
 }
     
 */
-=======
-    */
-
-
->>>>>>> parent of 66b404c (clockwise works LFG)

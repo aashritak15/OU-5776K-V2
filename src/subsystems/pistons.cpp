@@ -54,20 +54,21 @@ bool flapjackOutwards = false;
 
 
 void UpdateIntakeFlipout(){
-    if (controller.getDigital(ControllerDigital::up) == 1) {
+    if (controller.getDigital(ControllerDigital::L2) == 1) {
         intakeFlipout.set_value(true);
   }
-    if(controller.getDigital(ControllerDigital::down) == 1) {
+    if(controller.getDigital(ControllerDigital::L1) == 1) {
         intakeFlipout.set_value(false);
-    }
+    }   
 }
 
 
+
 void updateFlapjack(){
-    if (controller.getDigital(ControllerDigital::right) == 1) {
+    if (controller.getDigital(ControllerDigital::R2) == 1) {
         flapjack1.set_value(true);
   }
-    if(controller.getDigital(ControllerDigital::left) == 1) {
+    if(controller.getDigital(ControllerDigital::R1) == 1) {
         flapjack1.set_value(false);
     }
 }

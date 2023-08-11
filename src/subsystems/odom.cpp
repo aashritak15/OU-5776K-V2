@@ -28,7 +28,7 @@ void resetImu(bool print = true) {
   imu2.reset();
   int time = pros::millis();
   int iter = 0;
-  while (imu1.isCalibrating()) {
+  while (imu1.isCalibrating() && imu2.isCalibrating()) {
     if (print) {
       printf("IMU Calibrating... %d [ms]\n", iter);
     }
@@ -137,7 +137,7 @@ okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID
 okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack, leftTop});    
 okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTop});
 
-void drivetrain(double target){
+void drivetrain(double target, int ms){
 
     okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.7, 0.0, 0.009); //kP, kI, kD              
 
@@ -148,8 +148,10 @@ void drivetrain(double target){
 
     double displacement = 0.0;
 
+    int timer = 0;
+
     //runs as long as displacement 
-    while( abs(target - displacement) > 0.1 || abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10){
+    while( abs(target - displacement) > 0.1 /*|| abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10 */ && timer < ms){
     
       //calculates change in position
       double dX1 = drive->getState().x.convert(okapi::foot) - dX;
@@ -163,11 +165,12 @@ void drivetrain(double target){
           displacement = -1 * displacement; 
       }
 
-      double pid_value = pid.step(displacement);
+      double pid_value = pid.step((displacement * 3) / 5 );
 
-      drive->getModel()->tank((pid_value * 3) / 5 , (pid_value * 3) / 5); 
+      drive->getModel()->tank(pid_value, pid_value ); 
 
       pros::delay(10);
+      timer += 10;
 
 }
     drive->getModel()->tank(0,0);
@@ -195,7 +198,7 @@ void turnClock(float degree, int ms) {
 
       //float targetVal = currentVal + degree;
 
-      float error = degree - currentVal;
+      float error = degree - abs(currentVal);
        if (error < 0.1){
         break;
         }
@@ -210,7 +213,7 @@ void turnClock(float degree, int ms) {
     // Calculate power using PID
     float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
     //prevError = error;
-      drive->getModel()->tank(power * 0.75f , (-1.0f * power)); //goes clockwise 
+      drive->getModel()->tank((power * 0.75f * -1.0f) , power); //goes clockwise 
     
     timer += 10;
     pros::delay(10);
@@ -233,9 +236,6 @@ void turnCounter(float degree, int ms) {
   while (timer < ms){
     // Compute PID values from current wheel travel measurements
       float currentVal = (imu1.get() + imu2.get())/2 - taredRotation;
-
-      //float targetVal = currentVal + degree;
-
       float error = degree - abs(currentVal);
        if (error < 0.1){
         break;
@@ -257,4 +257,3 @@ void turnCounter(float degree, int ms) {
 
 drive->stop();
 }
-
