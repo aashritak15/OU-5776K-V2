@@ -70,10 +70,11 @@ void cataAuton(CataState currentCataState) {
 void updateAuton(int side){
     if (side == 1){
 
-      intakeFlipout.set_value(false);
+      /*intakeFlipout.set_value(false);
       pros::delay(10);
       intakeAuton(IntakeState::INTAKING);
       pros::delay(10);
+      */
       drivetrain(3, 7000);
       pros::delay(500);
       drivetrain(-0.6, 7000);
@@ -83,6 +84,7 @@ void updateAuton(int side){
       pros::delay(500);
       turnClock(25, 7000);
       pros::delay(100);
+      intakeFlipout.set_value(true);
       
       pros::delay(100);
       drivetrain(-1, 7000);

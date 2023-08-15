@@ -132,12 +132,23 @@ void driveForward(double distance) {
 */
 
 
-okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD              
+okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD    
 
+//set brakemodes
+leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
+rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+rightFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
+
+//motor groups
 okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack, leftTop});    
 okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTop});
 
+
 void drivetrain(double target, int ms){
+
 
     okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.7, 0.0, 0.009); //kP, kI, kD              
 
