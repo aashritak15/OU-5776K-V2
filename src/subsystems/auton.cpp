@@ -67,6 +67,17 @@ void cataAuton(CataState currentCataState) {
 }
 */
 
+/*
+void skills(int side){
+  if(side == 1){
+
+  }
+  else if(side == 2){
+
+  }
+}
+*/
+
 void updateAuton(int side){
     if (side == 1){
 
@@ -94,7 +105,7 @@ void updateAuton(int side){
       */
       //turnCounter(55, 1000);
 
-      drivetrain(6);    
+      drivetrain(6, 7000);    
 
 
     }

@@ -132,15 +132,9 @@ void driveForward(double distance) {
 */
 
 
-okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD    
+//okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.45, 0.0, 0.009); //kP, kI, kD    
 
 //set brakemodes
-leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
-leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
-leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
-rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
-rightFront.setBrakeMode(AbstractMotor::brakeMode::brake);
-rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
 
 //motor groups
 okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack, leftTop});    
@@ -148,6 +142,12 @@ okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTo
 
 
 void drivetrain(double target, int ms){
+  leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+  leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+  leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
+  rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+  rightFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+  rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
 
 
     okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.7, 0.0, 0.009); //kP, kI, kD              
@@ -190,6 +190,12 @@ void drivetrain(double target, int ms){
 
 //turn PID
 void turnClock(float degree, int ms) {
+  leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+  leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+  leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
+  rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+  rightFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+  rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
  float taredRotation = (imu1.get() + imu2.get()) / 2;
  int timer = 0;
  float turnkP = 0.0125;
@@ -235,6 +241,14 @@ drive->stop();
 
 
 void turnCounter(float degree, int ms) {
+
+  leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+  leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+  leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
+  rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+  rightFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+  rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
+  
  float taredRotation = (imu1.get() + imu2.get()) / 2;
  int timer = 0;
  float turnkP = 0.0125;
@@ -268,3 +282,5 @@ void turnCounter(float degree, int ms) {
 
 drive->stop();
 }
+
+
