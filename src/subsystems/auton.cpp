@@ -109,7 +109,7 @@ void updateAuton(int side){
 
 
     }
-}
+
       /*
       //outtaking and pushin in preload 
       intakeAuton(IntakeState::OUTTAKING);
@@ -144,18 +144,24 @@ void updateAuton(int side){
 
         turnPID(10, false, 3000);
         pros::delay(100);
+
         drivetrain(11);
         pros::delay(100);
+
         intakeAuton(IntakeState::INTAKING);
         turnPID(100, true, 3000);
         pros::delay(100);
+
         drivetrain(6);
         pros::delay(100);
+
         intakeAuton(IntakeState::OUTTAKING);
         drivetrain(2);
         pros::delay(100);
+
         turnPID(180, false, 3000);
         pros::delay(100);
+
         drivetrain(12);
         pros::delay(100);
         intakeAuton(IntakeState::INTAKING);
@@ -185,13 +191,20 @@ void updateAuton(int side){
         //LSF WE FINISHED AUTON 
 
     }
-    
-    if(side == 3){
+    */
+    if (side == 3){
       //awp but other side 
-
+      drivetrain(3, 7000);
+      pros::delay(500);
+      drivetrain(-0.6, 7000);
+      pros::delay(500);
+      turnCounter(180, 7000);
+      drivetrain(1, 7000);
+      pros::delay(500);
+      turnCounter(25, 7000);
+      pros::delay(100);
     }
 
 
 }
     
-*/
