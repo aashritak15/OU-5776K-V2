@@ -16,8 +16,10 @@ void updateCata(){
     // without limit switch 
 
     if (controller.getDigital(ControllerDigital::up) == 1){
+        catapult = false;
+        
         if(!catapult){
-            cataMotor.moveVoltage(-8000);
+            cataMotor.moveVoltage(-9000);
             catapult = true;
         }
         else{
@@ -27,10 +29,10 @@ void updateCata(){
     }
 
     else if (controller.getDigital(ControllerDigital::down) == 1){
-        //catapult = false; 
+        catapult = false; 
 
         if(!catapult){
-            cataMotor.moveVoltage(-9000);
+            cataMotor.moveVoltage(-10000);
             catapult = true;
         }
         else{

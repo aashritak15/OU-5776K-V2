@@ -10,6 +10,7 @@ extern pros::ADIDigitalOut flapjack1;
 
 extern pros::ADIDigitalOut intakeFlipout;
 
+extern pros::ADIDigitalOut awpFlipout;
 
 
 void pistonsInnit();

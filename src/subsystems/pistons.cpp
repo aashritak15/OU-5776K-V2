@@ -18,6 +18,8 @@ pros::ADIDigitalOut flapjack1 = pros::ADIDigitalOut(flapjackPort1);
 
 pros::ADIDigitalOut intakeFlipout = pros::ADIDigitalOut(intakeFlipoutPort);
 
+pros::ADIDigitalOut awpFlipout = pros::ADIDigitalOut(awpFlipoutPort);
+
 //flapjack
 //pros::ADIDigitalOut flapjack1(flapjackPort1);
 //pros::ADIDigitalOut flapjack2(flapjackPort2);
@@ -31,6 +33,7 @@ pros::ADIDigitalOut intakeFlipout = pros::ADIDigitalOut(intakeFlipoutPort);
 void pistonsInnit(){
     intakeFlipout.set_value(false);
     flapjack1.set_value(false);
+    awpFlipout.set_value(false);
 }
 
 /*
@@ -54,10 +57,10 @@ bool flapjackOutwards = false;
 
 
 void UpdateIntakeFlipout(){
-    if (controller.getDigital(ControllerDigital::L2) == 1) {
+    if (controller.getDigital(ControllerDigital::left) == 1) {
         intakeFlipout.set_value(true);
   }
-    if(controller.getDigital(ControllerDigital::L1) == 1) {
+    if(controller.getDigital(ControllerDigital::right) == 1) {
         intakeFlipout.set_value(false);
     }   
 }

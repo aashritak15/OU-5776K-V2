@@ -81,32 +81,52 @@ void skills(int side){
 void updateAuton(int side){
     if (side == 1){
 
-      /*intakeFlipout.set_value(false);
-      pros::delay(10);
-      intakeAuton(IntakeState::INTAKING);
-      pros::delay(10);
+      /*
+      intakeFlipout.set_value(true);
+      pros::delay(100);
       */
+
+      intakeAuton(IntakeState::INTAKING);
+      pros::delay(100);
+
       drivetrain(3, 7000);
       pros::delay(500);
+
+      intakeAuton(IntakeState::OUTTAKING);
+      pros::delay(10);
+
+      intakeAuton(IntakeState::STOPPED);
+      pros::delay(10);
+
+  /*
       drivetrain(-0.6, 7000);
       pros::delay(500);
+
+      intakeFlipout.set_value(false);
+      pros::delay(100);
+
       turnClock(180, 7000);
       drivetrain(1, 7000);
       pros::delay(500);
+
       turnClock(25, 7000);
-      pros::delay(100);
-      intakeFlipout.set_value(true);
-      
-      pros::delay(100);
+      pros::delay(200);
+
+      awpFlipout.set_value(true);
+      pros::delay(10);
+
       drivetrain(-1, 7000);
+      pros::delay(20);
+
+      intakeFlipout.set_value(false);
       /*
       drivetrain(-0.6, 7000);
       turnClock(180, 7000);
       */
       //turnCounter(55, 1000);
 
-      drivetrain(6, 7000);    
-
+      //drivetrain(6, 7000);    
+  
 
     }
 
@@ -136,62 +156,78 @@ void updateAuton(int side){
       //prolly need to turn just a little bit so the flipout touches the bar 
 
     }
-*/
+  */
 
-/*
+
     if(side == 2){
       //triball focused route 
 
+      intakeAuton(IntakeState::INTAKING);
+      pros::delay(100);
+
+      drivetrain(3, 7000);
+      pros::delay(500);
+
+      intakeAuton(IntakeState::STOPPED);
+      pros::delay(10);
+
+      
+    }
+  }
+
+/*
         turnPID(10, false, 3000);
         pros::delay(100);
 
-        drivetrain(11);
+        drivetrain(11, 7000);
         pros::delay(100);
 
         intakeAuton(IntakeState::INTAKING);
         turnPID(100, true, 3000);
         pros::delay(100);
 
-        drivetrain(6);
+        drivetrain(6, 7000);
         pros::delay(100);
 
         intakeAuton(IntakeState::OUTTAKING);
-        drivetrain(2);
+        drivetrain(2, 7000);
         pros::delay(100);
 
         turnPID(180, false, 3000);
         pros::delay(100);
 
-        drivetrain(12);
+        drivetrain(12, 7000);
         pros::delay(100);
         intakeAuton(IntakeState::INTAKING);
         turnPID(190, false, 3000);
         pros::delay(100);
-        drivetrain(12);
+        drivetrain(12, 7000);
         intakeAuton(IntakeState::OUTTAKING);
         pros::delay(100);
         turnPID(135, true, 3000);
         pros::delay(100);
-        drivetrain(11);
+        drivetrain(11, 7000);
         pros::delay(100);
         intakeAuton(IntakeState::INTAKING);
         pros::delay(100);
         turnPID(180, false, 3000);
         pros::delay(100);
-        drivetrain(11);
+        drivetrain(11, 7000);
         pros::delay(100);
         intakeAuton(IntakeState::OUTTAKING);
         pros::delay(100);
         flapjack1.set_value(true);
         //flapjack2.set_value(true);
         pros::delay(100);
-        drivetrain(3);
+        drivetrain(3, 7000);
         flapjack1.set_value(false);
         //flapjack2.set_value(false);
         //LSF WE FINISHED AUTON 
 
     }
     */
+
+/*
     if (side == 3){
       //awp but other side 
       drivetrain(3, 7000);
@@ -199,12 +235,12 @@ void updateAuton(int side){
       drivetrain(-0.6, 7000);
       pros::delay(500);
       turnCounter(180, 7000);
+      pros::delay(100);
       drivetrain(1, 7000);
       pros::delay(500);
       turnCounter(25, 7000);
       pros::delay(100);
     }
+*/
 
-
-}
     
