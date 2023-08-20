@@ -162,14 +162,35 @@ void updateAuton(int side){
     if(side == 2){
       //triball focused route 
 
+/*
       intakeAuton(IntakeState::INTAKING);
       pros::delay(100);
 
-      drivetrain(3, 7000);
+  */
+
+      drivetrain(5, 7000);
       pros::delay(500);
+
+      turnCounter(90, 3000);
+      pros::delay(500);
+
+      intakeAuton(IntakeState::OUTTAKING);
+      pros::delay(700);
 
       intakeAuton(IntakeState::STOPPED);
       pros::delay(10);
+
+      drivetrain(-1, 7000);
+      pros::delay(500);
+      
+      turnClock(115, 3000);
+      pros::delay(500);
+
+      intakeAuton(IntakeState::INTAKING);
+      pros::delay(100);
+
+
+    
 
       
     }
