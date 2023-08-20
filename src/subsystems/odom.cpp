@@ -141,7 +141,7 @@ okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack, leftTop});
 okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTop});
 
 
-void drivetrain(double target, int ms){
+void drivetrain(double target, int ms, double speed){
   leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
   leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
   leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -178,7 +178,7 @@ void drivetrain(double target, int ms){
 
       double pid_value = pid.step((displacement * 3) / 5 );
 
-      drive->getModel()->tank(pid_value, pid_value ); 
+      drive->getModel()->tank(pid_value * speed , pid_value * speed); 
 
       pros::delay(10);
       timer += 10;

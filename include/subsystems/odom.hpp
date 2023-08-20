@@ -11,7 +11,7 @@ void turnCounter(float degree, int ms);
 
 //void drivetrain(double target);
 
-void drivetrain(double target, int ms);
+void drivetrain(double target, int ms, double speed);
 
 //void turnCounterclockwise(float degree, int ms);
 //void turnClockwise(float degree, int ms);

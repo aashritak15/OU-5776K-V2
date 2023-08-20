@@ -40,11 +40,11 @@ void intakeAuton(IntakeState currentIntakeState){
       break;
       intakeMotor1.moveVoltage(0);
     case IntakeState::INTAKING:
-      intakeMotor1.moveVoltage(12000);
+      intakeMotor1.moveVoltage(14000);
       //intakeMotor2.moveVoltage(12000);
       break;
     case IntakeState::OUTTAKING:
-      intakeMotor1.moveVoltage(-12000);
+      intakeMotor1.moveVoltage(-14000);
       //intakeMotor2.moveVoltage(-12000);
       break;
   //case IntakeState::HALF:
@@ -89,7 +89,7 @@ void updateAuton(int side){
       intakeAuton(IntakeState::INTAKING);
       pros::delay(100);
 
-      drivetrain(3, 7000);
+      drivetrain(3, 7000, 1);
       pros::delay(500);
 
       intakeAuton(IntakeState::OUTTAKING);
@@ -162,32 +162,44 @@ void updateAuton(int side){
     if(side == 2){
       //triball focused route 
 
-/*
+
+      cataMotor.moveVelocity(-9000);
+      pros::delay(500);
+      
       intakeAuton(IntakeState::INTAKING);
-      pros::delay(100);
-
-  */
-
-      drivetrain(5, 7000);
       pros::delay(500);
 
+
+      cataMotor.moveVelocity(0);
+      pros::delay(500);
+
+
+      drivetrain(5, 7000, 0.8);
+      pros::delay(500);
+
+      intakeAuton(IntakeState::STOPPED);
+    //pros::delay(100);
       turnCounter(90, 3000);
-      pros::delay(500);
+      pros::delay(350);
 
       intakeAuton(IntakeState::OUTTAKING);
-      pros::delay(700);
+      pros::delay(500);
 
       intakeAuton(IntakeState::STOPPED);
       pros::delay(10);
 
-      drivetrain(-1, 7000);
-      pros::delay(500);
       
-      turnClock(115, 3000);
+
+      //drivetrain(-1.75, 7000, 1);
+      //pros::delay(500);
+      
+      /*
+      turnClock(90, 3000);
       pros::delay(500);
 
       intakeAuton(IntakeState::INTAKING);
       pros::delay(100);
+    */
 
 
     
