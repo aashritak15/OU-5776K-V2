@@ -16,7 +16,7 @@ void updateCata(){
     // without limit switch 
 
     if (controller.getDigital(ControllerDigital::up) == 1){
-        //catapult = false;
+       // catapult = false;
         
         if(!catapult){
             cataMotor.moveVoltage(-9000);
