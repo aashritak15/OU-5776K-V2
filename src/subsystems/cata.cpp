@@ -31,8 +31,8 @@ Motor cataMotor1(cataMotorPort, true, AbstractMotor::gearset::blue,
 //Motor flapjack2(flapjackPort2);
 
 
-ControllerButton cataRun = ControllerButton(ControllerDigital::up);
-ControllerButton cataStop = ControllerButton(ControllerDigital::down);
+ControllerButton cataSlow = ControllerButton(ControllerDigital::up);
+ControllerButton cataFast = ControllerButton(ControllerDigital::down);
 //ControllerButton halfInButton = ControllerButton(ControllerDigital::up);
 
 
@@ -43,26 +43,26 @@ void updateCata() {
   //static IntakeState previousIntakeState = IntakeState::STOPPED;
 
 
-
-  if (cataRun.changedToPressed()) {
-    if (currentCataState == CataState::RUNNINGSLOW) {
-        currentCataState = CataState::STOPPED;
-    } else if(currentCataState == CataState::RUNNINGFAST){
-        currentCataState = CataState::STOPPED;
+  if (cataSlow.changedToPressed()) {
+    if(!catapult){
+            currentCataState = CataState::RUNNINGSLOW;
+            catapult = true;
+        } else{
+            cataMotor.moveVoltage(0);
+            catapult = false; 
+        }    
     }
-      
-    }
 
-    if (cataStop.changedToPressed()) {
-        if (currentCataState == CataState::RUNNINGSLOW) {
-            currentCataState = CataState::STOPPED;
-        } else if (currentCataState == CataState::RUNNINGFAST){
-            currentCataState == CataState::STOPPED;
+    if (cataFast.changedToPressed()) {
+        if(!catapult){
+            currentCataState = CataState::RUNNINGFAST;
+            catapult = true;
+        } else{
+            cataMotor.moveVoltage(0);
+            catapult = false; 
         }
   }
  
-
-
 
 
   switch (currentCataState) {
