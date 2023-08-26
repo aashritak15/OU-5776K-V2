@@ -4,16 +4,71 @@
 
 Motor cataMotor(cataMotorPort, true, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
-  
-  
-//  
 
-
-
-
+//ADIButton limitSwitch('A', true);
 bool catapult = false;
 
+void updateCata(){
+    // without limit switch 
 
+    if (controller.getDigital(ControllerDigital::up) == 1){
+        catapult = false;
+
+        if(!catapult){
+            cataMotor.moveVoltage(-11000);
+            catapult = true;
+        }
+        else{
+            cataMotor.moveVoltage(0);
+            catapult = false; 
+        }
+    }
+
+    else if (controller.getDigital(ControllerDigital::down) == 1){
+        //catapult = false; 
+        catapult = false; 
+
+        if(!catapult){
+            cataMotor.moveVoltage(-12000);
+            catapult = true;
+        }
+        else{
+            cataMotor.moveVoltage(0);
+            catapult = false; 
+        }
+    } else if (controller.getDigital(ControllerDigital::right) == 1){
+      catapult = false;
+
+       if(!catapult){
+            cataMotor.moveVoltage(-20000);
+            catapult = true;
+        }
+        else{
+            cataMotor.moveVoltage(0);
+            catapult = false; 
+    }
+
+    }
+    
+    else if (controller.getDigital(ControllerDigital::left) == 1){
+      catapult = false;
+
+       if(!catapult){
+            cataMotor.moveVoltage(-10000);
+            catapult = true;
+        }
+        else{
+            cataMotor.moveVoltage(0);
+            catapult = false; 
+    }
+}
+}
+
+
+    
+
+
+/*
 void cataInnit(){
     cataMotor.setBrakeMode(AbstractMotor::brakeMode::hold);
     //intakeMotor2.setBrakeMode(AbstractMotor::brakeMode::coast);
@@ -24,8 +79,8 @@ void cataInnit(){
 Motor cataMotor1(cataMotorPort, true, AbstractMotor::gearset::blue,
                AbstractMotor::encoderUnits::degrees);
 
-/*Motor intakeMotor2(intakePort2, false, AbstractMotor::gearset::blue,
-               AbstractMotor::encoderUnits::degrees);*/
+Motor intakeMotor2(intakePort2, false, AbstractMotor::gearset::blue,
+               AbstractMotor::encoderUnits::degrees);
 
 //Motor flapjack1(flapjackPort1);
 //Motor flapjack2(flapjackPort2);
@@ -48,7 +103,7 @@ void updateCata() {
             currentCataState = CataState::RUNNINGSLOW;
             catapult = true;
         } else{
-            cataMotor.moveVoltage(0);
+            currentCataState = IntakeState::STOPPED;
             catapult = false; 
         }    
     }
@@ -58,7 +113,7 @@ void updateCata() {
             currentCataState = CataState::RUNNINGFAST;
             catapult = true;
         } else{
-            cataMotor.moveVoltage(0);
+            currentIntakeState = IntakeState::STOPPED;
             catapult = false; 
         }
   }
@@ -93,16 +148,14 @@ void setCataState(CataState IState) {
   
 
     
+*/
 
-    
+
+    // with limit switch (if we end up added) 
 /*
-
-
-    /* with limit switch (if we end up added) 
-
-    if (controller.getDigital(ControllerDigital::R1) == 1){
+    if (controller.getDigital(ControllerDigital::up) == 1){
         while (!limitSwitch.isPressed()) {
-            cataMotor.moveVoltage(12000);
+            cataMotor.moveVoltage(-9000);
         }
         
         cataMotor.moveVoltage(0);
@@ -117,8 +170,8 @@ void setCataState(CataState IState) {
             cataMotor.moveVoltage(0);
         }
     }
+*/
     
-    */
 /*
 
     void cataInnit(){
@@ -127,27 +180,27 @@ void setCataState(CataState IState) {
    //toggle = false; 
 }
 
-*/
 
-/*
+
+
 
 Motor cataMotor1(cataPort1, true, AbstractMotor::gearset::blue,
                AbstractMotor::encoderUnits::degrees);
 
-/*Motor intakeMotor2(intakePort2, false, AbstractMotor::gearset::blue,
-               AbstractMotor::encoderUnits::degrees);*/
+Motor intakeMotor2(intakePort2, false, AbstractMotor::gearset::blue,
+               AbstractMotor::encoderUnits::degrees);
 
-//Motor flapjack1(flapjackPort1);
-//Motor flapjack2(flapjackPort2);
+Motor flapjack1(flapjackPort1);
+Motor flapjack2(flapjackPort2);
 
-/*
+
 
 ControllerButton cataRun = ControllerButton(ControllerDigital::up);
 ControllerButton cataStop = ControllerButton(ControllerDigital::down);
 //ControllerButton halfInButton = ControllerButton(ControllerDigital::up);
-*/
 
-/*
+
+
 void gradualStop() {
   int stopTime = 5000;
   int voltage = 200;
@@ -164,8 +217,8 @@ void gradualStop() {
    }
 
 }
-*/
-/*
+
+
 void updateCata() {
 
 
@@ -182,7 +235,7 @@ void updateCata() {
       
     }
   } 
-  /*
+  
   if (halfInButton.changedToPressed()) {
     if (currentIntakeState == IntakeState::HALF) {
       previousIntakeState = currentIntakeState;
@@ -191,9 +244,9 @@ void updateCata() {
       previousIntakeState = currentIntakeState;
       currentIntakeState = IntakeState::HALF;
     }
-  }*/
+  }
 
-/*
+
   if (cataStop.changedToPressed()) {
     if (currentCataState == CataState::RUNNING) {
       //previousIntakeState = currentIntakeState;

@@ -5,10 +5,14 @@
 #include "subsystems/intake.hpp"
 #include "subsystems/pistons.hpp"
 #include "subsystems/cata.hpp"
+#include "subsystems/ports.hpp"
 
 #include "globals.hpp"
 
 using namespace okapi;
+
+
+
 
 /*
 
@@ -162,51 +166,62 @@ void updateAuton(int side){
     if(side == 2){
       //triball focused route 
       
-      cataMotor.moveVelocity(-9000);
-      pros::delay(500);
+      cataMotor.moveVelocity(-11000);
+      pros::delay(600);
       
-      intakeMotor1.moveVelocity(14000);
+      intakeAuton(IntakeState::INTAKING);
       pros::delay(500);
 
       cataMotor.moveVelocity(0);
       pros::delay(500);
     
-      drivetrain(5.01, 7000, 0.8);
+      drivetrain(4.75, 7000, 0.8);
       pros::delay(500);
 
       intakeMotor1.moveVelocity(0);
     //pros::delay(100);
-      turnCounter(90, 3000);
-      intakeMotor1.moveVelocity(-14000);
+      turnCounter(90, 2000);
 
-      pros::delay(600);
+      intakeAuton(IntakeState::OUTTAKING);
 
+      //pros::delay(500);
+
+/*
       intakeMotor1.moveVelocity(0);
       
       pros::delay(500);
+      */
+      drivetrain(-0.95, 7000, 1);
       
-      drivetrain(-1, 7000, 1);
+      //imu1.reset();
+     //imu2.reset();
+
       pros::delay(500);
 
       turnClock(90, 3000);
       pros::delay(500);
 
+      drivetrain(0.42, 7000, 1);
+      pros::delay(100);
+
       intakeAuton(IntakeState::INTAKING);
-      pros::delay(300);
+      pros::delay(550);
 
       intakeMotor1.moveVelocity(0);
       pros::delay(500);
 
       turnCounter(90, 3000);
-      pros::delay(500);
+      pros::delay(300);
 
-      drivetrain(1, 7000, 1);
+      drivetrain(0.5, 7000, 1.25);
       pros::delay(300);
 
       intakeAuton(IntakeState::OUTTAKING);
       pros::delay(300);
 
-      drivetrain(1, 7000, 1);
+      intakeAuton(IntakeState::STOPPED);
+
+      drivetrain(1, 7000, 1.5);
 
       
       //drivetrain(-1.75, 7000, 1);
