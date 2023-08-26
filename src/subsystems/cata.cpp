@@ -36,34 +36,9 @@ void updateCata(){
             cataMotor.moveVoltage(0);
             catapult = false; 
         }
-    } else if (controller.getDigital(ControllerDigital::right) == 1){
-      catapult = false;
-
-       if(!catapult){
-            cataMotor.moveVoltage(-20000);
-            catapult = true;
-        }
-        else{
-            cataMotor.moveVoltage(0);
-            catapult = false; 
     }
 
-    }
-    
-    else if (controller.getDigital(ControllerDigital::left) == 1){
-      catapult = false;
-
-       if(!catapult){
-            cataMotor.moveVoltage(-10000);
-            catapult = true;
-        }
-        else{
-            cataMotor.moveVoltage(0);
-            catapult = false; 
-    }
 }
-}
-
 
     
 
