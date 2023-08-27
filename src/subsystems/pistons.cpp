@@ -9,14 +9,9 @@
 
 using namespace okapi;
 
-ControllerButton extendButton = ControllerButton(ControllerDigital::right);
-
-ControllerButton retractButton = ControllerButton(ControllerDigital::left);
 
 pros::ADIDigitalOut flapjack1 = pros::ADIDigitalOut(flapjackPort1);
 //pros::ADIDigitalOut flapjack2 = pros::ADIDigitalOut(flapjackPort2);
-
-pros::ADIDigitalOut intakeFlipout = pros::ADIDigitalOut(intakeFlipoutPort);
 
 pros::ADIDigitalOut awpFlipout = pros::ADIDigitalOut(awpFlipoutPort);
 
@@ -56,14 +51,6 @@ bool sharing;
 bool flapjackOutwards = false;
 
 
-void UpdateIntakeFlipout(){
-    if (controller.getDigital(ControllerDigital::left) == 1) {
-        intakeFlipout.set_value(true);
-  }
-    if(controller.getDigital(ControllerDigital::right) == 1) {
-        intakeFlipout.set_value(false);
-    }   
-}
 
 
 
