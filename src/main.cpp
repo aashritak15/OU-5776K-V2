@@ -86,7 +86,6 @@ while (true) {
         updateIntake();
         updateCata();
         updateFlapjack();
-        UpdateIntakeFlipout();
 
         rate.delay(100_Hz); 
 }
