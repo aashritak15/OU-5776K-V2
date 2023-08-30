@@ -85,57 +85,47 @@ void skills(int side){
 void updateAuton(int side){
     if (side == 1){
 
-      /*
-      intakeFlipout.set_value(true);
-      pros::delay(100);
-      */
+      drivetrain(-3, 1000, 1);
 
-      cataMotor.moveVelocity(-11000);
-      pros::delay(300);
-      
-      intakeAuton(IntakeState::INTAKING);
       pros::delay(500);
 
-      turnCounter(45, 3000);
+      turnClock(45, 1000);
       
-      drivetrain(3, 7000, 1);
-      pros::delay(500);
+      drivetrain(-1, 1000, 1.5);
 
-      intakeMotor1.moveVelocity(-12000);
-      pros::delay(300);
+      pros::delay(200);
 
-      intakeMotor1.moveVelocity(0);
+      drivetrain(1.6, 1000, 1);
+
       pros::delay(100);
+      
+      turnClock(135, 1000);
 
-  /*
+      drivetrain(4, 1000);
+
+      
+
+/*
       drivetrain(-0.6, 7000);
       pros::delay(500);
 
-      intakeFlipout.set_value(false);
-      pros::delay(100);
-
       turnClock(180, 7000);
+      pros::delay(300);
+
       drivetrain(1, 7000);
       pros::delay(500);
 
       turnClock(25, 7000);
       pros::delay(200);
 
-      awpFlipout.set_value(true);
-      pros::delay(10);
+      //L mechanism (for matchload)
 
       drivetrain(-1, 7000);
       pros::delay(20);
 
-      intakeFlipout.set_value(false);
-      /*
-      drivetrain(-0.6, 7000);
-      turnClock(180, 7000);
-      */
-      //turnCounter(55, 1000);
+      //go to elevation bar (fig out angles and drivetrain after testing)
 
-      //drivetrain(6, 7000);    
-  
+     */
 
     }
 
