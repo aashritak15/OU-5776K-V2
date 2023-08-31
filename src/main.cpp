@@ -6,6 +6,7 @@
 #include "subsystems/pistons.hpp"
 #include "subsystems/cata.hpp"
 #include "subsystems/auton.hpp"
+#include "autoSelect/selection.h" 
 
 
 
@@ -22,6 +23,7 @@ void initialize() {
     //flipoutMechInnit(); 
     resetEncoders();
     //pistonsInnit();
+    selector::init();
 
 }
 
@@ -58,8 +60,20 @@ void competition_initialize() {}
 * from where it left off.
 */
 void autonomous() {
-    updateAuton(1);
+    /*
+        selector::auton == 1 : Red Front
+        selector::auton == 2 : Red Back
+        selector::auton == 3 : Do Nothing
+        selector::auton == -1 : Blue Front
+        selector::auton == -2 : Blue Back
+        selector::auton == -3 : Do Nothing
+        selector::auton == 0 : Skills
+    */
+    if(selector::auton == 1){ updateAuton(1);
+    }
+    
 }
+
 
 
 /**
