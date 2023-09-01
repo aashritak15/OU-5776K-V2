@@ -6,6 +6,7 @@
 #include "subsystems/pistons.hpp"
 #include "subsystems/cata.hpp"
 #include "subsystems/ports.hpp"
+#include "autoSelect/selection.h"
 
 #include "globals.hpp"
 
@@ -101,7 +102,7 @@ void updateAuton(int side){
       
       turnClock(135, 1000);
 
-      drivetrain(4, 1000);
+      drivetrain(4, 1000, 1);
 
       
 
@@ -116,7 +117,7 @@ void updateAuton(int side){
       pros::delay(500);
 
       turnClock(25, 7000);
-      pros::delay(200);
+      pros::delay(200); 
 
       //L mechanism (for matchload)
 

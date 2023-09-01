@@ -69,8 +69,10 @@ void autonomous() {
         selector::auton == -3 : Do Nothing
         selector::auton == 0 : Skills
     */
-    if(selector::auton == 1){ updateAuton(1);
-    }
+    //if(selector::auton == 1){ updateAuton(1);
+   // }
+
+    updateAuton(1);
     
 }
 
