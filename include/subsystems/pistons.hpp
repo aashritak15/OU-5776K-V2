@@ -22,7 +22,10 @@ void flapjackCode();
 void updateIntakeFlipout();
 
 void updateFlapjack();
-void UpdateIntakeFlipout();
+void updateIntakeFlipout();
+void updatelMech();
+void updateBalance();
+//void updateBlocker();
 
 //void flipoutMech();
 

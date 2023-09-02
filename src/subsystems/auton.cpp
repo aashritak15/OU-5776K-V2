@@ -85,24 +85,77 @@ void skills(int side){
 
 void updateAuton(int side){
     if (side == 1){
+      //awp focused route red pole
 
       drivetrain(-3, 1000, 1);
 
       pros::delay(500);
 
       turnClock(45, 1000);
+      pros::delay(100);
       
       drivetrain(-1, 1000, 1.5);
 
       pros::delay(200);
 
-      drivetrain(1.6, 1000, 1);
+      drivetrain(1.5, 1000, 1);
 
       pros::delay(100);
       
-      turnClock(135, 1000);
+      turnClock(50, 1000);
 
-      drivetrain(4, 1000, 1);
+      drivetrain(-0.85, 1000, 1);
+
+      turnCounter(135, 1000);
+
+      
+
+/*
+      drivetrain(-0.6, 7000);
+      pros::delay(500);
+
+      turnClock(180, 7000);
+      pros::delay(300);
+
+      drivetrain(1, 7000);
+      pros::delay(500);
+
+      turnClock(25, 7000);
+      pros::delay(200); 
+
+      //L mechanism (for matchload)
+
+      drivetrain(-1, 7000);
+      pros::delay(20);
+
+      //go to elevation bar (fig out angles and drivetrain after testing)
+
+     */
+
+    }
+    if (side == 2){
+      //awp for blue pole 
+
+      drivetrain(-3, 1000, 1);
+
+      pros::delay(500);
+
+      turnClock(45, 1000);
+      pros::delay(100);
+      
+      drivetrain(-1, 1000, 1.5);
+
+      pros::delay(200);
+
+      drivetrain(1.5, 1000, 1);
+
+      pros::delay(100);
+      
+      turnClock(50, 1000);
+
+      drivetrain(-0.85, 1000, 1);
+
+      turnCounter(135, 1000);
 
       
 
@@ -130,37 +183,8 @@ void updateAuton(int side){
 
     }
 
-      /*
-      //outtaking and pushin in preload 
-      intakeAuton(IntakeState::OUTTAKING);
-      pros::delay(100);
-      //flapjacks too big to use 
-      drivetrain(3); 
-      pros::delay(100);
-
-      //going to get the matchload 
-      drivetrain(-1.5);
-      pros::delay(100);
-      turnPID(180, true, 3000);
-      pros::delay(100);
-
-      //intake matchload 
-      intakeAuton(IntakeState::INTAKING);
-      pros::delay(100);
-
-
-      //going to the bar 
-      turnPID(90, true, 3000);
-      //intake flipout push out 
-      drivetrain(6);
-      //prolly need to turn just a little bit so the flipout touches the bar 
-
-    }
-  */
-
-
-    if(side == 2){
-      //triball focused route 
+    if(side == 3){
+      //triball focused route (blue pole)
       
       cataMotor.moveVelocity(-11000);
       pros::delay(300);
@@ -263,6 +287,111 @@ void updateAuton(int side){
       pros::delay(100);
     */
       
+    } 
+
+    if(side == 4){
+      //triball focused route (red pole)
+      
+      cataMotor.moveVelocity(-11000);
+      pros::delay(300);
+      
+      intakeAuton(IntakeState::INTAKING);
+      pros::delay(500);
+
+      cataMotor.moveVelocity(0);
+      pros::delay(500);
+    
+      drivetrain(4.75, 3000, 1.25);
+      pros::delay(500);
+
+      intakeMotor1.moveVelocity(0);
+    //pros::delay(100);
+      turnClock(90, 2000);
+
+      pros::delay(300);
+
+      intakeMotor1.moveVelocity(-12000);
+
+      pros::delay(100);
+
+      drivetrain(0.45, 3000, 1.5);
+
+      pros::delay(200);
+      intakeMotor1.moveVelocity(0);
+/*
+      intakeMotor1.moveVelocity(0);
+      
+      pros::delay(500);
+      */
+      drivetrain(-0.96, 3000, 1);
+      pros::delay(100);
+
+
+      turnCounter(90, 3000);
+      pros::delay(100);
+
+      drivetrain(0.45, 3000, 1);
+      pros::delay(300);
+
+      intakeAuton(IntakeState::INTAKING);
+      pros::delay(550);
+
+      intakeMotor1.moveVelocity(0);
+      pros::delay(300);
+
+      turnClock(90, 3000);
+      pros::delay(100);
+
+      drivetrain(0.45, 3000, 1.5);
+      pros::delay(300);
+
+      intakeMotor1.moveVelocity(-12000);
+
+      pros::delay(300);
+
+      intakeMotor1.moveVelocity(0);
+      drivetrain(1, 3000, 5);
+
+//third triball
+      drivetrain(-1.75, 3000, 1.5);
+      pros::delay(100);
+
+
+      turnCounter(136, 3000);
+      pros::delay(100);
+
+      drivetrain(0.45, 3000, 1);
+      pros::delay(300);
+
+      intakeAuton(IntakeState::INTAKING);
+      pros::delay(550);
+
+      intakeMotor1.moveVelocity(0);
+      pros::delay(500);
+
+      turnClock(140, 3000);
+
+
+      drivetrain(1.45, 3000, 1.5);
+
+      intakeMotor1.moveVelocity(-12000);
+
+      pros::delay(300);
+
+      drivetrain(1, 3000, 5);
+
+      intakeMotor1.moveVelocity(0);
+      
+      //drivetrain(-1.75, 7000, 1);
+      //pros::delay(500);
+      
+      /*
+      turnClock(90, 3000);
+      pros::delay(500);
+
+      intakeAuton(IntakeState::INTAKING);
+      pros::delay(100);
+    */
     }
   }
 
