@@ -80,6 +80,7 @@ void skills(int side){
   else if(side == 2){
 
   }
+
 }
 */
 
@@ -87,8 +88,8 @@ void updateAuton(int side){
     if (side == 1){
       //awp focused route red pole
 
-/*
-      drivetrain(-3, 1000, 2);
+
+      drivetrain(-3, 1000, 1);
 
       pros::delay(500);
 
@@ -100,19 +101,18 @@ void updateAuton(int side){
 
       pros::delay(200);
 
-      drivetrain(1.8, 1000, 1);
+      drivetrain(1.6, 1000, 1);
 
       pros::delay(100);
       
       turnClock(50, 1000);
 
+      pros::delay(500);
+
       lMech.set_value(true);
 
       pros::delay(500);
 
-    */
-
-      
       drivetrain(-0.7, 1000, 4);
 
       pros::delay(100);
