@@ -7,6 +7,8 @@ using namespace okapi;
 void turnClock(float degree, int ms);
 void turnCounter(float degree, int ms);
 
+void turnRIGHTONLY(float degree, int ms);
+
 //extern double displacement; 
 
 //void drivetrain(double target);

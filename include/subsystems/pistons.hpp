@@ -12,6 +12,8 @@ extern pros::ADIDigitalOut intakeFlipout;
 
 extern pros::ADIDigitalOut awpFlipout;
 
+extern pros::ADIDigitalOut lMech;
+
 
 void pistonsInnit();
 void updatePistons();
@@ -20,7 +22,6 @@ void retractFlapjack();
 void stopFlapjack();
 void flapjackCode();
 void updateIntakeFlipout();
-
 void updateFlapjack();
 void updateIntakeFlipout();
 void updatelMech();

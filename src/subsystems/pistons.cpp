@@ -16,7 +16,7 @@ pros::ADIDigitalOut flapjack1 = pros::ADIDigitalOut(flapjackPort1);
 //pros::ADIDigitalOut awpFlipout = pros::ADIDigitalOut(awpFlipoutPort);
 pros::ADIDigitalOut lMech = pros::ADIDigitalOut(lMechPort);
 pros::ADIDigitalOut balance = pros::ADIDigitalOut(balancePort);
-//pros::ADIDigitalOut blocker = pros::ADIDigitalOut(blockerPort);
+pros::ADIDigitalOut blocker = pros::ADIDigitalOut(blockerPort);
 
 //flapjack
 //pros::ADIDigitalOut flapjack1(flapjackPort1);
@@ -77,14 +77,13 @@ void updateBalance(){
   }
 }
 
-/*
 void updateBlocker(){
-    if (controller.getDigital(ControllerDigital::B) == 1) {
+    if (controller.getDigital(ControllerDigital::X) == 1) {
         blocker.set_value(true);
   }
 }
 
-*/
+
 
 void updateFlapjack(){
     if (controller.getDigital(ControllerDigital::R2) == 1) {

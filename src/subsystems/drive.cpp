@@ -79,10 +79,7 @@ void updateDrive() {
   drive(24.0);
 }*/
 
-  if (controller.getDigital(ControllerDigital::B) == 1){
-    //turnClock(90.0f, 3000);
-  }
-
+  
 }
 
 

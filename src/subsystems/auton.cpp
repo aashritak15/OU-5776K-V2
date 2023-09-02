@@ -87,55 +87,55 @@ void updateAuton(int side){
     if (side == 1){
       //awp focused route red pole
 
-      drivetrain(-3, 1000, 1);
+/*
+      drivetrain(-3, 1000, 2);
 
       pros::delay(500);
 
       turnClock(45, 1000);
+
       pros::delay(100);
       
       drivetrain(-1, 1000, 1.5);
 
       pros::delay(200);
 
-      drivetrain(1.5, 1000, 1);
+      drivetrain(1.8, 1000, 1);
 
       pros::delay(100);
       
       turnClock(50, 1000);
 
-      drivetrain(-0.85, 1000, 1);
+      lMech.set_value(true);
 
-      turnCounter(135, 1000);
+      pros::delay(500);
+
+    */
 
       
+      drivetrain(-0.7, 1000, 4);
 
-/*
-      drivetrain(-0.6, 7000);
-      pros::delay(500);
+      pros::delay(100);
+      
+      lMech.set_value(false);
 
-      turnClock(180, 7000);
-      pros::delay(300);
+      pros::delay(100);
 
-      drivetrain(1, 7000);
-      pros::delay(500);
+    
+      turnCounter(90, 1000);
 
-      turnClock(25, 7000);
-      pros::delay(200); 
+      drivetrain(1.35, 1000, 1);
 
-      //L mechanism (for matchload)
+      turnCounter(45, 1000);
 
-      drivetrain(-1, 7000);
-      pros::delay(20);
-
-      //go to elevation bar (fig out angles and drivetrain after testing)
-
-     */
+      drivetrain(3, 1000, 0.75);
 
     }
     if (side == 2){
       //awp for blue pole 
 
+
+
       drivetrain(-3, 1000, 1);
 
       pros::delay(500);
@@ -151,12 +151,28 @@ void updateAuton(int side){
 
       pros::delay(100);
       
+
       turnClock(50, 1000);
 
-      drivetrain(-0.85, 1000, 1);
+      pros::delay(100);
+
+      lMech.set_value(true);
+
+      pros::delay(100);
+
+      drivetrain(-0.85, 1000, 3);
+
+      pros::delay(100);
+
+      lMech.set_value(false);
+
+      pros::delay(100);
+
+      /*
 
       turnCounter(135, 1000);
 
+*/
       
 
 /*

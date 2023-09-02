@@ -284,3 +284,52 @@ drive->stop();
 }
 
 
+void turnRIGHTONLY(float degree, int ms) {
+  leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+  leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+  leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
+  rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+  rightFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+  rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
+ float taredRotation = (imu1.get() + imu2.get()) / 2;
+ int timer = 0;
+ float turnkP = 0.0125;
+ float turnkI = 0;
+ float turnkD = 0.01;
+
+  float prevError = 0;
+  //float totalError = 0;
+
+    // [deg]
+
+  float integral = 0;
+ 
+  while (timer < ms){
+    // Compute PID values from current wheel travel measurements
+      float currentVal = (imu1.get() + imu2.get())/2 - taredRotation;
+
+      //float targetVal = currentVal + degree;
+
+      float error = degree - abs(currentVal);
+       if (error < 0.1){
+        break;
+        }
+
+       float derivative = error - prevError;
+       prevError = error;
+       integral += error;
+
+
+       
+
+    // Calculate power using PID
+    float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
+    //prevError = error;
+      drive->getModel()->tank(0 , power); //goes clockwise 
+    
+    timer += 10;
+    pros::delay(10);
+}
+
+drive->stop();
+}
