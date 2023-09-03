@@ -65,9 +65,22 @@ x = blocker
 b = l
 */
 
+
+
+bool lMechB = false;
+
 void updatelMech(){
     if (controller.getDigital(ControllerDigital::B) == 1) {
-        lMech.set_value(true);
+
+        if(!lMechB){
+            lMech.set_value(true);
+            lMechB = true;
+        }
+        else{
+            lMech.set_value(false);
+            lMechB = false;
+        }
+        
   }
 }
 
