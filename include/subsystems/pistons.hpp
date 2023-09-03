@@ -26,7 +26,7 @@ void updateFlapjack();
 void updateIntakeFlipout();
 void updatelMech();
 void updateBalance();
-//void updateBlocker();
+void updateBlocker();
 
 //void flipoutMech();
 

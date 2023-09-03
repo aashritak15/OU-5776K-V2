@@ -86,116 +86,124 @@ void skills(int side){
 
 void updateAuton(int side){
     if (side == 1){
+      //remove intake stuff if it doesn't work (not a priority)
       //awp focused route red pole
-
-
-      drivetrain(-3, 1000, 1);
+      //blocker.set_value(true);
+      drivetrain(-2.7, 1000, 1);
 
       pros::delay(500);
 
-      turnClock(45, 1000);
+      left.moveVelocity(-1000);
+
+      pros::delay(300);
+
+      left.moveVelocity(0);
+      
+      drivetrain(-1.2, 1000, 1);
+
+      turnCounter(35, 1000);
+
+      pros::delay(100);
+
+      drivetrain(1.85, 1000, 1);
 
       pros::delay(100);
       
-      drivetrain(-1, 1000, 1.5);
-
-      pros::delay(200);
-
-      drivetrain(1.6, 1000, 1);
-
-      pros::delay(100);
-      
-      turnClock(50, 1000);
+      turnClock(70, 1000);
 
       pros::delay(500);
+
+      drivetrain(0.3, 1000, 1);
 
       lMech.set_value(true);
 
       pros::delay(500);
 
-      drivetrain(-0.7, 1000, 4);
+      drivetrain(-0.85, 3000, 2);
 
-      pros::delay(100);
-      
+
+      pros::delay(500);
+
+      intakeMotor1.moveVelocity(12000);
+      pros::delay(600);
+
       lMech.set_value(false);
 
-      pros::delay(100);
+      pros::delay(200);
 
+      intakeMotor1.moveVelocity(0);
+      pros::delay(200);
     
       turnCounter(90, 1000);
 
-      drivetrain(1.35, 1000, 1);
+      drivetrain(1.6, 1000, 1);
 
       turnCounter(45, 1000);
 
-      drivetrain(3, 1000, 0.75);
+      drivetrain(3, 2000, 0.5);
+
+      intakeMotor1.moveVelocity(-12000);
 
     }
     if (side == 2){
       //awp for blue pole 
-
-
-
-      drivetrain(-3, 1000, 1);
+ //remove intake stuff if it doesn't work (not a priority)
+      //awp focused route red pole
+      //blocker.set_value(true);
+      drivetrain(-2.7, 1000, 1);
 
       pros::delay(500);
 
-      turnClock(45, 1000);
+      left.moveVelocity(-1000);
+
+      pros::delay(300);
+
+      left.moveVelocity(0);
+      
+      drivetrain(-1.2, 1000, 1);
+
+      turnCounter(35, 1000);
+
+      pros::delay(100);
+
+      drivetrain(1.85, 1000, 1);
+
       pros::delay(100);
       
-      drivetrain(-1, 1000, 1.5);
+      turnClock(70, 1000);
 
-      pros::delay(200);
+      pros::delay(500);
 
-      drivetrain(1.5, 1000, 1);
-
-      pros::delay(100);
-      
-
-      turnClock(50, 1000);
-
-      pros::delay(100);
+      drivetrain(0.3, 1000, 1);
 
       lMech.set_value(true);
 
-      pros::delay(100);
+      pros::delay(500);
 
-      drivetrain(-0.85, 1000, 3);
+      drivetrain(-0.85, 3000, 2);
 
-      pros::delay(100);
+
+      pros::delay(500);
+
+      intakeMotor1.moveVelocity(12000);
+      pros::delay(600);
 
       lMech.set_value(false);
 
-      pros::delay(100);
+      pros::delay(200);
 
-      /*
+      intakeMotor1.moveVelocity(0);
+      pros::delay(200);
+    
+      turnCounter(90, 1000);
 
-      turnCounter(135, 1000);
+      drivetrain(1.6, 1000, 1);
 
-*/
-      
+      turnCounter(45, 1000);
 
-/*
-      drivetrain(-0.6, 7000);
-      pros::delay(500);
+      drivetrain(3, 2000, 0.5);
 
-      turnClock(180, 7000);
-      pros::delay(300);
-
-      drivetrain(1, 7000);
-      pros::delay(500);
-
-      turnClock(25, 7000);
-      pros::delay(200); 
-
-      //L mechanism (for matchload)
-
-      drivetrain(-1, 7000);
-      pros::delay(20);
-
-      //go to elevation bar (fig out angles and drivetrain after testing)
-
-     */
+      intakeMotor1.moveVelocity(-12000);
 
     }
 

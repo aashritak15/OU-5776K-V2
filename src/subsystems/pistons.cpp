@@ -33,7 +33,7 @@ void pistonsInnit(){
     flapjack1.set_value(false);
     lMech.set_value(false);
     balance.set_value(false);
-    //blocker.set_value(false);
+    blocker.set_value(false);
 
     //awpFlipout.set_value(false);
 }
