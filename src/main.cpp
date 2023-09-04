@@ -22,6 +22,9 @@ void initialize() {
     //flipoutMechInnit(); 
     resetEncoders();
     //pistonsInnit();
+    lMechInit();
+    balanceInit();
+    blockerInit();
 
 }
 

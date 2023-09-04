@@ -241,7 +241,7 @@ void updateAuton(int side){
       
       pros::delay(500);
       */
-      drivetrain(-0.96, 3000, 1);
+      drivetrain(-0.98, 3000, 1);
       pros::delay(100);
 
 
@@ -347,7 +347,7 @@ void updateAuton(int side){
       
       pros::delay(500);
       */
-      drivetrain(-0.96, 3000, 1);
+      drivetrain(-0.98, 3000, 1);
       pros::delay(100);
 
 

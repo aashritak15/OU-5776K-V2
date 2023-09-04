@@ -54,7 +54,7 @@ void flipoutMech(){
 */
 
 
-bool sharing;
+bool sharing = false;
 bool flapjackOutwards = false;
 //bool lMech = false;
 //bool balance = false;
@@ -65,35 +65,61 @@ x = blocker
 b = l
 */
 
+void lMechInit (){lMech.set_value(false);}
 
-
-bool lMechB = false;
+int lMechState = 0;
 
 void updatelMech(){
-    if (controller.getDigital(ControllerDigital::B) == 1) {
-
-        if(!lMechB){
+    if (controller.getDigital(ControllerDigital::B) == 1){
+        if(lMechState == 0){
             lMech.set_value(true);
-            lMechB = true;
+            lMechState++;
+            pros::delay(400);
         }
         else{
             lMech.set_value(false);
-            lMechB = false;
+            lMechState--;
+            pros::delay(400);
         }
-        
-  }
+    }
 }
+
+void balanceInit (){balance.set_value(false);}
+
+int balanceState = 0;
 
 void updateBalance(){
-    if (controller.getDigital(ControllerDigital::A) == 1) {
-        balance.set_value(true);
-  }
+    if (controller.getDigital(ControllerDigital::A) == 1){
+        if(balanceState == 0){
+            balance.set_value(true);
+            balanceState++;
+            pros::delay(400);
+        }
+        else{
+            balance.set_value(false);
+            balanceState--;
+            pros::delay(400);
+        }
+    }
 }
 
+void blockerInit (){blocker.set_value(false);}
+
+int blockerState = 0;
+
 void updateBlocker(){
-    if (controller.getDigital(ControllerDigital::X) == 1) {
-        blocker.set_value(true);
-  }
+        if (controller.getDigital(ControllerDigital::X) == 1){
+        if(blockerState == 0){
+            blocker.set_value(true);
+            blockerState++;
+            pros::delay(400);
+        }
+        else{
+            blocker.set_value(false);
+            blockerState--;
+            pros::delay(400);
+        }
+    }
 }
 
 

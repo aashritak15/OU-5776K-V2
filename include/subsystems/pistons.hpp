@@ -28,6 +28,9 @@ void updatelMech();
 void updateBalance();
 void updateBlocker();
 
+void lMechInit ();
+void balanceInit();
+void blockerInit();
 //void flipoutMech();
 
 //void flapjackCode();
