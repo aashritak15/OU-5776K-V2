@@ -61,7 +61,8 @@ void competition_initialize() {}
 * from where it left off.
 */
 void autonomous() {
-    updateAuton(3);
+    
+    if(selector::auton == 1){updateAuton(3);}
 }
 
 
@@ -85,12 +86,15 @@ while (true) {
     okapi::Rate rate;
     while (true) {
         updateDrive();
+
         //updatePistons();
         updateIntake();
         updateCata();
         updateFlapjack();
         updatelMech();
         updateBalance();
+
+        init();
 
         rate.delay(100_Hz); 
 }
