@@ -61,7 +61,7 @@ void competition_initialize() {}
 * from where it left off.
 */
 void autonomous() {
-    updateAuton(4);
+    updateAuton(3);
 }
 
 
