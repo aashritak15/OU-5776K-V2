@@ -93,12 +93,12 @@ void updateBalance(){
         if(balanceState == 0){
             balance.set_value(true);
             balanceState++;
-            pros::delay(400);
+            pros::delay(300);
         }
         else{
             balance.set_value(false);
             balanceState--;
-            pros::delay(400);
+            pros::delay(300);
         }
     }
 }
