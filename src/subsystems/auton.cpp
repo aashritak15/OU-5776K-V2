@@ -210,7 +210,7 @@ void updateAuton(int side){
     if(side == 3){
       //triball focused route (blue pole)
       
-      cataMotor.moveVelocity(-11000);
+      cataMotor.moveVelocity(-14000);
       pros::delay(300);
       
       intakeAuton(IntakeState::INTAKING);
@@ -226,13 +226,9 @@ void updateAuton(int side){
     //pros::delay(100);
       turnCounter(90, 2000);
 
-      pros::delay(300);
+      pros::delay(200);
 
       intakeMotor1.moveVelocity(-12000);
-
-      pros::delay(100);
-
-      drivetrain(0.45, 3000, 1.5);
 
       pros::delay(200);
       intakeMotor1.moveVelocity(0);
@@ -241,7 +237,7 @@ void updateAuton(int side){
       
       pros::delay(500);
       */
-      drivetrain(-1.2, 3000, 0.9);
+      drivetrain(-1.1, 3000, 0.9);
       pros::delay(100);
 
 
@@ -252,7 +248,7 @@ void updateAuton(int side){
       pros::delay(300);
 
       intakeAuton(IntakeState::INTAKING);
-      pros::delay(550);
+      pros::delay(500);
 
       intakeMotor1.moveVelocity(0);
       pros::delay(300);
@@ -260,7 +256,7 @@ void updateAuton(int side){
       turnCounter(90, 3000);
       pros::delay(100);
 
-      drivetrain(0.45, 3000, 1.5);
+      drivetrain(0.47, 3000, 1.5);
       pros::delay(300);
 
       intakeMotor1.moveVelocity(-12000);
@@ -271,33 +267,34 @@ void updateAuton(int side){
       drivetrain(1, 3000, 5);
 
 //third triball
-      drivetrain(-1.79, 3000, 1.5);
+      drivetrain(-1.78, 3000, 1.5);
       pros::delay(100);
 
 
       turnClock(136, 3000);
       pros::delay(100);
 
-      drivetrain(0.455, 3000, 1);
+      drivetrain(0.46, 3000, 1);
       pros::delay(300);
 
       intakeAuton(IntakeState::INTAKING);
-      pros::delay(550);
+      pros::delay(500);
 
       intakeMotor1.moveVelocity(0);
-      pros::delay(500);
+      pros::delay(200);
 
       turnCounter(136, 3000);
 
 
-      drivetrain(1.45, 3000, 1.5);
+      drivetrain(1.4, 3000, 1.5);
+
+      pros::delay(100);
 
       intakeMotor1.moveVelocity(-12000);
+      pros::delay(150);
 
-      pros::delay(300);
-
-      drivetrain(1, 3000, 5);
-
+      drivetrain(1, 3000, 3);
+    
       intakeMotor1.moveVelocity(0);
       
       //drivetrain(-1.75, 7000, 1);

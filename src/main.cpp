@@ -61,8 +61,8 @@ void competition_initialize() {}
 * from where it left off.
 */
 void autonomous() {
-    
-    if(selector::auton == 1){updateAuton(3);}
+    updateAuton(3);
+    //if(selector::auton == 1){updateAuton(3);}
 }
 
 
@@ -80,23 +80,18 @@ void autonomous() {
 * task, not resume it from where it left off.
 */
 void opcontrol() {
-
-while (true) {
-    //flapjackCode();
-    okapi::Rate rate;
     while (true) {
-        updateDrive();
-
-        //updatePistons();
-        updateIntake();
-        updateCata();
-        updateFlapjack();
-        updatelMech();
-        updateBalance();
-
-        init();
-
-        rate.delay(100_Hz); 
+        okapi::Rate rate;
+        while (true) {
+            updateDrive();
+            updateIntake();
+            updateCata();
+            updateFlapjack();
+            updatelMech();
+            updateBalance();
+            
+            //init();
+            rate.delay(100_Hz); 
 }
 }
 }
