@@ -213,7 +213,7 @@ void updateAuton(int side){
       cataMotor.moveVelocity(-14000);
       pros::delay(300);
       
-      intakeAuton(IntakeState::INTAKING);
+      intakeMotor1.moveVelocity(12000);
       pros::delay(500);
 
       cataMotor.moveVelocity(0);
@@ -228,9 +228,10 @@ void updateAuton(int side){
 
       pros::delay(200);
 
-      intakeMotor1.moveVelocity(-12000);
 
-      pros::delay(200);
+      intakeMotor1.moveVelocity(-13000);
+      pros::delay(300);
+
       intakeMotor1.moveVelocity(0);
 /*
       intakeMotor1.moveVelocity(0);
@@ -244,10 +245,10 @@ void updateAuton(int side){
       turnClock(90, 3000);
       pros::delay(100);
 
-      drivetrain(0.46, 3000, 1);
+      drivetrain(0.47, 3000, 1);
       pros::delay(300);
 
-      intakeAuton(IntakeState::INTAKING);
+      intakeMotor1.moveVelocity(12000);
       pros::delay(500);
 
       intakeMotor1.moveVelocity(0);
@@ -267,14 +268,14 @@ void updateAuton(int side){
       drivetrain(1, 3000, 5);
 
 //third triball
-      drivetrain(-1.78, 3000, 1.5);
+      drivetrain(-1.75, 3000, 1.5);
       pros::delay(100);
 
 
-      turnClock(136, 3000);
+      turnClock(135, 3000);
       pros::delay(100);
 
-      drivetrain(0.46, 3000, 1);
+      drivetrain(0.47, 3000, 1);
       pros::delay(300);
 
       intakeAuton(IntakeState::INTAKING);
@@ -283,7 +284,7 @@ void updateAuton(int side){
       intakeMotor1.moveVelocity(0);
       pros::delay(200);
 
-      turnCounter(136, 3000);
+      turnCounter(135, 3000);
 
 
       drivetrain(1.4, 3000, 1.5);
