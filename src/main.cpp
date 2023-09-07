@@ -6,6 +6,7 @@
 #include "subsystems/pistons.hpp"
 #include "subsystems/cata.hpp"
 #include "subsystems/auton.hpp"
+#include "autoSelect/selection.h"
 
 
 
@@ -25,6 +26,7 @@ void initialize() {
     lMechInit();
     balanceInit();
     blockerInit();
+    selector::init();
 
 }
 
@@ -62,7 +64,7 @@ void competition_initialize() {}
 */
 void autonomous() {
     updateAuton(4);
-    //if(selector::auton == 1){updateAuton(3);}
+    if(selector::auton == 1){updateAuton(3);}
 }
 
 

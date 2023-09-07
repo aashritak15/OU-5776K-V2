@@ -5,7 +5,7 @@ namespace selector{
 
 int auton;
 int autonCount;
-const char *btnmMap[] = {"auton1","","","","","","","","","",""}; // up to 10 autons
+const char *btnmMap[] = {"","","","","","","","","","",""}; // up to 10 autons
 
 lv_obj_t *tabview;
 lv_obj_t *redBtnm;
@@ -66,7 +66,7 @@ int tabWatcher() {
 	}
 }
 
-void init(int hue, int default_auton,`const char **autons){
+void init(int hue, int default_auton,const char **autons){
 
 	int i = 0;
 	do{
