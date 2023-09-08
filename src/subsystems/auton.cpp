@@ -6,7 +6,7 @@
 #include "subsystems/pistons.hpp"
 #include "subsystems/cata.hpp"
 #include "subsystems/ports.hpp"
-#include "autoSelect/selection.h"
+//#include "autoSelect/selection.h"
 
 #include "globals.hpp"
 
@@ -34,6 +34,7 @@ profileController->generatePath({
 );
 
 */
+
 
 
 
@@ -415,7 +416,9 @@ void updateAuton(int side){
     */
       
     }
-  }
+
+
+  
 
 /*
         turnPID(10, false, 3000);
@@ -484,3 +487,4 @@ void updateAuton(int side){
       pros::delay(100);
     }
 */
+}

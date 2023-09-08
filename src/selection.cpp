@@ -1,10 +1,11 @@
 #include "main.h"
-#include "autoSelect/selection.h" 
+#include "selection.h"
 
 namespace selector{
 
 int auton;
 int autonCount;
+int hue;
 const char *btnmMap[] = {"","","","","","","","","","",""}; // up to 10 autons
 
 lv_obj_t *tabview;
@@ -43,30 +44,32 @@ lv_res_t skillsBtnAction(lv_obj_t *btn){
 }
 
 int tabWatcher() {
-	int activeTab = lv_tabview_get_tab_act(tabview);
+	int activeTab;
 	while(1){
 		int currentTab = lv_tabview_get_tab_act(tabview);
 
 		if(currentTab != activeTab){
-			activeTab = currentTab;
-			if(activeTab == 0){
-				if(auton == 0) auton = 1;
-				auton = abs(auton);
-				lv_btnm_set_toggle(redBtnm, true, abs(auton)-1);
-			}else if(activeTab == 1){
+			//printf("Current Tab: %d\n", currentTab);
+			if(currentTab == 0){
 				if(auton == 0) auton = -1;
 				auton = -abs(auton);
+				lv_btnm_set_toggle(redBtnm, true, abs(auton)-1);
+			}else if(currentTab == 1){
+				if(auton == 0) auton = 1;
+				auton = abs(auton);
 				lv_btnm_set_toggle(blueBtnm, true, abs(auton)-1);
 			}else{
 				auton = 0;
 			}
 		}
 
+		activeTab = currentTab;
+
 		pros::delay(20);
 	}
 }
 
-void init(int hue, int default_auton,const char **autons){
+void init(int hue, int default_auton, const char **autons){
 
 	int i = 0;
 	do{
@@ -74,8 +77,9 @@ void init(int hue, int default_auton,const char **autons){
 		i++;
 	}while(strcmp(autons[i], "") != 0);
 
-	autonCount = i;
-	auton = default_auton;
+	selector::autonCount = i;
+	selector::hue = hue;
+	selector::auton = default_auton;
 
 	// lvgl theme
 	lv_theme_t *th = lv_theme_alien_init(hue, NULL); //Set a HUE value and keep font default RED
@@ -126,7 +130,7 @@ void init(int hue, int default_auton,const char **autons){
 	lv_obj_align(skillsBtn, NULL, LV_ALIGN_CENTER, 0, 0);
 
 	// start tab watcher
-	pros::Task tabWatcher_task(tabWatcher);
+	pros::Task drive_task(tabWatcher);
 
 }
 

@@ -6,7 +6,6 @@
 #include "subsystems/pistons.hpp"
 #include "subsystems/cata.hpp"
 #include "subsystems/auton.hpp"
-#include "autoSelect/selection.h"
 
 
 
@@ -17,6 +16,7 @@
 * to keep execution time for this mode under a few seconds.
 */
 void initialize() {
+    
     IEInnit();
     imuInnit();
     intakeInit();
@@ -26,7 +26,7 @@ void initialize() {
     lMechInit();
     balanceInit();
     blockerInit();
-    selector::init();
+   
 
 }
 
@@ -63,8 +63,9 @@ void competition_initialize() {}
 * from where it left off.
 */
 void autonomous() {
-    updateAuton(4);
-    if(selector::auton == 1){updateAuton(3);}
+    //updateAuton(4);
+    //if(selector::auton == 1){updateAuton(4);}
+   
 }
 
 
@@ -91,6 +92,7 @@ void opcontrol() {
             updateFlapjack();
             updatelMech();
             updateBalance();
+            updateBlocker();
             
             //init();
             rate.delay(100_Hz); 
