@@ -6,6 +6,7 @@
 #include "subsystems/pistons.hpp"
 #include "subsystems/cata.hpp"
 #include "subsystems/auton.hpp"
+#include "selection.h"
 
 
 
@@ -63,8 +64,8 @@ void competition_initialize() {}
 * from where it left off.
 */
 void autonomous() {
-    //updateAuton(4);
-    //if(selector::auton == 1){updateAuton(4);}
+    updateAuton(2);
+    //if(selector::auton == 2){updateAuton(2);}
    
 }
 

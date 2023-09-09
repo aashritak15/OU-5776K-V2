@@ -14,6 +14,8 @@ extern pros::ADIDigitalOut awpFlipout;
 
 extern pros::ADIDigitalOut lMech;
 
+extern pros::ADIDigitalOut blocker;
+
 
 void pistonsInnit();
 void updatePistons();
