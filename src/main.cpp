@@ -64,7 +64,7 @@ void competition_initialize() {}
 * from where it left off.
 */
 void autonomous() {
-    updateAuton(2);
+    updateAuton(4);
     //if(selector::auton == 2){updateAuton(2);}
    
 }
