@@ -88,7 +88,8 @@ void updateAuton(int side){
     if (side == 1){
       //remove intake stuff if it doesn't work (not a priority)
       //awp focused route red pole
-      //blocker.set_value(true);
+
+      blocker.set_value(true);
       drivetrain(-2.7, 1000, 1);
 
       pros::delay(500);
@@ -154,11 +155,11 @@ void updateAuton(int side){
 
       pros::delay(500);
 
-      left.moveVelocity(-1000);
+      right.moveVelocity(-1000);
 
       pros::delay(300);
 
-      left.moveVelocity(0);
+      right.moveVelocity(0);
       
       drivetrain(-1.2, 1000, 1);
 
@@ -170,11 +171,11 @@ void updateAuton(int side){
 
       pros::delay(100);
       
-      turnClock(70, 1000);
+      turnCounter(70, 1000);
 
       pros::delay(500);
 
-      drivetrain(0.3, 1000, 1);
+      drivetrain(0.35, 1000, 1);
 
       lMech.set_value(true);
 
@@ -195,7 +196,7 @@ void updateAuton(int side){
       intakeMotor1.moveVelocity(0);
       pros::delay(200);
     
-      turnCounter(90, 1000);
+      turnClock(90, 1000);
 
       drivetrain(1.6, 1000, 1);
 
