@@ -6,6 +6,7 @@
 #include "subsystems/pistons.hpp"
 #include "subsystems/cata.hpp"
 #include "subsystems/ports.hpp"
+#include "subsystems/skills.hpp"
 #include "globals.hpp"
 
 using namespace okapi;
@@ -22,11 +23,12 @@ void updateSkills(int path){
 
       cataMotor.moveVelocity(0);
       pros::delay(500);
-    
-      drivetrain(4.88, 3000, 1.25);
-      pros::delay(500);
 
       intakeMotor1.moveVelocity(0);
+    
+      drivetrain(4.8, 3000, 1.25);
+
+      pros::delay(500);
     //pros::delay(100);
       turnCounter(90, 2000);
 
@@ -42,7 +44,7 @@ void updateSkills(int path){
       
       pros::delay(500);
       */
-      drivetrain(-1.1, 3000, 0.9);
+      drivetrain(-1, 3000, 0.9);
       pros::delay(100);
 
       turnClock(90, 3000);
@@ -71,24 +73,23 @@ void updateSkills(int path){
       drivetrain(1, 3000, 5);
 
 //third triball
-      drivetrain(-1.95, 3000, 1.5);
+      drivetrain(-1.7, 3000, 1.5);
       pros::delay(100);
 
 
       turnClock(130, 3000);
       pros::delay(100);
 
-      drivetrain(0.48, 3000, 1);
+      drivetrain(0.5, 3000, 1);
       pros::delay(300);
 
-      intakeAuton(IntakeState::INTAKING);
+      intakeMotor1.moveVelocity(12000);
       pros::delay(500);
 
       intakeMotor1.moveVelocity(0);
       pros::delay(200);
 
       turnCounter(130, 3000);
-
 
       drivetrain(1.4, 3000, 1.5);
 
@@ -115,7 +116,7 @@ void updateSkills(int path){
 
       turnCounter(90, 3000);
 
-      drivetrain(-2, 3000, 1);
+      drivetrain(-2.5, 3000, 1);
 
       cataMotor.moveVelocity(-14000);
 

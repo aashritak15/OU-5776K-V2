@@ -6,6 +6,7 @@
 #include "subsystems/pistons.hpp"
 #include "subsystems/cata.hpp"
 #include "subsystems/auton.hpp"
+#include "subsystems/skills.hpp"
 #include "selection.h"
 
 
@@ -60,7 +61,7 @@ if (selector::auton == 3) {/*Do Nothing*/}
 if (selector::auton == -1) {side = 3;}
 if (selector::auton == -2) {side = 1;}
 if (selector::auton == -3) {/*Do Nothing*/}
-if (selector::auton == 0) {/*Skills*/}
+if (selector::auton == 0) {side = 0;}
 
 }
 
@@ -77,8 +78,19 @@ if (selector::auton == 0) {/*Skills*/}
 * from where it left off.
 */
 void autonomous() {
+
+    updateSkills(1);
+
+    //updateAuton(1);
+
+    /*
+    if (side == 0){
+        updateSkills(1);
+    } else {
     updateAuton(side);
-    
+    } 
+
+    */
    
 }
 
