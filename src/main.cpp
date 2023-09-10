@@ -17,7 +17,7 @@
 * to keep execution time for this mode under a few seconds.
 */
 void initialize() {
-    
+    selector::init();
     IEInnit();
     imuInnit();
     intakeInit();
@@ -49,7 +49,20 @@ void disabled() {}
 * This task will exit when the robot is enabled and autonomous or opcontrol
 * starts.
 */
-void competition_initialize() {}
+
+int side = -1;
+void competition_initialize() {
+    
+    //if(selector::auton == 1){side = 1;}
+    if (selector::auton == 1){side = 4;}
+if (selector::auton == 2){side = 2;}
+if (selector::auton == 3) {/*Do Nothing*/}
+if (selector::auton == -1) {side = 3;}
+if (selector::auton == -2) {side = 1;}
+if (selector::auton == -3) {/*Do Nothing*/}
+if (selector::auton == 0) {/*Skills*/}
+
+}
 
 
 /**
@@ -64,8 +77,8 @@ void competition_initialize() {}
 * from where it left off.
 */
 void autonomous() {
-    updateAuton(4);
-    //if(selector::auton == 2){updateAuton(2);}
+    updateAuton(side);
+    
    
 }
 
