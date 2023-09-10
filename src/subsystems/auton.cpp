@@ -87,7 +87,8 @@ void skills(int side){
 void updateAuton(int side){
     if (side == 1){
       //remove intake stuff if it doesn't work (not a priority)
-      //awp focused route red pole
+      //awp red pole, blue goal
+      //awp blue pole, red goal
 
       blocker.set_value(true);
       drivetrain(-2.7, 1000, 1);
@@ -147,10 +148,9 @@ void updateAuton(int side){
 
     }
     if (side == 2){
-      //awp for blue pole 
- //remove intake stuff if it doesn't work (not a priority)
-      //awp focused route red pole
-      //blocker.set_value(true);
+      //awp blue pole, blue goal
+      //awp red pole, red goal
+      blocker.set_value(true);
       drivetrain(-2.7, 1000, 1);
 
       pros::delay(500);
@@ -209,8 +209,8 @@ void updateAuton(int side){
     }
 
     if(side == 3){
-      //triball focused route (blue pole)
-      
+      //triball focused route, blue pole, red goal
+      //triball focused route, red pole, blue goal
       cataMotor.moveVelocity(-14000);
       pros::delay(300);
       
@@ -313,7 +313,8 @@ void updateAuton(int side){
     } 
 
     if(side == 4){
-      //triball focused route (red pole)
+      //triball focused route, red pole, red goal
+      //triball focused route, blue pole, blue goal
       
       
       cataMotor.moveVelocity(-14000);
