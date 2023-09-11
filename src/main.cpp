@@ -81,7 +81,7 @@ void autonomous() {
 
    // updateSkills(1);
 
-    updateAuton(1);
+    updateAuton(4);
 
     /*
     if (side == 0){
