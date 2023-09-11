@@ -102,7 +102,7 @@ void updateAuton(int side){
       left.moveVelocity(0);
       
       drivetrain(-1.2, 1000, 1);
-
+/*
       turnCounter(35, 1000);
 
       pros::delay(100);
@@ -145,7 +145,7 @@ void updateAuton(int side){
       drivetrain(3, 2000, 0.5);
 
       intakeMotor1.moveVelocity(-12000);
-
+*/
     }
     if (side == 2){
       //awp blue pole, blue goal
@@ -162,7 +162,7 @@ void updateAuton(int side){
       right.moveVelocity(0);
       
       drivetrain(-1.2, 1000, 1);
-
+/*
       turnCounter(35, 1000);
 
       pros::delay(100);
@@ -205,7 +205,7 @@ void updateAuton(int side){
       drivetrain(3, 2000, 0.5);
 
       intakeMotor1.moveVelocity(-12000);
-
+*/
     }
 
     if(side == 3){
