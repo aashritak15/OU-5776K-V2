@@ -71,9 +71,9 @@ void updateDrive() {
   }
 
 
-//  if (controller.getDigital(ControllerDigital::Y) == 1) {
-  //  drivetrain(3, 1000, 1);
-  //}
+ if (controller.getDigital(ControllerDigital::Y) == 1) {
+    updateSkills(1);
+  }
 
 /*if(controller.getDigital(ControllerDigital::Y) == 1){
   drive(24.0);

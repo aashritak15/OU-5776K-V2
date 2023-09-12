@@ -15,7 +15,7 @@ using namespace okapi;
 void updateSkills(int path){
     if (path == 1){
 
-    cataMotor.moveVelocity(-14000);
+   /* cataMotor.moveVelocity(-14000);
       pros::delay(300);
       
       intakeMotor1.moveVelocity(12000);
@@ -43,7 +43,7 @@ void updateSkills(int path){
       intakeMotor1.moveVelocity(0);
       
       pros::delay(500);
-      */
+      
       drivetrain(-1, 3000, 0.9);
       pros::delay(100);
 
@@ -102,7 +102,7 @@ void updateSkills(int path){
     
       intakeMotor1.moveVelocity(0);
 
-//main testing 
+      //main testing 
 
       pros::delay(100);
 
@@ -116,7 +116,8 @@ void updateSkills(int path){
 
       turnCounter(90, 3000);
 
-      drivetrain(-2.5, 3000, 1);
+      drivetrain(-2.5, 3000, 1); 
+      */
 
       cataMotor.moveVelocity(-14000);
 
@@ -151,6 +152,10 @@ void updateSkills(int path){
       flapjack1.set_value(true);
 
       drivetrain(5, 3000, 3);
+
+      
+      
+            
 
     }
 
