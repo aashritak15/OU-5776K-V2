@@ -12,13 +12,34 @@
 using namespace okapi;
 
 
+void intakeSkills(IntakeState currentIntakeState){
+    switch (currentIntakeState) {
+
+    case IntakeState::STOPPED:
+      //gradualStop();
+      break;
+      intakeMotor1.moveVoltage(0);
+    case IntakeState::INTAKING:
+      intakeMotor1.moveVoltage(14000);
+      //intakeMotor2.moveVoltage(12000);
+      break;
+    case IntakeState::OUTTAKING:
+      intakeMotor1.moveVoltage(-14000);
+      //intakeMotor2.moveVoltage(-12000);
+      break;
+  //case IntakeState::HALF:
+
+  }
+}
+
+
 void updateSkills(int path){
     if (path == 1){
 
-   /* cataMotor.moveVelocity(-14000);
+    cataMotor.moveVelocity(-14000);
       pros::delay(300);
       
-      intakeMotor1.moveVelocity(12000);
+      intakeSkills(IntakeState::INTAKING);
       pros::delay(500);
 
       cataMotor.moveVelocity(0);
@@ -35,11 +56,9 @@ void updateSkills(int path){
       pros::delay(200);
 
 
-      intakeMotor1.moveVelocity(-13000);
+      intakeSkills(IntakeState::OUTTAKING);
       pros::delay(300);
 
-      intakeMotor1.moveVelocity(0);
-/*
       intakeMotor1.moveVelocity(0);
       
       pros::delay(500);
@@ -53,7 +72,7 @@ void updateSkills(int path){
       drivetrain(0.47, 3000, 1);
       pros::delay(300);
 
-      intakeMotor1.moveVelocity(12000);
+      intakeSkills(IntakeState::INTAKING);
       pros::delay(500);
 
       intakeMotor1.moveVelocity(0);
@@ -65,7 +84,7 @@ void updateSkills(int path){
       drivetrain(0.47, 3000, 1.5);
       pros::delay(300);
 
-      intakeMotor1.moveVelocity(-12000);
+      intakeSkills(IntakeState::OUTTAKING);
 
       pros::delay(300);
 
@@ -83,7 +102,7 @@ void updateSkills(int path){
       drivetrain(0.5, 3000, 1);
       pros::delay(300);
 
-      intakeMotor1.moveVelocity(12000);
+      intakeSkills(IntakeState::INTAKING);
       pros::delay(500);
 
       intakeMotor1.moveVelocity(0);
@@ -95,7 +114,7 @@ void updateSkills(int path){
 
       pros::delay(100);
 
-      intakeMotor1.moveVelocity(-12000);
+      intakeSkills(IntakeState::OUTTAKING);
       pros::delay(150);
 
       drivetrain(1, 3000, 3);
@@ -117,13 +136,14 @@ void updateSkills(int path){
       turnCounter(90, 3000);
 
       drivetrain(-2.5, 3000, 1); 
-      */
 
       cataMotor.moveVelocity(-14000);
 
       pros::delay(30000);
 
       cataMotor.moveVelocity(0);
+
+      /*
 
       pros::delay(100);
 
@@ -152,7 +172,7 @@ void updateSkills(int path){
       flapjack1.set_value(true);
 
       drivetrain(5, 3000, 3);
-
+*/
       
       
             
