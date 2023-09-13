@@ -57,6 +57,7 @@ void updateSkills(int path){
 
 
       intakeSkills(IntakeState::OUTTAKING);
+
       pros::delay(300);
 
       intakeMotor1.moveVelocity(0);
@@ -131,11 +132,23 @@ void updateSkills(int path){
 
       turnCounter(90, 3000);
 
-      drivetrain(2, 3000, 1);
+      pros::delay(100);
+
+      drivetrain(2.3, 3000, 1);
+
+      pros::delay(100);
 
       turnCounter(90, 3000);
 
       drivetrain(-2.5, 3000, 1); 
+
+      pros::delay(100);
+
+      turnCounter(10, 1000);
+
+      pros::delay(100);
+
+      drivetrain(-0.5, 3000, 0.5);
 
       cataMotor.moveVelocity(-14000);
 
