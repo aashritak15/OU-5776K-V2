@@ -138,23 +138,35 @@ void updateSkills(int path){
 
       pros::delay(100);
 
-      turnCounter(90, 3000);
-
-      drivetrain(-2.5, 3000, 1); 
+      turnCounter(105, 3000);
 
       pros::delay(100);
 
-      turnCounter(10, 1000);
+      drivetrain(-2.6, 3000, 1); 
 
       pros::delay(100);
 
-      drivetrain(-0.5, 3000, 0.5);
+      turnCounter(15, 1000);
+
+      pros::delay(100);
+
+      //drivetrain(-0.5, 3000, 0.5);
+
+      lMech.set_value(true);
 
       cataMotor.moveVelocity(-14000);
 
       pros::delay(30000);
 
       cataMotor.moveVelocity(0);
+
+      pros::delay(20);
+
+      turnCounter(10, 1000);
+
+      pros::delay(40);
+
+      drivetrain(2.5, 3000, 1);
 
       /*
 
