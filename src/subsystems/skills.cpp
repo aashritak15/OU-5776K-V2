@@ -168,7 +168,7 @@ void updateSkills(int path){
 
       drivetrain(2.5, 3000, 1);
 
-      /*
+  
 
       pros::delay(100);
 
@@ -197,7 +197,6 @@ void updateSkills(int path){
       flapjack1.set_value(true);
 
       drivetrain(5, 3000, 3);
-*/
       
       
             
