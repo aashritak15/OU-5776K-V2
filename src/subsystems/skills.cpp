@@ -58,7 +58,7 @@ void updateSkills(int path){
 
       intakeSkills(IntakeState::OUTTAKING);
 
-      pros::delay(300);
+      pros::delay(100);
 
       intakeMotor1.moveVelocity(0);
       
@@ -97,10 +97,10 @@ void updateSkills(int path){
       pros::delay(100);
 
 
-      turnClock(130, 3000);
+      turnClock(133, 3000);
       pros::delay(100);
 
-      drivetrain(0.5, 3000, 1);
+      drivetrain(0.65, 3000, 1);
       pros::delay(300);
 
       intakeSkills(IntakeState::INTAKING);
@@ -132,15 +132,15 @@ void updateSkills(int path){
 
       turnCounter(90, 3000);
 
-      pros::delay(100);
+      pros::delay(200);
 
-      drivetrain(2.3, 3000, 1);
+      drivetrain(2.15, 3000, 1);
 
-      pros::delay(100);
+      pros::delay(400);
+      
+      turnCounter(105, 4000);
 
-      turnCounter(105, 3000);
-
-      pros::delay(100);
+      pros::delay(300); 
 
       drivetrain(-2.6, 3000, 1); 
 
@@ -150,27 +150,37 @@ void updateSkills(int path){
 
       pros::delay(100);
 
-      //drivetrain(-0.5, 3000, 0.5);
-
-      lMech.set_value(true);
+      drivetrain(-0.7, 3000, 0.5);
 
       cataMotor.moveVelocity(-14000);
 
-      pros::delay(30000);
+      pros::delay(5000);
 
       cataMotor.moveVelocity(0);
 
       pros::delay(20);
 
-      turnCounter(10, 1000);
+      drivetrain(7, 3000, 1.5);
 
-      pros::delay(40);
+      pros::delay(400);
 
-      drivetrain(2.5, 3000, 1);
+      drivetrain(-1, 3000, 1);
 
-  
+      pros::delay(400);
+
+      drivetrain(6, 3000, 5);
 
       pros::delay(100);
+
+      flapjack1.set_value(true);
+
+      pros::delay(100);
+
+      drivetrain(4, 3000, 2);
+
+      
+
+      /*
 
       //getting over barrier 
 
@@ -197,7 +207,7 @@ void updateSkills(int path){
       flapjack1.set_value(true);
 
       drivetrain(5, 3000, 3);
-      
+      */
       
             
 
