@@ -36,6 +36,8 @@ void intakeSkills(IntakeState currentIntakeState){
 void updateSkills(int path){
     if (path == 1){
 
+
+
     cataMotor.moveVelocity(-14000);
       pros::delay(300);
       
@@ -58,7 +60,7 @@ void updateSkills(int path){
 
       intakeSkills(IntakeState::OUTTAKING);
 
-      pros::delay(100);
+      pros::delay(400);
 
       intakeMotor1.moveVelocity(0);
       
@@ -97,7 +99,7 @@ void updateSkills(int path){
       pros::delay(100);
 
 
-      turnClock(133, 3000);
+      turnClock(141, 3000);
       pros::delay(100);
 
       drivetrain(0.65, 3000, 1);
@@ -109,7 +111,7 @@ void updateSkills(int path){
       intakeMotor1.moveVelocity(0);
       pros::delay(200);
 
-      turnCounter(130, 3000);
+      turnCounter(125, 3000);
 
       drivetrain(1.4, 3000, 1.5);
 
@@ -126,11 +128,15 @@ void updateSkills(int path){
 
       pros::delay(100);
 
+      //turnClock(5, 500);
+
+      pros::delay(100);
+
       drivetrain(-1, 1000, 1);
       
       pros::delay(100);
 
-      turnCounter(90, 3000);
+      turnCounter(95, 3000);
 
       pros::delay(200);
 
@@ -142,7 +148,7 @@ void updateSkills(int path){
 
       pros::delay(300); 
 
-      drivetrain(-2.6, 3000, 1); 
+      drivetrain(-2.8, 3000, 1); 
 
       pros::delay(100);
 
@@ -150,7 +156,7 @@ void updateSkills(int path){
 
       pros::delay(100);
 
-      drivetrain(-0.7, 3000, 0.5);
+      drivetrain(-1.2, 3000, 0.5);
 
       cataMotor.moveVelocity(-14000);
 
@@ -177,6 +183,52 @@ void updateSkills(int path){
       pros::delay(100);
 
       drivetrain(4, 3000, 2);
+
+
+      pros::delay(300);
+
+      drivetrain(-1.5, 1500,2);
+
+      pros::delay(100);
+      
+      drivetrain(2, 2000, 2);
+
+      pros::delay(100);
+
+      flapjack1.set_value(false);
+
+      pros::delay(300);
+
+      drivetrain(-4, 1000,1);
+
+      pros::delay(100);
+
+      turnCounter(90, 1000);
+
+      pros::delay(100);
+
+      drivetrain(-6, 4000,2);
+
+      pros::delay(100);
+
+      drivetrain(1.5, 1000, 1);
+
+      pros::delay(100);
+
+      turnCounter(5, 1000);
+
+      flapjack1.set_value(true);
+
+      pros::delay(100);
+
+      drivetrain(4, 4000, 2);
+
+      pros::delay(200);
+
+      flapjack1.set_value(false);
+
+
+
 
       
 
