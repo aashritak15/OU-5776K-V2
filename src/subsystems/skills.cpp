@@ -92,7 +92,11 @@ void updateSkills(int path){
       pros::delay(300);
 
       intakeMotor1.moveVelocity(0);
+
+      flapjack1.set_value(true);
       drivetrain(1, 3000, 5);
+
+      flapjack1.set_value(false);
 
 //third triball
       drivetrain(-1.7, 3000, 1.5);
@@ -174,13 +178,12 @@ void updateSkills(int path){
 
       pros::delay(400);
 
+      flapjack1.set_value(true);
+
       drivetrain(6, 3000, 5);
 
       pros::delay(100);
 
-      flapjack1.set_value(true);
-
-      pros::delay(100);
 
       drivetrain(4, 3000, 2);
 
