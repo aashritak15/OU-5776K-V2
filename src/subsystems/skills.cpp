@@ -42,18 +42,22 @@ void updateSkills(int path){
       pros::delay(300);
       
       intakeSkills(IntakeState::INTAKING);
-      pros::delay(500);
+      pros::delay(700);
 
       cataMotor.moveVelocity(0);
       pros::delay(500);
 
       intakeMotor1.moveVelocity(0);
     
-      drivetrain(4.8, 3000, 1.25);
+      drivetrain(4.95, 3000, 1.25);
 
       pros::delay(500);
     //pros::delay(100);
+
+
       turnCounter(90, 2000);
+
+       imuInnit();
 
       pros::delay(200);
 
@@ -70,18 +74,24 @@ void updateSkills(int path){
       pros::delay(100);
 
       turnClock(90, 3000);
+
+       imuInnit();
+
       pros::delay(100);
 
       drivetrain(0.47, 3000, 1);
       pros::delay(300);
 
       intakeSkills(IntakeState::INTAKING);
-      pros::delay(500);
+      pros::delay(700);
 
       intakeMotor1.moveVelocity(0);
       pros::delay(300);
 
       turnCounter(90, 3000);
+
+       imuInnit();
+
       pros::delay(100);
 
       drivetrain(0.47, 3000, 1.5);
@@ -99,23 +109,26 @@ void updateSkills(int path){
       flapjack1.set_value(false);
 
 //third triball
-      drivetrain(-1.7, 3000, 1.5);
+      drivetrain(-1.5, 3000, 1.5);
       pros::delay(100);
 
 
-      turnClock(141, 3000);
+      turnClock(138, 3000);
+
+       imuInnit();
       pros::delay(100);
 
-      drivetrain(0.65, 3000, 1);
+      drivetrain(0.6, 3000, 1);
       pros::delay(300);
 
       intakeSkills(IntakeState::INTAKING);
-      pros::delay(500);
+      pros::delay(700);
 
       intakeMotor1.moveVelocity(0);
       pros::delay(200);
 
       turnCounter(125, 3000);
+       imuInnit();
 
       drivetrain(1.4, 3000, 1.5);
 
@@ -128,11 +141,11 @@ void updateSkills(int path){
     
       intakeMotor1.moveVelocity(0);
 
+  
+
+      /*
+
       //main testing 
-
-      pros::delay(100);
-
-      //turnClock(5, 500);
 
       pros::delay(100);
 
@@ -140,23 +153,30 @@ void updateSkills(int path){
       
       pros::delay(100);
 
-      turnCounter(95, 3000);
+      turnCounter(90, 3000);
+       imuInnit();
 
       pros::delay(200);
 
-      drivetrain(2.15, 3000, 1);
+      drivetrain(2.45, 3000, 1);
+
+      pros::delay(400);
+
+      
+      imuInnit();
 
       pros::delay(400);
       
       turnCounter(105, 4000);
+       imuInnit();
 
       pros::delay(300); 
 
       drivetrain(-2.8, 3000, 1); 
 
-      pros::delay(100);
+      //ros::delay(100);
 
-      turnCounter(15, 1000);
+      //turnCounter(15, 1000);
 
       pros::delay(100);
 
@@ -170,7 +190,10 @@ void updateSkills(int path){
 
       pros::delay(20);
 
-      drivetrain(7, 3000, 1.5);
+      turnCounter(10, 2000);
+       imuInnit();
+
+      drivetrain(6, 3000, 1.5);
 
       pros::delay(400);
 
@@ -190,7 +213,10 @@ void updateSkills(int path){
 
       pros::delay(300);
 
-      drivetrain(-1.5, 1500,2);
+
+      /*
+
+      drivetrain(-1.5, 1500, 2);
 
       pros::delay(100);
       
@@ -229,7 +255,7 @@ void updateSkills(int path){
       pros::delay(200);
 
       flapjack1.set_value(false);
-
+*/
 
 
 
@@ -269,3 +295,4 @@ void updateSkills(int path){
     }
 
 }
+
