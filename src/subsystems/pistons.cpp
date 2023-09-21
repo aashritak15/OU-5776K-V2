@@ -5,6 +5,7 @@
 #include "subsystems/drive.hpp"
 #include "subsystems/pistons.hpp"
 #include "globals.hpp"
+#include "cata.cpp"
 
 
 using namespace okapi;
@@ -81,6 +82,27 @@ void updatelMech(){
             lMechState--;
             pros::delay(400);
         }
+    }
+}
+
+
+void DarshyMech(){
+    int state = 0;
+
+    if (controller.getDigital(ControllerDigital::Y) == 1){
+        if(state == 0){
+            lMech.set_value(true);
+            cataMotor.moveVoltage(-12000);
+            state++;
+            pros::delay(400);
+        }
+        else{
+            lMech.set_value(false);
+            cataMotor.moveVoltage(0);
+            blocker.set_value(true);
+
+        }
+
     }
 }
 

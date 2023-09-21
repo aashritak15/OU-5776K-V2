@@ -211,103 +211,110 @@ void updateAuton(int side){
     if(side == 3){
       //triball focused route, blue pole, red goal
       //triball focused route, red pole, blue goal
-      cataMotor.moveVelocity(-14000);
+       cataMotor.moveVelocity(-14000);
       pros::delay(300);
       
-      intakeMotor1.moveVelocity(14000);
-      pros::delay(500);
+      intakeAuton(IntakeState::INTAKING);
+      pros::delay(700);
 
       cataMotor.moveVelocity(0);
       pros::delay(500);
 
       intakeMotor1.moveVelocity(0);
     
-      drivetrain(4.8, 3000, 1.25);
+      drivetrain(4.95, 3000, 1.25);
 
       pros::delay(500);
     //pros::delay(100);
+
+
       turnCounter(90, 2000);
+
+       imuInnit();
 
       pros::delay(200);
 
 
-      intakeMotor1.moveVelocity(-14000);
-      pros::delay(300);
+      intakeAuton(IntakeState::OUTTAKING);
 
-      intakeMotor1.moveVelocity(0);
-/*
+      pros::delay(400);
+
       intakeMotor1.moveVelocity(0);
       
       pros::delay(500);
-      */
+      
       drivetrain(-1, 3000, 0.9);
       pros::delay(100);
 
       turnClock(90, 3000);
+
+       imuInnit();
+
       pros::delay(100);
 
       drivetrain(0.47, 3000, 1);
       pros::delay(300);
 
-      intakeMotor1.moveVelocity(14000);
-      pros::delay(600);
+      intakeAuton(IntakeState::INTAKING);
+      pros::delay(700);
 
       intakeMotor1.moveVelocity(0);
       pros::delay(300);
 
       turnCounter(90, 3000);
+
+       imuInnit();
+
       pros::delay(100);
 
       drivetrain(0.47, 3000, 1.5);
       pros::delay(300);
 
-      intakeMotor1.moveVelocity(-14000);
+      intakeAuton(IntakeState::OUTTAKING);
 
       pros::delay(300);
 
       intakeMotor1.moveVelocity(0);
+
+      flapjack1.set_value(true);
       drivetrain(1, 3000, 5);
 
+      flapjack1.set_value(false);
+
 //third triball
-      drivetrain(-1.7, 3000, 1.5);
+      drivetrain(-1.5, 3000, 1.5);
       pros::delay(100);
 
 
-      turnClock(130, 3000);
+      turnClock(138, 3000);
+
+       imuInnit();
       pros::delay(100);
 
-      drivetrain(0.48, 3000, 1);
+      drivetrain(0.6, 3000, 1);
       pros::delay(300);
 
-      intakeMotor1.moveVelocity(14000);
-      pros::delay(600);
+      intakeAuton(IntakeState::INTAKING);
+      pros::delay(700);
 
       intakeMotor1.moveVelocity(0);
       pros::delay(200);
 
-      turnCounter(130, 3000);
+      turnCounter(125, 3000);
+       imuInnit();
 
       drivetrain(1.4, 3000, 1.5);
 
       pros::delay(100);
 
-      intakeMotor1.moveVelocity(-14000);
+      intakeAuton(IntakeState::OUTTAKING);
       pros::delay(150);
 
       drivetrain(1, 3000, 3);
     
       intakeMotor1.moveVelocity(0);
-      
-      //drivetrain(-1.75, 7000, 1);
-      //pros::delay(500);
-      
-      /*
-      turnClock(90, 3000);
-      pros::delay(500);
 
-      intakeAuton(IntakeState::INTAKING);
-      pros::delay(100);
-    */
+  
       
     } 
 
