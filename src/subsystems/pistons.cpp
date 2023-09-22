@@ -5,7 +5,7 @@
 #include "subsystems/drive.hpp"
 #include "subsystems/pistons.hpp"
 #include "globals.hpp"
-#include "cata.cpp"
+#include "subsystems/cata.hpp"
 
 
 using namespace okapi;

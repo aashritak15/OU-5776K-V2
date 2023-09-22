@@ -35,10 +35,8 @@ void intakeSkills(IntakeState currentIntakeState){
 
 void updateSkills(int path){
     if (path == 1){
-
-
-
-    cataMotor.moveVelocity(-14000);
+      
+      cataMotor.moveVelocity(-14000);
       pros::delay(300);
       
       intakeSkills(IntakeState::INTAKING);
@@ -57,8 +55,6 @@ void updateSkills(int path){
 
       turnCounter(90, 2000);
 
-       imuInnit();
-
       pros::delay(200);
 
 
@@ -75,22 +71,23 @@ void updateSkills(int path){
 
       turnClock(90, 3000);
 
-       imuInnit();
+      //imuInnit();
 
       pros::delay(100);
 
-      drivetrain(0.47, 3000, 1);
-      pros::delay(300);
-
       intakeSkills(IntakeState::INTAKING);
+      //pros::delay(750);
+
+      drivetrain(0.47, 3000, 1);
       pros::delay(700);
+
 
       intakeMotor1.moveVelocity(0);
       pros::delay(300);
 
       turnCounter(90, 3000);
 
-       imuInnit();
+      //imuInnit();
 
       pros::delay(100);
 
@@ -113,22 +110,24 @@ void updateSkills(int path){
       pros::delay(100);
 
 
-      turnClock(138, 3000);
+      turnClock(133, 3000);
 
-       imuInnit();
+      //imuInnit();
       pros::delay(100);
 
-      drivetrain(0.6, 3000, 1);
-      pros::delay(300);
-
       intakeSkills(IntakeState::INTAKING);
+      //pros::delay(750);
+
+      drivetrain(0.6, 3000, 1);
+
       pros::delay(700);
+
 
       intakeMotor1.moveVelocity(0);
       pros::delay(200);
 
-      turnCounter(125, 3000);
-       imuInnit();
+      turnCounter(133, 3000);
+      //imuInnit();
 
       drivetrain(1.4, 3000, 1.5);
 
@@ -137,13 +136,11 @@ void updateSkills(int path){
       intakeSkills(IntakeState::OUTTAKING);
       pros::delay(150);
 
-      drivetrain(1, 3000, 3);
+      drivetrain(1.5, 3000, 3);
     
       intakeMotor1.moveVelocity(0);
 
-  
 
-      /*
 
       //main testing 
 
@@ -154,7 +151,7 @@ void updateSkills(int path){
       pros::delay(100);
 
       turnCounter(90, 3000);
-       imuInnit();
+       //imuInnit();
 
       pros::delay(200);
 
@@ -163,14 +160,18 @@ void updateSkills(int path){
       pros::delay(400);
 
       
-      imuInnit();
+      //imuInnit();
 
       pros::delay(400);
       
-      turnCounter(105, 4000);
-       imuInnit();
+      turnCounter(100, 4000);
+      // imuInnit();
 
       pros::delay(300); 
+
+     // lMech.set_value(true);
+
+      //cataMotor.moveVelocity(-14000);
 
       drivetrain(-2.8, 3000, 1); 
 
@@ -182,28 +183,46 @@ void updateSkills(int path){
 
       drivetrain(-1.2, 3000, 0.5);
 
-      cataMotor.moveVelocity(-14000);
 
-      pros::delay(5000);
+      //pros::delay(24000);
 
-      cataMotor.moveVelocity(0);
+      //cataMotor.moveVelocity(0);
+
+      //lMech.set_value(false);
 
       pros::delay(20);
 
-      turnCounter(10, 2000);
-       imuInnit();
+      turnClock(10, 2000);
+       //imuInnit();
 
-      drivetrain(6, 3000, 1.5);
+      drivetrain(5, 3000, 1);
 
-      pros::delay(400);
+      pros::delay(100);
+
+      intakeSkills(IntakeState::INTAKING);
+
+      pros::delay(100);
+
+      drivetrain(0.5, 2000, 0.8);
+
+      intakeMotor1.moveVelocity(0);
+
+      pros::delay(100);
 
       drivetrain(-1, 3000, 1);
 
-      pros::delay(400);
+      pros::delay(300);
 
       flapjack1.set_value(true);
 
-      drivetrain(6, 3000, 5);
+      drivetrain(8, 3000, 12);
+
+      pros::delay(100);
+
+      drivetrain(-1, 1000, 0.9);
+
+      turnCounter(10, 1000);
+
 
       pros::delay(100);
 
@@ -211,7 +230,7 @@ void updateSkills(int path){
       drivetrain(4, 3000, 2);
 
 
-      pros::delay(300);
+      //pros::delay(300);
 
 
       /*

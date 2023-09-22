@@ -33,6 +33,7 @@ void updateBlocker();
 void lMechInit ();
 void balanceInit();
 void blockerInit();
+void DarshyMech();
 //void flipoutMech();
 
 //void flapjackCode();
