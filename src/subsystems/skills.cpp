@@ -35,6 +35,36 @@ void intakeSkills(IntakeState currentIntakeState){
 
 void updateSkills(int path){
     if (path == 1){
+//awp
+/*
+      blocker.set_value(true);
+      drivetrain(-2.5, 1000, 2);
+
+      pros::delay(500);
+
+      left.moveVelocity(-1000);
+
+      pros::delay(400);
+
+      left.moveVelocity(0);
+      
+      drivetrain(-1.2, 1000, 2);
+
+      turnCounter(45, 1000);
+
+      pros::delay(100);
+
+      drivetrain(1.65, 1000, 1);
+
+      pros::delay(100);
+      
+      turnCounter(90, 1000);
+
+      drivetrain(-1.5, 1000, 0.5);
+
+*/
+
+      
       
       cataMotor.moveVelocity(-14000);
       pros::delay(300);
@@ -47,7 +77,7 @@ void updateSkills(int path){
 
       intakeMotor1.moveVelocity(0);
     
-      drivetrain(4.95, 3000, 1.25);
+      drivetrain(5.3, 3000, 1.25);
 
       pros::delay(500);
     //pros::delay(100);
@@ -63,7 +93,66 @@ void updateSkills(int path){
       pros::delay(400);
 
       intakeMotor1.moveVelocity(0);
+
+      pros::delay(100);
       
+      flapjack1.set_value(true);
+
+      drivetrain(1, 1000, 2);
+
+      flapjack1.set_value(false);
+
+      pros::delay(100);
+
+      drivetrain(-1, 1000, 1);
+      
+      pros::delay(100);
+
+      turnCounter(90, 3000);
+       //imuInnit();
+
+      pros::delay(200);
+
+      drivetrain(2.45, 3000, 1);
+
+      pros::delay(400);
+
+      
+      //imuInnit();
+      
+      turnCounter(100, 4000);
+      // imuInnit();
+
+      pros::delay(300); 
+
+      lMech.set_value(true);
+
+      cataMotor.moveVelocity(-14000);
+
+      drivetrain(-3.1, 3000, 0.95); 
+/*
+      pros::delay(100);
+
+      turnCounter(15, 1000);
+
+      
+
+      pros::delay(24000);
+
+      cataMotor.moveVelocity(0);
+
+      lMech.set_value(false);
+
+
+
+
+
+
+
+
+
+
+      /*
       pros::delay(500);
       
       drivetrain(-1, 3000, 0.9);
@@ -280,37 +369,32 @@ void updateSkills(int path){
 
       
 
-      /*
+      
 
       //getting over barrier 
-
-      drivetrain(2, 2000, 1);
-
-      pros::delay(100);
-
-      turnCounter(15, 1500);
+/*
+      turnClock(5, 1000);
 
       pros::delay(100);
 
-      drivetrain(4, 3000, 2);
+      drivetrain(4.5, 3000, 2);
+
+      intakeSkills(IntakeState::INTAKING);
 
       pros::delay(100);
 
-      drivetrain(-0.5, 1000, 1);
+      drivetrain(-0.75, 1000, 1);
 
       pros::delay(100);
 
-      drivetrain(4, 4000, 5);
+      drivetrain(5, 4000, 5);
 
       pros::delay(100);
 
       flapjack1.set_value(true);
 
-      drivetrain(5, 3000, 3);
-      */
-      
-            
-
+      drivetrain(4.6, 3000, 3);
+*/
     }
 
 }
