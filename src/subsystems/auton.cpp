@@ -132,16 +132,15 @@ void updateAuton(int side){
 
       pros::delay(500);
 
-       drivetrain(0.85, 3000, 2);
-
-      pros::delay(200);
-
       intakeMotor1.moveVelocity(12000);
-      pros::delay(600);
+
+      drivetrain(0.85, 3000, 2);
+
+      pros::delay(700);
 
       
 
-      pros::delay(200);
+      //pros::delay(200);
 
       intakeMotor1.moveVelocity(0);
       pros::delay(200);
@@ -152,7 +151,7 @@ void updateAuton(int side){
 
       turnCounter(45, 1000);
 
-      drivetrain(4, 2000, 0.5);
+      drivetrain(3.5, 2000, 0.5);
 
       intakeMotor1.moveVelocity(-12000);
 
@@ -171,8 +170,8 @@ void updateAuton(int side){
 
       right.moveVelocity(0);
       
-      drivetrain(-1.2, 1000, 1);
-/*
+      drivetrain(-1.2, 1000, 2);
+
       turnCounter(35, 1000);
 
       pros::delay(100);
@@ -180,6 +179,8 @@ void updateAuton(int side){
       drivetrain(1.85, 1000, 1);
 
       pros::delay(100);
+
+      /*
       
       turnCounter(70, 1000);
 
@@ -215,7 +216,8 @@ void updateAuton(int side){
       drivetrain(3, 2000, 0.5);
 
       intakeMotor1.moveVelocity(-12000);
-*/
+      */
+
     }
 
     if(side == 3){

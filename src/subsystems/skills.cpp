@@ -129,7 +129,11 @@ void updateSkills(int path){
 
       cataMotor.moveVelocity(-14000);
 
-      drivetrain(-3.1, 3000, 0.95); 
+      drivetrain(-3.25, 3000, 0.95); 
+
+      pros::delay(34000);
+
+      cataMotor.moveVelocity(0);
 /*
       pros::delay(100);
 
