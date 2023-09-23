@@ -119,6 +119,8 @@ void opcontrol() {
             updatelMech();
             updateBalance();
             updateBlocker();
+            DarshyMech();
+
             
             //init();
             rate.delay(100_Hz); 

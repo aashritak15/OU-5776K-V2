@@ -85,9 +85,9 @@ void updatelMech(){
     }
 }
 
+int state = 0;
 
 void DarshyMech(){
-    int state = 0;
 
     if (controller.getDigital(ControllerDigital::Y) == 1){
         if(state == 0){
@@ -100,6 +100,8 @@ void DarshyMech(){
             lMech.set_value(false);
             cataMotor.moveVoltage(0);
             blocker.set_value(true);
+            state--;
+            pros::delay(400);
 
         }
 
