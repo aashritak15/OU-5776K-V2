@@ -172,7 +172,7 @@ void updateAuton(int side){
       
       drivetrain(-1.2, 1000, 2);
 
-      turnCounter(35, 1000);
+      turnClock(35, 1000);
 
       pros::delay(100);
 

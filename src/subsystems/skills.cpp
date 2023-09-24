@@ -131,9 +131,34 @@ void updateSkills(int path){
 
       drivetrain(-3.25, 3000, 0.95); 
 
-      pros::delay(34000);
+      pros::delay(32000);
 
       cataMotor.moveVelocity(0);
+
+      lMech.set_value(false);
+
+      turnClock(5, 1000);
+
+      pros::delay(100);
+
+      drivetrain(4.5, 3000, 2);
+
+      pros::delay(100);
+
+      drivetrain(-0.75, 1000, 1);
+
+      pros::delay(100);
+
+      flapjack1.set_value(true);
+
+      pros::delay(100);
+
+      drivetrain(10, 4000, 5);
+
+
+
+
+
 /*
       pros::delay(100);
 
