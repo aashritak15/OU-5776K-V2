@@ -155,7 +155,51 @@ void updateSkills(int path){
 
       drivetrain(10, 4000, 5);
 
+//possible additions to skills
+      drivetrain(-3, 3000, 2);
 
+      pros::delay(100);
+
+      turnClock(10, 1000);
+
+      pros::delay(100);
+
+      drivetrain(4, 3000, 3);
+
+      pros::delay(100);
+
+      drivetrain(-3, 3000, 3);
+
+      pros::delay(100);
+
+      turnCounter(20, 1000);
+
+      pros::delay(100);
+
+      drivetrain(3, 3000, 3);
+
+      pros::delay(100);
+
+     // flapjack1.set_value(false);
+
+      turnCounter(70, 3000);
+
+      pros::delay(100);
+
+      drivetrain(1, 2000, 1);
+
+      pros::delay(100);
+
+      left.moveVelocity(1000);
+
+      pros::delay(400);
+
+      left.moveVelocity(0);
+
+
+
+
+      
 
 
 
