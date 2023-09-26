@@ -197,6 +197,8 @@ void updateSkills(int path){
 
       flapjack1.set_value(true);
 
+      drivetrain(3, 2000, 2);
+
 
       
 
