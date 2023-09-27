@@ -129,6 +129,7 @@ void updateSkills(int path){
     }
 
  else if (path == 2){
+  /*
       blocker.set_value(true);
       drivetrain(-2.7, 1000, 1);
 
@@ -141,7 +142,7 @@ void updateSkills(int path){
 
       left.moveVelocity(0);
 
-      drivetrain(-1.8, 1000, 2);
+      drivetrain(-1.8, 1000, 3);
 
       left.moveVelocity(2000);
 
@@ -157,7 +158,7 @@ void updateSkills(int path){
 
       cataMotor.moveVelocity(-14000);
 
-      pros::delay(10000);
+      pros::delay(1000);
 
       cataMotor.moveVelocity(0);
 
@@ -165,39 +166,110 @@ void updateSkills(int path){
 
       pros::delay(100);
 
-      drivetrain(1.2, 1000, 1);
+      drivetrain(3.2, 6000, 0.9);
 
       pros::delay(100);
-      
+
       intakeSkills(IntakeState::INTAKING);
 
-      pros::delay(100);
-
-      drivetrain(3.2, 2000, 0.75);
+      drivetrain(1.2, 3000, 1);
 
       pros::delay(100);
 
-      turnClock(18, 1000);
-
-      drivetrain(0.8, 2000, 0.6);
-
-      intakeMotor1.moveVelocity(0);
-
-      drivetrain(0.5, 2000, 1.5);
+     // turnClock(18, 1000);
       
-      pros::delay(100);
-
       drivetrain(-1, 2000, 1);
 
        pros::delay(100);
+
+
+      drivetrain(7 , 2000, 5);
+
+       intakeMotor1.moveVelocity(0);
+       
+      pros::delay(200);
+
+      turnCounter(25, 3000);
+
+      flapjack1.set_value(true);
+
+      drivetrain(3, 2000, 2);
+
+      flapjack1.set_value(false);
+
+      pros::delay(100);
+
+      drivetrain(-4, 2000, 2);
+
+      flapjack1.set_value(true);
+      
+      pros::delay(100);
+
+      drivetrain(2, 3000, 2);
+
+      flapjack1.set_value(false);
+*/
+      blocker.set_value(true);
+
+      drivetrain(-2.7, 1000, 1);
+
+      pros::delay(500);
+      left.moveVelocity(-1000);
+      
+      pros::delay(300);
+      
+      left.moveVelocity(0);
+      drivetrain(-1.8, 1000, 2);
+      left.moveVelocity(2000);
+      pros::delay(660);
+      
+      blocker.set_value(false);
+      drivetrain(-1, 1000, 1);
+      pros::delay(100);
+      lMech.set_value(true);
+      cataMotor.moveVelocity(-14000);
+      pros::delay(10000);
+      cataMotor.moveVelocity(0);
+      lMech.set_value(false);
+      pros::delay(100);
+      drivetrain(1.2, 1000, 1);
+      pros::delay(100);
+      
+      intakeSkills(IntakeState::INTAKING);
+      pros::delay(100);
+      drivetrain(3.2, 2000, 0.75);
+      pros::delay(100);
+      turnClock(18, 1000);
+      drivetrain(0.8, 2000, 0.6);
+      intakeMotor1.moveVelocity(0);
+      drivetrain(0.5, 2000, 1.5);
+      
+      pros::delay(100);
+      drivetrain(-1, 2000, 1);
+       pros::delay(100);
       
       drivetrain(7, 2000, 5);
-
       turnCounter(20, 3000);
 
       flapjack1.set_value(true);
 
       drivetrain(3, 2000, 2);
+
+
+
+    
+    
+      
+
+
+      
+
+      
+
+
+      
+      
+      
 
 
       
