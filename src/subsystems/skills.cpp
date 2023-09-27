@@ -220,40 +220,72 @@ void updateSkills(int path){
       
       left.moveVelocity(0);
       drivetrain(-1.8, 1000, 2);
+
       left.moveVelocity(2000);
       pros::delay(660);
       
       blocker.set_value(false);
       drivetrain(-1, 1000, 1);
+
       pros::delay(100);
       lMech.set_value(true);
+
       cataMotor.moveVelocity(-14000);
-      pros::delay(10000);
+      pros::delay(2000);
+
       cataMotor.moveVelocity(0);
       lMech.set_value(false);
+
       pros::delay(100);
       drivetrain(1.2, 1000, 1);
+
       pros::delay(100);
       
       intakeSkills(IntakeState::INTAKING);
       pros::delay(100);
+
       drivetrain(3.2, 2000, 0.75);
       pros::delay(100);
+
       turnClock(18, 1000);
       drivetrain(0.8, 2000, 0.6);
+
+      pros::delay(200);
+
       intakeMotor1.moveVelocity(0);
       drivetrain(0.5, 2000, 1.5);
       
       pros::delay(100);
       drivetrain(-1, 2000, 1);
+      flapjack1.set_value(true);
        pros::delay(100);
       
-      drivetrain(7, 2000, 5);
-      turnCounter(20, 3000);
+      drivetrain(6, 2000, 5);
+      turnCounter(25, 3000);
+
+      pros::delay(100);
+
+      //flapjack1.set_value(true);
+
+      drivetrain(2.5, 2000, 2);
+
+      flapjack1.set_value(false);
+
+      drivetrain(-1.5, 1000, 2);
+
+      pros::delay(100);
+
+      turnCounter(95, 3000);
+
+      drivetrain(1.5, 1000, 1);
+
+      turnClock(125, 2000);
 
       flapjack1.set_value(true);
 
-      drivetrain(3, 2000, 2);
+      drivetrain(2, 1000, 2);
+
+      
 
 
 
