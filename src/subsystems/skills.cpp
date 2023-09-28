@@ -248,7 +248,7 @@ void updateSkills(int path){
       turnCounter(7.5, 4000);
 
       intakeSkills(IntakeState::INTAKING);
-      pros::delay(100);
+      pros::delay(200);
 
       drivetrain(1, 2000, 0.75);
 
@@ -262,13 +262,13 @@ void updateSkills(int path){
       
       pros::delay(500);
 
-      drivetrain(-1.5, 2000, 1);
+      drivetrain(-2, 3000, 1);
 
       flapjack1.set_value(true);
 
        pros::delay(100);
       
-      drivetrain(7, 5000, 6);
+      drivetrain(8.5, 5000, 7);
 
        imuInnit();
 
@@ -304,6 +304,16 @@ void updateSkills(int path){
 
       drivetrain(1.5, 1000, 1);
       pros::delay(100);
+
+      turnClock(90, 3000);
+
+      pros::delay(100);
+
+      flapjack1.set_value(true);
+
+      drivetrain(2, 2000, 2);
+
+  
 
 
       
