@@ -28,13 +28,19 @@ void resetEncoders(){
 
 void checkBalance(){
 
-  while(abs((imuA.get() + imuB.get()) / 2) > 0.1){
-    left.moveVoltage(12000);
-    right.moveVoltage(12000);
+
+  while(true){
+
+    left.moveVoltage(10000);
+    right.moveVoltage(10000);
+
+    if(((imuA.get() + imuB.get()) / 2) > 0.1){
+      break;
+    }
+
   }
 
-  right.moveVoltage(0);
-  left.moveVoltage(0);
+  drive->stop(); 
 
   pros::delay(10);
 
