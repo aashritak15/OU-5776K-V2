@@ -270,24 +270,16 @@ void updateSkills(int path){
       
       drivetrain(8.5, 5000, 7);
 
+      checkBalance();
+
        imuInnit();
 
+       pros::delay(500);
+
+      drivetrain(-3.3, 4000, 1.5);
 
 
-      /*
-
-
-      turnCounter(25, 3000);
-
-      pros::delay(100);
-
-      */
-
-      //flapjack1.set_value(true);
-
-       pros::delay(100);
-
-      drivetrain(-1.5, 4000, 1.5);
+      
 
       flapjack1.set_value(false);
 
@@ -312,24 +304,6 @@ void updateSkills(int path){
       flapjack1.set_value(true);
 
       drivetrain(2, 2000, 2);
-
-  
-
-
-      
-
-
-
-    
-    
-      
-
-
-      
-
-      
-
-
       
       
       

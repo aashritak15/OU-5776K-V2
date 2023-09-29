@@ -16,12 +16,29 @@ IntegratedEncoder rightEncoder(rightTopPort, false);
 IMU imu1(imuPort1, IMUAxes::z);
 IMU imu2(imuPort2, IMUAxes::z);
 
+IMU imuA(imuPort1, IMUAxes::y);
+IMU imuB(imuPort2, IMUAxes::y);
+
 
 void resetEncoders(){
   leftEncoder.reset();
   rightEncoder.reset();
 }
 
+
+void checkBalance(){
+
+  while(abs((imuA.get() + imuB.get()) / 2) > 0.1){
+    left.moveVoltage(12000);
+    right.moveVoltage(12000);
+  }
+
+  right.moveVoltage(0);
+  left.moveVoltage(0);
+
+  pros::delay(10);
+
+}
 
 void resetImu(bool print = true) {
   imu1.reset();
