@@ -210,20 +210,19 @@ void updateSkills(int path){
       flapjack1.set_value(false);
 */
 
-/*
       blocker.set_value(true);
 
       drivetrain(-2.7, 1000, 1);
 
       pros::delay(500);
-      left.moveVelocity(-1000);
+      right.moveVelocity(-1000);
       
       pros::delay(300);
       
-      left.moveVelocity(0);
+      right.moveVelocity(0);
       drivetrain(-1.8, 1000, 2);
 
-      left.moveVelocity(2000);
+      right.moveVelocity(2000);
       pros::delay(660);
       
      
@@ -233,22 +232,11 @@ void updateSkills(int path){
       lMech.set_value(true);
 
       cataMotor.moveVelocity(-14000);
-      pros::delay(2000);
+      pros::delay(30000);
 
       cataMotor.moveVelocity(0);
       lMech.set_value(false);
-*/
 
-
-
-
-/*
-      right.moveVelocity(1000);
-      pros::delay(100);
-
-      right.moveVelocity(0);
-      pros::delay(100);
-  */
 
       drivetrain(4.2, 4000, 2);
       pros::delay(100);
@@ -306,7 +294,18 @@ void updateSkills(int path){
 
       pros::delay(500);
 
-       
+      drivetrain(-1.5, 4000, 1);
+
+      pros::delay(100);
+
+      drivetrain(4, 4000, 2.5);
+
+      
+
+
+
+
+
 /*
       drivetrain(-3.3, 4000, 1.5);
 

@@ -31,8 +31,8 @@ void checkBalance(){
 
   while(true){
 
-    left.moveVoltage(10000);
-    right.moveVoltage(10000);
+    left.moveVoltage(12000);
+    right.moveVoltage(12000);
 
     if(((imuA.get() + imuB.get()) / 2) > 0.1){
       break;
