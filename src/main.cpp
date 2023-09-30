@@ -52,15 +52,16 @@ void disabled() {}
 */
 
 int side = -1;
+//int num = -1;
 void competition_initialize() {
     
-    //if(selector::auton == 1){side = 1;}
-    if (selector::auton == 1){side = 4;}
-if (selector::auton == 2){side = 2;}
-if (selector::auton == 3) {/*Do Nothing*/}
-if (selector::auton == -1) {side = 3;}
+
+if (selector::auton == 1){side = 2;}
+if (selector::auton == 2){side = 1;}
+if (selector::auton == 3) {side = 4;}
+if (selector::auton == -1) {side = 2;}
 if (selector::auton == -2) {side = 1;}
-if (selector::auton == -3) {/*Do Nothing*/}
+if (selector::auton == -3) {side = 4;}
 if (selector::auton == 0) {side = 0;}
 
 }
@@ -80,17 +81,18 @@ if (selector::auton == 0) {side = 0;}
 void autonomous() {
 
    updateSkills(2);
+   
+   /* 
+   if (side == 0) {
+   updateSkills(2);
+   } else {
+    //updateAuton(side);
+   }
 
-  //updateAuton(4);
+   */
 
-    /*
-    if (side == 0){
-        updateSkills(1);
-    } else {
-    updateAuton(side);
-    } 
 
-    */
+    
    
 }
 
@@ -122,7 +124,7 @@ void opcontrol() {
             DarshyMech();
 
             
-            //init();
+           
             rate.delay(100_Hz); 
 }
 }

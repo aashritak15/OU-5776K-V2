@@ -5,7 +5,7 @@
 //selector configuration
 #define HUE 360
 #define DEFAULT 1
-#define AUTONS "Auton", "AWP", "Do Nothing"
+#define AUTONS "Close", "Far", "TRIBALL"
 // front = auton, back = AWP
 
 namespace selector{
