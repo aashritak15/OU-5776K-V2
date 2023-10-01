@@ -27,8 +27,8 @@ Motor leftTop(leftTopPort, false, AbstractMotor::gearset::blue,
            AbstractMotor::encoderUnits::degrees); 
           
 
-okapi::MotorGroup right({leftFront, leftTop, leftBack});
-okapi::MotorGroup left({rightFront, rightTop, rightBack});
+okapi::MotorGroup left({leftFront, leftTop, leftBack});
+okapi::MotorGroup right({rightFront, rightTop, rightBack});
 
 std::shared_ptr<OdomChassisController> drive =
     ChassisControllerBuilder()

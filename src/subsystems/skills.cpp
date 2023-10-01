@@ -123,7 +123,12 @@ void updateSkills(int path){
 
       pros::delay(100);
 
-      drivetrain(10, 4000, 5);
+      drivetrain(11, 8000, 6);
+
+      pros::delay(100);
+
+      drivetrain(-1, 3000, 2);
+      
 
 
     }
@@ -215,18 +220,17 @@ void updateSkills(int path){
       drivetrain(-2.7, 1000, 1);
 
       pros::delay(500);
-      right.moveVelocity(-1000);
+      left.moveVelocity(-1000);
       
       pros::delay(300);
       
-      right.moveVelocity(0);
-      drivetrain(-1.8, 1000, 2);
+      left.moveVelocity(0);
+      pros::delay(100);
 
-      right.moveVelocity(2000);
+      drivetrain(-1.8, 4000, 3);
+
+      left.moveVelocity(2000);
       pros::delay(660);
-
-        right.moveVelocity(0);
-      
      
       drivetrain(-1, 1000, 1);
 
@@ -236,7 +240,7 @@ void updateSkills(int path){
       lMech.set_value(true);
 
       cataMotor.moveVelocity(-14000);
-      pros::delay(2000);
+      pros::delay(33000);
 
       cataMotor.moveVelocity(0);
       lMech.set_value(false);
@@ -250,11 +254,11 @@ void updateSkills(int path){
 
       intakeSkills(IntakeState::OUTTAKING);
 
-      right.moveVoltage(12000);
+      left.moveVoltage(12000);
 
       pros::delay(300);
 
-      right.moveVoltage(0);
+      left.moveVoltage(0);
       
       pros::delay(100);
 
@@ -272,11 +276,11 @@ void updateSkills(int path){
 
       drivetrain(-0.4, 2000, 1); 
 
-      left.moveVoltage(12000);
+      right.moveVoltage(12000);
 
       pros::delay(470);
 
-      left.moveVoltage(0);
+      right.moveVoltage(0);
 
       pros::delay(100);
 

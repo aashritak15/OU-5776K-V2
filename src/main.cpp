@@ -80,7 +80,8 @@ if (selector::auton == 0) {side = 0;}
 */
 void autonomous() {
 
-   updateSkills(2);
+    //updateSkills(2);
+   updateAuton(1);
    
    /* 
    if (side == 0) {

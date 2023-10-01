@@ -97,11 +97,11 @@ void updateAuton(int side){
 
       left.moveVelocity(-1000);
 
-      pros::delay(400);
+      pros::delay(350);
 
       left.moveVelocity(0); 
       
-      drivetrain(-1.2, 1000, 2);
+      drivetrain(-1.3, 3000, 2);
 
       pros::delay(100);
 
@@ -117,7 +117,7 @@ void updateAuton(int side){
 
       //drivetrain(1.5, 1000, 0.5);
 
-      drivetrain(1.1, 1000, 0.8);
+    drivetrain(0.9, 2000, 0.75);
 
       lMech.set_value(true);
 
@@ -134,7 +134,7 @@ void updateAuton(int side){
 
       intakeMotor1.moveVelocity(12000);
 
-      drivetrain(0.85, 3000, 2);
+      drivetrain(0.7, 3000, 0.9);
 
       pros::delay(700);
 
@@ -160,63 +160,67 @@ void updateAuton(int side){
       //awp blue pole, blue goal
       //awp red pole, red goal
       blocker.set_value(true);
-      drivetrain(-2.7, 1000, 1);
+      drivetrain(-2.5, 1000, 2);
 
       pros::delay(500);
 
       right.moveVelocity(-1000);
 
-      pros::delay(300);
+      pros::delay(400);
 
       right.moveVelocity(0);
       
       drivetrain(-1.2, 1000, 2);
 
-      turnClock(35, 1000);
+      pros::delay(100);
+
+      turnClock(45, 1000);
 
       pros::delay(100);
 
-      drivetrain(1.85, 1000, 1);
+      drivetrain(1.65, 1000, 1);
 
       pros::delay(100);
 
-      /*
       
-      turnCounter(70, 1000);
+      turnCounter(83, 1000);
 
       pros::delay(500);
 
-      drivetrain(0.35, 1000, 1);
+      drivetrain(0.9, 3000, 0.75);
 
       lMech.set_value(true);
 
       pros::delay(500);
 
-      drivetrain(-0.85, 3000, 2);
-
+      drivetrain(-0.95, 3000, 2);
 
       pros::delay(500);
 
-      intakeMotor1.moveVelocity(12000);
-      pros::delay(600);
-
       lMech.set_value(false);
 
-      pros::delay(200);
+       pros::delay(600);
+
+      intakeMotor1.moveVelocity(12000);
+
+      drivetrain(0.7, 3000, 0.9);
+
+
+      pros::delay(700);
 
       intakeMotor1.moveVelocity(0);
       pros::delay(200);
     
       turnClock(90, 1000);
 
-      drivetrain(1.6, 1000, 1);
+      drivetrain(1.7, 1000, 1);
 
-      turnCounter(45, 1000);
+      turnClock(45, 1000);
 
-      drivetrain(3, 2000, 0.5);
+      drivetrain(3.5, 2000, 0.5);
 
       intakeMotor1.moveVelocity(-12000);
-      */
+      
 
     }
 
