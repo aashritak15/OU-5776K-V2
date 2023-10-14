@@ -20,3 +20,5 @@ CataState getCataState();
   static CataState currentCataState = CataState::STOPPED;
 
 void updateCata();
+
+void updateCata;
