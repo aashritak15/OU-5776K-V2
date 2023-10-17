@@ -10,11 +10,13 @@ using namespace okapi;
 Motor rightFront(rightFrontPort, true, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
 
-Motor rightTop(rightTopPort, true, AbstractMotor::gearset::blue,
+Motor rightTop(rightTopPort, false, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
 
 Motor rightBack(rightBackPort, true, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
+
+          
 
 Motor leftFront(leftFrontPort, false, AbstractMotor::gearset::blue,
            AbstractMotor::encoderUnits::degrees);
@@ -23,7 +25,7 @@ Motor leftBack(leftBackPort, false, AbstractMotor::gearset::blue,
            AbstractMotor::encoderUnits::degrees);
 
 
-Motor leftTop(leftTopPort, false, AbstractMotor::gearset::blue,
+Motor leftTop(leftTopPort, true, AbstractMotor::gearset::blue,
            AbstractMotor::encoderUnits::degrees); 
           
 
