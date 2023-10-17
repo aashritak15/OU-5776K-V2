@@ -6,13 +6,13 @@ using namespace okapi;
 
 
 const std::uint8_t leftFrontPort = 12;
-const std::uint8_t rightFrontPort = 9; 
+const std::uint8_t rightFrontPort = 11; 
 
-const std::uint8_t rightBackPort = 11;
-const std::uint8_t leftBackPort = 20; 
+const std::uint8_t rightBackPort = 10;
+const std::uint8_t leftBackPort = 19; 
  
-const std::uint8_t rightTopPort = 6; 
-const std::uint8_t leftTopPort = 10; 
+const std::uint8_t rightTopPort = 9; 
+const std::uint8_t leftTopPort = 20; 
 
 const std::uint8_t imuPort1 = 13; //imu port #1
 const std::uint8_t imuPort2 = 18; //imu port#2
@@ -26,6 +26,6 @@ const std::uint8_t balancePort = 'C';
 const std::uint8_t intakePort1 = 1;
 //const std::uint8_t autonFlipoutPort = 'A';
 
-const std::uint8_t cataMotorPort = 3;
+const std::uint8_t cataMotorPort = 2;
 
 //imu is 13 

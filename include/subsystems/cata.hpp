@@ -21,4 +21,3 @@ CataState getCataState();
 
 void updateCata();
 
-void updateCata;
