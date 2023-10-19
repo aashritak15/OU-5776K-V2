@@ -26,6 +26,7 @@ void resetEncoders(){
 }
 
 
+/*
 void checkBalance(){
 
 
@@ -45,6 +46,8 @@ void checkBalance(){
   pros::delay(10);
 
 }
+
+*/
 
 void resetImu(bool print = true) {
   imu1.reset();
