@@ -159,18 +159,80 @@ void updateAuton(int side){
     if (side == 2){
       //awp blue pole, blue goal
       //awp red pole, red goal
-      blocker.set_value(true);
-      drivetrain(-2.5, 1000, 2);
+      intakeMotor1.moveVelocity(-14000);
+
+      drivetrain(3.3, 4000, 0.7);
+
+       pros::delay(200);
+
+       intakeMotor1.moveVelocity(0);
+      
+     
 
       pros::delay(500);
 
-      right.moveVelocity(-1000);
-
-      pros::delay(400);
-
-      right.moveVelocity(0);
       
-      drivetrain(-1.2, 1000, 2);
+
+      left.moveVelocity(4000);
+
+      pros::delay(200);
+
+      left.moveVelocity(0);
+
+
+       flapjack1.set_value(true);
+
+       drivetrain(0.2, 1000, 2);
+
+
+
+       left.moveVelocity(7000);
+
+       pros::delay(200);
+
+       left.moveVelocity(0);
+
+       drivetrain(0.6, 4000, 1);
+
+       left.moveVelocity(7000);
+
+       pros::delay(400);
+
+       left.moveVelocity(0);
+
+       flapjack1.set_value(false);
+
+       pros::delay(200);
+
+       turnCounter(65, 3000);
+
+       pros::delay(100);
+       
+         drivetrain(2, 3000, 1);
+
+        
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+  
+
+      
+
+      /*
+      drivetrain(1.2, 1000, 2);
+      
+      
 
       pros::delay(100);
 
@@ -220,7 +282,7 @@ void updateAuton(int side){
       drivetrain(3.5, 2000, 0.5);
 
       intakeMotor1.moveVelocity(-12000);
-      
+      */
 
     }
 
@@ -345,18 +407,18 @@ void updateAuton(int side){
       //triball focused route, blue pole, blue goal
       
       
-      cataMotor.moveVelocity(-14000);
-      pros::delay(300);
-      
-      intakeAuton(IntakeState::INTAKING);
-      pros::delay(800);
+      //cataMotor.moveVelocity(-14000);
+      //pros::delay(300);
+      intakeMotor1.moveVelocity(14000);
+  
+      //pros::delay(800);
 
-      cataMotor.moveVelocity(0);
+     //cataMotor.moveVelocity(0);
       pros::delay(500);
 
-      intakeMotor1.moveVelocity(0);
+     // intakeMotor1.moveVelocity(0);
     
-      drivetrain(4.56, 3000, 1);
+      drivetrain(4.56, 4000, 0.7);
 
       pros::delay(500);
     //pros::delay(100);
@@ -374,6 +436,8 @@ void updateAuton(int side){
       pros::delay(400);
 
       intakeMotor1.moveVelocity(0);
+
+      drivetrain(1, 2000, 0.7);
       
       pros::delay(500);
       

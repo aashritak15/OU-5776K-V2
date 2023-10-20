@@ -149,10 +149,10 @@ void updateBlocker(){
 
 
 void updateFlapjack(){
-    if (controller.getDigital(ControllerDigital::R2) == 1) {
+    if (controller.getDigital(ControllerDigital::R1) == 1) {
         flapjack1.set_value(true);
   }
-    if(controller.getDigital(ControllerDigital::R1) == 1) {
+    if(controller.getDigital(ControllerDigital::R2) == 1) {
         flapjack1.set_value(false);
     }
 }

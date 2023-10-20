@@ -20,6 +20,7 @@ IMU imuA(imuPort1, IMUAxes::y);
 IMU imuB(imuPort2, IMUAxes::y);
 
 
+
 void resetEncoders(){
   leftEncoder.reset();
   rightEncoder.reset();
@@ -103,7 +104,7 @@ void drivetrain(double target, int ms, double speed){
   rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
 
 
-    okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(0.7, 0.0, 0.009); //kP, kI, kD              
+    okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(1.15, 0, 0.099); //kP, kI, kD              
 
     pid.setTarget(target);
 
@@ -151,7 +152,7 @@ void turnClock(float degree, int ms) {
   rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
  float taredRotation = (imu1.get() + imu2.get()) / 2;
  int timer = 0;
- float turnkP = 0.0125;
+ float turnkP = 0.01;
  float turnkI = 0;
  float turnkD = 0.01;
 
@@ -183,7 +184,9 @@ void turnClock(float degree, int ms) {
     // Calculate power using PID
     float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
     //prevError = error;
-      drive->getModel()->tank((power * 0.75f * -1.0f) , power); //goes clockwise 
+    
+    drive->getModel()->tank((power * 0.75f * -1.0f) , power); 
+     //goes clockwise 
     
     timer += 10;
     pros::delay(10);
@@ -204,7 +207,7 @@ void turnCounter(float degree, int ms) {
   
  float taredRotation = (imu1.get() + imu2.get()) / 2;
  int timer = 0;
- float turnkP = 0.0125;
+ float turnkP = 0.01;
  float turnkI = 0;
  float turnkD = 0.01;
 
@@ -226,7 +229,9 @@ void turnCounter(float degree, int ms) {
     float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
     //prevError = error;
 
-    drive->getModel()->tank(power * 0.75f , (-1.0f * power));//goes counterclockwise 
+      
+      drive->getModel()->tank(power * 0.75f , (-1.0f * power));
+ 
     
     
     timer += 10;
