@@ -16,6 +16,8 @@ extern pros::ADIDigitalOut lMech;
 
 extern pros::ADIDigitalOut blocker;
 
+extern pros::ADIDigitalOut pistonPTO1;
+
 
 void pistonsInnit();
 void updatePistons();
@@ -29,6 +31,9 @@ void updateIntakeFlipout();
 void updatelMech();
 void updateBalance();
 void updateBlocker();
+void PtoInit();
+void PtoMech();
+
 
 void lMechInit ();
 void balanceInit();

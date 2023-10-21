@@ -19,9 +19,10 @@ const std::uint8_t imuPort2 = 5; //imu port#2
 
 //const std::uint8_t pistonPort1 = 8;
 const std::uint8_t flapjackPort1 = 'A';
-const std::uint8_t lMechPort = 'H';
-const std::uint8_t blockerPort = 'G';
-const std::uint8_t balancePort = 'C';
+//const std::uint8_t lMechPort = 'G';
+
+
+const std::uint8_t blockerPort = 'H';
 const std::uint8_t PtoPort = 'C';
 
 

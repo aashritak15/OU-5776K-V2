@@ -25,9 +25,10 @@ void initialize() {
     //flipoutMechInnit();
     resetEncoders();
     //pistonsInnit();
-    lMechInit();
-    balanceInit();
+    //lMechInit();
+    //balanceInit();
     blockerInit();
+    PtoInit();
    
 
 }
@@ -119,10 +120,11 @@ void opcontrol() {
             updateIntake();
             updateCata();
             updateFlapjack();
-            updatelMech();
-            updateBalance();
+           // updatelMech();
+           // updateBalance();
             updateBlocker();
             DarshyMech();
+            PtoMech();
 
             
            
