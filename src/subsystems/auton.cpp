@@ -160,7 +160,7 @@ void updateAuton(int side){
       //awp blue pole, blue goal
       //awp red pole, red goal
 
-      //drivetrain(3.3, 4000, 0.7);
+      drivetrain(2, 4000, 0.7);
       
 
       left.moveVelocity(4000);
