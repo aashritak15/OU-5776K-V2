@@ -86,74 +86,108 @@ void skills(int side){
 
 void updateAuton(int side){
     if (side == 1){
+
+      drivetrain(4, 3000, 5);
+
+      
+
+
       //remove intake stuff if it doesn't work (not a priority)
       //awp red pole, blue goal
       //awp blue pole, red goal
 
-      blocker.set_value(true);
-      drivetrain(-2.5, 1000, 2);
-
-      pros::delay(500);
-
-      left.moveVelocity(-1000);
-
-      pros::delay(350);
-
-      left.moveVelocity(0); 
-      
-      drivetrain(-1.3, 3000, 2);
-
-      pros::delay(100);
-
-      turnCounter(45, 1000);
-
-      pros::delay(100);
-
-      drivetrain(1.65, 1000, 1);
-
-      pros::delay(100);
-      
-      turnClock(83, 1000);
-
-      //drivetrain(1.5, 1000, 0.5);
-
-    drivetrain(0.9, 2000, 0.75);
-
-     // lMech.set_value(true);
-
-      pros::delay(500);
-
-      drivetrain(-0.95, 3000, 2);
-
-
-      pros::delay(500);
-
-     // lMech.set_value(false);
-
-      pros::delay(500);
+     /*drivetrain(0.89, 4000, 0.7);
 
       intakeMotor1.moveVelocity(12000);
-
-      drivetrain(0.7, 3000, 0.9);
-
-      pros::delay(700);
-
       
 
-      //pros::delay(200);
+      right.moveVelocity(4000);
 
-      intakeMotor1.moveVelocity(0);
-      pros::delay(200);
-    
-      turnCounter(90, 1000);
+       intakeMotor1.moveVelocity(0);
 
-      drivetrain(1.7, 1000, 1);
+      pros::delay(180);
 
-      turnCounter(45, 1000);
+      right.moveVelocity(0);
 
-      drivetrain(3.5, 2000, 0.5);
 
-      intakeMotor1.moveVelocity(-12000);
+       drivetrain(0.2, 1000, 2);
+
+      flapjack1.set_value(true);
+
+
+       right.moveVelocity(7000);
+
+       pros::delay(200);
+
+       right.moveVelocity(0);
+
+       drivetrain(0.6, 4000, 1);
+
+       right.moveVelocity(7000);
+
+       pros::delay(300);
+
+       right.moveVelocity(0);
+
+       pros::delay(200);
+
+       flapjack1.set_value(false);
+
+       pros::delay(200);
+
+       turnCounter(25, 2000);
+
+       pros::delay(100);
+
+       drivetrain(1.4, 2000, 1.5);
+
+       right.moveVelocity(7000);
+
+       pros::delay(300);
+
+       right.moveVelocity(0);
+
+       drivetrain(-0.5, 2000, 1.5);
+
+       intakeMotor1.moveVelocity(-12000);
+
+       pros::delay(100);
+
+          intakeMotor1.moveVelocity(0);
+
+       drivetrain(1, 3000, 4);
+
+        pros::delay(100);
+  
+
+       drivetrain(-0.8, 3000, 1);
+
+       pros::delay(100);
+
+      right.moveVelocity(-7000);
+
+       pros::delay(400);
+
+       right.moveVelocity(0);
+
+       pros::delay(200);
+
+       drivetrain(-1.7, 5000, 0.7);
+
+       left.moveVelocity(-7000);
+
+       pros::delay(400);
+
+       left.moveVelocity(0);
+
+
+       drivetrain(-3.2, 5000, 0.7);
+
+*/
+
+
+
+
 
     }
     if (side == 2){
