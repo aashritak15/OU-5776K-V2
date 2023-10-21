@@ -41,8 +41,8 @@ Motor intakeMotor1(intakePort1, true, AbstractMotor::gearset::blue,
 
 
 
-ControllerButton intakeButton = ControllerButton(ControllerDigital::L1);
-ControllerButton outakeButton = ControllerButton(ControllerDigital::L2);
+ControllerButton intakeButton = ControllerButton(ControllerDigital::L2);
+ControllerButton outakeButton = ControllerButton(ControllerDigital::L1);
 //ControllerButton halfInButton = ControllerButton(ControllerDigital::up);
 
 void intakeInit() { 
