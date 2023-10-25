@@ -87,7 +87,37 @@ void skills(int side){
 void updateAuton(int side){
     if (side == 1){
 
-      drivetrain(4, 3000, 5);
+      drivetrain(4, 3000, 3);
+
+      pros::delay(100);
+
+       drivetrain(-0.8, 3000, 1);
+
+       pros::delay(100);
+
+       intakeMotor1.moveVelocity(0);
+
+       turnCounter(125, 2000);
+
+       pros::delay(100);
+
+       drivetrain(2.9, 3000, 0.7);
+
+       pros::delay(100);
+
+       turnClock(35, 1000);
+
+        intakeMotor1.moveVelocity(-14000);
+
+       drivetrain(2.1, 3000, 0.3);
+
+       pros::delay(100);
+
+       drivetrain(0.2, 1000, 0.1);
+
+        intakeMotor1.moveVelocity(0);
+
+        drivetrain(0.1, 1000, 1);
 
       
 
@@ -199,8 +229,7 @@ void updateAuton(int side){
 
       intakeMotor1.moveVelocity(12000);
       
-
-      left.moveVelocity(4000);
+      left.moveVelocity(3000);
 
       intakeMotor1.moveVelocity(0);
 
@@ -214,7 +243,7 @@ void updateAuton(int side){
        flapjack1.set_value(true);
 
 
-       left.moveVelocity(7000);
+       left.moveVelocity(4000);
 
        pros::delay(200);
 
@@ -234,9 +263,10 @@ void updateAuton(int side){
 
        pros::delay(200);
 
-       turnClock(25, 3000);
+       turnClock(25, 2000);
 
-       pros::delay(100);
+       pros::delay(200);
+
 
        drivetrain(1.4, 2000, 1.5);
 
@@ -250,9 +280,7 @@ void updateAuton(int side){
        drivetrain(-0.5, 2000, 1.5);   
        intakeMotor1.moveVelocity(-12000);
 
-       pros::delay(100);
-
-       drivetrain(1, 3000, 4);
+       drivetrain(1, 3000, 3);
 
       pros::delay(100);
 
@@ -263,6 +291,34 @@ void updateAuton(int side){
        intakeMotor1.moveVelocity(0);
 
        turnCounter(125, 2000);
+
+       pros::delay(100);
+
+       drivetrain(2.9, 3000, 0.7);
+
+       pros::delay(100);
+
+       turnClock(35, 1000);
+
+        intakeMotor1.moveVelocity(-14000);
+
+       drivetrain(2.1, 3000, 0.3);
+
+       pros::delay(100);
+
+       drivetrain(0.2, 1000, 0.1);
+
+        intakeMotor1.moveVelocity(0);
+
+        drivetrain(0.1, 1000, 1);
+
+
+
+
+
+
+
+
        
 
       
