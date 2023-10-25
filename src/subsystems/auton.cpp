@@ -194,6 +194,7 @@ void updateAuton(int side){
       //awp blue pole, blue goal
       //awp red pole, red goal
 
+      
       drivetrain(0.89, 4000, 0.7);
 
       intakeMotor1.moveVelocity(12000);
@@ -201,7 +202,7 @@ void updateAuton(int side){
 
       left.moveVelocity(4000);
 
-       intakeMotor1.moveVelocity(0);
+      intakeMotor1.moveVelocity(0);
 
       pros::delay(180);
 
@@ -210,7 +211,7 @@ void updateAuton(int side){
 
        drivetrain(0.2, 1000, 2);
 
-      flapjack1.set_value(true);
+       flapjack1.set_value(true);
 
 
        left.moveVelocity(7000);
@@ -233,7 +234,7 @@ void updateAuton(int side){
 
        pros::delay(200);
 
-       turnClock(25, 2000);
+       turnClock(25, 3000);
 
        pros::delay(100);
 
@@ -245,45 +246,26 @@ void updateAuton(int side){
 
        left.moveVelocity(0);
 
-       drivetrain(-0.5, 2000, 1.5);
 
+       drivetrain(-0.5, 2000, 1.5);   
        intakeMotor1.moveVelocity(-12000);
 
        pros::delay(100);
 
-          intakeMotor1.moveVelocity(0);
-
        drivetrain(1, 3000, 4);
 
-        pros::delay(100);
-  
+      pros::delay(100);
 
        drivetrain(-0.8, 3000, 1);
 
        pros::delay(100);
 
-      left.moveVelocity(-7000);
+       intakeMotor1.moveVelocity(0);
 
-       pros::delay(400);
+       turnCounter(125, 2000);
+       
 
-       left.moveVelocity(0);
-
-       pros::delay(200);
-
-       drivetrain(-1.7, 5000, 0.7);
-
-       left.moveVelocity(-7000);
-
-       pros::delay(400);
-
-       left.moveVelocity(0);
-
-
-       drivetrain(-3.2, 5000, 0.7);
-
-
-
-
+      
 
 
 
