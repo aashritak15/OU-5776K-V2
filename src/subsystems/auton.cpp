@@ -45,11 +45,11 @@ void intakeAuton(IntakeState currentIntakeState){
       break;
       intakeMotor1.moveVoltage(0);
     case IntakeState::INTAKING:
-      intakeMotor1.moveVoltage(14000);
+      intakeMotor1.moveVoltage(-14000);
       //intakeMotor2.moveVoltage(12000);
       break;
     case IntakeState::OUTTAKING:
-      intakeMotor1.moveVoltage(-14000);
+      intakeMotor1.moveVoltage(14000);
       //intakeMotor2.moveVoltage(-12000);
       break;
   //case IntakeState::HALF:
@@ -311,45 +311,6 @@ void updateAuton(int side){
         intakeMotor1.moveVelocity(0);
 
         drivetrain(0.1, 1000, 1);
-
-
-
-
-
-
-
-
-       
-
-      
-
-
-
-
-
-
-
-
-
-       
-
-    
-
-
-
-
-
-      
-
-
-
-
-
-
-
-
-  
-
       
 
       /*
@@ -532,16 +493,12 @@ void updateAuton(int side){
       
       //cataMotor.moveVelocity(-14000);
       //pros::delay(300);
-      intakeMotor1.moveVelocity(14000);
-  
-      //pros::delay(800);
 
-     //cataMotor.moveVelocity(0);
+       intakeMotor1.moveVelocity(-14000);
+
       pros::delay(500);
-
-     // intakeMotor1.moveVelocity(0);
     
-      drivetrain(4.56, 4000, 0.7);
+      drivetrain(4.65, 4000, 0.7);
 
       pros::delay(500);
     //pros::delay(100);
@@ -549,82 +506,42 @@ void updateAuton(int side){
 
       turnClock(90, 2000);
 
- 
 
       pros::delay(200);
 
 
-      intakeAuton(IntakeState::OUTTAKING);
+       intakeMotor1.moveVelocity(14000);
 
       pros::delay(400);
 
       intakeMotor1.moveVelocity(0);
 
-      drivetrain(1, 2000, 0.7);
-      
-      pros::delay(500);
-      
-      drivetrain(-1, 3000, 0.9);
-      pros::delay(100);
-
-      turnCounter(90, 3000);
-
-      
-
-      pros::delay(100);
-
-      intakeAuton(IntakeState::INTAKING);
-      //pros::delay(700);
-
-      drivetrain(0.47, 3000, 1);
-      pros::delay(800);
-
-
-      intakeMotor1.moveVelocity(0);
-      pros::delay(300);
-
-      turnClock(90, 3000);
-
-       
-
-      pros::delay(100);
-
-      drivetrain(0.47, 3000, 1.5);
-      pros::delay(300);
-
-      intakeAuton(IntakeState::OUTTAKING);
-
-      pros::delay(300);
-
-      intakeMotor1.moveVelocity(0);
-
-      
-      drivetrain(1, 3000, 5);
 
 //third triball
-      drivetrain(-1.6, 3000, 1.5);
+      drivetrain(-1.3, 3000, 1.5);
       pros::delay(100);
 
+      intakeAuton(IntakeState::INTAKING); 
 
-      turnCounter(135, 4000);
+
+      turnCounter(123, 4000);
 
       // imuInnit();
       pros::delay(100);
-
-      intakeAuton(IntakeState::INTAKING);
       //pros::delay(700);
 
-      drivetrain(0.75, 3000, 1);
-      pros::delay(800);
-
+      drivetrain(0.8, 3000, 1);
+      pros::delay(400);
+ 
 
       intakeMotor1.moveVelocity(0);
       pros::delay(200);
 
-      turnClock(135, 4000);
-      // imuInnit();
+      turnClock(123, 4000);
 
-      drivetrain(1.4, 3000, 1.5);
+      pros::delay(200);
+
+      drivetrain(1, 3000, 1.5);
 
       pros::delay(100);
 
@@ -633,13 +550,15 @@ void updateAuton(int side){
 
       flapjack1.set_value(true);
 
-      drivetrain(1.3, 3000, 3.5);
+      drivetrain(1.5, 3000, 2);
 
       pros::delay(100);
     
       intakeMotor1.moveVelocity(0);
 
       flapjack1.set_value(false);
+
+      drivetrain(1, 3000, 2);
 
       
       //drivetrain(-1.75, 7000, 1);
@@ -652,6 +571,7 @@ void updateAuton(int side){
       intakeAuton(IntakeState::INTAKING);
       pros::delay(100);
     */
+    
       
     }
   }
