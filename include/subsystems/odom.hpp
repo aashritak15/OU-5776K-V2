@@ -11,6 +11,9 @@ void turnRIGHTONLY(float degree, int ms);
 
 void turnLEFTONLY(float degree, int ms);
 
+void turnRightTime(int ms);
+void turnLeftTime(int ms);
+
 //extern double displacement; 
 
 //void drivetrain(double target);
