@@ -135,7 +135,7 @@ void drivetrain(double target, int ms, double speed){
 
       double pid_value = pid.step((displacement * 3) / 5 );
 
-      drive->getModel()->tank(pid_value * speed  * .9f, pid_value * speed); 
+      drive->getModel()->tank(pid_value * speed  , pid_value * speed); 
 
       pros::delay(10);
       timer += 10;
@@ -147,6 +147,7 @@ void drivetrain(double target, int ms, double speed){
 
 //turn PID
 void turnClock(float degree, int ms) {
+  resetImu();
   leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
   leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
   leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -155,9 +156,9 @@ void turnClock(float degree, int ms) {
   rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
  float taredRotation = (imu1.get() + imu2.get()) / 2;
  int timer = 0;
- float turnkP = 0.01;
+ float turnkP = 0.008;
  float turnkI = 0;
- float turnkD = 0.01;
+ float turnkD = 0.025;
 
   float prevError = 0;
   //float totalError = 0;
@@ -200,7 +201,7 @@ drive->stop();
 
 
 void turnCounter(float degree, int ms) {
-
+  resetImu();
   leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
   leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
   leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -210,9 +211,9 @@ void turnCounter(float degree, int ms) {
   
  float taredRotation = (imu1.get() + imu2.get()) / 2;
  int timer = 0;
- float turnkP = 0.01;
+  float turnkP = 0.008;
  float turnkI = 0;
- float turnkD = 0.01;
+ float turnkD = 0.025;
 
   float prevError = 0;
   float integral = 0;
@@ -256,7 +257,7 @@ void turnRightTime(int ms){
 }
 
 void turnLeftTime(int ms){
-  left.moveVelocity(400);
+  left.moveVelocity(500);
   right.moveVelocity(200);
 
   pros::delay(ms);

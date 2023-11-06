@@ -74,7 +74,7 @@ void updateDrive() {
 
 
  if (controller.getDigital(ControllerDigital::Y) == 1) {
-    drivetrain(2, 3000, 1);
+    turnClock(180, 1000);
 
   }
 
