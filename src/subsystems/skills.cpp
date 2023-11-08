@@ -35,31 +35,30 @@ void intakeSkills(IntakeState currentIntakeState){
 
 void updateSkills(int path){
     if (path == 1){
-      /*
-      cataMotor.moveVelocity(-14000);
-      pros::delay(3000);
-      cataMotor.moveVelocity(0);
+
+      drivetrain(0.4, 500, 0.8);
+
       pros::delay(100);
-      */
 
-     /*
+       turnLeftTime(150);
 
-     drivetrain(0.2, 1000, 1);
+      cataMotor.moveVoltage(9500);
 
-     */
+      pros::delay(300);
 
+      cataMotor.moveVoltage(0);
 
-    /*
-
-      turnClock(45, 1000);
-      pros::delay(20);
+       pros::delay(100);
 
 
-  */
+       drivetrain(-0.5, 1000, 1);
+
+       pros::delay(100);
+
+       turnRightTime(150);
 
 
-
-
+      pros::delay(100);
 
       drivetrain(-1.8, 3000, 0.75);
 
