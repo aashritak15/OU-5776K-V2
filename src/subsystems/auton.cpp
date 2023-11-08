@@ -223,11 +223,24 @@ void updateAuton(int side){
     if (side == 2){
       //awp blue pole, blue goal
       //awp red pole, red goal
+      intakeMotor1.moveVelocity(-12000);
 
-      
-      drivetrain(0.89, 4000, 0.7);
+      pros::delay(200);
 
-      intakeMotor1.moveVelocity(12000);
+      drivetrain(-1.7, 3000, 0.8);
+
+      intakeMotor1.moveVelocity(0);
+
+      pros::delay(200);
+
+  
+  
+
+      turnClock(180, 2000);
+
+      pros::delay(100);
+       
+      drivetrain(0.85, 4000, 0.7);
       
       left.moveVelocity(3000);
 
@@ -257,7 +270,7 @@ void updateAuton(int side){
 
        left.moveVelocity(0);
 
-       pros::delay(200);
+        pros::delay(100);
 
        flapjack1.set_value(false);
 
@@ -496,50 +509,49 @@ void updateAuton(int side){
 
        intakeMotor1.moveVelocity(-14000);
 
-      pros::delay(500);
+      pros::delay(100);
     
-      drivetrain(4.65, 4000, 0.7);
+      drivetrain(4.75, 3500, 0.7);
 
-      pros::delay(500);
+      pros::delay(200);
     //pros::delay(100);
+
+
+     intakeMotor1.moveVelocity(0);
 
 
       turnClock(90, 2000);
 
+      intakeMotor1.moveVelocity(14000);
 
-      pros::delay(200);
-
-
-       intakeMotor1.moveVelocity(14000);
-
-      pros::delay(400);
+      pros::delay(100);
 
       intakeMotor1.moveVelocity(0);
 
 
 //third triball
-      drivetrain(-1.3, 3000, 1.5);
+      drivetrain(-1.5, 3000, 1.5);
       pros::delay(100);
 
       intakeAuton(IntakeState::INTAKING); 
 
 
-      turnCounter(123, 4000);
+      turnCounter(123, 1000);
 
       // imuInnit();
-      pros::delay(100);
+
       //pros::delay(700);
 
       drivetrain(0.8, 3000, 1);
-      pros::delay(400);
+      pros::delay(100);
  
 
       intakeMotor1.moveVelocity(0);
-      pros::delay(200);
+      pros::delay(100);
 
       turnClock(123, 4000);
 
-      pros::delay(200);
+      pros::delay(100);
 
       drivetrain(1, 3000, 1.5);
 
