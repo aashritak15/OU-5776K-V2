@@ -86,12 +86,89 @@ void skills(int side){
 
 void updateAuton(int side){
     if (side == 1){
+//close auton
 
-      drivetrain(4, 3000, 3);
+      drivetrain(-2, 2000, 0.8);
+
+       pros::delay(100);
+
+      left.moveVelocity(-2000);
+      
+      pros::delay(300);
+
+       left.moveVelocity(0);
+
+      drivetrain(-1, 1000, 1);
+
+      drivetrain(1.2, 1000, 0.8);
+
+       left.moveVelocity(3000);
+
+      intakeMotor1.moveVelocity(0);
+
+      pros::delay(180);
+
+      left.moveVelocity(0);
+
+
+       drivetrain(0.2, 1000, 2);
+
+       flapjack1.set_value(true);
+
+
+       left.moveVelocity(4000);
+
+       pros::delay(200);
+
+       left.moveVelocity(0);
+
+
+       left.moveVelocity(7000);
+
+       pros::delay(300);
+
+       left.moveVelocity(0);
+
+        pros::delay(100);
+
+       flapjack1.set_value(false);
+
+       pros::delay(200);
+
+       turnClock(45, 2000);
+
+       pros::delay(200);
+
+
+       drivetrain(1.4, 3000, 0.7);
+
+        turnCounter(43, 2000);
+
+        intakeAuton(IntakeState::OUTTAKING);
+
+        drivetrain(3.5, 2000, 0.6);
+
+         pros::delay(400);
+
+         intakeAuton(IntakeState::STOPPED);
+
+
+
+
+                       
+
+
+
+
+
+
+
+      /*
+      drivetrain(-4, 3000, 3);
 
       pros::delay(100);
 
-       drivetrain(-0.8, 3000, 1);
+       drivetrain(0.8, 3000, 1);
 
        pros::delay(100);
 
@@ -119,7 +196,7 @@ void updateAuton(int side){
 
         drivetrain(0.1, 1000, 1);
 
-      
+      */
 
 
       //remove intake stuff if it doesn't work (not a priority)
@@ -229,7 +306,6 @@ void updateAuton(int side){
 
       drivetrain(-1.7, 3000, 0.8);
 
-      intakeMotor1.moveVelocity(0);
 
       pros::delay(200);
 
@@ -238,9 +314,11 @@ void updateAuton(int side){
 
       turnClock(180, 2000);
 
+        intakeMotor1.moveVelocity(0);
+
       pros::delay(100);
        
-      drivetrain(0.85, 4000, 0.7);
+      drivetrain(0.89, 4000, 0.7);
       
       left.moveVelocity(3000);
 
@@ -276,7 +354,7 @@ void updateAuton(int side){
 
        pros::delay(200);
 
-       turnClock(25, 2000);
+       turnClock(27, 2000);
 
        pros::delay(200);
 
@@ -297,11 +375,32 @@ void updateAuton(int side){
 
       pros::delay(100);
 
-       drivetrain(-0.8, 3000, 1);
+       drivetrain(-0.85, 3000, 0.8);
 
        pros::delay(100);
 
        intakeMotor1.moveVelocity(0);
+       
+       turnCounter(90, 2000);
+
+       pros::delay(100);
+
+       drivetrain(4, 3000, 0.75);
+
+       pros::delay(100);
+
+       turnClock(10, 1000);
+
+       pros::delay(100);
+
+       flapjack1.set_value(true);
+
+       drivetrain(0.5, 1000, 1);
+
+       
+
+
+       /*
 
        turnCounter(125, 2000);
 
@@ -324,6 +423,7 @@ void updateAuton(int side){
         intakeMotor1.moveVelocity(0);
 
         drivetrain(0.1, 1000, 1);
+        */
       
 
       /*
@@ -390,14 +490,16 @@ void updateAuton(int side){
       pros::delay(300);
       
       intakeAuton(IntakeState::INTAKING);
-      pros::delay(700);
+      pros::delay(200);
 
       cataMotor.moveVelocity(0);
       pros::delay(500);
 
-      intakeMotor1.moveVelocity(0);
+   
     
       drivetrain(4.85, 3000, 1.25);
+
+         intakeMotor1.moveVelocity(0);
 
       pros::delay(500);
     //pros::delay(100);
@@ -412,14 +514,12 @@ void updateAuton(int side){
 
       intakeAuton(IntakeState::OUTTAKING);
 
-      pros::delay(400);
-
-      intakeMotor1.moveVelocity(0);
-      
-      pros::delay(500);
+       pros::delay(100);
       
       drivetrain(-1, 3000, 0.9);
       pros::delay(100);
+
+      intakeMotor1.moveVelocity(0);
 
       turnClock(90, 3000);
 
@@ -511,24 +611,108 @@ void updateAuton(int side){
 
       pros::delay(100);
     
-      drivetrain(4.75, 3500, 0.7);
+      drivetrain(4.6, 3500, 1);
 
       pros::delay(200);
     //pros::delay(100);
 
 
-     intakeMotor1.moveVelocity(0);
-
-
       turnClock(90, 2000);
+
+      pros::delay(100);
+
+      drivetrain(0.5, 1000, 1);
+
+         pros::delay(100);
 
       intakeMotor1.moveVelocity(14000);
 
       pros::delay(100);
 
+//second triball
+      drivetrain(-1.2, 1000, 1);
+
+      pros::delay(100);
+
       intakeMotor1.moveVelocity(0);
 
+         pros::delay(100);
 
+      turnCounter(90, 2000);
+
+         pros::delay(100);
+
+      intakeMotor1.moveVelocity(-14000);
+
+         pros::delay(100);
+
+      drivetrain(0.7, 1000, 1);
+
+         pros::delay(100);
+
+      intakeMotor1.moveVelocity(0);
+
+         pros::delay(100);
+
+      turnClock(90, 2000);
+
+      pros::delay(100);
+
+     // flapjack1.set_value(true);
+
+         pros::delay(100);
+
+      drivetrain(2.3, 1000, 2);
+
+       pros::delay(100);
+
+      drivetrain(-0.5, 1000, 1);
+
+         pros::delay(100);
+
+    // flapjack1.set_value(false);
+
+      pros::delay(100);
+
+      turnCounter(180, 1000);
+
+      pros::delay(100);
+
+      drivetrain(2.3, 1000, 1);
+
+         pros::delay(100);
+
+       intakeMotor1.moveVelocity(-14000);
+
+          pros::delay(100);
+
+    drivetrain(0.5, 1000, 1);
+
+       pros::delay(100);
+
+       turnClock(180, 1000);
+
+          pros::delay(100);
+
+      intakeMotor1.moveVelocity(14000);
+
+         pros::delay(100);
+
+       drivetrain(3, 1000, 1);
+
+
+
+
+
+    
+
+
+
+
+
+
+
+/*
 //third triball
       drivetrain(-1.5, 3000, 1.5);
       pros::delay(100);
