@@ -300,29 +300,37 @@ void updateAuton(int side){
     if (side == 2){
       //awp blue pole, blue goal
       //awp red pole, red goal
-      intakeMotor1.moveVelocity(-12000);
+      
+      cataMotor.moveVoltage(-12000);
+
+      pros::delay(200);
+
+      cataMotor.moveVoltage(0);
+
+      intakeMotor1.moveVoltage(-14000);
 
       pros::delay(200);
 
       drivetrain(-1.7, 3000, 0.8);
 
 
-      pros::delay(200);
+      pros::delay(50);
 
   
   
 
       turnClock(180, 2000);
 
-        intakeMotor1.moveVelocity(0);
 
-      pros::delay(100);
+
+       intakeMotor1.moveVoltage(0);
+
+
+          pros::delay(50);
        
-      drivetrain(0.89, 4000, 0.7);
+      drivetrain(1, 4000, 0.7);
       
       left.moveVelocity(3000);
-
-      intakeMotor1.moveVelocity(0);
 
       pros::delay(180);
 
@@ -352,11 +360,11 @@ void updateAuton(int side){
 
        flapjack1.set_value(false);
 
-       pros::delay(200);
+       pros::delay(50);
 
        turnClock(27, 2000);
 
-       pros::delay(200);
+       pros::delay(50);
 
 
        drivetrain(1.4, 2000, 1.5);
@@ -369,33 +377,41 @@ void updateAuton(int side){
 
 
        drivetrain(-0.5, 2000, 1.5);   
-       intakeMotor1.moveVelocity(-12000);
+       
 
-       drivetrain(1, 3000, 3);
+        intakeMotor1.moveVoltage(14000);
 
-      pros::delay(100);
+       drivetrain(1, 3000, 3); 
+
+      pros::delay(50);
 
        drivetrain(-0.85, 3000, 0.8);
 
-       pros::delay(100);
+       pros::delay(20);
 
-       intakeMotor1.moveVelocity(0);
+       turnClock(25, 1000);
+
+       pros::delay(20);
+
+       drivetrain(1.1, 3000, 3);
+
+      pros::delay(20);
+
+       drivetrain(-0.9, 3000, 0.8);
+
+        intakeMotor1.moveVoltage(0);
        
        turnCounter(90, 2000);
 
-       pros::delay(100);
+       pros::delay(50);
 
-       drivetrain(4, 3000, 0.75);
+       drivetrain(4, 3000, 0.8);
 
-       pros::delay(100);
-
-       turnClock(10, 1000);
-
-       pros::delay(100);
+       pros::delay(50);
 
        flapjack1.set_value(true);
 
-       drivetrain(0.5, 1000, 1);
+       drivetrain(0.9, 1000, 1);
 
        
 
