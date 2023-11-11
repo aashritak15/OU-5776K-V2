@@ -337,14 +337,14 @@ void updateAuton(int side){
       left.moveVelocity(0);
 
 
-       drivetrain(0.2, 1000, 2);
+      // drivetrain(0.2, 1000, 2);
 
        flapjack1.set_value(true);
 
 
        left.moveVelocity(4000);
 
-       pros::delay(200);
+       pros::delay(320);
 
        left.moveVelocity(0);
 
