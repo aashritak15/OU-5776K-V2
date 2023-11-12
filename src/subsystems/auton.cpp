@@ -627,26 +627,24 @@ void updateAuton(int side){
 
       pros::delay(100);
     
-      drivetrain(4.6, 3500, 1);
-
-      pros::delay(200);
-    //pros::delay(100);
-
-
-      turnClock(90, 2000);
+      drivetrain(4.4, 3500, 1.5);
 
       pros::delay(100);
+  
+      turnClock(90, 2000);
+
+      pros::delay(50);
 
       drivetrain(0.5, 1000, 1);
 
-         pros::delay(100);
+      pros::delay(100);
 
       intakeMotor1.moveVelocity(14000);
 
       pros::delay(100);
 
 //second triball
-      drivetrain(-1.2, 1000, 1);
+      drivetrain(-1.35, 1000, 1);
 
       pros::delay(100);
 
@@ -654,7 +652,7 @@ void updateAuton(int side){
 
          pros::delay(100);
 
-      turnCounter(90, 2000);
+      turnCounter(95, 2000);
 
          pros::delay(100);
 
@@ -674,19 +672,19 @@ void updateAuton(int side){
 
       pros::delay(100);
 
-     // flapjack1.set_value(true);
+     flapjack1.set_value(true);
 
-         pros::delay(100);
+      pros::delay(100);
 
       drivetrain(2.3, 1000, 2);
 
        pros::delay(100);
 
+       flapjack1.set_value(false);
+
       drivetrain(-0.5, 1000, 1);
 
-         pros::delay(100);
-
-    // flapjack1.set_value(false);
+      pros::delay(100);
 
       pros::delay(100);
 
@@ -694,15 +692,15 @@ void updateAuton(int side){
 
       pros::delay(100);
 
-      drivetrain(2.3, 1000, 1);
+      drivetrain(2.3, 1000, 1.5);
 
-         pros::delay(100);
+      pros::delay(100);
 
        intakeMotor1.moveVelocity(-14000);
 
-          pros::delay(100);
+      pros::delay(100);
 
-    drivetrain(0.5, 1000, 1);
+      drivetrain(0.5, 1000, 1.5);
 
        pros::delay(100);
 
@@ -710,11 +708,14 @@ void updateAuton(int side){
 
           pros::delay(100);
 
+      drivetrain(3, 2000, 2);
+
       intakeMotor1.moveVelocity(14000);
 
-         pros::delay(100);
+      //fourth triball
 
-       drivetrain(3, 1000, 1);
+      turnClock(135, 1000);
+
 
 
 

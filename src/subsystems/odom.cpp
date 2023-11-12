@@ -245,9 +245,9 @@ void turnCounter(float degree, int ms) {
 drive->stop();
 }
 
-void turnRightTime(int ms){
-  right.moveVelocity(400);
-  left.moveVelocity(200);
+void turnRightTime(int ms, int Rvelocity, int Lvelocity){
+  right.moveVelocity(Rvelocity);
+  left.moveVelocity(Lvelocity);
 
   pros::delay(ms);
 
@@ -256,9 +256,9 @@ void turnRightTime(int ms){
 
 }
 
-void turnLeftTime(int ms){
-  left.moveVelocity(500);
-  right.moveVelocity(200);
+void turnLeftTime(int ms, int Rvelocity, int Lvelocity){
+  left.moveVelocity(Lvelocity);
+  right.moveVelocity(Rvelocity);
 
   pros::delay(ms);
 
