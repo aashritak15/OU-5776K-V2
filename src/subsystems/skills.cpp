@@ -35,47 +35,51 @@ void intakeSkills(IntakeState currentIntakeState){
 
 void updateSkills(int path){
     if (path == 1){
-/*
 
-      drivetrain(-1, 2000, 1);
+      turnLEFTONLY(110, 1000);
 
-       pros::delay(100);
+      cataMotor.moveVoltage(7000);
+      pros::delay(2000);
 
-      turnCounter(15, 2000);
+      cataMotor.moveVoltage(0);
+      
+       pros::delay(50);
 
-       pros::delay(20);
+      turnClock(60, 2000);
+
+       pros::delay(50);
 
 
       drivetrain(-1.4, 3000, 1);
 
-     pros::delay(100);
+       pros::delay(20);
 
-       drivetrain(-5.5, 3000, 0.5);
+       turnCounter(40, 2000);
+
+      pros::delay(100);
+
+
+     
+
+       drivetrain(-7.15, 3000, 0.5);
          pros::delay(100);
-
-      
 
 
        intakeSkills(IntakeState::INTAKING);
 
          pros::delay(100); 
 
-  
 
        turnLeftTime(900, -400, -200);
 
-    
-       
-
        pros::delay(100);
 
-       drivetrain(-2, 1000, 2);
+       drivetrain(-2.5, 1000, 2);
 
        pros::delay(100);
        //turnLeftTime(900, 200, 400);
 
        drivetrain(1, 1000, 0.8);
-       pros::delay(20);
 
 
        intakeSkills(IntakeState::OUTTAKING);
@@ -83,15 +87,8 @@ void updateSkills(int path){
        drivetrain(-2, 500, 2);
        pros::delay(100);
 
-        drivetrain(1, 1000, 0.8);
-         pros::delay(100);
 
-      drivetrain(-2, 500, 2);
-       pros::delay(20);
-
-       */
-
-       turnRightTime(700, 700, 100);
+       turnRightTime(900, 700, 200);
 
        pros::delay(100);
 
@@ -102,12 +99,17 @@ void updateSkills(int path){
        flapjack1.set_value(true);
 
        pros::delay(100);
+       
+       
+       intakeSkills(IntakeState::INTAKING);
 
        turnRightTime(1800, 300, 100);
 
        pros::delay(100);
 
        drivetrain(1, 1000, 2);
+       
+        intakeSkills(IntakeState::OUTTAKING);
 
        pros::delay(100);
 
@@ -115,7 +117,19 @@ void updateSkills(int path){
 
        pros::delay(100);
 
-       drivetrain(-3, 3000, 0.9);
+       drivetrain(-2, 3000, 0.9);
+
+       pros::delay(100);
+
+       flapjack1.set_value(true);
+
+       drivetrain(2, 3000, 1.2);
+
+       pros::delay(100);
+
+       flapjack1.set_value(false);
+
+       drivetrain(-2.5, 3000, 1);
 
        pros::delay(100);
 
@@ -123,19 +137,34 @@ void updateSkills(int path){
 
        pros::delay(100);
 
-       drivetrain(1, 1000, 1);
+       drivetrain(2.5, 1000, 1);
 
        pros::delay(100);
 
-       turnClock(90, 1000);
+       turnClock(120, 1000);
 
        pros::delay(100);
 
        flapjack1.set_value(true);
 
-       pros::delay(20);
+       pros::delay(100);
 
        drivetrain(3, 3000, 0.75);
+
+       pros::delay(100);
+
+       drivetrain(-2, 3000, 1);
+
+       pros::delay(100);
+
+       drivetrain(2, 3000, 1);
+
+       pros::delay(100);
+
+       drivetrain(-0.5, 200, 1);
+
+       flapjack1.set_value(false);
+
 
        
 /*

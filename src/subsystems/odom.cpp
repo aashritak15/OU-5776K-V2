@@ -315,7 +315,7 @@ void turnRIGHTONLY(double target, int ms, double speed) {
     drive->getModel()->tank(0,0);
 }
 
-/*
+
 
 void turnLEFTONLY(float degree, int ms) {
   leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -366,4 +366,3 @@ void turnLEFTONLY(float degree, int ms) {
 
 drive->stop();
 }
-*/
