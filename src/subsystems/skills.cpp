@@ -39,7 +39,7 @@ void updateSkills(int path){
       turnLEFTONLY(110, 1000);
 
       cataMotor.moveVoltage(7000);
-      pros::delay(2000);
+      pros::delay(35000);
 
       cataMotor.moveVoltage(0);
       
