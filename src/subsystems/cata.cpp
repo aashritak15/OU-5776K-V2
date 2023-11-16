@@ -55,11 +55,17 @@ void updateCata(){
 
 
 void updateDriverSkills(){
-    // without limit switch 
 
     if (controller.getDigital(ControllerDigital::Y) == 1){
+      leftFront.setBrakeMode(AbstractMotor::brakeMode::coast);
+      leftTop.setBrakeMode(AbstractMotor::brakeMode::coast);
+      leftBack.setBrakeMode(AbstractMotor::brakeMode::coast);
 
-        turnLEFTONLY(110, 1000);
+      rightFront.setBrakeMode(AbstractMotor::brakeMode::coast);
+      rightTop.setBrakeMode(AbstractMotor::brakeMode::coast);
+      rightBack.setBrakeMode(AbstractMotor::brakeMode::coast);
+
+      turnLEFTONLY(110, 1000);
 
       pros::delay(10);
 
