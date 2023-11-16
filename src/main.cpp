@@ -120,6 +120,7 @@ void opcontrol() {
             updateIntake();
             updateCata();
             updateFlapjack();
+            updateDriverSkills();
            // updatelMech();
            // updateBalance();
             updateBlocker();

@@ -1,6 +1,8 @@
 #include "subsystems/cata.hpp"
 #include "subsystems/ports.hpp"
 #include "globals.hpp"
+#include "subsystems/odom.hpp"
+#include "subsystems/drive.hpp"
 
 Motor cataMotor(cataMotorPort, true, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
@@ -50,7 +52,25 @@ void updateCata(){
 
 }
 }
-    
+
+
+void updateDriverSkills(){
+    // without limit switch 
+
+    if (controller.getDigital(ControllerDigital::Y) == 1){
+
+        turnLEFTONLY(110, 1000);
+
+      pros::delay(10);
+
+      cataMotor.moveVoltage(9000);
+
+      drivetrain(0.5, 200, 0.5);
+      pros::delay(35000);
+
+      cataMotor.moveVoltage(0);
+    }
+}
 
 
 /*
