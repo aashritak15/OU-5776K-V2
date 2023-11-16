@@ -40,7 +40,7 @@ void updateSkills(int path){
 
       pros::delay(10);
 
-      cataMotor.moveVoltage(7000);
+      cataMotor.moveVoltage(9000);
 
       drivetrain(0.5, 200, 0.5);
       pros::delay(35000);
