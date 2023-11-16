@@ -72,13 +72,13 @@ void updateDrive() {
     rightBack.setBrakeMode(AbstractMotor::brakeMode::coast);
   }
 
-
+/*
  if (controller.getDigital(ControllerDigital::Y) == 1) {
     turnClock(180, 1000);
 
   }
 
-
+*/
   /*
 
   if(controller.getDigital(ControllerDigital::B) == 1){
