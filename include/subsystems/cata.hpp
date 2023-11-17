@@ -4,21 +4,32 @@ using namespace okapi;
 
 extern Motor cataMotor;
 
-void cataInnit();
+
+void cataInit();
+void updateCata();
 
 
 enum class CataState{
-    RUNNINGSLOW = 0,
-    RUNNINGFAST = 1,
-    STOPPED = 2,
+    STOPPED = 0,
+    HI = 1, 
+    MED = 2,
+    LO = 3,
 };
 
-void setCataState(CataState IState);
+void setCataState(CataState CState);
 
 CataState getCataState();
 
-  static CataState currentCataState = CataState::STOPPED;
 
-void updateCata();
-void updateDriverSkills();
+
+
+extern CataState getCataState();
+extern void setCataState(CataState CState);
+
+static CataState currentCataState = CataState::STOPPED;
+static CataState previousCataState = CataState::STOPPED;
+
+
+
+ void updateDriverSkills();
 

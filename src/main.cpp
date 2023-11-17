@@ -22,6 +22,7 @@ void initialize() {
     IEInnit();
     imuInnit();
     intakeInit();
+    cataInit();
     //flipoutMechInnit();
     resetEncoders();
     //pistonsInnit();
@@ -81,7 +82,7 @@ if (selector::auton == 0) {side = 0;}
 */
 void autonomous() {
 
-    updateSkills(1);
+    updateAuton(3);
    //updateAuton(2);
    
    /* 
@@ -108,7 +109,7 @@ void autonomous() {
 * If no competition control is connected, this function will run immediately
 * following initialize().
 *
-* If the robot is disabled or communications is lost, the
+* If the robot is disablsed or communications is lost, the
 * operator control task will be stopped. Re-enabling the robot will restart the
 * task, not resume it from where it left off.
 */

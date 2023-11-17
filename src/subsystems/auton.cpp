@@ -719,66 +719,70 @@ void updateAuton(int side){
 
 
   flapjack1.set_value(true);
-  pros::delay(10);
+  pros::delay(300);
   flapjack1.set_value(false);
   pros::delay(100);
 
   intakeAuton(IntakeState::INTAKING); 
-  drivetrain(2.6, 1300, 1.5);
+  drivetrain(4.3, 1300, 1.5);
+ pros::delay(20);
+
+  drivetrain(1.6, 900, 0.5);
+
   turnClock(135, 500);
   pros::delay(100);
 
+
   flapjack1.set_value(true);
   intakeAuton(IntakeState::STOPPED); 
-  drivetrain(2.2, 1300, 1.5);
+  drivetrain(2.5, 1300, 1.5);
   intakeAuton(IntakeState::OUTTAKING); 
-  pros::delay(400);
-
+  pros::delay(400); 
   intakeAuton(IntakeState::STOPPED); 
-  drivetrain(-1.3, 800, 1);
-  flapjack1.set_value(false);
-  pros::delay(50);
+  // drivetrain(-1.3, 800, 1);
+  // flapjack1.set_value(false);
+  // pros::delay(50);
   
-  turnClock(135, 450);
-  intakeAuton(IntakeState::INTAKING);
-  pros::delay(20);
-  drivetrain(1, 450, 1.5);
-  pros::delay(200);
+  // turnClock(135, 450);
+  // intakeAuton(IntakeState::INTAKING);
+  // pros::delay(20);
+  // drivetrain(1, 450, 1.5);
+  // pros::delay(200);
 
-  turnCounter(90, 200);
-  drivetrain(1, 450, 1.5);
-  pros::delay(10);
-  intakeAuton(IntakeState::OUTTAKING);
-  pros::delay(100);
-  turnClock(45, 100);
-  drivetrain(1, 450, 1.5);
-  pros::delay(10);
-  drivetrain(.2, 100, 1.5);
-  turnClock(90, 200);
-  pros::delay(10);
+  // turnCounter(90, 200);
+  // drivetrain(1, 450, 1.5);
+  // pros::delay(10);
+  // intakeAuton(IntakeState::OUTTAKING);
+  // pros::delay(100);
+  // turnClock(45, 100);
+  // drivetrain(1, 450, 1.5);
+  // pros::delay(10);
+  // drivetrain(.2, 100, 1.5);
+  // turnClock(90, 200);
+  // pros::delay(10);
   
-  intakeAuton(IntakeState::INTAKING);
-  drivetrain(2, 1000, 3);
-  pros::delay(10);
-  intakeAuton(IntakeState::STOPPED);
-  pros::delay(20);
+  // intakeAuton(IntakeState::INTAKING);
+  // drivetrain(2, 1000, 3);
+  // pros::delay(10);
+  // intakeAuton(IntakeState::STOPPED);
+  // pros::delay(20);
 
-  drivetrain(-0.3, 500, .5);
-  drivetrain(-1.7, 2000, 3);
-  turnClock(135, 450);
-  flapjack1.set_value(true);
-  intakeAuton(IntakeState::OUTTAKING);
-  drivetrain(1, 300, 1);
-  pros::delay(100);
+  // drivetrain(-0.3, 500, .5);
+  // drivetrain(-1.7, 2000, 3);
+  // turnClock(135, 450);
+  // flapjack1.set_value(true);
+  // intakeAuton(IntakeState::OUTTAKING);
+  // drivetrain(1, 300, 1);
+  // pros::delay(100);
 
-  flapjack1.set_value(false);
-  turnCounter(45,200);
-  drivetrain(1, 400, 3);
-  pros::delay(10);
-  drivetrain(-.3, 200, 3);
-  pros::delay(20);
-  drivetrain(.8, 300, 3);
-  pros::delay(20);
+  // flapjack1.set_value(false);
+  // turnCounter(45,200);
+  // drivetrain(1, 400, 3);
+  // pros::delay(10);
+  // drivetrain(-.3, 200, 3);
+  // pros::delay(20);
+  // drivetrain(.8, 300, 3);
+  // pros::delay(20);
   
 
 

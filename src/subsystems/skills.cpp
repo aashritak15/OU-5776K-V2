@@ -36,18 +36,54 @@ void intakeSkills(IntakeState currentIntakeState){
 void updateSkills(int path){
     if (path == 1){
 
-      turnLEFTONLY(110, 1000);
 
-      pros::delay(10);
+/*
+
+______________________________________________________________________________
+
+going to matchload position
+
+______________________________________________________________________________
+
+*/
+
+       drivetrain(0.8, 1000, 1);
+
+      turnLEFTONLY(109, 1000);
+
+      pros::delay(100);
+
+      drivetrain(1, 2000, 0.3);
+
+/*
+
+______________________________________________________________________________
+
+matchloading 
+
+______________________________________________________________________________
+
+*/
 
       cataMotor.moveVoltage(9000);
 
-      drivetrain(0.5, 200, 0.5);
-      pros::delay(35000);
+      pros::delay(2000);
 
       cataMotor.moveVoltage(0);
       
        pros::delay(50);
+
+/*
+
+______________________________________________________________________________
+
+going to other side 
+
+______________________________________________________________________________
+
+*/
+
+    drivetrain(0.5, 2000, 0.3);
 
       turnClock(60, 2000);
 
@@ -58,20 +94,33 @@ void updateSkills(int path){
 
        pros::delay(20);
 
-       turnCounter(40, 2000);
+       turnCounter(35, 2000);
 
       pros::delay(100);
 
 
-     
+      cataMotor.moveVoltage(4000);
 
-       drivetrain(-7.15, 3000, 0.5);
+      pros::delay(100);
+
+       drivetrain(-6.6, 3000, 0.5);
          pros::delay(100);
 
+   cataMotor.moveVoltage(0);
 
        intakeSkills(IntakeState::INTAKING);
 
          pros::delay(100); 
+
+  /*
+
+______________________________________________________________________________
+
+ scoring from side 
+
+______________________________________________________________________________
+
+*/
 
 
        turnLeftTime(900, -400, -200);
@@ -88,17 +137,30 @@ void updateSkills(int path){
 
        intakeSkills(IntakeState::OUTTAKING);
 
-       drivetrain(-2, 500, 2);
+       drivetrain(-2, 1000, 2);
        pros::delay(100);
 
 
-       turnRightTime(900, 700, 200);
 
-       pros::delay(100);
+    /*
 
-       drivetrain(2, 500, 1);
+______________________________________________________________________________
 
-       pros::delay(100);
+ going to the front 
+
+______________________________________________________________________________
+
+*/
+
+
+      drivetrain(0.5, 500, 1);
+
+
+       turnClock(90, 1000);  
+
+       pros::delay(20);
+
+       drivetrain(2.4, 1000, 1);
 
        flapjack1.set_value(true);
 
@@ -111,7 +173,7 @@ void updateSkills(int path){
 
        pros::delay(100);
 
-       drivetrain(1, 1000, 2);
+       drivetrain(2, 1000, 2);
        
         intakeSkills(IntakeState::OUTTAKING);
 
@@ -127,7 +189,7 @@ void updateSkills(int path){
 
        flapjack1.set_value(true);
 
-       drivetrain(2, 3000, 1.2);
+       drivetrain(2.4, 3000, 1.2);
 
        pros::delay(100);
 
@@ -141,7 +203,7 @@ void updateSkills(int path){
 
        pros::delay(100);
 
-       drivetrain(2.5, 1000, 1);
+       drivetrain(2, 1000, 1);
 
        pros::delay(100);
 
@@ -161,7 +223,7 @@ void updateSkills(int path){
 
        pros::delay(100);
 
-       drivetrain(2, 3000, 1);
+       drivetrain(2.5, 3000, 1.5);
 
        pros::delay(100);
 
