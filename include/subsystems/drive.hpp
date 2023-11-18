@@ -34,4 +34,6 @@ extern std::shared_ptr<OdomChassisController> RVdrive;
 extern std::shared_ptr<OdomChassisController> driveTemp;
 
 
+//okapi::IntegratedEncoder leftEncoder;
+
 void updateDrive();

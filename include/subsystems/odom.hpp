@@ -1,3 +1,4 @@
+
 #include "main.h"
 using namespace okapi;
 
@@ -24,6 +25,8 @@ void drivetrain(double target, int ms, double speed);
 //void turnClockwise(float degree, int ms);
 
 void checkBalance();
+ //IntegratedEncoder leftEncoder(int i , bool s );
+// IntegratedEncoder rightEncoder(int, bool);
 
 
 void resetEncoders();

@@ -74,9 +74,11 @@ ______________________________________________________________________________
 
 */
 
+
+
        drivetrain(0.8, 1000, 1);
 
-      turnLEFTONLY(109, 1000);
+      turnLEFTONLY(107, 1000);
 
       pros::delay(100);
 
@@ -110,28 +112,29 @@ ______________________________________________________________________________
 
 */
 
-    drivetrain(0.5, 2000, 0.3);
+    drivetrain(0.5, 1000, 0.3);
 
-      turnClock(60, 2000);
+      turnClock(60, 1000);
 
        pros::delay(50);
 
-
-      drivetrain(-1.8, 3000, 1);
+      drivetrain(-1.5, 1000, 1);
 
        pros::delay(20);
 
-       turnCounter(35, 2000);
+       turnCounter(35, 500);
 
       pros::delay(100);
 
 
-      cataMotor.moveVoltage(5000);
 
-      pros::delay(100);
+      cataMotor.moveVoltage(5400);
 
-       drivetrain(-6.65, 3000, 0.5);
-         pros::delay(100);
+      pros::delay(20);
+
+       drivetrain(-6.6, 4000, 0.5);
+
+         pros::delay(200);
 
    cataMotor.moveVoltage(0);
 
@@ -150,36 +153,23 @@ ______________________________________________________________________________
 */
 
 
-       //turnLeftTime(900, -500, -200);
+       turnLeftTime(900, -500, -200);
 
-       turnRIGHTONLY(45, 900);
-       drivetrain(-2, 500, 2);
-       //turnLeftTime(900, -400, -200);
-       right.moveVelocity(-500);
-       left.moveVelocity(-250);
-       pros::delay(900);
 
        intakeSkills(IntakeState::OUTTAKING);
        //right.moveVoltage(-10000);
        //left.moveVoltage(-10000);
 
-       gradualMax(500, -1);
+      drivetrain(-2, 1000, 1);
 
-       //pros::delay(500);
-       right.moveVelocity(0);
-       left.moveVelocity(0);
-       
-       pros::delay(300);
+        pros::delay(20);
 
-       drivetrain(2, 1200,1);
+      drivetrain(1, 1000, 1);
 
-       pros::delay(200);
+         pros::delay(20);
 
-      drivetrain(-2.5, 1000, 1.7);
+      drivetrain(-2, 1000, 1);
 
-     
-  
-        pros::delay(100);
 
 
 
@@ -194,7 +184,7 @@ ______________________________________________________________________________
 */
 
 
-      drivetrain(0.5, 500, 1);
+      drivetrain(0.7, 500, 1);
 
 
        turnClock(90, 1000);  
@@ -244,7 +234,7 @@ ______________________________________________________________________________
 
        pros::delay(100);
 
-       drivetrain(2, 1000, 1);
+       drivetrain(2.4, 1000, 1);
 
        pros::delay(100);
 
@@ -523,6 +513,110 @@ ______________________________________________________________________________
 
     }
     else if(path == 2){
+
+      /*
+______________________________________________________________________________
+going to matchload position
+______________________________________________________________________________
+*/
+
+       drivetrain(0.8, 1000, 1);
+
+      turnLEFTONLY(107, 1000);
+
+      pros::delay(100);
+
+      drivetrain(1, 2000, 0.3);
+
+/*
+______________________________________________________________________________
+matchloading 
+______________________________________________________________________________
+*/
+
+cataMotor.moveVoltage(9000);
+pros::delay(2000);
+
+cataMotor.moveVoltage(0);
+
+pros::delay(50);
+
+/*
+______________________________________________________________________________
+going to other side 
+______________________________________________________________________________
+*/
+
+    drivetrain(0.5, 2000, 0.3);
+
+      turnClock(60, 2000);
+
+       pros::delay(50);
+
+     drivetrain(-1.7, 2000, 0.3);
+
+		turnCounter(35, 2000);
+
+      pros::delay(100);
+
+      cataMotor.moveVoltage(4000);
+
+      pros::delay(100);
+
+	drivetrain(-6.6, 3000, 0.5);
+         pros::delay(100);
+
+   cataMotor.moveVoltage(0);
+
+       intakeSkills(IntakeState::INTAKING);
+
+         pros::delay(100); 
+
+  /*
+______________________________________________________________________________
+ scoring from side 
+______________________________________________________________________________
+*/
+
+
+       turnLeftTime(900, -400, -200);
+
+       intakeSkills(IntakeState::OUTTAKING);
+			drivetrain(-2, 1000, 2);
+       pros::delay(100);
+
+
+
+
+      drivetrain(0.5, 500, 1);
+
+
+       turnClock(90, 1000);  
+
+       pros::delay(20);
+
+       drivetrain(2.4, 1000, 1);
+
+       flapjack1.set_value(true);
+
+pros::delay(100);
+
+drivetrain(2, 1000, 2);
+
+        intakeSkills(IntakeState::OUTTAKING);
+        flapjack1.set_value(true);
+        drivetrain(2.4, 3000, 1.2);
+
+       pros::delay(100);
+      drivetrain(2, 1000, 1);
+
+       pros::delay(100);
+
+      drivetrain(2.5, 3000, 1.5);
+
+       pros::delay(100);
+
+
 
     }
 }

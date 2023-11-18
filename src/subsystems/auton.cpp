@@ -98,7 +98,17 @@ void updateAuton(int side){
 
        left.moveVelocity(0);
 
+      drivetrain(-1.5, 1000, 1);
+
+       pros::delay(20);
+
+        drivetrain(1, 1000, 0.8);
+
+       pros::delay(20);
+
       drivetrain(-1, 1000, 1);
+
+       pros::delay(100);
 
       drivetrain(1.2, 1000, 0.8);
 

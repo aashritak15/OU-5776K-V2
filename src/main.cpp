@@ -10,6 +10,7 @@
 #include "selection.h"
 
 
+//okapi::IntegratedEncoder leftEncoder = IntegratedEncoder(rightTopPort, true);
 
 /**
 * Runs initialization code. This occurs as soon as the program is started.
@@ -19,12 +20,12 @@
 */
 void initialize() {
     selector::init();
-    IEInnit();
+    //IEInnit();
     imuInnit();
     intakeInit();
     cataInit();
     //flipoutMechInnit();
-    resetEncoders();
+    //resetEncoders();
     //pistonsInnit();
     //lMechInit();
     //balanceInit();
@@ -82,7 +83,7 @@ void competition_initialize() {
 */
 void autonomous() {
 
-    //updateAuton(3);
+    //updateAuton(1);
    updateSkills(1);
    
    /* 
@@ -128,7 +129,11 @@ void opcontrol() {
             DarshyMech();
             PtoMech();
 
-            
+          
+
+       
+
+
            
             rate.delay(100_Hz); 
 }

@@ -2,9 +2,15 @@
 #include "subsystems/ports.hpp"
 #include "subsystems/odom.hpp"
 #include "subsystems/drive.hpp"
+#include "subsystems/pistons.hpp"
 #include "globals.hpp"
+#include "okapi/impl/device/rotarysensor/adiEncoder.hpp"
+#include "okapi/impl/device/rotarysensor/integratedEncoder.hpp"
+//#include "odom.hpp"
+//#include "pistons.hpp"
 
 using namespace okapi;
+
 
 
 Motor rightFront(rightFrontPort, true, AbstractMotor::gearset::blue,
@@ -27,10 +33,15 @@ Motor leftBack(leftBackPort, false, AbstractMotor::gearset::blue,
 
 Motor leftTop(leftTopPort, true, AbstractMotor::gearset::blue,
            AbstractMotor::encoderUnits::degrees); 
-          
+
+
+okapi::IntegratedEncoder leftEncoder = IntegratedEncoder(20, true);
+
 
 okapi::MotorGroup left({leftFront, leftTop, leftBack});
 okapi::MotorGroup right({rightFront, rightTop, rightBack});
+
+
 
 std::shared_ptr<OdomChassisController> drive =
     ChassisControllerBuilder()
@@ -72,13 +83,40 @@ void updateDrive() {
     rightBack.setBrakeMode(AbstractMotor::brakeMode::coast);
   }
 
-/*
- if (controller.getDigital(ControllerDigital::Y) == 1) {
-    turnClock(180, 1000);
+
+ if (controller.getDigital(ControllerDigital::right) == 1) {
+    int ms = 500000;
+    int time = 0;
+    leftEncoder.reset();
+    while(time < ms){
+      if (leftEncoder.get() >= 4400 && leftEncoder.get() <= 4800){
+         pros::Controller master (pros::E_CONTROLLER_MASTER);
+   
+  
+    
+    
+     
+      master.print(0, 0, "STOP %i %s");
+      master.rumble(".--. --");
+      
+    
+  
+
+         pistonPTO1.set_value(false);
+         time = 500000;
+      }
+
+      time += 10;
+    }
+    
+    drive->getModel()->tank(0,0);
+
 
   }
 
-*/
+
+
+
   /*
 
   if(controller.getDigital(ControllerDigital::B) == 1){

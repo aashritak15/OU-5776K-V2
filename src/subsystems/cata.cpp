@@ -20,7 +20,7 @@ ControllerButton cataMedButton = ControllerButton(ControllerDigital::up);
 ControllerButton cataLowButton = ControllerButton(ControllerDigital::left);
 
 void cataInit() { 
-  cataMotor.setBrakeMode(AbstractMotor::brakeMode::hold); 
+  cataMotor.setBrakeMode(AbstractMotor::brakeMode::coast); 
   //intakeMotor2.setBrakeMode(AbstractMotor::brakeMode::hold); 
   }
 
@@ -104,15 +104,21 @@ void setCataState(CataState CState) {
       rightTop.setBrakeMode(AbstractMotor::brakeMode::coast);
       rightBack.setBrakeMode(AbstractMotor::brakeMode::coast);
 
-      turnLEFTONLY(110, 1000);
+      drivetrain(0.8, 1000, 1);
 
-      pros::delay(10);
+      turnLEFTONLY(107, 1000);
 
-      cataMotor.moveVoltage(9000);
+      pros::delay(100);
 
-      drivetrain(0.5, 200, 0.5);
-      pros::delay(35000);
+      drivetrain(1, 2000, 0.3);
+
+    cataMotor.moveVoltage(9000);
+
+      pros::delay(30000);
 
       cataMotor.moveVoltage(0);
+      
+       pros::delay(50);
+
     }
 }

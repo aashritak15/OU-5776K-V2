@@ -10,8 +10,8 @@ using namespace okapi;
 
 
 
-IntegratedEncoder leftEncoder(leftTopPort, true);
-IntegratedEncoder rightEncoder(rightTopPort, false);
+// IntegratedEncoder leftEncoder(leftTopPort, true);
+// IntegratedEncoder rightEncoder(rightTopPort, false);
 
 IMU imu1(imuPort1, IMUAxes::z);
 IMU imu2(imuPort2, IMUAxes::z);
@@ -20,11 +20,6 @@ IMU imuA(imuPort1, IMUAxes::y);
 IMU imuB(imuPort2, IMUAxes::y);
 
 
-
-void resetEncoders(){
-  leftEncoder.reset();
-  rightEncoder.reset();
-}
 
 
 /*
@@ -77,17 +72,17 @@ void imuInnit() {
   resetImu();
 }
 
-void IEInnit() {
-  //left
-  pros::c::motor_set_encoder_units(leftTopPort, pros::E_MOTOR_ENCODER_DEGREES);
+// void IEInnit() {
+//   //left
+//   pros::c::motor_set_encoder_units(leftTopPort, pros::E_MOTOR_ENCODER_DEGREES);
  
-  //right
-  pros::c::motor_set_encoder_units(rightTopPort, pros::E_MOTOR_ENCODER_DEGREES);
+//   //right
+//   pros::c::motor_set_encoder_units(rightTopPort, pros::E_MOTOR_ENCODER_DEGREES);
   
-  leftEncoder.reset();
-  rightEncoder.reset();
+//   leftEncoder.reset();
+//   rightEncoder.reset();
 
-}
+// }
 
 
 //motor groups
