@@ -58,13 +58,13 @@ int side = -1;
 void competition_initialize() {
     
 
-if (selector::auton == 1){side = 2;}
-if (selector::auton == 2){side = 1;}
-if (selector::auton == 3) {side = 4;}
-if (selector::auton == -1) {side = 2;}
-if (selector::auton == -2) {side = 1;}
-if (selector::auton == -3) {side = 4;}
-if (selector::auton == 0) {side = 0;}
+// if (selector::auton == 1){side = 2;}
+// if (selector::auton == 2){side = 1;}
+// if (selector::auton == 3) {side = 4;}
+// if (selector::auton == -1) {side = 2;}
+// if (selector::auton == -2) {side = 1;}
+// if (selector::auton == -3) {side = 4;}
+// if (selector::auton == 0) {side = 0;}
 
 }
 
@@ -82,8 +82,8 @@ if (selector::auton == 0) {side = 0;}
 */
 void autonomous() {
 
-    updateAuton(3);
-   //updateAuton(2);
+    //updateAuton(3);
+   updateSkills(1);
    
    /* 
    if (side == 0) {

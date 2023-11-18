@@ -32,6 +32,33 @@ void intakeSkills(IntakeState currentIntakeState){
   }
 }
 
+void gradualMax(int ms, int back){
+  int timer = 0;
+
+  int speed = 500 * back;
+  int val = 100;
+  //int newSpeed = 0;
+
+  
+ 
+  while (timer < ms){
+    
+   
+
+     left.moveVoltage(speed);
+     right.moveVoltage(speed);
+    
+    val *=1.2;
+    speed += val;
+    
+    timer += 10;
+    pros::delay(10);
+}
+     left.moveVoltage(0);
+     right.moveVoltage(0);
+
+}
+
 
 void updateSkills(int path){
     if (path == 1){
@@ -90,7 +117,7 @@ ______________________________________________________________________________
        pros::delay(50);
 
 
-      drivetrain(-1.4, 3000, 1);
+      drivetrain(-1.8, 3000, 1);
 
        pros::delay(20);
 
@@ -99,11 +126,11 @@ ______________________________________________________________________________
       pros::delay(100);
 
 
-      cataMotor.moveVoltage(4000);
+      cataMotor.moveVoltage(5000);
 
       pros::delay(100);
 
-       drivetrain(-6.6, 3000, 0.5);
+       drivetrain(-6.65, 3000, 0.5);
          pros::delay(100);
 
    cataMotor.moveVoltage(0);
@@ -123,22 +150,36 @@ ______________________________________________________________________________
 */
 
 
-       turnLeftTime(900, -400, -200);
+       //turnLeftTime(900, -500, -200);
 
-       pros::delay(100);
-
-       drivetrain(-2.5, 1000, 2);
-
-       pros::delay(100);
-       //turnLeftTime(900, 200, 400);
-
-       drivetrain(1, 1000, 0.8);
-
+       turnRIGHTONLY(45, 900);
+       drivetrain(-2, 500, 2);
+       //turnLeftTime(900, -400, -200);
+       right.moveVelocity(-500);
+       left.moveVelocity(-250);
+       pros::delay(900);
 
        intakeSkills(IntakeState::OUTTAKING);
+       //right.moveVoltage(-10000);
+       //left.moveVoltage(-10000);
 
-       drivetrain(-2, 1000, 2);
-       pros::delay(100);
+       gradualMax(500, -1);
+
+       //pros::delay(500);
+       right.moveVelocity(0);
+       left.moveVelocity(0);
+       
+       pros::delay(300);
+
+       drivetrain(2, 1200,1);
+
+       pros::delay(200);
+
+      drivetrain(-2.5, 1000, 1.7);
+
+     
+  
+        pros::delay(100);
 
 
 
