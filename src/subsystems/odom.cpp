@@ -305,7 +305,7 @@ void turnRIGHTONLY(float degree, int ms) {
     // Calculate power using PID
     float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
     //prevError = error;
-      drive->getModel()->tank(0, -power); //goes counterclockwise 
+      drive->getModel()->tank(power, 0); //goes counterclockwise 
     
     timer += 10;
     pros::delay(10);

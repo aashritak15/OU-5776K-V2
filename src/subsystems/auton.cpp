@@ -363,7 +363,7 @@ ______________________________________________________________________________
         cataMotor.moveVoltage(0);
 
 
-    drivetrain(1, 1000, 0.8);
+    drivetrain(1, 1000, 0.4);
 
 
       pros::delay(300);
@@ -376,24 +376,31 @@ ______________________________________________________________________________
       imuInnit();
      
     
-      turnCounter(179, 5000);
+      turnCounter(179, 1900);
 
      
 
 
         pros::delay(50);
        
-       drivetrain(1.2, 2000, 0.7);
+       drivetrain(1.2, 2000, 0.5);
 
    pros::delay(50);
 
-      turnCounter(45, 1000);
+      turnCounter(45, 500);
 
    pros::delay(50);
+
+     flapjack1.set_value(true);
+
+        pros::delay(20);
+
 
       drivetrain(0.8, 1000, 2);
+         pros::delay(50);
 
-       flapjack1.set_value(true);
+
+     
 
     
 
@@ -401,22 +408,8 @@ ______________________________________________________________________________
       
 
 
-/**/
 
-    
-  //  pros::delay(50);
-
-  //      //left.moveVelocity(3000);
-
-
-  //      pros::delay(500);
-
-  //      left.moveVelocity(0);
-
-       
-
-
-  turnCounter(45, 800);
+  turnCounter(50, 500);
 
         pros::delay(20);
 
@@ -428,76 +421,62 @@ ______________________________________________________________________________
       flapjack1.set_value(false);
 
 
-      turnClock(45, 1000);
+      turnClock(42, 500);
 
       pros::delay(20);
 
 
       
-      pros::delay(20);
-      turnCounter(45, 800);
 
-      drivetrain(0.2, 400, 1);
+      drivetrain(0.6, 600, 1);
 
-      pros::delay(20);
+      pros::delay(50);
 
-      turnClock(45, 1000);
+      //turnCounter(55, 1000);
 
-
+     turnRightTime(400, 120,1400);
       
 
 
-      /*
-        left.moveVelocity(7000);
+   
 
-       pros::delay(300);
+       pros::delay(20);
 
-       left.moveVelocity(0);
-     */
+       
 
-       pros::delay(80);
+       intakeMotor1.moveVoltage(14000);
 
+       drivetrain(1, 800, 2);
 
+      //  left.moveVelocity(1000);
 
-       drivetrain(1.5, 2000, 1.5);
+      //   pros::delay(150);
 
-
-  
+      //    left.moveVelocity(0);
 
 
         pros::delay(50);
 
         turnClock(15, 1000);
 
-
-
-       drivetrain(-0.5, 2000, 1.5);   
-       
-
-        intakeMotor1.moveVoltage(14000);
-
-       drivetrain(1, 1000, 3); 
-
-      pros::delay(50);
-
-       drivetrain(-0.85, 1000, 0.8);
+       drivetrain(-1, 800, 0.8);
 
        pros::delay(20);
 
 
-       turnClock(6, 2000);
+       turnCounter(6, 600);
 
          pros::delay(10);
 
-       drivetrain(1.1, 1000, 3);
+       drivetrain(1.5, 1000, 3);
 
       pros::delay(20);
 
-       drivetrain(-0.9, 1000, 0.8);
+       drivetrain(-0.45, 500, 0.8);
 
         intakeMotor1.moveVoltage(0);
        
-       turnCounter(90, 2000);
+       turnCounter(90, 1000);
 
        pros::delay(20);
 
@@ -511,7 +490,20 @@ ______________________________________________________________________________
 
        flapjack1.set_value(true);
 
-       drivetrain(1, 1000, 1.2);
+       drivetrain(.9, 1000, 3);
+
+       pros::delay(50);
+
+       //turnCounter(10,500);
+
+        right.moveVelocity(300);
+
+        pros::delay(500);
+
+         right.moveVelocity(0);
+
+       
+
 
   
 
