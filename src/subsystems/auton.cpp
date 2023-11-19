@@ -363,7 +363,7 @@ ______________________________________________________________________________
         cataMotor.moveVoltage(0);
 
 
-    drivetrain(0.8, 1000, 1);
+    drivetrain(1, 1000, 0.8);
 
 
       pros::delay(300);
@@ -391,7 +391,7 @@ ______________________________________________________________________________
 
    pros::delay(50);
 
-      drivetrain(0.6, 1000, 2);
+      drivetrain(0.8, 1000, 2);
 
        flapjack1.set_value(true);
 
@@ -404,30 +404,47 @@ ______________________________________________________________________________
 /**/
 
     
-   pros::delay(50);
+  //  pros::delay(50);
 
-       left.moveVelocity(3000);
+  //      //left.moveVelocity(3000);
 
-       pros::delay(500);
 
-       left.moveVelocity(0);
+  //      pros::delay(500);
+
+  //      left.moveVelocity(0);
 
        
 
-/*
-  turnCounter(30, 1000);
+
+  turnCounter(45, 800);
 
         pros::delay(20);
 
-        drivetrain(0.1, 400, 1);
+        
 
-    */
+    
 
 
       flapjack1.set_value(false);
 
 
-      turnClock(5, 1000);
+      turnClock(45, 1000);
+
+      pros::delay(20);
+
+
+      
+      pros::delay(20);
+      turnCounter(45, 800);
+
+      drivetrain(0.2, 400, 1);
+
+      pros::delay(20);
+
+      turnClock(45, 1000);
+
+
+      
 
 
       /*
