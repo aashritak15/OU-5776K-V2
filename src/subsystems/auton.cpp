@@ -88,7 +88,19 @@ void updateAuton(int side){
     if (side == 1){
 //close auton
 
-      drivetrain(-2, 2000, 0.8);
+
+  /*
+
+______________________________________________________________________________
+
+  Scoring Preload 
+
+______________________________________________________________________________
+
+*/
+
+
+      drivetrain(-1.5, 2000, 0.8);
 
        pros::delay(100);
 
@@ -106,36 +118,56 @@ void updateAuton(int side){
 
        pros::delay(20);
 
-      drivetrain(-1, 1000, 1);
+      drivetrain(-1.5, 1000, 1);
 
        pros::delay(100);
 
-      drivetrain(1.2, 1000, 0.8);
+    /*
 
-       left.moveVelocity(3000);
+______________________________________________________________________________
+
+ getting matchload 
+
+______________________________________________________________________________
+
+*/
+
+
+      drivetrain(1, 1000, 0.8);
+      pros::delay(20);
 
       intakeMotor1.moveVelocity(0);
+
+      pros::delay(20);
+
+
+
+      turnCounter(45, 1000);
+
+
+
+
+/*
+       left.moveVelocity(2000);
 
       pros::delay(180);
 
       left.moveVelocity(0);
 
+    
+*/
 
-       drivetrain(0.2, 1000, 2);
+
+      intakeMotor1.moveVelocity(0);
+
+       drivetrain(1, 1000, 2);
 
        flapjack1.set_value(true);
 
 
-       left.moveVelocity(4000);
+       left.moveVelocity(3000);
 
-       pros::delay(200);
-
-       left.moveVelocity(0);
-
-
-       left.moveVelocity(7000);
-
-       pros::delay(300);
+       pros::delay(500);
 
        left.moveVelocity(0);
 
@@ -143,16 +175,27 @@ void updateAuton(int side){
 
        flapjack1.set_value(false);
 
-       pros::delay(200);
+       pros::delay(80);
 
-       turnClock(45, 2000);
+  
+    /*
 
-       pros::delay(200);
+______________________________________________________________________________
+
+    going to touch elevation bar 
+
+______________________________________________________________________________
+
+*/
+
+      turnClock(30, 1000);
+
+      pros::delay(20);
+
+      drivetrain(1.1, 1000, 1);
 
 
-       drivetrain(1.4, 3000, 0.7);
-
-        turnCounter(43, 2000);
+        turnCounter(35, 2000);
 
         intakeAuton(IntakeState::OUTTAKING);
 
@@ -310,80 +353,105 @@ void updateAuton(int side){
     if (side == 2){
       //awp blue pole, blue goal
       //awp red pole, red goal
-      
-      cataMotor.moveVoltage(-12000);
+    
+      cataMotor.moveVoltage(12000);
 
-      pros::delay(200);
-
-      cataMotor.moveVoltage(0);
+      pros::delay(400);
 
       intakeMotor1.moveVoltage(-14000);
 
+        cataMotor.moveVoltage(0);
+
+
+    drivetrain(0.8, 1000, 1);
+
+
+      pros::delay(300);
+
+      drivetrain(-1.85, 1000, 1);
+
+
       pros::delay(200);
 
-      drivetrain(-1.7, 3000, 0.8);
+      imuInnit();
+     
+    
+      turnCounter(179, 5000);
+
+     
 
 
-      pros::delay(50);
-
-  
-  
-
-      turnClock(180, 2000);
-
-
-
-       intakeMotor1.moveVoltage(0);
-
-
-          pros::delay(50);
+        pros::delay(50);
        
-      drivetrain(1, 4000, 0.7);
-      
-      left.moveVelocity(3000);
+       drivetrain(1.2, 2000, 0.7);
 
-      pros::delay(180);
+   pros::delay(50);
 
-      left.moveVelocity(0);
+      turnCounter(45, 1000);
 
+   pros::delay(50);
 
-      // drivetrain(0.2, 1000, 2);
+      drivetrain(0.6, 1000, 2);
 
        flapjack1.set_value(true);
 
+    
 
-       left.moveVelocity(4000);
 
-       pros::delay(320);
+      
+
+
+/**/
+
+    
+   pros::delay(50);
+
+       left.moveVelocity(3000);
+
+       pros::delay(500);
 
        left.moveVelocity(0);
 
-       drivetrain(0.6, 4000, 1);
+       
 
-       left.moveVelocity(7000);
+/*
+  turnCounter(30, 1000);
+
+        pros::delay(20);
+
+        drivetrain(0.1, 400, 1);
+
+    */
+
+
+      flapjack1.set_value(false);
+
+
+      turnClock(5, 1000);
+
+
+      /*
+        left.moveVelocity(7000);
 
        pros::delay(300);
 
        left.moveVelocity(0);
+     */
 
-        pros::delay(100);
-
-       flapjack1.set_value(false);
-
-       pros::delay(50);
-
-       turnClock(27, 2000);
-
-       pros::delay(50);
+       pros::delay(80);
 
 
-       drivetrain(1.4, 2000, 1.5);
 
-       left.moveVelocity(7000);
+       drivetrain(1.5, 2000, 1.5);
 
-       pros::delay(300);
 
-       left.moveVelocity(0);
+  
+
+
+        pros::delay(50);
+
+        turnClock(15, 1000);
+
 
 
        drivetrain(-0.5, 2000, 1.5);   
@@ -391,39 +459,50 @@ void updateAuton(int side){
 
         intakeMotor1.moveVoltage(14000);
 
-       drivetrain(1, 3000, 3); 
+       drivetrain(1, 1000, 3); 
 
       pros::delay(50);
 
-       drivetrain(-0.85, 3000, 0.8);
+       drivetrain(-0.85, 1000, 0.8);
 
        pros::delay(20);
 
-       turnClock(25, 1000);
 
-       pros::delay(20);
+       turnClock(6, 2000);
 
-       drivetrain(1.1, 3000, 3);
+         pros::delay(10);
+
+       drivetrain(1.1, 1000, 3);
 
       pros::delay(20);
 
-       drivetrain(-0.9, 3000, 0.8);
+       drivetrain(-0.9, 1000, 0.8);
 
         intakeMotor1.moveVoltage(0);
        
        turnCounter(90, 2000);
 
-       pros::delay(50);
+       pros::delay(20);
 
-       drivetrain(4, 3000, 0.8);
+        drivetrain(-1, 1000, 1);
+
+         pros::delay(20);
+
+       drivetrain(4, 1000, 0.8);
 
        pros::delay(50);
 
        flapjack1.set_value(true);
 
-       drivetrain(0.9, 1000, 1);
+       drivetrain(1, 1000, 1.2);
 
-       
+  
+
+
+
+
+
+
 
 
        /*
@@ -512,49 +591,48 @@ void updateAuton(int side){
     if(side == 3){
       //triball focused route, blue pole, red goal
       //triball focused route, red pole, blue goal
-//       cataMotor.moveVelocity(-14000);
-//       pros::delay(300);
-      
-//       intakeAuton(IntakeState::INTAKING);
-//       pros::delay(200);
+      cataMotor.moveVelocity(-14000);
+       pros::delay(300);
+       intakeAuton(IntakeState::INTAKING);
+       pros::delay(200);
 
-//       cataMotor.moveVelocity(0);
-//       pros::delay(500);
+       cataMotor.moveVelocity(0);
+       pros::delay(500);
 
    
     
-//       drivetrain(4.85, 3000, 1.25);
+       drivetrain(4.85, 3000, 0.7);
 
-//          intakeMotor1.moveVelocity(0);
+          intakeMotor1.moveVelocity(0);
 
-//       pros::delay(500);
-//     //pros::delay(100);
-
-
-//       turnCounter(90, 2000);
-
-//        imuInnit();
-
-//       pros::delay(200);
+       pros::delay(500);
+     //pros::delay(100);
 
 
-//       intakeAuton(IntakeState::OUTTAKING);
+       turnClock(90, 2000);
 
-//        pros::delay(100);
+        imuInnit();
+
+       pros::delay(200);
+
+
+       intakeAuton(IntakeState::OUTTAKING);
+
+        pros::delay(100);
       
-//       drivetrain(-1, 3000, 0.9);
-//       pros::delay(100);
+       drivetrain(-1, 3000, 0.9);
+       pros::delay(100);
 
-//       intakeMotor1.moveVelocity(0);
+       intakeMotor1.moveVelocity(0);
 
-//       turnClock(90, 3000);
+       turnClock(90, 3000);
 
-//        imuInnit();
+        imuInnit();
 
-//       pros::delay(100);
+       pros::delay(100);
 
-//       intakeAuton(IntakeState::INTAKING);
-//       //pros::delay(700);
+       intakeAuton(IntakeState::INTAKING);
+       pros::delay(700);
 
 //       drivetrain(0.47, 3000, 1);
 //       pros::delay(700);
@@ -728,6 +806,8 @@ void updateAuton(int side){
 
 
 
+/*
+
   flapjack1.set_value(true);
   pros::delay(300);
   flapjack1.set_value(false);
@@ -749,6 +829,9 @@ void updateAuton(int side){
   intakeAuton(IntakeState::OUTTAKING); 
   pros::delay(400); 
   intakeAuton(IntakeState::STOPPED); 
+
+  */
+
   // drivetrain(-1.3, 800, 1);
   // flapjack1.set_value(false);
   // pros::delay(50);
@@ -886,6 +969,11 @@ void updateAuton(int side){
     */
     
       
+    }
+
+    else if(side == 4){
+
+      turnCounter(90, 2000);
     }
   }
 

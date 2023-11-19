@@ -10,7 +10,7 @@ void turnCounter(float degree, int ms);
 
 void turnRIGHTONLY(float degree, int ms);
 
-void turnLEFTONLY(float degree, int ms);
+ void turnLEFTONLY(float degree, int ms);
 
 void turnRightTime(int ms, int Rvelocity, int Lvelocity);
 void turnLeftTime(int ms, int Rvelocity, int Lvelocity);
@@ -27,7 +27,6 @@ void drivetrain(double target, int ms, double speed);
 void checkBalance();
  //IntegratedEncoder leftEncoder(int i , bool s );
 // IntegratedEncoder rightEncoder(int, bool);
-
 
 void resetEncoders();
 void imuInnit();

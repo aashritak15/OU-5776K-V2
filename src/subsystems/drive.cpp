@@ -117,13 +117,12 @@ void updateDrive() {
 
 
 
-  /*
-
-  if(controller.getDigital(ControllerDigital::B) == 1){
-  turnClock(90, 3000);
+  
+  if(controller.getDigital(ControllerDigital::X) == 1){
+      turnCounter(179, 3000);
 }
 
-*/
+
 
   
 }

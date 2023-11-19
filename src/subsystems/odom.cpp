@@ -151,9 +151,9 @@ void turnClock(float degree, int ms) {
   rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
  float taredRotation = (imu1.get() + imu2.get()) / 2;
  int timer = 0;
- float turnkP = 0.008;
+ float turnkP = 0.0095;
  float turnkI = 0;
- float turnkD = 0.025;
+ float turnkD = 0.027;
 
   float prevError = 0;
   //float totalError = 0;
@@ -206,9 +206,9 @@ void turnCounter(float degree, int ms) {
   
  float taredRotation = (imu1.get() + imu2.get()) / 2;
  int timer = 0;
-  float turnkP = 0.008;
+  float turnkP = 0.0095;
  float turnkI = 0;
- float turnkD = 0.025;
+ float turnkD = 0.027;
 
   float prevError = 0;
   float integral = 0;
@@ -358,7 +358,7 @@ void turnLEFTONLY(float degree, int ms) {
     // Calculate power using PID
     float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
     //prevError = error;
-      drive->getModel()->tank(power, 0); //goes clockwise 
+      drive->getModel()->tank( power, 0); //goes clockwise 
     
     timer += 10;
     pros::delay(10);

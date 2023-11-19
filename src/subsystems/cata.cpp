@@ -71,13 +71,13 @@ void updateCata() {
       cataMotor.moveVoltage(0);
       break;
     case CataState::HI:
-      cataMotor.moveVoltage(10000);
+      cataMotor.moveVoltage(9000);
       break;
     case CataState::MED:
-      cataMotor.moveVoltage(9000);
+      cataMotor.moveVoltage(8550);
       break;  
     case CataState::LO:
-      cataMotor.moveVoltage(6750);
+      cataMotor.moveVoltage(8200);
       break;
     
     
