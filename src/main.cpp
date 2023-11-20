@@ -83,8 +83,8 @@ void competition_initialize() {
 */
 void autonomous() {
 
-    updateAuton(1);
-   //updateSkills(1);
+ //updateAuton(2);
+  updateSkills(1);
    
    /* 
    if (side == 0) {

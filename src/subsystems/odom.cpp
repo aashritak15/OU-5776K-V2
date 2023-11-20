@@ -265,6 +265,7 @@ void turnLeftTime(int ms, int Rvelocity, int Lvelocity){
 
 
 void turnRIGHTONLY(float degree, int ms) {
+  resetImu();
   leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
   leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
   leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -318,6 +319,7 @@ drive->stop();
 
 
 void turnLEFTONLY(float degree, int ms) {
+  resetImu();
   leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
   leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
   leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -344,7 +346,7 @@ void turnLEFTONLY(float degree, int ms) {
       //float targetVal = currentVal + degree;
 
       float error = degree - abs(currentVal);
-       if (error < 0.1){
+       if (abs(error) < 0.1){
         break;
         }
 
