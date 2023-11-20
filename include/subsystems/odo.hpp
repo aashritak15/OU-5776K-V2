@@ -1,5 +1,6 @@
 
 #include "main.h"
+
 using namespace okapi;
 
 //void encoderAvg();
@@ -14,6 +15,9 @@ void turnRIGHTONLY(float degree, int ms);
 
 void turnRightTime(int ms, int Rvelocity, int Lvelocity);
 void turnLeftTime(int ms, int Rvelocity, int Lvelocity);
+
+
+void turnONLYLF(float degree, int ms);
 
 //extern double displacement; 
 
@@ -32,8 +36,3 @@ void resetEncoders();
 void imuInnit();
 
 void IEInnit(); 
-
-
-
-
-

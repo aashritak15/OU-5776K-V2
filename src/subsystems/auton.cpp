@@ -1,6 +1,6 @@
 #include "subsystems/drive.hpp"
 #include "subsystems/auton.hpp"
-#include "subsystems/odom.hpp"
+#include "subsystems/odo.hpp"
 #include "subsystems/path.hpp"
 #include "subsystems/intake.hpp"
 #include "subsystems/pistons.hpp"

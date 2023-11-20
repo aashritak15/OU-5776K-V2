@@ -1,7 +1,7 @@
 #include "main.h"
 #include "subsystems/drive.hpp"
 #include "subsystems/ports.hpp"
-#include "subsystems/odom.hpp"
+#include "subsystems/odo.hpp"
 #include "globals.hpp"
 
 
@@ -329,6 +329,54 @@ void turnLEFTONLY(float degree, int ms) {
  float taredRotation = (imu1.get() + imu2.get()) / 2;
  int timer = 0;
  float turnkP = 0.0125;
+ float turnkI = 0;
+ float turnkD = 0.01;
+
+  float prevError = 0;
+  //float totalError = 0;
+
+    // [deg]
+
+  float integral = 0;
+ 
+  while (timer < ms){
+    // Compute PID values from current wheel travel measurements
+      float currentVal = (imu1.get() + imu2.get())/2 - taredRotation;
+
+      //float targetVal = currentVal + degree;
+
+      float error = degree - abs(currentVal);
+       if (abs(error) < 0.1){
+        break;
+        }
+
+       float derivative = error - prevError;
+       prevError = error;
+       integral += error;
+
+
+       
+
+    // Calculate power using PID
+    float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
+    //prevError = error;
+      drive->getModel()->tank( power, 0); //goes clockwise 
+    
+    timer += 10;
+    pros::delay(10);
+}
+
+drive->stop();
+}
+
+
+void turnONLYLF(float degree, int ms){
+  resetImu();
+
+  float taredRotation = (imu1.get() + imu2.get()) / 2;
+
+  int timer = 0;
+  float turnkP = 0.0125;
  float turnkI = 0;
  float turnkD = 0.01;
 

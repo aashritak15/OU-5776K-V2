@@ -1,12 +1,15 @@
 #include "subsystems/drive.hpp"
 #include "subsystems/auton.hpp"
-#include "subsystems/odom.hpp"
+#include "subsystems/odo.hpp"
 #include "subsystems/path.hpp"
 #include "subsystems/intake.hpp"
 #include "subsystems/pistons.hpp"
 #include "subsystems/cata.hpp"
 #include "subsystems/ports.hpp"
 #include "subsystems/skills.hpp"
+
+
+
 #include "globals.hpp"
 
 using namespace okapi;
@@ -60,6 +63,7 @@ void gradualMax(int ms, int back){
 }
 
 
+
 void updateSkills(int path){
     if (path == 1){
 
@@ -76,19 +80,21 @@ ______________________________________________________________________________
 
 
 
-       drivetrain(0.8, 600, 1);
+    drivetrain(1, 700, 1);
 
-       pros::delay(20);
+       pros::delay(100);
 
+   // turnLeftTime(600, 0, 2000);
+       turnLEFTONLY(107, 1000);
 
-      // turnClock(90, 1000);
-
-
-     turnLEFTONLY(107, 800);
-
-      pros::delay(100);
+          imuInnit();
 
       drivetrain(1, 2000, 0.3);
+
+      
+
+    
+    
 
 /*
 
@@ -100,9 +106,9 @@ ______________________________________________________________________________
 
 */
 
-      cataMotor.moveVoltage(10000);
+      cataMotor.moveVoltage(9500);
 
-      pros::delay(2700);
+      pros::delay(60000);
 
       cataMotor.moveVoltage(0);
       
