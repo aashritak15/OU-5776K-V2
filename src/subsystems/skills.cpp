@@ -35,6 +35,13 @@ void intakeSkills(IntakeState currentIntakeState){
   }
 }
 
+
+void printToLCD(const char* text) {
+    lv_obj_t* label = lv_label_create(lv_scr_act(), NULL);
+    lv_label_set_text(label, text);
+    lv_obj_align(label, NULL, LV_ALIGN_CENTER, 0, 0);
+}
+
 void gradualMax(int ms, int back){
   int timer = 0;
 
@@ -79,16 +86,22 @@ ______________________________________________________________________________
 */
 
 
+    printToLCD("Starting Path 1");
 
     drivetrain(1, 700, 1);
 
        pros::delay(100);
 
-   // turnLeftTime(600, 0, 2000);
+      printToLCD("initialize imu");
+
+        imuInnit();
+
+      printToLCD("turnLEFTONLY");
+
        turnLEFTONLY(107, 1000);
 
-          imuInnit();
-
+          
+       printToLCD("driving into matchload zone");
       drivetrain(1, 2000, 0.3);
 
       
