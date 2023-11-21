@@ -86,7 +86,7 @@ void skills(int side){
 
 void updateAuton(int side){
     if (side == 1){
-//close auton
+//close awp
 
 
   /*
@@ -114,9 +114,9 @@ ______________________________________________________________________________
 
        pros::delay(20);
 
-        drivetrain(0.6, 800, 0.8);
+        //drivetrain(0.6, 800, 0.8);
 
-        pros::delay(20);
+       // pros::delay(20);
 
 /*
 
@@ -147,7 +147,7 @@ ______________________________________________________________________________
 */
 
 
-      drivetrain(0.6, 600, 0.8);
+      drivetrain(0.7, 600, 0.8);
       pros::delay(20);
 
      turnCounter(90, 2000);
@@ -383,8 +383,7 @@ ______________________________________________________________________________
 
     }
     if (side == 2){
-      //awp blue pole, blue goal
-      //awp red pole, red goal
+      //far side awp
     
       cataMotor.moveVoltage(12000);
 
@@ -674,39 +673,38 @@ ______________________________________________________________________________
        intakeAuton(IntakeState::INTAKING);
        pros::delay(700);
 
-//       drivetrain(0.47, 3000, 1);
-//       pros::delay(700);
+   drivetrain(0.47, 3000, 1);
+       pros::delay(700);
 
 
-//       intakeMotor1.moveVelocity(0);
-//       pros::delay(300);
+       intakeMotor1.moveVelocity(0);
+       pros::delay(300);
+       turnCounter(90, 3000);
 
-//       turnCounter(90, 3000);
+        imuInnit();
 
-//        imuInnit();
+       pros::delay(100);
 
-//       pros::delay(100);
+      drivetrain(0.47, 3000, 1.5);
+       pros::delay(300);
 
-//       drivetrain(0.47, 3000, 1.5);
-//       pros::delay(300);
+       intakeAuton(IntakeState::OUTTAKING);
 
-//       intakeAuton(IntakeState::OUTTAKING);
+       pros::delay(300);
 
-//       pros::delay(300);
-
-//       intakeMotor1.moveVelocity(0);
+       intakeMotor1.moveVelocity(0);
 
   
-//       drivetrain(1, 3000, 5);
+       drivetrain(1, 3000, 5);
 
-//       pros::delay(200);
+       pros::delay(200);
 
 // //third triball
-//       drivetrain(-1.5, 3000, 1.5);
-//       pros::delay(100);
+       drivetrain(-1.5, 3000, 1.5);
+       pros::delay(100);
 
 
-//       turnClock(130, 3000);
+       turnClock(130, 3000);
 
 //       // imuInnit();
 //       pros::delay(100);
@@ -737,112 +735,112 @@ ______________________________________________________________________________
     
 //       intakeMotor1.moveVelocity(0);
 
-//       flapjack1.set_value(false);
+       flapjack1.set_value(false);
 
   
       
 //     } 
 
 //     if(side == 4){
-//       //triball focused route, red pole, red goal
-//       //triball focused route, blue pole, blue goal
+      //triball focused route, red pole, red goal
+      //triball focused route, blue pole, blue goal
       
       
-//       //cataMotor.moveVelocity(-14000);
-//       //pros::delay(300);
+      cataMotor.moveVelocity(-14000);
+      pros::delay(300);
 
-//        intakeMotor1.moveVelocity(-14000);
+       intakeMotor1.moveVelocity(-14000);
 
-//       pros::delay(100);
+      pros::delay(100);
     
-//       drivetrain(4.4, 3500, 1.5);
+      drivetrain(4.4, 3500, 1.5);
 
-//       pros::delay(100);
+      pros::delay(100);
   
-//       turnClock(90, 2000);
+      turnClock(90, 2000);
 
-//       pros::delay(50);
+      pros::delay(50);
 
-//       drivetrain(0.5, 1000, 1);
+      drivetrain(0.5, 1000, 1);
 
-//       pros::delay(100);
+      pros::delay(100);
 
-//       intakeMotor1.moveVelocity(14000);
+      intakeMotor1.moveVelocity(14000);
 
-//       pros::delay(100);
+      pros::delay(100);
 
-// //second triball
-//       drivetrain(-1.35, 1000, 1);
+//second triball
+      drivetrain(-1.35, 1000, 1);
 
-//       pros::delay(100);
+      pros::delay(100);
 
-//       intakeMotor1.moveVelocity(0);
+      intakeMotor1.moveVelocity(0);
 
-//          pros::delay(100);
+         pros::delay(100);
 
-//       turnCounter(95, 2000);
+      turnCounter(95, 2000);
 
-//          pros::delay(100);
+         pros::delay(100);
 
-//       intakeMotor1.moveVelocity(-14000);
+      intakeMotor1.moveVelocity(-14000);
 
-//          pros::delay(100);
+         pros::delay(100);
 
-//       drivetrain(0.7, 1000, 1);
+      drivetrain(0.7, 1000, 1);
 
-//          pros::delay(100);
+         pros::delay(100);
 
-//       intakeMotor1.moveVelocity(0);
+      intakeMotor1.moveVelocity(0);
 
-//          pros::delay(100);
+         pros::delay(100);
 
-//       turnClock(90, 2000);
+      turnClock(90, 2000);
 
-//       pros::delay(100);
+      pros::delay(100);
 
-//      flapjack1.set_value(true);
+     flapjack1.set_value(true);
 
-//       pros::delay(100);
+      pros::delay(100);
 
-//       drivetrain(2.3, 1000, 2);
+      drivetrain(2.3, 1000, 2);
 
-//        pros::delay(100);
+       pros::delay(100);
 
-//        flapjack1.set_value(false);
+       flapjack1.set_value(false);
 
-//       drivetrain(-0.5, 1000, 1);
+      drivetrain(-0.5, 1000, 1);
 
-//       pros::delay(100);
+      pros::delay(100);
 
-//       pros::delay(100);
+      pros::delay(100);
 
-//       turnCounter(180, 1000);
+      turnCounter(180, 1000);
 
-//       pros::delay(100);
+      pros::delay(100);
 
-//       drivetrain(2.3, 1000, 1.5);
+      drivetrain(2.3, 1000, 1.5);
 
-//       pros::delay(100);
+      pros::delay(100);
 
-//        intakeMotor1.moveVelocity(-14000);
+       intakeMotor1.moveVelocity(-14000);
 
-//       pros::delay(100);
+      pros::delay(100);
 
-//       drivetrain(0.5, 1000, 1.5);
+      drivetrain(0.5, 1000, 1.5);
 
-//        pros::delay(100);
+       pros::delay(100);
 
-//        turnClock(180, 1000);
+       turnClock(180, 1000);
 
-//           pros::delay(100);
+          pros::delay(100);
 
-//       drivetrain(3, 2000, 2);
+      drivetrain(3, 2000, 2);
 
-//       intakeMotor1.moveVelocity(14000);
+      intakeMotor1.moveVelocity(14000);
 
-//       //fourth triball
+      //fourth triball
 
-//       turnClock(135, 1000);
+      turnClock(135, 1000);
 
 
 
@@ -1011,9 +1009,37 @@ ______________________________________________________________________________
       
     }
 
-    else if(side == 4){
+    else if(side == 5){
 
-      turnCounter(90, 2000);
+      drivetrain(-3, 900, 1);
+      pros::delay(20);
+
+
+      drivetrain(0.5, 900, 1);
+
+      pros::delay(20);
+
+      drivetrain(-2, 900, 1);
+
+      pros::delay(20);
+
+      drivetrain(0.8, 900, 1);
+
+
+
+      
+
+
+
+/*
+        drivetrain(-1.4, 900, 1);
+        turnLEFTONLY(55, 1000);
+        drivetrain(-2, 900, 1.5);
+
+        */
+        
+
+
     }
   }
 
