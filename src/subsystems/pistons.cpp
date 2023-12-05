@@ -14,18 +14,9 @@ using namespace okapi;
 pros::ADIDigitalOut flapjack1 = pros::ADIDigitalOut(flapjackPort1);
 //pros::ADIDigitalOut flapjack2 = pros::ADIDigitalOut(flapjackPort2);
 
-//pros::ADIDigitalOut awpFlipout = pros::ADIDigitalOut(awpFlipoutPort);
-//pros::ADIDigitalOut lMech = pros::ADIDigitalOut(lMechPort);
 //pros::ADIDigitalOut balance = pros::ADIDigitalOut(balancePort);
 pros::ADIDigitalOut blocker = pros::ADIDigitalOut(blockerPort);
 
-
-
-//flapjack
-//pros::ADIDigitalOut flapjack1(flapjackPort1);
-//pros::ADIDigitalOut flapjack2(flapjackPort2);
-
-//pros::ADIDigitalOut piston/=1(pistonPort1);
 pros::ADIDigitalOut pistonPTO1 = pros::ADIDigitalOut(PtoPort);
 
 //pros::ADIDigitalOut autonFlipout = pros::ADIDigitalOut(autonFlipoutPort);
@@ -51,30 +42,13 @@ void updateBlocker(){
 }
 
 void pistonsInnit(){
-    //intakeFlipout.set_value(false);
     flapjack1.set_value(false);
     //lMech.set_value(false);
     blocker.set_value(false);
 
-
-
-    //awpFlipout.set_value(false);
 }
 
-/*
-void flipoutMech(){
-    if (controller.getDigital(ControllerDigital::up) == 1){
-        if(!sharing){
-            autonFlipout.set_value(true);
-            sharing = true;
-        }
-        else{
-            autonFlipout.set_value(false);
-            sharing = false;
-        }
-    }
-}
-*/
+
 
 
 bool sharing = false;
