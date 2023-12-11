@@ -63,7 +63,7 @@ void updateDrive() {
                           controller.getAnalog(ControllerAnalog::leftY));
 
   
-  if (controller.getDigital(ControllerDigital::left) == 1) {
+  if (controller.getDigital(ControllerDigital::right) == 1) {
     leftFront.setBrakeMode(AbstractMotor::brakeMode::coast);
     leftTop.setBrakeMode(AbstractMotor::brakeMode::coast);
     leftBack.setBrakeMode(AbstractMotor::brakeMode::coast);
@@ -72,8 +72,8 @@ void updateDrive() {
     rightTop.setBrakeMode(AbstractMotor::brakeMode::coast);
     rightBack.setBrakeMode(AbstractMotor::brakeMode::coast);
   } 
-  
-  else if (controller.getDigital(ControllerDigital::right) == 1) {
+ // thats what we did last item ya what did u change can u move ur curser to tehre rq
+  else if (controller.getDigital(ControllerDigital::left) == 1) {
     leftFront.setBrakeMode(AbstractMotor::brakeMode::coast);
     leftTop.setBrakeMode(AbstractMotor::brakeMode::coast);
     leftBack.setBrakeMode(AbstractMotor::brakeMode::coast);
@@ -81,9 +81,9 @@ void updateDrive() {
     rightFront.setBrakeMode(AbstractMotor::brakeMode::coast);
     rightTop.setBrakeMode(AbstractMotor::brakeMode::coast);
     rightBack.setBrakeMode(AbstractMotor::brakeMode::coast);
-  }
+  } 
 
-
+/*
  if (controller.getDigital(ControllerDigital::right) == 1) {
     int ms = 500000;
     int time = 0;
@@ -114,7 +114,7 @@ void updateDrive() {
 
   }
 
-
+*/
 
 
   
