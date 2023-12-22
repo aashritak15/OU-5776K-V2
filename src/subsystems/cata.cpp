@@ -1,4 +1,4 @@
-#include "subsystems/cata.hpp"
+ #include "subsystems/cata.hpp"
 #include "subsystems/ports.hpp"
 #include "globals.hpp"
 #include "subsystems/odo.hpp"
@@ -74,12 +74,11 @@ void updateCata() {
       cataMotor.moveVoltage(10000);
       break;
     case CataState::MED:
-      cataMotor.moveVoltage(9500);
+      cataMotor.moveVoltage(9000);
       break;  
     case CataState::LO:
-      cataMotor.moveVoltage(9000);
+      cataMotor.moveVoltage(7000);
       break;
-    
     
   }
 }
@@ -93,6 +92,7 @@ void setCataState(CataState CState) {
   currentCataState = CState; 
   }
 
+/*
   void updateDriverSkills(){
 
     if (controller.getDigital(ControllerDigital::Y) == 1){
@@ -122,3 +122,4 @@ void setCataState(CataState CState) {
 
     }
 }
+*/

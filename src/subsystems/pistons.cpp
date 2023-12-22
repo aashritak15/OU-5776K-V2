@@ -1,4 +1,3 @@
-//pistons.cpp
 
 #include "main.h"
 #include "subsystems/ports.hpp"
@@ -12,12 +11,23 @@ using namespace okapi;
 
 
 pros::ADIDigitalOut flapjack1 = pros::ADIDigitalOut(flapjackPort1);
+pros::ADIDigitalOut flapjack2 = pros::ADIDigitalOut(flapjackPort2);
 //pros::ADIDigitalOut flapjack2 = pros::ADIDigitalOut(flapjackPort2);
 
-//pros::ADIDigitalOut balance = pros::ADIDigitalOut(balancePort);
+//pros::ADIDigitalOut awpFlipout = pros::ADIDigitalOut(awpFlipoutPort);
+//pros::ADIDigitalOut lMech = pros::ADIDigitalOut(lMechPort);
+pros::ADIDigitalOut balance = pros::ADIDigitalOut(balancePort);
 pros::ADIDigitalOut blocker = pros::ADIDigitalOut(blockerPort);
+pros::ADIDigitalOut blocker1 = pros::ADIDigitalOut(blockerPort1);
 
-pros::ADIDigitalOut pistonPTO1 = pros::ADIDigitalOut(PtoPort);
+
+
+//flapjack
+//pros::ADIDigitalOut flapjack1(flapjackPort1);
+//pros::ADIDigitalOut flapjack2(flapjackPort2);
+
+//pros::ADIDigitalOut piston/=1(pistonPort1);
+//pros::ADIDigitalOut pistonPTO1 = pros::ADIDigitalOut(PtoPort);
 
 //pros::ADIDigitalOut autonFlipout = pros::ADIDigitalOut(autonFlipoutPort);
 
@@ -30,11 +40,14 @@ void updateBlocker(){
         if (controller.getDigital(ControllerDigital::B) == 1){
         if(blockerState == 0){
             blocker.set_value(true);
+            blocker1.set_value(true);
             blockerState++;
             pros::delay(400);
         }
+
         else{
             blocker.set_value(false);
+            blocker1.set_value(false);
             blockerState--;
             pros::delay(400);
         }
@@ -110,7 +123,7 @@ void DarshyMech(){
 }
 
 
-/*
+
 
 void balanceInit (){balance.set_value(false);}
 
@@ -131,21 +144,60 @@ void updateBalance(){
     }
 }
 
-*/
+
 
 
 
 
 
 void updateFlapjack(){
-    if (controller.getDigital(ControllerDigital::R1) == 1) {
-        flapjack1.set_value(true);
+
+    if (controller.getDigital(ControllerDigital::Y) == 1) {
+        if(state == 0){
+            //lMech.set_value(true);
+            flapjack1.set_value(true);
+            state++;
+            pros::delay(400);
+        }
+        else{
+            //lMech.set_value(false);
+            flapjack1.set_value(false);
+            state--;
+            pros::delay(400);
+
+        }
   }
-    if(controller.getDigital(ControllerDigital::R2) == 1) {
-        flapjack1.set_value(false);
+    if(controller.getDigital(ControllerDigital::right) == 1) {
+         if(state == 0){
+            //lMech.set_value(true);
+            flapjack2.set_value(true);
+            state++;
+            pros::delay(400);
+        }
+        else{
+            //lMech.set_value(false);
+            flapjack2.set_value(false);
+            state--;
+            pros::delay(400);
+
+        }
     }
+
+    if(controller.getDigital(ControllerDigital::R1) == 1) {
+         flapjack1.set_value(true);
+         flapjack2.set_value(true);
+         
+    }
+
+     if(controller.getDigital(ControllerDigital::R2) == 1) {
+         flapjack1.set_value(false);
+         flapjack2.set_value(false);
+         
+    }
+
 }
 
+/*
 void PtoInit(){pistonPTO1.set_value(false);}
 
 int Ptostate = 0;
@@ -169,7 +221,7 @@ void PtoMech(){
 
     }
 }
-
+*/
 
 
 /*

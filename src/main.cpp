@@ -30,7 +30,7 @@ void initialize() {
     //lMechInit();
     //balanceInit();
     blockerInit();
-    PtoInit();
+    //PtoInit();
    
 
 }
@@ -121,12 +121,13 @@ void opcontrol() {
             updateIntake();
             updateCata();
             updateFlapjack();
-            updateDriverSkills();
+            //updateDriverSkills();
            // updatelMech();
-           // updateBalance();
+            updateBalance();
             updateBlocker();
-            DarshyMech();
-            PtoMech();
+            //DarshyMech();
+           // PtoMech();
+
 
           
 
