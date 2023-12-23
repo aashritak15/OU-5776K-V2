@@ -15,8 +15,8 @@ using namespace okapi;
 
 
 
-ControllerButton cataHighButton = ControllerButton(ControllerDigital::down);
-ControllerButton cataMedButton = ControllerButton(ControllerDigital::up);
+ControllerButton cataHighButton = ControllerButton(ControllerDigital::up);
+ControllerButton cataMedButton = ControllerButton(ControllerDigital::down);
 ControllerButton cataLowButton = ControllerButton(ControllerDigital::left);
 
 void cataInit() { 
@@ -71,13 +71,13 @@ void updateCata() {
       cataMotor.moveVoltage(0);
       break;
     case CataState::HI:
-      cataMotor.moveVoltage(10000);
+      cataMotor.moveVoltage(12000);
       break;
     case CataState::MED:
       cataMotor.moveVoltage(9000);
       break;  
     case CataState::LO:
-      cataMotor.moveVoltage(7000);
+      cataMotor.moveVoltage(5000);
       break;
     
   }
