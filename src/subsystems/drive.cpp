@@ -132,20 +132,20 @@ void updateDrive() {
 //////
 // reverse
 
-/*
-Motor RVrightFront(rightFrontPort, true, AbstractMotor::gearset::blue,
+
+Motor RVrightFront(rightFrontPort, false, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
 
 Motor RVrightTop(rightTopPort, true, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
 
-Motor RVrightBack(rightBackPort, true, AbstractMotor::gearset::blue,
+Motor RVrightBack(rightBackPort, false, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
 
-Motor RVleftFront(leftFrontPort, false, AbstractMotor::gearset::blue,
+Motor RVleftFront(leftFrontPort, true, AbstractMotor::gearset::blue,
            AbstractMotor::encoderUnits::degrees);
 
-Motor RVleftBack(leftBackPort, false, AbstractMotor::gearset::blue,
+Motor RVleftBack(leftBackPort, true, AbstractMotor::gearset::blue,
            AbstractMotor::encoderUnits::degrees);
 
 
@@ -176,7 +176,7 @@ std::shared_ptr<OdomChassisController> driveTemp;
 
 bool reverse = false; 
 
-void updateDrive() {
+void updateRVDrive() {
   bool reverse = false;
 
   driveTemp = drive;
@@ -199,7 +199,7 @@ void updateDrive() {
     }
     reverse = !reverse;
   }
-
-  */
+}
+  
   
 

@@ -118,6 +118,7 @@ void opcontrol() {
         okapi::Rate rate;
         while (true) {
             updateDrive();
+            updateRVDrive();
             updateIntake();
             updateCata();
             updateFlapjack();
