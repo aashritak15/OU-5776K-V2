@@ -117,11 +117,6 @@ void updateDrive() {
 */
 
 
-  
-  if(controller.getDigital(ControllerDigital::X) == 1){
-      turnCounter(179, 3000);
-}
-
 
 
   
@@ -130,9 +125,13 @@ void updateDrive() {
 
 
 //////
+
+
+
+
 // reverse
 
-
+/*
 Motor RVrightFront(rightFrontPort, false, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
 
@@ -176,30 +175,26 @@ std::shared_ptr<OdomChassisController> driveTemp;
 
 bool reverse = false; 
 
+*/
+
+/*
+// not switching at all
+
 void updateRVDrive() {
   bool reverse = false;
-
-  driveTemp = drive;
-
-
-  driveTemp->getModel()->tank(controller.getAnalog(ControllerAnalog::leftY),
-                          controller.getAnalog(ControllerAnalog::rightY));
-
   
-
   if (controller.getDigital(ControllerDigital::X) == 1){
     if(!reverse){
-      driveTemp = RVdrive;
-      driveTemp->getModel()->tank(controller.getAnalog(ControllerAnalog::leftY),
+      drive->getModel()->tank(controller.getAnalog(ControllerAnalog::leftY),
                           controller.getAnalog(ControllerAnalog::rightY));
     } else {
-      driveTemp = drive;
-      driveTemp->getModel()->tank(controller.getAnalog(ControllerAnalog::leftY),
-                          controller.getAnalog(ControllerAnalog::rightY));
+      drive->getModel()->tank(controller.getAnalog(ControllerAnalog::rightY),
+                          controller.getAnalog(ControllerAnalog::leftY));
+      reverse = !reverse;
     }
-    reverse = !reverse;
+    
   }
 }
   
-  
+  */
 
