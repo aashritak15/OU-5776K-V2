@@ -82,8 +82,7 @@ void competition_initialize() {
 * from where it left off.
 */
 void autonomous() {
-    updateAuton(2);
- //updateSkills(1);
+   drivetrain(2, 1000, 1);
    
    /* 
    if (side == 0) {

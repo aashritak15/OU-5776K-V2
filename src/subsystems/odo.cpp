@@ -102,7 +102,7 @@ void drivetrain(double target, int ms, double speed){
   rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
 
 
-    okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(1.15, 0, 0.099); //kP, kI, kD              
+    okapi::IterativePosPIDController pid = okapi::IterativeControllerFactory::posPID(1.15, 0.7, 0.1); //kP, kI, kD              
 
     pid.setTarget(target);
 
@@ -114,7 +114,7 @@ void drivetrain(double target, int ms, double speed){
     int timer = 0;
 
     //runs as long as displacement 
-    while( abs(target - displacement) > 0.1 /*|| abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10 */ && timer < ms){
+    while( abs(target - displacement) > 0.8/*|| abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10 */ && timer < ms){
     
       //calculates change in position
       double dX1 = drive->getState().x.convert(okapi::foot) - dX;
@@ -128,7 +128,7 @@ void drivetrain(double target, int ms, double speed){
           displacement = -1 * displacement; 
       }
 
-      double pid_value = pid.step((displacement * 3) / 5 );
+      double pid_value = pid.step((displacement * 2) / 5);
 
       drive->getModel()->tank(pid_value * speed  , pid_value * speed); 
 
