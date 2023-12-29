@@ -16,7 +16,7 @@ const std::uint8_t leftTopPort = 20;
 const std::uint8_t rightTopPort = 9; 
 
 const std::uint8_t imuPort1 = 13; //imu port #1
-const std::uint8_t imuPort2 = 4; //imu port#2
+const std::uint8_t imuPort2 = 14; //imu port#2
 
 //const std::uint8_t pistonPort1 = 8;
 const std::uint8_t flapjackPort1 = 'A';

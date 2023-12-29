@@ -82,7 +82,8 @@ void competition_initialize() {
 * from where it left off.
 */
 void autonomous() {
-   drivetrain(2, 1000, 1);
+    //turnClock(90, 2000);
+   drivetrain(1, 2000, 1);
    
    /* 
    if (side == 0) {

@@ -114,7 +114,7 @@ void drivetrain(double target, int ms, double speed){
     int timer = 0;
 
     //runs as long as displacement 
-    while( abs(target - displacement) > 0.8/*|| abs(driveLeft.getActualVelocity()) + abs(driveRight.getActualVelocity()) > 10 */ && timer < ms){
+    while( abs(target - displacement) > 0.5  && timer < ms){
     
       //calculates change in position
       double dX1 = drive->getState().x.convert(okapi::foot) - dX;
@@ -128,7 +128,7 @@ void drivetrain(double target, int ms, double speed){
           displacement = -1 * displacement; 
       }
 
-      double pid_value = pid.step((displacement * 2) / 5);
+      double pid_value = pid.step((displacement * 3) / 5);
 
       drive->getModel()->tank(pid_value * speed  , pid_value * speed); 
 
@@ -136,11 +136,27 @@ void drivetrain(double target, int ms, double speed){
       timer += 10;
 
 }
-    drive->getModel()->tank(0,0);
+   const int gradualStopTime = 50; // Time for gradual stop in milliseconds
+const int loopDelay = 6; // Delay between iterations in the loop
+
+int gradualTimer = 0;
+
+while (gradualTimer < gradualStopTime) {
+    // Gradually reduce motor power to zero
+    float gradualPower = 0.8f - static_cast<float>(gradualTimer) / gradualStopTime;
+    drive->getModel()->tank(gradualPower, gradualPower);
+    
+    gradualTimer += loopDelay;
+    pros::delay(loopDelay);
+}
+
+// Completely stop the motors
+drive->getModel()->tank(0, 0);
 }
 
 
 //turn PID
+/*
 void turnClock(float degree, int ms) {
   resetImu();
   leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -149,11 +165,11 @@ void turnClock(float degree, int ms) {
   rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
   rightFront.setBrakeMode(AbstractMotor::brakeMode::brake);
   rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
- float taredRotation = (imu1.get() + imu2.get()) / 2;
- int timer = 0;
- float turnkP = 0.0095;
- float turnkI = 0;
- float turnkD = 0.027;
+  float taredRotation = (imu1.get() + imu2.get()) / 2;
+  int timer = 0;
+  float turnkP = 0.0095;
+  float turnkI = 0;
+  float turnkD = 0.027;
 
   float prevError = 0;
   //float totalError = 0;
@@ -193,6 +209,61 @@ void turnClock(float degree, int ms) {
 
 drive->stop();
 }
+*/
+
+void turnClock(float degree, int ms) {
+  resetImu();
+  leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+  leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+  leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
+  rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+  rightFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+  rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
+  float taredRotation = (imu1.get() + imu2.get()) / 2;
+  int timer = 0;
+  float turnkP = 0.0095;
+  float turnkI = 0;
+  float turnkD = 0.027;
+
+  float prevError = 0;
+  //float totalError = 0;
+
+    // [deg]
+
+  float integral = 0;
+ 
+  while (timer < ms){
+    // Compute PID values from current wheel travel measurements
+      float currentVal = (imu1.get() + imu2.get()) / 2 - taredRotation;
+      float error = degree - currentVal;
+
+      //float targetVal = currentVal + degree;
+
+      //float error = degree - abs(currentVal);
+       
+       float derivative = error - prevError;
+       prevError = error;
+       integral += error;
+
+
+       
+
+    // Calculate power using PID
+    float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
+    //prevError = error;
+    
+    drive->getModel()->tank((power * 0.9f * -1.0f) , power); 
+     //goes clockwise 
+    
+    timer += 10;
+    pros::delay(10);
+
+    printf("currentVal: %f, error: %f, power: %f\n", currentVal, error, integral, derivative, power);
+
+}
+
+drive->getModel()->tank(0,0);
+}
 
 
 void turnCounter(float degree, int ms) {
@@ -204,11 +275,11 @@ void turnCounter(float degree, int ms) {
   rightFront.setBrakeMode(AbstractMotor::brakeMode::brake);
   rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
   
- float taredRotation = (imu1.get() + imu2.get()) / 2;
- int timer = 0;
+  float taredRotation = (imu1.get() + imu2.get()) / 2;
+  int timer = 0;
   float turnkP = 0.0095;
- float turnkI = 0;
- float turnkD = 0.027;
+  float turnkI = 0;
+  float turnkD = 0.027;
 
   float prevError = 0;
   float integral = 0;
@@ -229,15 +300,14 @@ void turnCounter(float degree, int ms) {
     //prevError = error;
 
       
-      drive->getModel()->tank(power * 0.9f , (-1.0f * power));
+    drive->getModel()->tank(power * 0.9f , (-1.0f * power));
  
-    
     
     timer += 10;
     pros::delay(10);
 }
 
-drive->stop();
+drive->getModel()->tank(0,0);
 }
 
 void turnRightTime(int ms, int Rvelocity, int Lvelocity){
@@ -259,7 +329,7 @@ void turnLeftTime(int ms, int Rvelocity, int Lvelocity){
 
   right.moveVelocity(0);
   left.moveVelocity(0);
-  
+
 }
 
 
