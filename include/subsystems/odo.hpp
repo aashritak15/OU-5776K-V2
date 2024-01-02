@@ -18,6 +18,7 @@ void turnLeftTime(int ms, int Rvelocity, int Lvelocity);
 
 
 void turnONLYLF(float degree, int ms);
+bool isMoving();
 
 //extern double displacement; 
 

@@ -86,14 +86,15 @@ void imuInnit() {
 
 
 //motor groups
-okapi::MotorGroup driveLeft = okapi::MotorGroup({leftFront, leftBack, leftTop});    
-okapi::MotorGroup driveRight = okapi::MotorGroup({rightFront, rightBack, rightTop});
 
 
 
 
+bool isMoving(){
+  return abs(right.getActualVelocity()) + abs(left.getActualVelocity()) > 10; 
+}
 
-void drivetrain(double target, int ms, double speed){
+void drivetrain(double target, double speed){
   leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
   leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
   leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -114,7 +115,7 @@ void drivetrain(double target, int ms, double speed){
     int timer = 0;
 
     //runs as long as displacement 
-    while( abs(target - displacement) > 0.1  && timer < ms){
+    while( abs(target - displacement) > 0.1 || isMoving()){
     
       //calculates change in position
       double dX1 = drive->getState().x.convert(okapi::foot) - dX;
@@ -132,14 +133,14 @@ void drivetrain(double target, int ms, double speed){
 
       drive->getModel()->tank(pid_value * speed  , pid_value * speed); 
 
-      std::cout << "Target: " << target << ", Displacement: " << displacement << ", PID Output: " << pid_value << std::endl;
+      
 
       pros::delay(20);
-      timer += 10;
+      
 
 }
-   
-drive->getModel()->tank(0, 0);
+  pid.reset(); 
+  drive->getModel()->tank(0, 0);
 }
 
 
@@ -246,27 +247,6 @@ void turnCounter(float degree, int ms) {
 drive->getModel()->tank(0,0);
 }
 
-void turnRightTime(int ms, int Rvelocity, int Lvelocity){
-  right.moveVelocity(Rvelocity);
-  left.moveVelocity(Lvelocity);
-
-  pros::delay(ms);
-
-  right.moveVelocity(0);
-  left.moveVelocity(0);
-
-}
-
-void turnLeftTime(int ms, int Rvelocity, int Lvelocity){
-  left.moveVelocity(Lvelocity);
-  right.moveVelocity(Rvelocity);
-
-  pros::delay(ms);
-
-  right.moveVelocity(0);
-  left.moveVelocity(0);
-
-}
 
 
 
