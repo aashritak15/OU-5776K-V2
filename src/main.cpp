@@ -83,8 +83,8 @@ void competition_initialize() {
 */
 void autonomous() {
     //turnCounter(120, 1000);
-   drivetrain(1.7, 4000, 1);
-   
+
+
    /* 
    if (side == 0) {
    updateSkills(2);

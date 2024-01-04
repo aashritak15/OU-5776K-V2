@@ -88,7 +88,7 @@ void imuInnit() {
 //motor groups
 
 
-
+/*
 
 bool isMoving(){
   return abs(right.getActualVelocity()) + abs(left.getActualVelocity()) > 10; 
@@ -112,10 +112,8 @@ void drivetrain(double target, double speed){
 
     double displacement = 0.0;
 
-    int timer = 0;
-
     //runs as long as displacement 
-    while( abs(target - displacement) > 0.1 || isMoving()){
+    while( abs(target - displacement) > 1 || isMoving()){
     
       //calculates change in position
       double dX1 = drive->getState().x.convert(okapi::foot) - dX;
@@ -139,10 +137,62 @@ void drivetrain(double target, double speed){
       
 
 }
+
   pid.reset(); 
   drive->getModel()->tank(0, 0);
 }
 
+*/
+
+
+void drive_dis(double target, double scale) {                                          //init 0.85
+    if (abs(target) <= 0.01)
+        return;
+// .88
+    okapi::IterativePosPIDController drivePID = okapi::IterativeControllerFactory::posPID(0.848, 0.1, 0.0000);
+    //okapi::IterativePosPIDController drivePID = okapi::IterativeControllerFactory::posPID(0.75, 0.01, 0.01); 
+
+
+    drivePID.setTarget(target);
+
+    double orgPosX = drive->getState().x.convert(okapi::foot);
+    double orgPosY = drive->getState().y.convert(okapi::foot);
+
+
+    double displacement = 0;
+                                                        //at 0.8
+    while (abs(target-displacement) >=  1  || abs(left.getActualVelocity()) >  8 ) { 
+    //while (true) {                  //tuning
+        double state_x = drive->getState().x.convert(okapi::foot);
+        double state_y = drive->getState().y.convert(okapi::foot);
+
+        double dx = state_x - orgPosX;
+        double dy = state_y - orgPosY;
+
+        //printf("IMU: %lf\n", inertial.controllerGet());
+
+        displacement = sqrt(dx * dx + dy * dy);
+
+        if (target < 0)
+            displacement = - displacement;
+        
+
+        double vel = drivePID.step(( displacement * 3) / 6);
+
+        //printf("distTravelled: %lf, cur_x: %lf, cur_y:%lf\n",
+        //   distTravelled, drive->getState().y.convert(okapi::foot), drive->getState().x.convert(okapi::foot));
+
+        drive->getModel()->tank(vel * scale * 0.9  , vel * scale);
+        pros::delay(16);   //A1
+    }
+
+    drivePID.reset(); 
+  
+    drive->getModel()->tank(0, 0); 
+
+   
+    
+}
 
 
 

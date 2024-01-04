@@ -20,11 +20,12 @@ void turnLeftTime(int ms, int Rvelocity, int Lvelocity);
 void turnONLYLF(float degree, int ms);
 bool isMoving();
 
+void drive_dis(double target, double scale = 1);
 //extern double displacement; 
 
 //void drivetrain(double target);
 
-void drivetrain(double target, int ms, double speed);
+void drivetrain(double target, double speed);
 
 //void turnCounterclockwise(float degree, int ms);
 //void turnClockwise(float degree, int ms);
