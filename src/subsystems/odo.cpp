@@ -5,11 +5,23 @@
 #include "globals.hpp"
 
 
+
+
 using namespace okapi;
 
+/*
+  ______________________________________________________________________________________________
+
+  lem drivetrain + pids 
+
+  https://lemlib.github.io/LemLib/md_docs_tutorials_3_tuning_and_moving.html
+
+  ______________________________________________________________________________________________
+
+*/
 
 
-
+/*
 // IntegratedEncoder leftEncoder(leftTopPort, true);
 // IntegratedEncoder rightEncoder(rightTopPort, false);
 
@@ -44,6 +56,8 @@ void checkBalance(){
 }
 
 */
+
+/*
 
 void resetImu(bool print = true) {
   imu1.reset();
@@ -144,7 +158,7 @@ void drivetrain(double target, double speed){
 
 */
 
-
+/*
 void drive_dis(double target, double scale) {                                          //init 0.85
     if (abs(target) <= 0.01)
         return;
@@ -452,3 +466,5 @@ void turnONLYLF(float degree, int ms){
 
 drive->stop();
 }
+
+*/

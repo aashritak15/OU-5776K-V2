@@ -6,13 +6,30 @@
 #include "globals.hpp"
 #include "okapi/impl/device/rotarysensor/adiEncoder.hpp"
 #include "okapi/impl/device/rotarysensor/integratedEncoder.hpp"
+#include "pros/misc.h"
+
 //#include "odom.hpp"
 //#include "pistons.hpp"
 
 using namespace okapi;
 
 
+/*
 
+All drive stuff moved to odom.cpp 
+
+*/
+
+
+
+
+
+
+
+
+
+
+/*
 Motor rightFront(rightFrontPort, true, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
 
@@ -43,18 +60,6 @@ okapi::MotorGroup right({rightFront, rightTop, rightBack});
 
 
 
-std::shared_ptr<OdomChassisController> drive =
-    ChassisControllerBuilder()
-        .withMotors(left, right)
-        .withDimensions(AbstractMotor::gearset::blue,
-                        {{3.25_in, 10._in}, imev5BlueTPR})
-        .withSensors(leftFront.getEncoder(), rightFront.getEncoder())
-        // Specify the tracking wheels diam (2.75 in), track (7 in), and TPR
-        // (360)
-        .withOdometry({{3.25_in, 14.5_in, 7.25_in, 3.25_in}, quadEncoderTPR})
-        .buildOdometry();
-
-
 
 
 
@@ -83,38 +88,7 @@ void updateDrive() {
     rightBack.setBrakeMode(AbstractMotor::brakeMode::coast);
   } 
 
-/*
- if (controller.getDigital(ControllerDigital::right) == 1) {
-    int ms = 500000;
-    int time = 0;
-    leftEncoder.reset();
-    while(time < ms){
-      if (leftEncoder.get() >= 4400 && leftEncoder.get() <= 4800){
-         pros::Controller master (pros::E_CONTROLLER_MASTER);
-   
-  
-    
-    
-     
-      master.print(0, 0, "STOP %i %s");
-      master.rumble(".--. --");
-      
-    
-  
 
-         pistonPTO1.set_value(false);
-         time = 500000;
-      }
-
-      time += 10;
-    }
-    
-    drive->getModel()->tank(0,0);
-
-
-  }
-
-*/
 
 
 
@@ -123,78 +97,4 @@ void updateDrive() {
 }
 
 
-
-//////
-
-
-
-
-// reverse
-
-/*
-Motor RVrightFront(rightFrontPort, false, AbstractMotor::gearset::blue,
-            AbstractMotor::encoderUnits::degrees);
-
-Motor RVrightTop(rightTopPort, true, AbstractMotor::gearset::blue,
-            AbstractMotor::encoderUnits::degrees);
-
-Motor RVrightBack(rightBackPort, false, AbstractMotor::gearset::blue,
-            AbstractMotor::encoderUnits::degrees);
-
-Motor RVleftFront(leftFrontPort, true, AbstractMotor::gearset::blue,
-           AbstractMotor::encoderUnits::degrees);
-
-Motor RVleftBack(leftBackPort, true, AbstractMotor::gearset::blue,
-           AbstractMotor::encoderUnits::degrees);
-
-
-Motor RVleftTop(leftTopPort, false, AbstractMotor::gearset::blue,
-           AbstractMotor::encoderUnits::degrees); 
-          
-
-okapi::MotorGroup RVleft({RVleftFront, RVleftTop, RVleftBack});
-okapi::MotorGroup RVright({RVrightFront, RVrightTop, RVrightBack});
-
-std::shared_ptr<OdomChassisController> RVdrive =
-    ChassisControllerBuilder()
-        .withMotors(RVleft, RVright)
-        .withDimensions(AbstractMotor::gearset::blue,
-                        {{3.25_in, 10._in}, imev5BlueTPR})
-        .withSensors(leftFront.getEncoder(), rightFront.getEncoder())
-        // Specify the tracking wheels diam (2.75 in), track (7 in), and TPR
-        // (360)
-        .withGains(
-          {0.001, 0, 0.0001}, 
-          {0.001, 0, 0.0001},  
-          {0.001, 0, 0.0001})
-        .withOdometry({{3.25_in, 14.5_in, 7.25_in, 3.25_in}, quadEncoderTPR})
-        .buildOdometry();
-
-std::shared_ptr<OdomChassisController> driveTemp;
-    
-
-bool reverse = false; 
-
 */
-
-/*
-// not switching at all
-
-void updateRVDrive() {
-  bool reverse = false;
-  
-  if (controller.getDigital(ControllerDigital::X) == 1){
-    if(!reverse){
-      drive->getModel()->tank(controller.getAnalog(ControllerAnalog::leftY),
-                          controller.getAnalog(ControllerAnalog::rightY));
-    } else {
-      drive->getModel()->tank(controller.getAnalog(ControllerAnalog::rightY),
-                          controller.getAnalog(ControllerAnalog::leftY));
-      reverse = !reverse;
-    }
-    
-  }
-}
-  
-  */
-

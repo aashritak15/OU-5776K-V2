@@ -7,7 +7,82 @@
 #include "subsystems/cata.hpp"
 #include "subsystems/auton.hpp"
 #include "subsystems/skills.hpp"
+
 #include "selection.h"
+
+
+#include "lemlib/api.hpp"
+#include "lemlib/chassis/chassis.hpp"
+
+
+pros::Motor rightFront1(11, pros::E_MOTOR_GEARSET_06, true);
+pros::Motor rightTop1(9, pros::E_MOTOR_GEARSET_06, false);
+pros::Motor rightBack1(10, pros::E_MOTOR_GEARSET_06, true);
+
+pros::Motor leftFront1(12, pros::E_MOTOR_GEARSET_06, false);
+pros::Motor leftTop1(20, pros::E_MOTOR_GEARSET_06, true);
+pros::Motor leftBack1(19, pros::E_MOTOR_GEARSET_06, false);
+
+
+pros::MotorGroup left1({leftFront1, leftTop1, leftBack1});
+pros::MotorGroup right1({rightFront1, rightTop1, rightBack1});
+
+
+
+lemlib::Drivetrain_t drive {
+  &left1,
+  &right1,
+  10,
+  3.25,
+  300
+};
+
+
+lemlib::ChassisController_t movePID {
+  14, // kP
+  8, // kD
+  1, // small error range
+  100, // small error timeout 
+  3, // large error range 
+  500, // large error timeout 
+  0 // slew rate 
+};
+
+pros::Imu intertial1(imuPort1);
+pros::Imu intertial2(imuPort2);
+
+lemlib::OdomSensors_t sensors {
+  nullptr, //no tracking wheels 
+  nullptr,
+  nullptr,
+  nullptr,
+  &intertial1
+};
+
+lemlib::ChassisController_t turnPID {
+  0, // kP
+  0, // kD
+  1, // small error range
+  100, // small error timeout 
+  3, // large error range 
+  500, // large error timeout 
+  0 // slew rate 
+};
+
+lemlib::Chassis Chassis(drive, movePID, turnPID, sensors);
+
+
+/*
+  ______________________________________________________________________________________________
+
+  Controller Stuff 
+  ______________________________________________________________________________________________
+
+*/
+
+
+
+
 
 
 //okapi::IntegratedEncoder leftEncoder = IntegratedEncoder(rightTopPort, true);
@@ -19,8 +94,15 @@
 * to keep execution time for this mode under a few seconds.
 */
 void initialize() {
+
+    // lem lib stuff
+   
+    
+
     selector::init();
     //IEInnit();
+
+    /*
     imuInnit();
     intakeInit();
     cataInit();
@@ -31,7 +113,7 @@ void initialize() {
     //balanceInit();
     blockerInit();
     //PtoInit();
-   
+   */
 
 }
 
@@ -85,6 +167,9 @@ void autonomous() {
     //turnCounter(120, 1000);
 
 
+
+
+
    /* 
    if (side == 0) {
    updateSkills(2);
@@ -114,10 +199,21 @@ void autonomous() {
 * task, not resume it from where it left off.
 */
 void opcontrol() {
+  
+  okapi::Rate rate;
+  pros::Controller controller(pros::E_CONTROLLER_MASTER);
+
     while (true) {
-        okapi::Rate rate;
-        while (true) {
-            updateDrive();
+        
+        int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+
+        Chassis.curvature(leftY, rightX);
+
+
+
+        
+           updateDrive();
             //updateRVDrive();
             updateIntake();
             updateCata();
@@ -137,6 +233,5 @@ void opcontrol() {
 
            
             rate.delay(100_Hz); 
-}
 }
 }

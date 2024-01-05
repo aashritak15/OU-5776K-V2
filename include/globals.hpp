@@ -2,5 +2,4 @@
 
 using namespace okapi;
 
-static Controller controller;
-
+ static Controller controller;
