@@ -64,7 +64,6 @@ void updateCata() {
       currentCataState = CataState::LO;
     }
   } 
-  
 
   switch (currentCataState) {
     case CataState::STOPPED:

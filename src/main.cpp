@@ -29,18 +29,21 @@ pros::MotorGroup right1({rightFront1, rightTop1, rightBack1});
 
 
 
-lemlib::Drivetrain_t drive {
+lemlib::Drivetrain drive{
   &left1,
   &right1,
   10,
-  3.25,
-  300
+  lemlib::Omniwheel::NEW_325,
+  300,
+  2, 
 };
 
 
-lemlib::ChassisController_t movePID {
+lemlib::ControllerSettings movePID {
   14, // kP
+  0, //kI
   8, // kD
+  0, //anti windup
   1, // small error range
   100, // small error timeout 
   3, // large error range 
@@ -51,7 +54,7 @@ lemlib::ChassisController_t movePID {
 pros::Imu intertial1(imuPort1);
 pros::Imu intertial2(imuPort2);
 
-lemlib::OdomSensors_t sensors {
+lemlib::OdomSensors sensors {
   nullptr, //no tracking wheels 
   nullptr,
   nullptr,
@@ -59,9 +62,11 @@ lemlib::OdomSensors_t sensors {
   &intertial1
 };
 
-lemlib::ChassisController_t turnPID {
+lemlib::ControllerSettings turnPID {
   0, // kP
+  0, // kI
   0, // kD
+  0, //anti windup 
   1, // small error range
   100, // small error timeout 
   3, // large error range 
@@ -166,6 +171,11 @@ void competition_initialize() {
 void autonomous() {
     //turnCounter(120, 1000);
 
+    //Chassis.setPose(0,0,0);
+
+    Chassis.moveToPose(20, 15, 90, 4000/*, {.forwards = true, .chasePower= 18, .minSpeed = 0}*/);
+    //Chassis.moveToPose(20, 15, 90, 4000);
+
 
 
 
@@ -206,14 +216,14 @@ void opcontrol() {
     while (true) {
         
         int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-        int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+        int rightY = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 
-        Chassis.curvature(leftY, rightX);
+        Chassis.tank(rightY, leftY, 2);
 
 
 
         
-           updateDrive();
+           //updateDrive();
             //updateRVDrive();
             updateIntake();
             updateCata();
