@@ -7,6 +7,7 @@
 #include "subsystems/cata.hpp"
 #include "subsystems/auton.hpp"
 #include "subsystems/skills.hpp"
+#include "globals.hpp"
 
 #include "selection.h"
 
@@ -100,15 +101,15 @@ lemlib::Chassis Chassis(drive, movePID, turnPID, sensors);
 */
 void initialize() {
 
-    // lem lib stuff
-   
     
+   
+    Chassis.calibrate();
 
     selector::init();
     //IEInnit();
 
-    /*
-    imuInnit();
+    
+    //imuInnit();
     intakeInit();
     cataInit();
     //flipoutMechInnit();
@@ -118,7 +119,7 @@ void initialize() {
     //balanceInit();
     blockerInit();
     //PtoInit();
-   */
+   
 
 }
 
@@ -211,14 +212,43 @@ void autonomous() {
 void opcontrol() {
   
   okapi::Rate rate;
-  pros::Controller controller(pros::E_CONTROLLER_MASTER);
+  pros::Controller controller1(pros::E_CONTROLLER_MASTER);
+   
+
+  int reverseDrive = 1;
+  int driveState = 0;
+
+  Chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
 
     while (true) {
         
-        int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-        int rightY = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+        int leftY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        int rightY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 
-        Chassis.tank(rightY, leftY, 2);
+        switch (reverseDrive) {
+          case 1:
+            Chassis.tank(-rightY, -leftY, 2);
+            break;
+
+          case 2:
+            Chassis.tank(leftY, rightY, 2); 
+            break; 
+        }
+
+        if (controller.getDigital(ControllerDigital::X) == 1) {
+            if (driveState == 0) {
+                reverseDrive = 1;
+                driveState++;
+                pros::delay(400);
+            } else {
+                reverseDrive = 2;
+                driveState--;
+                pros::delay(400);
+            }
+        }
+        
+
+
 
 
 
