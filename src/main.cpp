@@ -103,7 +103,7 @@ void initialize() {
 
     
    
-    Chassis.calibrate();
+   // Chassis.calibrate();
 
     selector::init();
     //IEInnit();
@@ -172,9 +172,9 @@ void competition_initialize() {
 void autonomous() {
     //turnCounter(120, 1000);
 
-    //Chassis.setPose(0,0,0);
+    Chassis.setPose(36,-59,0);
 
-    Chassis.moveToPose(20, 15, 90, 4000/*, {.forwards = true, .chasePower= 18, .minSpeed = 0}*/);
+    Chassis.moveToPose(36, -49, 0, 4000/*, {.forwards = true, .chasePower= 18, .minSpeed = 0}*/);
     //Chassis.moveToPose(20, 15, 90, 4000);
 
 
@@ -227,11 +227,12 @@ void opcontrol() {
 
         switch (reverseDrive) {
           case 1:
-            Chassis.tank(-rightY, -leftY, 2);
+            Chassis.tank(rightY, leftY, 2); 
+            
             break;
 
           case 2:
-            Chassis.tank(leftY, rightY, 2); 
+            Chassis.tank(-rightY, -leftY, 2);
             break; 
         }
 
@@ -253,7 +254,7 @@ void opcontrol() {
 
 
         //all subsystem functions 
-        
+
            //updateDrive();
             //updateRVDrive();
             updateIntake();
