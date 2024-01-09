@@ -262,7 +262,7 @@ void opcontrol() {
             break;
 
           case 2:
-            Chassis.tank(-rightY, -leftY, 2);
+            Chassis.tank(-leftY, -rightY, 2);
             break; 
         }
 
