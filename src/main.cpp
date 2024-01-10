@@ -248,7 +248,7 @@ void opcontrol() {
   int reverseDrive = 1;
   int driveState = 0;
 
-  Chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
+
 
     while (true) {
         

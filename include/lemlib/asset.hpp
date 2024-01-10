@@ -11,8 +11,8 @@ typedef struct __attribute__((__packed__)) _asset {
 } asset;
 }
 
-#define ASSET(x)                                                                                                       
-    extern "C" {                                                                                                       
-    extern uint8_t _binary_static_x_start[], _binary_static_x_size[];                                          
-    static asset x = {_binary_static_x_start, (size_t)_binary_static_x_size};                                  
+#define ASSET(x)                                                                                                       \
+    extern "C" {                                                                                                       \
+    extern uint8_t _binary_static_##x##_start[], _binary_static_##x##_size[];                                          \
+    static asset x = {_binary_static_##x##_start, (size_t)_binary_static_##x##_size};                                  \
     }
