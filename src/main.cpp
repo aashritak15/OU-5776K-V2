@@ -15,24 +15,24 @@
 #include "lemlib/api.hpp"
 #include "lemlib/chassis/chassis.hpp"
 
+// drive motors
+pros::Motor lF(-12, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lM(20, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lB(-19, pros::E_MOTOR_GEARSET_06); 
 
-pros::Motor rightFront1(11, pros::E_MOTOR_GEARSET_06, true);
-pros::Motor rightTop1(9, pros::E_MOTOR_GEARSET_06, false);
-pros::Motor rightBack1(10, pros::E_MOTOR_GEARSET_06, true);
+pros::Motor rF(11, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rM(-9, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rB(10, pros::E_MOTOR_GEARSET_06); 
 
-pros::Motor leftFront1(12, pros::E_MOTOR_GEARSET_06, false);
-pros::Motor leftTop1(20, pros::E_MOTOR_GEARSET_06, true);
-pros::Motor leftBack1(19, pros::E_MOTOR_GEARSET_06, false);
-
-
-pros::MotorGroup left1({leftFront1, leftTop1, leftBack1});
-pros::MotorGroup right1({rightFront1, rightTop1, rightBack1});
+// motor groups
+pros::MotorGroup leftMotors({lF, lM, lB}); // left motor group
+pros::MotorGroup rightMotors({rF, rM, rB}); // right motor group
 
 
 
 lemlib::Drivetrain drive{
-  &left1,
-  &right1,
+  &leftMotors,
+  &rightMotors,
   10,
   lemlib::Omniwheel::NEW_325,
   300,
@@ -108,12 +108,9 @@ void screen(){
 * to keep execution time for this mode under a few seconds.
 */
 void initialize() {
-
-    
+    pros::lcd::initialize();
+    Chassis.calibrate();
    
-     pros::Task chassisCalibrateTask{[=] {
-         Chassis.calibrate();
-    }};
     
     Chassis.setPose(0, 0, 0); // X: 0, Y: 0, Heading: 0
 
@@ -123,6 +120,20 @@ void initialize() {
 
     selector::init();
     //IEInnit();
+
+    pros::Task screenTask([&]() {
+        lemlib::Pose pose(0, 0, 0);
+        while (true) {
+            // print robot location to the brain screen
+            pros::lcd::print(0, "X: %f", Chassis.getPose().x); // x
+            pros::lcd::print(1, "Y: %f", Chassis.getPose().y); // y
+            pros::lcd::print(2, "Theta: %f", Chassis.getPose().theta); // heading
+            // log position telemetry
+            lemlib::telemetrySink()->info("Chassis pose: {}", Chassis.getPose());
+            // delay to save resources
+            pros::delay(50);
+        }
+    });
 
     
     //imuInnit();
@@ -188,13 +199,12 @@ void competition_initialize() {
 */
 
 
- //ASSET(example_txt); 
+ 
 
 
 void autonomous() {
     //turnCounter(120, 1000);
     
-  
 
     /*
  // example movement: Move to x: 20 and y: 15, and face heading 90. Timeout set to 4000 ms
