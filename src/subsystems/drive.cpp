@@ -29,7 +29,7 @@ All drive stuff moved to odom.cpp
 
 
 
-/*
+
 Motor rightFront(rightFrontPort, true, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
 
@@ -58,10 +58,24 @@ okapi::IntegratedEncoder leftEncoder = IntegratedEncoder(20, true);
 okapi::MotorGroup left({leftFront, leftTop, leftBack});
 okapi::MotorGroup right({rightFront, rightTop, rightBack});
 
+std::shared_ptr<OdomChassisController> drive1 =
+    ChassisControllerBuilder()
+        .withMotors(left, right)
+        .withDimensions(AbstractMotor::gearset::blue,
+                        {{3.25_in, 10._in}, imev5BlueTPR})
+        .withSensors(leftFront.getEncoder(), rightFront.getEncoder())
+        // Specify the tracking wheels diam (2.75 in), track (7 in), and TPR
+        // (360)
+        /*/.withGains(
+          {0.001, 0, 0.0001}, 
+          {0.001, 0, 0.0001},  
+          {0.001, 0, 0.0001})*/  
+        .withOdometry({{3.25_in, 14.5_in, 7.25_in, 3.25_in}, quadEncoderTPR})
+        .buildOdometry();
 
 
 
-
+/*
 
 void updateDrive() {
   drive->getModel()->tank(controller.getAnalog(ControllerAnalog::rightY),
@@ -96,5 +110,5 @@ void updateDrive() {
   
 }
 
-
 */
+

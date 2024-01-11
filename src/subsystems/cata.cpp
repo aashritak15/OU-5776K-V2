@@ -15,8 +15,8 @@ using namespace okapi;
 
 
 
-ControllerButton cataHighButton = ControllerButton(ControllerDigital::up);
-ControllerButton cataMedButton = ControllerButton(ControllerDigital::down);
+ControllerButton cataHighButton = ControllerButton(ControllerDigital::down);
+ControllerButton cataMedButton = ControllerButton(ControllerDigital::up);
 ControllerButton cataLowButton = ControllerButton(ControllerDigital::left);
 
 void cataInit() { 

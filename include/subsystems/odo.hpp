@@ -16,7 +16,7 @@ ________________________________________________________________________________
 //void encoderAvg();
 //void movePID(float target, float maxV);
 
-/*
+
 void turnClock(float degree, int ms);
 void turnCounter(float degree, int ms);
 
@@ -49,4 +49,3 @@ void resetEncoders();
 void imuInnit();
 
 void IEInnit(); 
-*/

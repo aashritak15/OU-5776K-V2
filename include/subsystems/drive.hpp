@@ -5,7 +5,7 @@ using namespace okapi;
 
 extern lemlib::Chassis Chassis;
 
-/*
+
 
 extern Motor rightFront;
 extern Motor rightBack;
@@ -33,10 +33,9 @@ extern okapi::MotorGroup RVleft;
 extern okapi::MotorGroup RVright;
 
 
-extern std::shared_ptr<OdomChassisController> drive;
+extern std::shared_ptr<OdomChassisController> drive1;
 extern std::shared_ptr<OdomChassisController> RVdrive;
 extern std::shared_ptr<OdomChassisController> driveTemp;
-*/ 
 
 //okapi::IntegratedEncoder leftEncoder;
 

@@ -21,12 +21,12 @@ using namespace okapi;
 */
 
 
-/*
-// IntegratedEncoder leftEncoder(leftTopPort, true);
-// IntegratedEncoder rightEncoder(rightTopPort, false);
 
-IMU imu1(imuPort1, IMUAxes::z);
-IMU imu2(imuPort2, IMUAxes::z);
+//IntegratedEncoder leftEncoder(leftTopPort, true);
+//IntegratedEncoder rightEncoder(rightTopPort, false);
+
+IMU imu1(imuPort1, IMUAxes::x);
+IMU imu2(imuPort2, IMUAxes::x);
 
 IMU imuA(imuPort1, IMUAxes::y);
 IMU imuB(imuPort2, IMUAxes::y);
@@ -57,7 +57,7 @@ void checkBalance(){
 
 */
 
-/*
+
 
 void resetImu(bool print = true) {
   imu1.reset();
@@ -207,8 +207,7 @@ void drive_dis(double target, double scale) {                                   
    
     
 }
-
-
+*/
 
 //turn PID
 
@@ -222,6 +221,7 @@ void turnClock(float degree, int ms) {
   rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
   float taredRotation = (imu1.get() + imu2.get()) / 2;
   int timer = 0;
+
   float turnkP = 0.01;
   float turnkI = 0;
   float turnkD = 0.027;
@@ -253,7 +253,7 @@ void turnClock(float degree, int ms) {
     float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
     //prevError = error;
     
-    drive->getModel()->tank((power * 0.9f * -1.0f) , power); 
+    drive1->getModel()->tank((power * 0.9f * -1.0f) , power); 
      //goes clockwise 
     
     timer += 10;
@@ -263,7 +263,7 @@ void turnClock(float degree, int ms) {
 
 }
 
-drive->getModel()->tank(0,0);
+drive1->getModel()->tank(0,0);
 }
 
 
@@ -301,14 +301,14 @@ void turnCounter(float degree, int ms) {
     //prevError = error;
 
       
-    drive->getModel()->tank(power * 0.9f , (-1.0f * power));
+    drive1->getModel()->tank(power * 0.9f , (-1.0f * power));
  
     
     timer += 10;
     pros::delay(10);
 }
 
-drive->getModel()->tank(0,0);
+drive1->getModel()->tank(0,0);
 }
 
 
@@ -322,6 +322,7 @@ void turnRIGHTONLY(float degree, int ms) {
   rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
   rightFront.setBrakeMode(AbstractMotor::brakeMode::brake);
   rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
+  
  float taredRotation = (imu1.get() + imu2.get()) / 2;
  int timer = 0;
  float turnkP = 0.01;
@@ -356,13 +357,13 @@ void turnRIGHTONLY(float degree, int ms) {
     // Calculate power using PID
     float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
     //prevError = error;
-      drive->getModel()->tank(0, power); //goes counterclockwise 
+      drive1->getModel()->tank(0, power); //goes counterclockwise 
     
     timer += 10;
     pros::delay(10);
 }
 
-drive->stop();
+drive1->stop();
 }
 
 
@@ -410,13 +411,13 @@ void turnLEFTONLY(float degree, int ms) {
     // Calculate power using PID
     float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
     //prevError = error;
-      drive->getModel()->tank( power, 0); //goes clockwise 
+      drive1->getModel()->tank( power, 0); //goes clockwise 
     
     timer += 10;
     pros::delay(10);
 }
 
-drive->stop();
+drive1->stop();
 }
 
 
@@ -458,13 +459,13 @@ void turnONLYLF(float degree, int ms){
     // Calculate power using PID
     float power = (error * turnkP) + (integral * turnkI) + (derivative * turnkD);
     //prevError = error;
-      drive->getModel()->tank( power, 0); //goes clockwise 
+      drive1->getModel()->tank( power, 0); //goes clockwise 
     
     timer += 10;
     pros::delay(10);
 }
 
-drive->stop();
+  drive1->stop();
+
 }
 
-*/

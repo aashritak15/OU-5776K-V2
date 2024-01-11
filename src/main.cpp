@@ -41,15 +41,15 @@ lemlib::Drivetrain drive{
 
 
 lemlib::ControllerSettings movePID {
-  14, // kP
+  10, // kP
   0, //kI
-  8, // kD
-  0, //anti windup
+  3, // kD
+  3, //anti windup
   1, // small error range
   100, // small error timeout 
   3, // large error range 
   500, // large error timeout 
-  0 // slew rate 
+  20 // slew rate 
 };
 
 pros::Imu intertial1(imuPort1);
@@ -64,10 +64,10 @@ lemlib::OdomSensors sensors {
 };
 
 lemlib::ControllerSettings turnPID {
-  0, // kP
+  2, // kP
   0, // kI
-  0, // kD
-  0, //anti windup 
+  10, // kD
+  3, //anti windup 
   1, // small error range
   100, // small error timeout 
   3, // large error range 
@@ -118,7 +118,7 @@ void initialize() {
     pros::lcd::initialize();
     pros::Task screen_task(screen);
 
-    selector::init();
+   // selector::init();
     //IEInnit();
 
     pros::Task screenTask([&]() {
@@ -203,12 +203,12 @@ void competition_initialize() {
 
 
 void autonomous() {
-    //turnCounter(120, 1000);
-    
 
-    /*
+
+
+
  // example movement: Move to x: 20 and y: 15, and face heading 90. Timeout set to 4000 ms
-    Chassis.moveToPose(20, 15, 90, 4000);
+    Chassis.moveToPose(20, 15, 90, 4000, {.minSpeed= 95});
     // example movement: Move to x: 0 and y: 0 and face heading 270, going backwards. Timeout set to 4000ms
     Chassis.moveToPose(0, 0, 270, 4000, {.forwards = false});
     // cancel the movement after it has travelled 10 inches
@@ -224,12 +224,7 @@ void autonomous() {
     // wait until the chassis has travelled 10 inches. Otherwise the code directly after
     // the movement will run immediately
     // Unless its another movement, in which case it will wait
-    Chassis.waitUntil(10);
-    pros::lcd::print(4, "Travelled 10 inches during pure pursuit!");
-    // wait until the movement is done
-    Chassis.waitUntilDone();
-    pros::lcd::print(4, "pure pursuit finished!");
-    */
+  
 
 
    
