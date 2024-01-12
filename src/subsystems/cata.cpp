@@ -91,6 +91,13 @@ void setCataState(CataState CState) {
   currentCataState = CState; 
   }
 
+
+
+// void onePunch(){
+//   //cataMotor.reset();
+  
+// }
+
 /*
   void updateDriverSkills(){
 

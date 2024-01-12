@@ -201,9 +201,12 @@ void competition_initialize() {
 
  
 
+ASSET(path_jerryio_txt);
 
 void autonomous() {
+  Chassis.setPose(35, 58, 0);
 
+  Chassis.movetoPose(35,  32,  0, 4000);
    
 }
 
@@ -221,33 +224,34 @@ void autonomous() {
 * operator control task will be stopped. Re-enabling the robot will restart the
 * task, not resume it from where it left off.
 */
+
+
 void opcontrol() {
   
   okapi::Rate rate;
   pros::Controller controller1(pros::E_CONTROLLER_MASTER);
    
 
-  int reverseDrive = 1;
+  int reverseDrive = 2;
   int driveState = 0;
 
 
 
+    
     while (true) {
-        
-        int leftY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-        int rightY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+
+        int rightY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        int leftY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 
         switch (reverseDrive) {
           case 1:
             Chassis.tank(rightY, leftY, 2); 
             
             break;
-
           case 2:
             Chassis.tank(-leftY, -rightY, 2);
             break; 
         }
-
         if (controller.getDigital(ControllerDigital::X) == 1) {
             if (driveState == 0) {
                 reverseDrive = 1;
