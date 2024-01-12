@@ -204,11 +204,35 @@ void competition_initialize() {
 ASSET(path_jerryio_txt);
 
 void autonomous() {
-  Chassis.setPose(0, 0, 0);
+
+  /*
+  ______________________________________________________________________________________________
+
+  Close Side AWP (need to do file handling uh)
+  ______________________________________________________________________________________________
+
+*/
+
+//did not add delays because im p sure lem lib doesnt need
+
+Chassis.setPose(0, 0, 0); //change this based on how we are angling bot 
+
+flapjack1.set_value(true);
+flapjack2.set_value(true);
+
+Chassis.moveToPoint(0, 38, 2000, false); // if its going too slow set max speed to 90-100 (127 if bot can handle)
+Chassis.turnTo(90, 145, 1000, false); 
+
+Chassis.moveToPoint(24, 38, 2000, false);
+
+flapjack1.set_value(false);
+flapjack2.set_value(false);
+
+
+
+
 
   
-
-  Chassis.follow(path_jerryio_txt, 3, 4000, false, true);
    
 }
 
