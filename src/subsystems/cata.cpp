@@ -9,6 +9,8 @@
 Motor cataMotor(cataMotorPort, true, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
 
+RotationSensor spin(17);
+
 using namespace okapi;
 
 
@@ -16,13 +18,18 @@ using namespace okapi;
 
 
 ControllerButton cataHighButton = ControllerButton(ControllerDigital::down);
-ControllerButton cataMedButton = ControllerButton(ControllerDigital::up);
-ControllerButton cataLowButton = ControllerButton(ControllerDigital::left);
+//ControllerButton cataMedButton = ControllerButton(ControllerDigital::up);
+ControllerButton cataLowButton = ControllerButton(ControllerDigital::up);
+
+ControllerButton onePunchButton = ControllerButton(ControllerDigital::left);
 
 void cataInit() { 
   cataMotor.setBrakeMode(AbstractMotor::brakeMode::coast); 
-  //intakeMotor2.setBrakeMode(AbstractMotor::brakeMode::hold); 
+  //intakeMotor2.setBrakeMode(AbstractMotor::brakeMode::hold)
+  spin.reset(); 
   }
+
+
 
 
 
@@ -45,7 +52,7 @@ void updateCata() {
     }
   } 
 
-  if (cataMedButton.changedToPressed()) {
+  /*if (cataMedButton.changedToPressed()) {
     if (currentCataState == CataState::MED) {
       //previousIntakeState = currentIntakeState;
       currentCataState = CataState::STOPPED;
@@ -54,6 +61,7 @@ void updateCata() {
       currentCataState = CataState::MED;
     }
   } 
+  */
 
   if (cataLowButton.changedToPressed()) {
     if (currentCataState == CataState::LO) {
@@ -72,14 +80,32 @@ void updateCata() {
     case CataState::HI:
       cataMotor.moveVoltage(12000);
       break;
-    case CataState::MED:
+   /* case CataState::MED:
       cataMotor.moveVoltage(9000);
       break;  
+      */
     case CataState::LO:
       cataMotor.moveVoltage(5000);
       break;
     
   }
+
+
+  if (onePunchButton.changedToPressed()){
+
+    if (spin.get() < 57){
+      int val = 115-spin.get();
+      while (spin.get() < val){
+        cataMotor.moveVoltage(9000);
+      }
+      cataMotor.moveVoltage(0);
+      } else {
+        while (spin.get() > 57){
+          cataMotor.moveVoltage(9000);
+        } 
+        cataMotor.moveVoltage(0);
+      }
+   }
 }
 
  
@@ -93,10 +119,10 @@ void setCataState(CataState CState) {
 
 
 
-// void onePunch(){
-//   //cataMotor.reset();
+ void onePunch(){
+//230-345
   
-// }
+ }
 
 /*
   void updateDriverSkills(){

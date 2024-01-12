@@ -53,7 +53,7 @@ lemlib::ControllerSettings movePID {
 };
 
 pros::Imu intertial1(imuPort1);
-pros::Imu intertial2(imuPort2);
+//pros::Imu intertial2(imuPort2);
 
 lemlib::OdomSensors sensors {
   nullptr, //no tracking wheels 
@@ -204,9 +204,11 @@ void competition_initialize() {
 ASSET(path_jerryio_txt);
 
 void autonomous() {
-  Chassis.setPose(35, 58, 0);
+  Chassis.setPose(0, 0, 0);
 
-  Chassis.movetoPose(35,  32,  0, 4000);
+  
+
+  Chassis.follow(path_jerryio_txt, 3, 4000, false, true);
    
 }
 

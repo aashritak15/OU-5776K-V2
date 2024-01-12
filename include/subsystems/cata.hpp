@@ -3,16 +3,17 @@
 using namespace okapi;
 
 extern Motor cataMotor;
-
+extern RotationSensor spin;
 
 void cataInit();
 void updateCata();
+void onePunch();
 
 
 enum class CataState{
     STOPPED = 0,
     HI = 1, 
-    MED = 2,
+    //MED = 2,
     LO = 3,
 };
 
