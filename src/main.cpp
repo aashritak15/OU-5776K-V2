@@ -225,14 +225,36 @@ leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
     rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
 
 Chassis.setPose(0, 0, 0); //change this based on how we are angling bot 
-/*
-flapjack1.set_value(true);
+
 flapjack2.set_value(true);
-*/
+
+pros::delay(600);
+
+flapjack2.set_value(false);
+
+pros::delay(400);
 
 Chassis.moveToPoint(0, 22, 5000, true, 110); 
 
-Chassis.turnTo(-12, 22, 3000);
+Chassis.turnTo(10, 20, 3000, true);
+
+pros::delay(400);
+
+flapjack2.set_value(true);
+
+Chassis.turnTo(10, 20, 3000, true); 
+
+/*
+90 degree perf turn 
+Chassis.turnTo(-10, 20, 3000, false);
+*/
+
+
+
+
+
+
+
 
 /*
 

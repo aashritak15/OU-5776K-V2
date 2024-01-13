@@ -216,7 +216,11 @@ class Chassis {
          * @note Units are in inches if current motion is moveTo or follow, degrees if using turnTo
          *
          * @param dist the distance the robot needs to travel before returning
+         * 
+        
          */
+         
+
         void waitUntil(float dist);
         /**
          * @brief Wait until the robot has completed the path
