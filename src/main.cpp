@@ -24,6 +24,8 @@ pros::Motor rF(11, pros::E_MOTOR_GEARSET_06);
 pros::Motor rM(-9, pros::E_MOTOR_GEARSET_06); 
 pros::Motor rB(10, pros::E_MOTOR_GEARSET_06); 
 
+
+
 // motor groups
 pros::MotorGroup leftMotors({lF, lM, lB}); // left motor group
 pros::MotorGroup rightMotors({rF, rM, rB}); // right motor group
@@ -43,7 +45,7 @@ lemlib::Drivetrain drive{
 lemlib::ControllerSettings movePID {
   10, // kP
   0, //kI
-  3, // kD
+  6, // kD
   3, //anti windup
   1, // small error range
   100, // small error timeout 
@@ -214,21 +216,40 @@ void autonomous() {
 */
 
 //did not add delays because im p sure lem lib doesnt need
+leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+    leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+    leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
+
+    rightFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+    rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+    rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
 
 Chassis.setPose(0, 0, 0); //change this based on how we are angling bot 
+/*
+flapjack1.set_value(true);
+flapjack2.set_value(true);
+*/
 
+Chassis.moveToPoint(0, 22, 5000, true, 110); 
+
+Chassis.turnTo(-12, 22, 3000);
+
+/*
+
+Chassis.turnTo(43, 12, 1000, false); //face towards goal
+
+//enable flapjacks
 flapjack1.set_value(true);
 flapjack2.set_value(true);
 
-Chassis.moveToPoint(0, 38, 2000, false); // if its going too slow set max speed to 90-100 (127 if bot can handle)
-Chassis.turnTo(90, 145, 1000, false); 
-
+//move backwards
 Chassis.moveToPoint(24, 38, 2000, false);
 
+//retract flapjacks
 flapjack1.set_value(false);
 flapjack2.set_value(false);
 
-
+*/
 
 
 
