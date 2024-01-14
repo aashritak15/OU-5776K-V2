@@ -238,24 +238,44 @@ pros::delay(400);
 
 Chassis.moveToPoint(0, 21, 4000, true, 127); 
 
-
-Chassis.turnTo(10, 20, 2000, true);
+Chassis.turnTo(10, 20, 1000, true);
 
 pros::delay(250);
 
 flapjack2.set_value(true);
 
-pros::delay(400);
+//pros::delay(400);
 
-Chassis.turnTo(10, -25, 2000, true);
+Chassis.turnTo(10, -25, 1000, true);
 
 flapjack2.set_value(false);
 
 Chassis.moveToPose(-5, 0, 180, 5000, {.forwards = true, .minSpeed = 100}); 
 
-Chassis.moveToPose(0, 0, 180, 5000, {.forwards = true, .minSpeed = 100}); 
+Chassis.moveToPose(0, -3, 180, 1000, {.forwards = true, .minSpeed = 100}); 
 
-Chassis.moveToPose(-13, 20, 180, 5000, {.forwards = false, .minSpeed = 100});
+Chassis.moveToPose(-12, 23, 180, 2000, {.forwards = false, .minSpeed = 110});
+
+Chassis.moveToPose(-12, 11, 180, 2000, {.forwards = false, .minSpeed = 50});
+
+Chassis.moveToPose(-2, -3, 180, 5000, {.forwards = true, .minSpeed = 50});
+
+pros::delay(300);
+
+flapjack1.set_value(true);
+
+Chassis.turnTo(0, 20, 1000, true);
+
+pros::delay(300);
+
+flapjack1.set_value(false);
+
+Chassis.turnTo(0, -11, 1000, true);
+
+Chassis.moveToPose(20, 10, 180, 2000, {.forwards = true, .minSpeed = 50});
+
+flapjack1.set_value(true);
+
 
 /*
 90 degree perf turn 
