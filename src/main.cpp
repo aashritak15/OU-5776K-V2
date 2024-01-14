@@ -55,6 +55,7 @@ lemlib::ControllerSettings movePID {
 };
 
 pros::Imu intertial1(imuPort1);
+
 //pros::Imu intertial2(imuPort2);
 
 lemlib::OdomSensors sensors {
@@ -78,6 +79,48 @@ lemlib::ControllerSettings turnPID {
 };
 
 lemlib::Chassis Chassis(drive, movePID, turnPID, sensors);
+
+inline double remap(double d) {
+    if (d == 0) {
+        return 0;
+    }
+
+    double fp = d - (int)d;
+    int id = (int)d;
+
+    if (d > 0) {
+        id = id % 360;
+    } else {
+        id = (-id % 360) * -1 + 360;
+    }
+
+    d = id + fp;
+    return (d <= 180) ? d : (d - 360);
+}
+
+
+void swing(double r, double targetAngle, double scalar, bool reversed) {     //returns distance, arc to theta
+    double sd = abs(r * 12) - (11);
+    double ld = abs(r * 12) + (11);
+    
+
+    double initAngle = abs(intertial1.get_rotation() - targetAngle);
+
+    //determine left right          targetAngle : > 0
+    double left_speed = ((initAngle < 0) ? 1 : (sd / ld)) * scalar;     //change: used init not target
+    double right_speed = ((initAngle < 0) ? (sd / ld) : 1) * scalar;
+
+    //determine if reverse
+    if (reversed) {
+        double ts = left_speed;
+
+        left_speed = right_speed * -1;
+        right_speed = ts * -1;
+    }
+
+  
+
+}
 
 
 /*
@@ -207,6 +250,52 @@ ASSET(path_jerryio_txt);
 
 void autonomous() {
 
+  
+    /*
+  ______________________________________________________________________________________________
+
+  Far Side AWP (need to do file handling uh)
+  ______________________________________________________________________________________________
+
+*/
+
+    leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+    leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+    leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
+
+    rightFront.setBrakeMode(AbstractMotor::brakeMode::brake);
+    rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
+    rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
+
+
+    Chassis.setPose(0, 0, 0);
+
+    Chassis.moveToPose(-4, 30, 315, 4000, {.forwards = true});
+
+    //intakeMotor1.moveVelocity(600);
+
+/*
+    Chassis.moveToPose(-4, -21, 90, 4000, {.forwards = false}); 
+
+    intakeMotor1.moveVelocity(0);
+
+    //Chassis.turnTo(10, 20, 3000, false);
+
+    intakeMotor1.moveVelocity(-600);
+
+    Chassis.moveToPose(17, -15, 260, 4000, {.forwards = false});
+
+    intakeMotor1.moveVelocity(600);
+*/
+
+
+
+
+
+
+
+
+
   /*
   ______________________________________________________________________________________________
 
@@ -215,6 +304,7 @@ void autonomous() {
 
 */
 
+/*
 //did not add delays because im p sure lem lib doesnt need
 leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
     leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -240,41 +330,47 @@ Chassis.moveToPoint(0, 21, 4000, true, 127);
 
 Chassis.turnTo(10, 20, 1000, true);
 
-pros::delay(250);
-
 flapjack2.set_value(true);
 
-//pros::delay(400);
+//
 
 Chassis.turnTo(10, -25, 1000, true);
+
+pros::delay(300);
 
 flapjack2.set_value(false);
 
 Chassis.moveToPose(-5, 0, 180, 5000, {.forwards = true, .minSpeed = 100}); 
 
-Chassis.moveToPose(0, -3, 180, 1000, {.forwards = true, .minSpeed = 100}); 
+// going to the goal to score till now 
+
+Chassis.moveToPose(0, -2, 180, 1000, {.forwards = true, .minSpeed = 100}); 
+
 
 Chassis.moveToPose(-12, 23, 180, 2000, {.forwards = false, .minSpeed = 110});
 
 Chassis.moveToPose(-12, 11, 180, 2000, {.forwards = false, .minSpeed = 50});
 
-Chassis.moveToPose(-2, -3, 180, 5000, {.forwards = true, .minSpeed = 50});
 
-pros::delay(300);
+Chassis.moveToPose(-7, -5, 180, 5000, {.forwards = true, .minSpeed = 50});
+
+Chassis.turnTo(0, 0, 2000);
 
 flapjack1.set_value(true);
 
-Chassis.turnTo(0, 20, 1000, true);
-
-pros::delay(300);
+pros::delay(100);
 
 flapjack1.set_value(false);
 
-Chassis.turnTo(0, -11, 1000, true);
+Chassis.moveToPose(0, 12, 0, 3000);
 
 Chassis.moveToPose(20, 10, 180, 2000, {.forwards = true, .minSpeed = 50});
 
+Chassis.turnTo(20, 14, 2000);
+
 flapjack1.set_value(true);
+
+*/
 
 
 /*
