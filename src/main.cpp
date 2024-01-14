@@ -224,7 +224,9 @@ leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
     rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
     rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
 
+
 Chassis.setPose(0, 0, 0); //change this based on how we are angling bot 
+
 
 flapjack2.set_value(true);
 
@@ -234,15 +236,26 @@ flapjack2.set_value(false);
 
 pros::delay(400);
 
-Chassis.moveToPoint(0, 22, 5000, true, 110); 
+Chassis.moveToPoint(0, 21, 4000, true, 127); 
 
-Chassis.turnTo(10, 20, 3000, true);
 
-pros::delay(400);
+Chassis.turnTo(10, 20, 2000, true);
+
+pros::delay(250);
 
 flapjack2.set_value(true);
 
-Chassis.turnTo(10, 20, 3000, true); 
+pros::delay(400);
+
+Chassis.turnTo(10, -25, 2000, true);
+
+flapjack2.set_value(false);
+
+Chassis.moveToPose(-5, 0, 180, 5000, {.forwards = true, .minSpeed = 100}); 
+
+Chassis.moveToPose(0, 0, 180, 5000, {.forwards = true, .minSpeed = 100}); 
+
+Chassis.moveToPose(-13, 20, 180, 5000, {.forwards = false, .minSpeed = 100});
 
 /*
 90 degree perf turn 
@@ -250,28 +263,6 @@ Chassis.turnTo(-10, 20, 3000, false);
 */
 
 
-
-
-
-
-
-
-/*
-
-Chassis.turnTo(43, 12, 1000, false); //face towards goal
-
-//enable flapjacks
-flapjack1.set_value(true);
-flapjack2.set_value(true);
-
-//move backwards
-Chassis.moveToPoint(24, 38, 2000, false);
-
-//retract flapjacks
-flapjack1.set_value(false);
-flapjack2.set_value(false);
-
-*/
 
 
 
