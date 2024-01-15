@@ -267,26 +267,59 @@ void autonomous() {
     rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
     rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
 
-
+/*
     Chassis.setPose(0, 0, 0);
 
-    Chassis.moveToPose(-4, 30, 315, 4000, {.forwards = true});
+    Chassis.moveToPose(-4, 25, 315, 4000, {.forwards = true, .minSpeed = 100});
 
-    //intakeMotor1.moveVelocity(600);
-
-/*
-    Chassis.moveToPose(-4, -21, 90, 4000, {.forwards = false}); 
-
-    intakeMotor1.moveVelocity(0);
-
-    //Chassis.turnTo(10, 20, 3000, false);
+    Chassis.follow(path_jerryio_txt, 15, 4000, false, true);
+*/
 
     intakeMotor1.moveVelocity(-600);
 
-    Chassis.moveToPose(17, -15, 260, 4000, {.forwards = false});
+    Chassis.moveToPose(-4, -21, 90, 4000, {.forwards = false}); 
+
+   // Chassis.moveToPose(2, -21, 2, 4000, {.forwards = true}); 
 
     intakeMotor1.moveVelocity(600);
-*/
+
+    Chassis.turnTo(10, 20, 1000, false);
+
+    intakeMotor1.moveVelocity(0);
+
+    intakeMotor1.moveVelocity(-600);
+
+    Chassis.moveToPose(17, -12, 260, 4000, {.forwards = false});
+
+    intakeMotor1.moveVelocity(-600);
+
+    Chassis.turnTo(17, -21, 1000);
+
+     flapjack1.set_value(true);
+    flapjack2.set_value(true);
+
+    Chassis.moveToPose(17, -28, 180, 4000, {.forwards = true, .minSpeed = 100});
+
+
+    Chassis.moveToPose(-4, -25, 275, 4000, {.forwards = true, .minSpeed = 50}); 
+
+    pros::delay(1000);
+
+    flapjack1.set_value(false);
+    flapjack2.set_value(false);
+
+
+    intakeMotor1.moveVelocity(600);
+
+    pros::delay(300);
+
+    intakeMotor1.moveVelocity(0);
+
+    Chassis.moveToPose(17, -5, 0, 4000, {.forwards = true});
+
+    flapjack1.set_value(true);
+    flapjack2.set_value(true);
+
 
 
 
