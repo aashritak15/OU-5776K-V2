@@ -118,7 +118,8 @@ void swing(double r, double targetAngle, double scalar, bool reversed) {     //r
         right_speed = ts * -1;
     }
 
-  
+    drive.leftMotors->move(int32_t(left_speed));
+    drive.rightMotors->move(int32_t(right_speed));
 
 }
 
@@ -250,6 +251,11 @@ ASSET(path_jerryio_txt);
 
 void autonomous() {
 
+
+  
+    
+
+
   
     /*
   ______________________________________________________________________________________________
@@ -259,6 +265,9 @@ void autonomous() {
 
 */
 
+
+/*
+
     leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
     leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
     leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -267,13 +276,8 @@ void autonomous() {
     rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
     rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
 
-/*
+
     Chassis.setPose(0, 0, 0);
-
-    Chassis.moveToPose(-4, 25, 315, 4000, {.forwards = true, .minSpeed = 100});
-
-    Chassis.follow(path_jerryio_txt, 15, 4000, false, true);
-*/
 
     intakeMotor1.moveVelocity(-600);
 
@@ -321,6 +325,7 @@ void autonomous() {
     flapjack2.set_value(true);
 
 
+*/
 
 
 
@@ -337,7 +342,7 @@ void autonomous() {
 
 */
 
-/*
+
 //did not add delays because im p sure lem lib doesnt need
 leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
     leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -357,53 +362,53 @@ pros::delay(600);
 
 flapjack2.set_value(false);
 
-pros::delay(400);
-
 Chassis.moveToPoint(0, 21, 4000, true, 127); 
 
-Chassis.turnTo(10, 20, 1000, true);
+Chassis.turnTo(10, 20, 1000, true, 90);
 
 flapjack2.set_value(true);
 
-//
-
-Chassis.turnTo(10, -25, 1000, true);
-
-pros::delay(300);
-
-flapjack2.set_value(false);
+Chassis.turnTo(10, -25, 1000, true, 90);
 
 Chassis.moveToPose(-5, 0, 180, 5000, {.forwards = true, .minSpeed = 100}); 
 
+flapjack2.set_value(false);
+
 // going to the goal to score till now 
 
-Chassis.moveToPose(0, -2, 180, 1000, {.forwards = true, .minSpeed = 100}); 
+Chassis.moveToPose(0, -2, 180, 1000, {.forwards = true, .minSpeed = 90}); 
 
 
-Chassis.moveToPose(-12, 23, 180, 2000, {.forwards = false, .minSpeed = 110});
+Chassis.moveToPose(-13, 20, 180, 2000, {.forwards = false, .minSpeed = 75});
 
-Chassis.moveToPose(-12, 11, 180, 2000, {.forwards = false, .minSpeed = 50});
+//Chassis.moveToPose(-12, 11, 180, 2000, {.forwards = false, .minSpeed = 90});
 
+Chassis.moveToPose(-2, 4, 35, 5000,{.forwards = true, .minSpeed = 75});
 
-Chassis.moveToPose(-7, -5, 180, 5000, {.forwards = true, .minSpeed = 50});
-
-Chassis.turnTo(0, 0, 2000);
 
 flapjack1.set_value(true);
 
-pros::delay(100);
+Chassis.turnTo(0, 5, 2000);
+
+Chassis.moveToPose(20.5, -1, 90, 5000, {.forwards = true, .minSpeed = 75});
 
 flapjack1.set_value(false);
 
+
+
+
+
+/*
+
 Chassis.moveToPose(0, 12, 0, 3000);
 
-Chassis.moveToPose(20, 10, 180, 2000, {.forwards = true, .minSpeed = 50});
+Chassis.moveToPose(23, 0, 45, 5000, {.forwards = true, .minSpeed = 75});
 
-Chassis.turnTo(20, 14, 2000);
+//Chassis.turnTo(-4, -5, 2000);
 
 flapjack1.set_value(true);
 
-*/
+
 
 
 /*
