@@ -16,6 +16,8 @@ extern pros::ADIDigitalOut lMech;
 
 extern pros::ADIDigitalOut blocker;
 
+extern pros::ADIDigitalOut blocker1;
+
 //extern pros::ADIDigitalOut pistonPTO1;
 
 

@@ -266,7 +266,22 @@ void autonomous() {
 */
 
 
-/*
+
+
+    blocker1.set_value(true);
+
+    pros::delay(100);
+
+    intakeMotor1.moveVelocity(600);
+
+     pros::delay(100);
+
+     blocker1.set_value(false);
+
+      pros::delay(100);
+
+
+  
 
     leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
     leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -278,16 +293,15 @@ void autonomous() {
 
 
     Chassis.setPose(0, 0, 0);
-
-    intakeMotor1.moveVelocity(-600);
-
-    Chassis.moveToPose(-4, -21, 90, 4000, {.forwards = false}); 
-
-   // Chassis.moveToPose(2, -21, 2, 4000, {.forwards = true}); 
+    
+    Chassis.moveToPose(-4, -22, 90, 4000, {.forwards = false, .minSpeed = 60}); 
 
     intakeMotor1.moveVelocity(600);
 
     Chassis.turnTo(10, 20, 1000, false);
+
+
+    /*
 
     intakeMotor1.moveVelocity(0);
 
@@ -324,8 +338,8 @@ void autonomous() {
     flapjack1.set_value(true);
     flapjack2.set_value(true);
 
-
 */
+
 
 
 
@@ -340,7 +354,7 @@ void autonomous() {
   Close Side AWP (need to do file handling uh)
   ______________________________________________________________________________________________
 
-*/
+
 
 
 //did not add delays because im p sure lem lib doesnt need
@@ -352,7 +366,7 @@ leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
     rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
     rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
 
-
+// adarsh hi read here
 Chassis.setPose(0, 0, 0); //change this based on how we are angling bot 
 
 
@@ -370,20 +384,22 @@ flapjack2.set_value(true);
 
 Chassis.turnTo(10, -25, 1000, true, 90);
 
-Chassis.moveToPose(-5, 0, 180, 5000, {.forwards = true, .minSpeed = 100}); 
+Chassis.moveToPose(-5, 0, 180, 5000, {.forwards = true, .minSpeed = 90}); 
+
+pros::delay(100);
 
 flapjack2.set_value(false);
 
 // going to the goal to score till now 
 
-Chassis.moveToPose(0, -2, 180, 1000, {.forwards = true, .minSpeed = 90}); 
+Chassis.moveToPose(0, -2, 180, 1000, {.forwards = true, .minSpeed = 80}); 
 
 
-Chassis.moveToPose(-13, 20, 180, 2000, {.forwards = false, .minSpeed = 75});
+Chassis.moveToPose(-13, 22, 180, 2000, {.forwards = false, .minSpeed = 75});
 
 //Chassis.moveToPose(-12, 11, 180, 2000, {.forwards = false, .minSpeed = 90});
 
-Chassis.moveToPose(-2, 4, 35, 5000,{.forwards = true, .minSpeed = 75});
+Chassis.moveToPose(-2, 4, 40, 5000,{.forwards = true, .minSpeed = 75});
 
 
 flapjack1.set_value(true);
