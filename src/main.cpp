@@ -99,29 +99,7 @@ inline double remap(double d) {
 }
 
 
-void swing(double r, double targetAngle, double scalar, bool reversed) {     //returns distance, arc to theta
-    double sd = abs(r * 12) - (11);
-    double ld = abs(r * 12) + (11);
-    
 
-    double initAngle = abs(intertial1.get_rotation() - targetAngle);
-
-    //determine left right          targetAngle : > 0
-    double left_speed = ((initAngle < 0) ? 1 : (sd / ld)) * scalar;     //change: used init not target
-    double right_speed = ((initAngle < 0) ? (sd / ld) : 1) * scalar;
-
-    //determine if reverse
-    if (reversed) {
-        double ts = left_speed;
-
-        left_speed = right_speed * -1;
-        right_speed = ts * -1;
-    }
-
-    drive.leftMotors->move(int32_t(left_speed));
-    drive.rightMotors->move(int32_t(right_speed));
-
-}
 
 
 /*
@@ -247,7 +225,7 @@ void competition_initialize() {
 
  
 
-ASSET(path_jerryio_txt);
+//tatic path =ASSET("path.jerryio.txt");
 
 void autonomous() {
 
@@ -267,6 +245,7 @@ void autonomous() {
 
 
 
+    Chassis.setPose(0, 0, 0);
 
     blocker1.set_value(true);
 
@@ -274,14 +253,12 @@ void autonomous() {
 
     intakeMotor1.moveVelocity(600);
 
-     pros::delay(100);
+     pros::delay(200);
 
      blocker1.set_value(false);
 
       pros::delay(100);
 
-
-  
 
     leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
     leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -291,14 +268,72 @@ void autonomous() {
     rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
     rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
 
-
-    Chassis.setPose(0, 0, 0);
     
-    Chassis.moveToPose(-4, -22, 90, 4000, {.forwards = false, .minSpeed = 60}); 
+    Chassis.moveToPose(0, -23, 0, 4000, {.forwards = false, .minSpeed = 50}); 
+    Chassis.waitUntil(55);
+    Chassis.cancelMotion();
+
+    intakeMotor1.moveVelocity(0); 
+
+    pros::delay(300);
+
+    Chassis.moveToPose(0, -22, 90, 4000, {.forwards = false, .minSpeed = 50}); 
+      Chassis.waitUntil(55);
+    Chassis.cancelMotion();
+
+     
+
+    Chassis.moveToPose(-5, -22, 90, 4000, {.forwards = false, .minSpeed = 50}); 
+    Chassis.waitUntil(5);
+    Chassis.cancelMotion();
+     
+     
+    Chassis.moveToPose(11, -10, 270, 4000, {.forwards = false, .minSpeed = 50});
+     Chassis.waitUntil(55);
+    Chassis.cancelMotion();
+
+    Chassis.moveToPose(-12, -19, 90, 4000, {.forwards = false, .minSpeed = 50});
+    Chassis.waitUntil(55);
+    Chassis.cancelMotion();
+
+    Chassis.moveToPose(11, -18, 270, 4000, {.forwards = false, .minSpeed = 50});
+     Chassis.waitUntil(55);
+    Chassis.cancelMotion();
+    
+
+
+
+
+    //Chassis.follow("path.txt", 10000, 15);
+
+
+/*
+     pros::delay(300);
+
+    Chassis.moveToPose(5, -17, 0, 4000, {.forwards = false, .minSpeed = 50}); 
+      Chassis.waitUntil(55);
+    Chassis.cancelMotion();
 
     intakeMotor1.moveVelocity(600);
 
-    Chassis.turnTo(10, 20, 1000, false);
+    pros::delay(300);
+
+     intakeMotor1.moveVelocity(0);
+
+    */
+
+   // Chassis.moveToPose(0, -22, 90, 4000, {.forwards = false, .minSpeed = 50});
+
+
+
+
+
+
+  
+
+
+
+   
 
 
     /*

@@ -91,21 +91,19 @@ void updateCata() {
   }
 
 
-  if (onePunchButton.changedToPressed()){
+  // if (onePunchButton.changedToPressed()){
 
-    if (spin.get() < 57){
-      int val = 115-spin.get();
-      while (spin.get() < val){
-        cataMotor.moveVoltage(9000);
-      }
-      cataMotor.moveVoltage(0);
-      } else {
-        while (spin.get() > 57){
-          cataMotor.moveVoltage(9000);
-        } 
-        cataMotor.moveVoltage(0);
-      }
-   }
+  //   if (spin.get() < 57){
+  //     cataMotor.moveVoltage(9000);
+  //     pros::delay(3000);
+  //     cataMotor.moveVoltage(0);
+  //     } else {
+  //       cataMotor.moveVoltage(9000);
+  //     pros::delay(1500);
+  //     cataMotor.moveVoltage(0);
+  //  }
+ 
+  // }
 }
 
  
