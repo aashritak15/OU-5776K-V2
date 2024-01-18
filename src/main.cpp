@@ -229,12 +229,6 @@ void competition_initialize() {
 
 void autonomous() {
 
-
-  
-    
-
-
-  
     /*
   ______________________________________________________________________________________________
 
@@ -245,13 +239,14 @@ void autonomous() {
 
 
 
+
     Chassis.setPose(0, 0, 0);
 
     blocker1.set_value(true);
 
     pros::delay(100);
 
-    intakeMotor1.moveVelocity(600);
+    intakeMotor1.moveVelocity(-600);
 
      pros::delay(200);
 
@@ -259,6 +254,9 @@ void autonomous() {
 
       pros::delay(100);
 
+
+    intakeMotor1.moveVelocity(-600);
+  pros::delay(100);
 
     leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
     leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -269,36 +267,83 @@ void autonomous() {
     rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
 
     
-    Chassis.moveToPose(0, -23, 0, 4000, {.forwards = false, .minSpeed = 50}); 
+    Chassis.moveToPose(0, -21, 0, 4000, {.forwards = false, .minSpeed = 75}); 
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
 
-    intakeMotor1.moveVelocity(0); 
+   
+    Chassis.moveToPose(0, -21, 90, 1000, {.forwards = false, .minSpeed = 60}); 
+    
+    pros::delay(400);
 
-    pros::delay(300);
+   intakeMotor1.moveVelocity(600);
 
-    Chassis.moveToPose(0, -22, 90, 4000, {.forwards = false, .minSpeed = 50}); 
-      Chassis.waitUntil(55);
-    Chassis.cancelMotion();
+   pros::delay(200);
 
-     
-
-    Chassis.moveToPose(-5, -22, 90, 4000, {.forwards = false, .minSpeed = 50}); 
+    Chassis.moveToPose(-5, -21, 90, 4000, {.forwards = false, .minSpeed = 60}); 
     Chassis.waitUntil(5);
     Chassis.cancelMotion();
-     
-     
-    Chassis.moveToPose(11, -10, 270, 4000, {.forwards = false, .minSpeed = 50});
-     Chassis.waitUntil(55);
+
+     pros::delay(100);
+      intakeMotor1.moveVelocity(-600);
+      pros::delay(100);
+
+    Chassis.moveToPose(10, -9, 270, 4000, {.forwards = false, .minSpeed = 60});
+    Chassis.waitUntil(65);
     Chassis.cancelMotion();
 
-    Chassis.moveToPose(-12, -19, 90, 4000, {.forwards = false, .minSpeed = 50});
+   pros::delay(600);
+
+
+    Chassis.moveToPose(-13, -19, 90, 4000, {.forwards = false, .minSpeed = 60});
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
 
-    Chassis.moveToPose(11, -18, 270, 4000, {.forwards = false, .minSpeed = 50});
+    pros::delay(100);
+
+    intakeMotor1.moveVelocity(600);
+
+    pros::delay(100);
+
+    Chassis.moveToPose(6, -14, 0, 4000, {.forwards = false, .minSpeed = 60});
      Chassis.waitUntil(55);
     Chassis.cancelMotion();
+
+    Chassis.moveToPose(13, -14.5, 260, 4000, {.forwards = false, .minSpeed = 60});
+    Chassis.waitUntil(55);
+    Chassis.cancelMotion();
+
+      pros::delay(100);
+     intakeMotor1.moveVelocity(-600);
+
+     pros::delay(100);
+
+    flapjack2.set_value(true);
+
+    Chassis.moveToPose(-11, -19, 0, 4000, {.forwards = false, .minSpeed = 60});
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+  
+
+/*
+Chassis.moveToPose(0, 0, 0, 5000);
+Chassis.moveToPose(0.743, -31.711, 0,  5000);
+*/
     
 
 
@@ -308,6 +353,11 @@ void autonomous() {
 
 
 /*
+
+Chassis.moveTo(0, 0, 5000);
+Chassis.moveTo(0.743, -31.711, 5000);
+
+
      pros::delay(300);
 
     Chassis.moveToPose(5, -17, 0, 4000, {.forwards = false, .minSpeed = 50}); 
@@ -450,6 +500,11 @@ flapjack1.set_value(false);
 
 
 /*
+
+chassis.moveTo(0, 0, 5000);
+chassis.moveTo(14.07, -40.021, 5000);
+chassis.moveTo(28.491, -48.31, 5000);
+
 
 Chassis.moveToPose(0, 12, 0, 3000);
 
