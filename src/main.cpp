@@ -229,6 +229,23 @@ void competition_initialize() {
 
 void autonomous() {
 
+
+   /*
+  ______________________________________________________________________________________________
+
+  skills
+  ______________________________________________________________________________________________
+
+*/
+
+
+
+Chassis.setPose(0, 0, 0);
+
+Chassis.moveToPose(-5, 15, 0, 3000);
+
+
+
     /*
   ______________________________________________________________________________________________
 
@@ -239,7 +256,7 @@ void autonomous() {
 
 
 
-
+/*
     Chassis.setPose(0, 0, 0);
 
     blocker1.set_value(true);
@@ -288,7 +305,7 @@ void autonomous() {
       intakeMotor1.moveVelocity(-600);
       pros::delay(100);
 
-    Chassis.moveToPose(10, -9, 270, 4000, {.forwards = false, .minSpeed = 60});
+    Chassis.moveToPose(10, -9, 280, 4000, {.forwards = false, .minSpeed = 60});
     Chassis.waitUntil(65);
     Chassis.cancelMotion();
 
@@ -305,29 +322,30 @@ void autonomous() {
 
     pros::delay(100);
 
-    Chassis.moveToPose(6, -14, 0, 4000, {.forwards = false, .minSpeed = 60});
+    Chassis.moveToPose(6, -14, 0, 4000, {.forwards = false, .minSpeed = 65});
      Chassis.waitUntil(55);
     Chassis.cancelMotion();
 
-    Chassis.moveToPose(13, -14.5, 260, 4000, {.forwards = false, .minSpeed = 60});
+    Chassis.moveToPose(13, -14.5, 260, 4000, {.forwards = false, .minSpeed = 65});
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
 
       pros::delay(100);
      intakeMotor1.moveVelocity(-600);
 
-     pros::delay(100);
+    Chassis.moveToPose(-11, -21, 0, 4000, {.forwards = false, .minSpeed = 65});
 
+    Chassis.moveToPose(9, -1, 0, 3000, {.forwards = true, .minSpeed = 127});
+
+    flapjack1.set_value(true);
     flapjack2.set_value(true);
 
-    Chassis.moveToPose(-11, -19, 0, 4000, {.forwards = false, .minSpeed = 60});
 
 
 
 
 
-
-
+*/
 
 
 
