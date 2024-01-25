@@ -43,7 +43,7 @@ lemlib::Drivetrain drive{
 
 
 lemlib::ControllerSettings movePID {
-  10, // kP
+  13, // kP
   0, //kI
   6, // kD
   3, //anti windup
@@ -230,19 +230,33 @@ void competition_initialize() {
 void autonomous() {
 
 
-   /*
+
+    /*
   ______________________________________________________________________________________________
 
-  skills
+  PROG SKILLS
   ______________________________________________________________________________________________
 
 */
 
+Chassis.moveToPoint(0, 0,5000);
+Chassis.moveToPoint(-6.06, 8.08, 5000);
+Chassis.moveToPoint(-3.02, 0.76, 5000);
+Chassis.moveToPoint(1.2, -0.75, 5000);
+Chassis.moveToPoint(13.2, 0, 5000);
 
 
-Chassis.setPose(0, 0, 0);
 
-Chassis.moveToPose(-5, 15, 0, 3000);
+   
+
+
+  
+/*
+
+
+UNCOMMENT UNTILL HERE -----------------------------------------------------------------------------------------------_
+
+*/
 
 
 
@@ -257,6 +271,8 @@ Chassis.moveToPose(-5, 15, 0, 3000);
 
 
 /*
+
+
     Chassis.setPose(0, 0, 0);
 
     blocker1.set_value(true);
@@ -267,107 +283,141 @@ Chassis.moveToPose(-5, 15, 0, 3000);
 
      pros::delay(200);
 
-     blocker1.set_value(false);
+    blocker1.set_value(false);
 
       pros::delay(100);
 
 
     intakeMotor1.moveVelocity(-600);
-  pros::delay(100);
-
-    leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
-    leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
-    leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
-
-    rightFront.setBrakeMode(AbstractMotor::brakeMode::brake);
-    rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
-    rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
-
+   pros::delay(100);
     
     Chassis.moveToPose(0, -21, 0, 4000, {.forwards = false, .minSpeed = 75}); 
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
 
+  pros::delay(300);
    
-    Chassis.moveToPose(0, -21, 90, 1000, {.forwards = false, .minSpeed = 60}); 
+    Chassis.moveToPose(0, -21, 90, 1000, {.forwards = false, .minSpeed = 75}); 
     
-    pros::delay(400);
+     pros::delay(400);
 
    intakeMotor1.moveVelocity(600);
 
-   pros::delay(200);
+ pros::delay(300);
 
-    Chassis.moveToPose(-5, -21, 90, 4000, {.forwards = false, .minSpeed = 60}); 
+    Chassis.moveToPose(-6, -21, 90, 1000, {.forwards = false, .minSpeed = 75}); 
     Chassis.waitUntil(5);
     Chassis.cancelMotion();
 
-     pros::delay(100);
-      intakeMotor1.moveVelocity(-600);
-      pros::delay(100);
+      Chassis.moveToPose(0, -21, 90, 1000, {.forwards = false, .minSpeed = 75}); 
+    Chassis.waitUntil(5);
+    Chassis.cancelMotion();
 
-    Chassis.moveToPose(10, -9, 280, 4000, {.forwards = false, .minSpeed = 60});
+      intakeMotor1.moveVelocity(-600);
+  
+
+    Chassis.moveToPose(10, -9, 280, 4000, {.forwards = false, .minSpeed = 75});
     Chassis.waitUntil(65);
     Chassis.cancelMotion();
 
-   pros::delay(600);
 
+     pros::delay(400);
 
-    Chassis.moveToPose(-13, -19, 90, 4000, {.forwards = false, .minSpeed = 60});
+    Chassis.moveToPose(-8, -19, 90, 4000, {.forwards = false, .minSpeed = 75});
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
-
-    pros::delay(100);
 
     intakeMotor1.moveVelocity(600);
 
-    pros::delay(100);
-
-    Chassis.moveToPose(6, -14, 0, 4000, {.forwards = false, .minSpeed = 65});
-     Chassis.waitUntil(55);
-    Chassis.cancelMotion();
-
-    Chassis.moveToPose(13, -14.5, 260, 4000, {.forwards = false, .minSpeed = 65});
+    Chassis.moveToPose(-7, -19, 90, 1000, {.forwards = false, .minSpeed = 75});
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
 
-      pros::delay(100);
+     pros::delay(50);
+
+    Chassis.moveToPose(-8, -19, 90, 1000, {.forwards = false, .minSpeed = 75});
+    Chassis.waitUntil(55);
+    Chassis.cancelMotion();
+
+
+     pros::delay(400);
+
+
+
+
+
+    Chassis.moveToPose(6, -14, 0, 4000, {.forwards = false, .minSpeed = 75});
+     Chassis.waitUntil(55);
+    Chassis.cancelMotion();
+
+    Chassis.moveToPose(14, -14, 260, 2000, {.forwards = false, .minSpeed = 75});
+    Chassis.waitUntil(55);
+    Chassis.cancelMotion();
+
+  //  pros::delay(200);
+
      intakeMotor1.moveVelocity(-600);
 
-    Chassis.moveToPose(-11, -21, 0, 4000, {.forwards = false, .minSpeed = 65});
+    pros::delay(400);
 
-    Chassis.moveToPose(9, -1, 0, 3000, {.forwards = true, .minSpeed = 127});
+
+/*
+ ELIMS AUTON CHANGE: SCORES THE THIRD TRIBALL NO BAR 
+
+*/
+
+
+/*
+Chassis.moveToPose(-9, -19, 90, 1000, {.forwards = false, .minSpeed = 75});
+    Chassis.waitUntil(55);
+    Chassis.cancelMotion();
+
+
+
+    Chassis.moveToPose(-5, -19, 90, 1000, {.forwards = false, .minSpeed = 75});
+    Chassis.waitUntil(55);
+    Chassis.cancelMotion();
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+ENDING AWP TASKS: BARRIER 
+   Chassis.moveToPose(7, -2, 0, 2000, {.forwards = true, .minSpeed = 75});
+    Chassis.waitUntil(55);
+    Chassis.cancelMotion(); 
+
+
+intakeMotor1.moveVelocity(300);
 
     flapjack1.set_value(true);
     flapjack2.set_value(true);
-
-
-
-
-
-
 */
 
 
 
-    
 
 
-
-
-
-
-  
 
 /*
-Chassis.moveToPose(0, 0, 0, 5000);
-Chassis.moveToPose(0.743, -31.711, 0,  5000);
+
+
+UNCOMMENT UNTILL HERE -----------------------------------------------------------------------------------------------_
+
 */
-    
 
 
 
-
-    //Chassis.follow("path.txt", 10000, 15);
 
 
 /*
@@ -457,9 +507,10 @@ Chassis.moveTo(0.743, -31.711, 5000);
   Close Side AWP (need to do file handling uh)
   ______________________________________________________________________________________________
 
+*/
 
 
-
+/*
 //did not add delays because im p sure lem lib doesnt need
 leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
     leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -473,21 +524,21 @@ leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
 Chassis.setPose(0, 0, 0); //change this based on how we are angling bot 
 
 
-flapjack2.set_value(true);
+//flapjack2.set_value(true);
 
 pros::delay(600);
 
 flapjack2.set_value(false);
 
-Chassis.moveToPoint(0, 21, 4000, true, 127); 
+Chassis.moveToPoint(0, 14, 4000, true, 127); 
 
 Chassis.turnTo(10, 20, 1000, true, 90);
 
-flapjack2.set_value(true);
-
 Chassis.turnTo(10, -25, 1000, true, 90);
 
-Chassis.moveToPose(-5, 0, 180, 5000, {.forwards = true, .minSpeed = 90}); 
+//flapjack2.set_value(true);
+
+Chassis.moveToPose(-6.5, 0, 180, 5000, {.forwards = true, .minSpeed = 90}); 
 
 pros::delay(100);
 
@@ -495,27 +546,45 @@ flapjack2.set_value(false);
 
 // going to the goal to score till now 
 
-Chassis.moveToPose(0, -2, 180, 1000, {.forwards = true, .minSpeed = 80}); 
+Chassis.moveToPose(-6.5, -9, 180, 1000, {.forwards = true, .minSpeed = 45}); 
 
+pros::delay(300);
 
-Chassis.moveToPose(-13, 22, 180, 2000, {.forwards = false, .minSpeed = 75});
+Chassis.moveToPose(-11, 6, 180, 2000, {.forwards = false, .minSpeed = 127});
+
+pros::delay(100);
+
+Chassis.moveToPose(-14, 22, 180, 2000, {.forwards = false, .minSpeed = 127});
 
 //Chassis.moveToPose(-12, 11, 180, 2000, {.forwards = false, .minSpeed = 90});
 
-Chassis.moveToPose(-2, 4, 40, 5000,{.forwards = true, .minSpeed = 75});
+
+Chassis.moveToPose(-2, 0, 40, 5000,{.forwards = true, .minSpeed = 75});
+//Chassis.moveToPose(-1, 1, 40, 5000,{.forwards = true, .minSpeed = 75});
+// line above is to go to matchload zone (uncomment if line 543 isnt working)
 
 
 flapjack1.set_value(true);
 
 Chassis.turnTo(0, 5, 2000);
 
-Chassis.moveToPose(20.5, -1, 90, 5000, {.forwards = true, .minSpeed = 75});
+Chassis.moveToPose(13, -4.5, 90, 5000, {.forwards = true, .minSpeed = 50});
 
 flapjack1.set_value(false);
 
+pros::delay(300);
+
+flapjack2.set_value(true);
+
+*/
 
 
+/*
 
+
+UNCOMMENT UNTILL HERE -----------------------------------------------------------------------------------------------_
+
+*/
 
 /*
 
@@ -533,12 +602,9 @@ Chassis.moveToPose(23, 0, 45, 5000, {.forwards = true, .minSpeed = 75});
 flapjack1.set_value(true);
 
 
-
-
-/*
-90 degree perf turn 
-Chassis.turnTo(-10, 20, 3000, false);
 */
+
+
 
 
 
@@ -572,6 +638,7 @@ void opcontrol() {
 
   int reverseDrive = 2;
   int driveState = 0;
+
 
 
 

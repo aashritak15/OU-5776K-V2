@@ -24,14 +24,14 @@ using namespace okapi;
 
 //IntegratedEncoder leftEncoder(leftTopPort, true);
 //IntegratedEncoder rightEncoder(rightTopPort, false);
-
+/*
 IMU imu1(imuPort1, IMUAxes::x);
 IMU imu2(imuPort2, IMUAxes::x);
 
 IMU imuA(imuPort1, IMUAxes::y);
 IMU imuB(imuPort2, IMUAxes::y);
 
-
+*/
 
 
 /*
@@ -58,7 +58,7 @@ void checkBalance(){
 */
 
 
-
+/*
 void resetImu(bool print = true) {
   imu1.reset();
   imu2.reset();
@@ -85,6 +85,7 @@ void resetImu(bool print = true) {
 void imuInnit() {
   resetImu();
 }
+*/
 
 // void IEInnit() {
 //   //left
@@ -211,6 +212,7 @@ void drive_dis(double target, double scale) {                                   
 
 //turn PID
 
+/*
 void turnClock(float degree, int ms) {
   resetImu();
   leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -462,10 +464,11 @@ void turnONLYLF(float degree, int ms){
       drive1->getModel()->tank( power, 0); //goes clockwise 
     
     timer += 10;
-    pros::delay(10);
+    pros::delay(10);s
 }
 
   drive1->stop();
 
 }
 
+*/

@@ -29,7 +29,7 @@ All drive stuff moved to odom.cpp
 
 
 
-
+/*
 Motor rightFront(rightFrontPort, true, AbstractMotor::gearset::blue,
             AbstractMotor::encoderUnits::degrees);
 
@@ -66,14 +66,14 @@ std::shared_ptr<OdomChassisController> drive1 =
         .withSensors(leftFront.getEncoder(), rightFront.getEncoder())
         // Specify the tracking wheels diam (2.75 in), track (7 in), and TPR
         // (360)
-        /*/.withGains(
+        .withGains(
           {0.001, 0, 0.0001}, 
           {0.001, 0, 0.0001},  
-          {0.001, 0, 0.0001})*/  
+          {0.001, 0, 0.0001})
         .withOdometry({{3.25_in, 14.5_in, 7.25_in, 3.25_in}, quadEncoderTPR})
         .buildOdometry();
 
-
+*/
 
 /*
 
