@@ -239,11 +239,6 @@ void autonomous() {
 
 */
 
-Chassis.moveToPoint(0, 0,5000);
-Chassis.moveToPoint(-6.06, 8.08, 5000);
-Chassis.moveToPoint(-3.02, 0.76, 5000);
-Chassis.moveToPoint(1.2, -0.75, 5000);
-Chassis.moveToPoint(13.2, 0, 5000);
 
 
 
@@ -257,6 +252,26 @@ Chassis.moveToPoint(13.2, 0, 5000);
 UNCOMMENT UNTILL HERE -----------------------------------------------------------------------------------------------_
 
 */
+
+
+    /*
+  ______________________________________________________________________________________________
+
+  Close side AWP ONLY  (need to do file handling uh)
+  ______________________________________________________________________________________________
+
+*/
+
+
+Chassis.setPose(0,0,0);
+
+Chassis.moveToPose(0, 0, 45, 4000, {.forwards = false, .minSpeed = 127});
+
+
+
+
+
+
 
 
 
@@ -509,18 +524,7 @@ Chassis.moveTo(0.743, -31.711, 5000);
 
 */
 
-
 /*
-//did not add delays because im p sure lem lib doesnt need
-leftFront.setBrakeMode(AbstractMotor::brakeMode::brake);
-    leftTop.setBrakeMode(AbstractMotor::brakeMode::brake);
-    leftBack.setBrakeMode(AbstractMotor::brakeMode::brake);
-
-    rightFront.setBrakeMode(AbstractMotor::brakeMode::brake);
-    rightTop.setBrakeMode(AbstractMotor::brakeMode::brake);
-    rightBack.setBrakeMode(AbstractMotor::brakeMode::brake);
-
-// adarsh hi read here
 Chassis.setPose(0, 0, 0); //change this based on how we are angling bot 
 
 
@@ -528,25 +532,27 @@ Chassis.setPose(0, 0, 0); //change this based on how we are angling bot
 
 pros::delay(600);
 
-flapjack2.set_value(false);
+Chassis.moveToPose(3, 11, 0, 6000, {.minSpeed = 127}); 
+Chassis.waitUntil(48);
 
-Chassis.moveToPoint(0, 14, 4000, true, 127); 
+flapjack1.set_value(true);
+flapjack2.set_value(true);
 
-Chassis.turnTo(10, 20, 1000, true, 90);
 
-Chassis.turnTo(10, -25, 1000, true, 90);
-
-//flapjack2.set_value(true);
+___________________________
+WORKING AASHRITA HERE 
 
 Chassis.moveToPose(-6.5, 0, 180, 5000, {.forwards = true, .minSpeed = 90}); 
+Chassis.waitUntil(50);
+Chassis.cancelMotion();
 
 pros::delay(100);
-
-flapjack2.set_value(false);
 
 // going to the goal to score till now 
 
 Chassis.moveToPose(-6.5, -9, 180, 1000, {.forwards = true, .minSpeed = 45}); 
+Chassis.waitUntil(6);
+Chassis.cancelMotion();
 
 pros::delay(300);
 
@@ -575,8 +581,9 @@ flapjack1.set_value(false);
 pros::delay(300);
 
 flapjack2.set_value(true);
-
 */
+
+
 
 
 /*
