@@ -262,14 +262,33 @@ UNCOMMENT UNTILL HERE ----------------------------------------------------------
 
 */
 
+/*
+intakeMotor1.moveVelocity(-600);
 
 Chassis.setPose(0,0,0);
 
-Chassis.moveToPose(0, 0, 45, 4000, {.forwards = false, .minSpeed = 127});
+flapjack2.set_value(true);
+
+pros::delay(200);
+
+intakeMotor1.moveVelocity(0);
+
+Chassis.moveToPose(0, 2, 0, 2000);
+
+Chassis.turnTo(10, 20, 2000, false, 45);
+
+pros::delay(200);
 
 
+flapjack2.set_value(false);
+
+pros::delay(200);
+
+Chassis.moveToPose(-9, 4, 0, 10000, {.forwards = false, .minSpeed = 127});
+pros::delay(200);
 
 
+*/
 
 
 
@@ -524,7 +543,10 @@ Chassis.moveTo(0.743, -31.711, 5000);
 
 */
 
-/*
+//------------------------------ WORKS NEED TO ADD MLZ PART
+
+
+
 Chassis.setPose(0, 0, 0); //change this based on how we are angling bot 
 
 
@@ -532,58 +554,50 @@ Chassis.setPose(0, 0, 0); //change this based on how we are angling bot
 
 pros::delay(600);
 
-Chassis.moveToPose(3, 11, 0, 6000, {.minSpeed = 127}); 
-Chassis.waitUntil(48);
+Chassis.moveToPose(2, 15, 0, 6000, {.minSpeed = 127}); 
+Chassis.waitUntil(36);
+Chassis.cancelMotion();
+
+pros::delay(100);
 
 flapjack1.set_value(true);
 flapjack2.set_value(true);
 
-
-___________________________
-WORKING AASHRITA HERE 
-
-Chassis.moveToPose(-6.5, 0, 180, 5000, {.forwards = true, .minSpeed = 90}); 
-Chassis.waitUntil(50);
+Chassis.moveToPose(4, 15, 90, 6000,{.minSpeed = 127} );
+Chassis.waitUntil(24);
 Chassis.cancelMotion();
+
+pros::delay(200);
+
+flapjack1.set_value(false);
+flapjack2.set_value(false);
 
 pros::delay(100);
 
 // going to the goal to score till now 
 
-Chassis.moveToPose(-6.5, -9, 180, 1000, {.forwards = true, .minSpeed = 45}); 
-Chassis.waitUntil(6);
+Chassis.moveToPose(-5, -8, 180, 10000, {.forwards = true, .minSpeed = 60}); 
+Chassis.waitUntil(50);
 Chassis.cancelMotion();
 
-pros::delay(300);
+Chassis.moveToPose(-7.5, 7, 180, 10000, {.forwards = false, .minSpeed = 127});
+Chassis.waitUntil(60);
+Chassis.cancelMotion();
+pros::delay(200);
 
-Chassis.moveToPose(-11, 6, 180, 2000, {.forwards = false, .minSpeed = 127});
+Chassis.tank(0, -120);
 
-pros::delay(100);
+pros::delay(600);
 
-Chassis.moveToPose(-14, 22, 180, 2000, {.forwards = false, .minSpeed = 127});
+Chassis.tank(0, 0);
 
-//Chassis.moveToPose(-12, 11, 180, 2000, {.forwards = false, .minSpeed = 90});
-
+pros::delay(200);
 
 Chassis.moveToPose(-2, 0, 40, 5000,{.forwards = true, .minSpeed = 75});
-//Chassis.moveToPose(-1, 1, 40, 5000,{.forwards = true, .minSpeed = 75});
-// line above is to go to matchload zone (uncomment if line 543 isnt working)
-
 
 flapjack1.set_value(true);
 
-Chassis.turnTo(0, 5, 2000);
-
-Chassis.moveToPose(13, -4.5, 90, 5000, {.forwards = true, .minSpeed = 50});
-
-flapjack1.set_value(false);
-
-pros::delay(300);
-
-flapjack2.set_value(true);
-*/
-
-
+Chassis.moveToPose(13, -4.5, 90, 5000, {.forwards = true, .minSpeed = 70});
 
 
 /*
@@ -593,32 +607,9 @@ UNCOMMENT UNTILL HERE ----------------------------------------------------------
 
 */
 
-/*
-
-chassis.moveTo(0, 0, 5000);
-chassis.moveTo(14.07, -40.021, 5000);
-chassis.moveTo(28.491, -48.31, 5000);
 
 
-Chassis.moveToPose(0, 12, 0, 3000);
-
-Chassis.moveToPose(23, 0, 45, 5000, {.forwards = true, .minSpeed = 75});
-
-//Chassis.turnTo(-4, -5, 2000);
-
-flapjack1.set_value(true);
-
-
-*/
-
-
-
-
-
-
-
-  
-   
+ 
 }
 
 
@@ -639,7 +630,7 @@ flapjack1.set_value(true);
 
 void opcontrol() {
   
-  okapi::Rate rate;
+ 
   pros::Controller controller1(pros::E_CONTROLLER_MASTER);
    
 
@@ -702,6 +693,6 @@ void opcontrol() {
 
 
            
-            rate.delay(100_Hz); 
+           pros::delay(100);
 }
 }
