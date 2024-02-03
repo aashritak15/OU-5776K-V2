@@ -267,28 +267,39 @@ intakeMotor1.moveVelocity(-600);
 
 Chassis.setPose(0,0,0);
 
-flapjack2.set_value(true);
-
-pros::delay(200);
+Chassis.moveToPose(-2, -6, 48, 4000, {.forwards = false, .minSpeed = 127});
+Chassis.waitUntil(5);
 
 intakeMotor1.moveVelocity(0);
 
-Chassis.moveToPose(0, 2, 0, 2000);
+flapjack1.set_value(true);
 
-Chassis.turnTo(10, 20, 2000, false, 45);
+Chassis.turnTo(-2, 1, 3000);
+Chassis.waitUntil(-13);
 
-pros::delay(200);
+pros::delay(100);
+flapjack1.set_value(false);
+
+Chassis.moveToPose(-9.5, -6, 70, 4000, {.forwards = false, .minSpeed = 90});
+Chassis.waitUntil(30);
 
 
-flapjack2.set_value(false);
+Chassis.tank(-100, -100);
 
-pros::delay(200);
+pros::delay(500);
 
-Chassis.moveToPose(-9, 4, 0, 10000, {.forwards = false, .minSpeed = 127});
-pros::delay(200);
+Chassis.tank(0, 0);
+
+Chassis.moveToPose(-3, 7, 0, 5000, {.forwards = true, .minSpeed = 100});
 
 
 */
+
+
+
+
+
+
 
 
 
@@ -301,17 +312,38 @@ pros::delay(200);
   ______________________________________________________________________________________________
 
 */
+Chassis.setPose(0, 0, 0);
+
+intakeMotor1.moveVelocity(-600);
+
+Chassis.moveToPose(1, -1, -45, 4000,  {.forwards = false, .minSpeed = 127});
+
+Chassis.waitUntil(5);
+
+intakeMotor1.moveVelocity(0);
+
+
+Chassis.turnTo(3, 3, 1000, false);
+Chassis.waitUntil(-9);
+Chassis.cancelMotion();
+
+Chassis.moveToPose(5, -2, -70, 4000,  {.forwards = false, .minSpeed = 127});
+
+
+
+
+
+
+
+
+
 
 
 
 /*
-
-
     Chassis.setPose(0, 0, 0);
 
-    blocker1.set_value(true);
-
-    pros::delay(100);
+  
 
     intakeMotor1.moveVelocity(-600);
 
@@ -393,7 +425,7 @@ pros::delay(200);
      intakeMotor1.moveVelocity(-600);
 
     pros::delay(400);
-
+*/
 
 /*
  ELIMS AUTON CHANGE: SCORES THE THIRD TRIBALL NO BAR 
@@ -546,7 +578,7 @@ Chassis.moveTo(0.743, -31.711, 5000);
 //------------------------------ WORKS NEED TO ADD MLZ PART
 
 
-
+/*
 Chassis.setPose(0, 0, 0); //change this based on how we are angling bot 
 
 
@@ -554,23 +586,14 @@ Chassis.setPose(0, 0, 0); //change this based on how we are angling bot
 
 pros::delay(600);
 
-Chassis.moveToPose(2, 15, 0, 6000, {.minSpeed = 127}); 
+Chassis.moveToPoint(0, 15, 0, 6000, true); 
 Chassis.waitUntil(36);
 Chassis.cancelMotion();
 
-pros::delay(100);
-
-flapjack1.set_value(true);
-flapjack2.set_value(true);
 
 Chassis.moveToPose(4, 15, 90, 6000,{.minSpeed = 127} );
 Chassis.waitUntil(24);
 Chassis.cancelMotion();
-
-pros::delay(200);
-
-flapjack1.set_value(false);
-flapjack2.set_value(false);
 
 pros::delay(100);
 
@@ -598,6 +621,7 @@ Chassis.moveToPose(-2, 0, 40, 5000,{.forwards = true, .minSpeed = 75});
 flapjack1.set_value(true);
 
 Chassis.moveToPose(13, -4.5, 90, 5000, {.forwards = true, .minSpeed = 70});
+*/
 
 
 /*
@@ -693,6 +717,6 @@ void opcontrol() {
 
 
            
-           pros::delay(100);
+           pros::delay(50);
 }
 }

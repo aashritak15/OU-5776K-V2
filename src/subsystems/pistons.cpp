@@ -157,13 +157,13 @@ void updateFlapjack(){
             //lMech.set_value(true);
             flapjack1.set_value(true);
             state++;
-            pros::delay(400);
+            pros::delay(100);
         }
         else{
             //lMech.set_value(false);
             flapjack1.set_value(false);
             state--;
-            pros::delay(400);
+            pros::delay(100);
 
         }
   }
@@ -172,13 +172,13 @@ void updateFlapjack(){
             //lMech.set_value(true);
             flapjack2.set_value(true);
             state++;
-            pros::delay(400);
+            pros::delay(100);
         }
         else{
             //lMech.set_value(false);
             flapjack2.set_value(false);
             state--;
-            pros::delay(400);
+            pros::delay(100);
 
         }
     }
