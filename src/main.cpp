@@ -180,7 +180,10 @@ void initialize() {
 * the VEX Competition Switch, following either autonomous or opcontrol. When
 * the robot is enabled, this task will exit.
 */
-void disabled() {}
+void disabled() {
+
+
+}
 
 
 /**
@@ -239,9 +242,30 @@ void autonomous() {
 
 */
 
+Chassis.setPose(0,0,0);
+
+Chassis.moveToPoint(0, 5, 3000, true, 127);
+
+Chassis.moveToPose(-3, 10, 42, 4000, {.forwards = true, .minSpeed = 127});
+Chassis.waitUntil(5);
+
+Chassis.tank(100, 100);
+
+pros::delay(100);
+
+Chassis.tank(0, 0);
+
+pros::delay(100);
+
+Chassis.moveToPoint(-3, 6, 2000, false);
+
+Chassis.moveToPose(0, 10, -61, 4000, {.forwards = false, .minSpeed = 127});
+Chassis.waitUntil(14);
+
+Chassis.moveToPoint(1, 12, 4000, false, 127);
 
 
-
+//Chassis.turnTo(0, 5, 4000, false, 127);
    
 
 
@@ -312,6 +336,9 @@ Chassis.moveToPose(-3, 7, 0, 5000, {.forwards = true, .minSpeed = 100});
   ______________________________________________________________________________________________
 
 */
+
+/*
+
 Chassis.setPose(0, 0, 0);
 
 intakeMotor1.moveVelocity(-600);
@@ -327,11 +354,43 @@ Chassis.turnTo(3, 3, 1000, false);
 Chassis.waitUntil(-9);
 Chassis.cancelMotion();
 
-Chassis.moveToPose(5, -2, -70, 4000,  {.forwards = false, .minSpeed = 127});
+Chassis.moveToPose(5, -1, -90, 4000,  {.forwards = false, .minSpeed = 127});
+Chassis.waitUntil(30);
+Chassis.cancelMotion();
+
+Chassis.moveToPose(0, 3, -180, 3000, {.forwards = true, .minSpeed = 100});
+Chassis.waitUntil(4);
+Chassis.cancelMotion();
+
+Chassis.moveToPose(5, 13, -150, 5000, {.forwards = false, .minSpeed = 90});
+Chassis.waitUntil(30);
+Chassis.cancelMotion();
+
+intakeMotor1.moveVelocity(-600);
+
+pros::delay(600);
+
+Chassis.turnTo(15, -6, 2000, false, 90);
+Chassis.waitUntil(60);
+Chassis.cancelMotion();
+
+pros::delay(100);
+
+intakeMotor1.moveVelocity(600);
+
+pros::delay(100);
+
+Chassis.moveToPose(10, 12, -120, 5000, {.forwards = false, .minSpeed = 90});
+Chassis.waitUntil(10);
+Chassis.cancelMotion();
+
+intakeMotor1.moveVelocity(600);
 
 
+pros::delay(600);
+Chassis.moveToPose(15, -6, 0, 5000, {.forwards = true, .minSpeed = 90});
 
-
+*/
 
 
 
