@@ -238,10 +238,56 @@ void autonomous() {
   ADARSH 6 BALL AUTON 
   ______________________________________________________________________________________________
 
+
 */
+//balance.set_value(true); // why tf isnt this working
+
+intakeMotor1.moveVelocity(-600);
+Chassis.setPose(0,0,0);
+//Chassis.moveToPose(5, -10, 90, 4000, {.forwards = false,.minSpeed = 127});
+//pros::delay(20000);
+
+Chassis.moveToPose(2.2, -12, -4, 4000, {.forwards = false,.minSpeed = 127});
+//Chassis.waitUntil(5);
+pros::delay(1500);
+// currently has intaked first tb, abt to drive back
+
+Chassis.moveToPose(1, 1.5, 0, 4000, {.forwards = true,.minSpeed = 127});
+pros::delay(1500);
+
+//Chassis.turnTo(-10, -3.5, 4000, false, 127);
+Chassis.turnTo(-10000, 0, 4000, false, 127);
+
+intakeMotor1.moveVelocity(600);
+
+Chassis.turnTo(10, 4.75, 4000, false, 127); // turns to face alley
+
+intakeMotor1.moveVelocity(-600);
+
+Chassis.moveToPose(6.5, 1.6, -90, 4000, {.forwards = false,.minSpeed = 127}); // moves towards and intakes tb under alley
+
+Chassis.moveToPose(-7.8, 1.9, 138, 4000, {.forwards = true,.minSpeed = 127}); // moves to awpz area ready to turn and remove awp tb
+pros::delay(1500);
+
+/*flapjack1.set_value(true);
+flapjack2.set_value(true);
+Chassis.turnTo(-9.3, -5.9, 4000, false, 127);
+Chassis.turnTo(0, 0, 4000, false, 127);
+flapjack1.set_value(false);
+flapjack2.set_value(false);
+
+Chassis.moveToPose(-10.8, -5.3, -138, 4000, {.forwards = false,.minSpeed = 127});
+Chassis.tank(-127,-127,0);
+// add code to make 180 turn
+intakeMotor1.moveVelocity(600);
+//Chassis.tank(127,127,0);*/
+intakeMotor1.moveVelocity(0);
 
 
 
+
+
+//Chassis.waitUntil(15);
 
 
 
@@ -758,7 +804,7 @@ void opcontrol() {
             Chassis.tank(-leftY, -rightY, 2);
             break; 
         }
-        if (controller.getDigital(ControllerDigital::X) == 1) {
+        /*if (controller.getDigital(ControllerDigital::X) == 1) {
             if (driveState == 0) {
                 reverseDrive = 1;
                 driveState++;
@@ -769,7 +815,7 @@ void opcontrol() {
                 pros::delay(400);
             }
         }
-        
+        */ // adarsh commented this out
 
 
 
@@ -796,6 +842,6 @@ void opcontrol() {
 
 
            
-           pros::delay(50);
+           pros::delay(10);
 }
 }
