@@ -240,6 +240,8 @@ void autonomous() {
 
 
 */
+
+/*
 //balance.set_value(true); // why tf isnt this working
 
 intakeMotor1.moveVelocity(-600);
@@ -281,7 +283,7 @@ Chassis.tank(-127,-127,0);
 // add code to make 180 turn
 intakeMotor1.moveVelocity(600);
 //Chassis.tank(127,127,0);*/
-intakeMotor1.moveVelocity(0);
+//intakeMotor1.moveVelocity(0);
 
 
 
@@ -307,32 +309,28 @@ intakeMotor1.moveVelocity(0);
 
 */
 
-/*
 Chassis.setPose(0,0,0);
 
-Chassis.moveToPoint(0, 5, 3000, true, 127);
-
-Chassis.moveToPose(-3, 10, 42, 4000, {.forwards = true, .minSpeed = 127});
-Chassis.waitUntil(5);
-
-Chassis.tank(100, 100);
-
-pros::delay(100);
-
-Chassis.tank(0, 0);
-
-pros::delay(100);
-
-Chassis.moveToPoint(-3, 6, 2000, false);
-
-Chassis.moveToPose(0, 10, -61, 4000, {.forwards = false, .minSpeed = 127});
+Chassis.moveToPose(-1, 14, -61, 4000, {.forwards = true, .minSpeed = 127});
 Chassis.waitUntil(14);
 
-Chassis.moveToPoint(1, 12, 4000, false, 127);
+pros::delay(100);
 
-*/
-//Chassis.turnTo(0, 5, 4000, false, 127);
-   
+
+
+Chassis.moveToPose(-6, 13, -66, 4000, {.forwards = false,  .minSpeed = 90});
+Chassis.waitUntil(14);
+
+flapjack2.set_value(true);
+
+// CATA DELAY CATA CATA CHANGE BEFORE GAME STARTS 30 SECOND CHECK 
+cataMotor.moveVoltage(12000);
+
+pros::delay(30000);  // <------------ IS THIS 30??
+
+cataMotor.moveVoltage(0);
+
+
 
 
   
@@ -403,8 +401,8 @@ Chassis.moveToPose(-3, 7, 0, 5000, {.forwards = true, .minSpeed = 100});
 
 */
 
-/*
 
+/*
 Chassis.setPose(0, 0, 0);
 
 intakeMotor1.moveVelocity(-600);
