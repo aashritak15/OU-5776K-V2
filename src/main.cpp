@@ -309,6 +309,7 @@ intakeMotor1.moveVelocity(600);
 
 */
 
+
 Chassis.setPose(0,0,0);
 
 Chassis.moveToPose(-1, 14, -61, 4000, {.forwards = true, .minSpeed = 127});
@@ -351,36 +352,49 @@ UNCOMMENT UNTILL HERE ----------------------------------------------------------
 */
 
 /*
-intakeMotor1.moveVelocity(-600);
-
 Chassis.setPose(0,0,0);
 
-Chassis.moveToPose(-2, -6, 48, 4000, {.forwards = false, .minSpeed = 127});
+
+intakeMotor1.moveVelocity(-600);
+
+Chassis.moveToPose(-1, -6, 48, 4000, {.forwards = false, .minSpeed = 127});
 Chassis.waitUntil(5);
 
 intakeMotor1.moveVelocity(0);
 
 flapjack1.set_value(true);
 
-Chassis.turnTo(-2, 1, 3000);
+Chassis.turnTo(-2, 1, 3000, true, 100);
 Chassis.waitUntil(-13);
 
-pros::delay(100);
+pros::delay(200);
+
 flapjack1.set_value(false);
 
-Chassis.moveToPose(-9.5, -6, 70, 4000, {.forwards = false, .minSpeed = 90});
-Chassis.waitUntil(30);
+Chassis.turnTo(0, 0, 1500, true, 100);
+
+Chassis.moveToPose(-15, -6, 0, 2000, {.forwards = false, .chasePower = 18, .minSpeed = 127});
+Chassis.waitUntil(15);
+Chassis.cancelAllMotions();
+*/
 
 
-Chassis.tank(-100, -100);
-
-pros::delay(500);
-
-Chassis.tank(0, 0);
-
-Chassis.moveToPose(-3, 7, 0, 5000, {.forwards = true, .minSpeed = 100});
 
 
+/*
+
+Chassis.moveToPose(-9.5, -7, 70, 4000, {.forwards = false, .minSpeed = 90});
+Chassis.waitUntil(50);
+
+intakeMotor1.moveVelocity(600);
+
+pros::delay(400);
+
+Chassis.moveToPose(-14, -4, 90, 4000, {.forwards = false, .minSpeed = 90});
+
+//Chassis.moveToPose(-3, 7, 0, 5000, {.forwards = true, .minSpeed = 100});
+
+Chassis.moveToPose(-9.5, -9, 270, 4000, {.forwards = true, .minSpeed = 90});
 */
 
 
@@ -462,8 +476,8 @@ Chassis.moveToPose(15, -6, 0, 5000, {.forwards = true, .minSpeed = 90});
 
 
 
-
 /*
+
     Chassis.setPose(0, 0, 0);
 
   
@@ -471,10 +485,6 @@ Chassis.moveToPose(15, -6, 0, 5000, {.forwards = true, .minSpeed = 90});
     intakeMotor1.moveVelocity(-600);
 
      pros::delay(200);
-
-    blocker1.set_value(false);
-
-      pros::delay(100);
 
 
     intakeMotor1.moveVelocity(-600);
@@ -548,7 +558,8 @@ Chassis.moveToPose(15, -6, 0, 5000, {.forwards = true, .minSpeed = 90});
      intakeMotor1.moveVelocity(-600);
 
     pros::delay(400);
-*/
+
+    */
 
 /*
  ELIMS AUTON CHANGE: SCORES THE THIRD TRIBALL NO BAR 
@@ -567,14 +578,6 @@ Chassis.moveToPose(-9, -19, 90, 1000, {.forwards = false, .minSpeed = 75});
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
 */
-
-
-
-
-
-
-
-
 
 
 
