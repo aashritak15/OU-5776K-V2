@@ -24,7 +24,7 @@ pros::Motor rF(11, pros::E_MOTOR_GEARSET_06);
 pros::Motor rM(-9, pros::E_MOTOR_GEARSET_06); 
 pros::Motor rB(10, pros::E_MOTOR_GEARSET_06); 
 
-
+pros::Motor test(2, pros::E_MOTOR_GEARSET_06); 
 
 // motor groups
 pros::MotorGroup leftMotors({lF, lM, lB}); // left motor group
@@ -151,10 +151,10 @@ void initialize() {
             // print robot location to the brain screen
             pros::lcd::print(0, "X: %f", Chassis.getPose().x); // x
             pros::lcd::print(1, "Y: %f", Chassis.getPose().y); // y
-            pros::lcd::print(2, "Theta: %f", Chassis.getPose().theta); // heading
+            pros::lcd::print(2, "Theta: %f", Chassis.getPose().theta); 
             // log position telemetry
             lemlib::telemetrySink()->info("Chassis pose: {}", Chassis.getPose());
-            // delay to save resources
+            // delay to save resources$
             pros::delay(50);
         }
     });
@@ -309,7 +309,7 @@ intakeMotor1.moveVelocity(600);
 
 */
 
-
+/*
 Chassis.setPose(0,0,0);
 
 Chassis.moveToPose(-1, 14, -61, 4000, {.forwards = true, .minSpeed = 127});
@@ -317,9 +317,7 @@ Chassis.waitUntil(14);
 
 pros::delay(100);
 
-
-
-Chassis.moveToPose(-6, 13, -66, 4000, {.forwards = false,  .minSpeed = 90});
+Chassis.moveToPose(-10, 0, -68, 4000, {.forwards = false,  .minSpeed = 90});
 Chassis.waitUntil(14);
 
 flapjack2.set_value(true);
@@ -327,9 +325,12 @@ flapjack2.set_value(true);
 // CATA DELAY CATA CATA CHANGE BEFORE GAME STARTS 30 SECOND CHECK 
 cataMotor.moveVoltage(12000);
 
-pros::delay(30000);  // <------------ IS THIS 30??
+pros::delay(2000);  // <------------ IS THIS 30??
 
 cataMotor.moveVoltage(0);
+
+Chassis.moveToPose(0, 0, 0, 4000, {.forwards = true,  .minSpeed = 90} );
+*/
 
 
 
@@ -471,95 +472,76 @@ Chassis.moveToPose(15, -6, 0, 5000, {.forwards = true, .minSpeed = 90});
 */
 
 
-
-
-
-
-
-/*
-
-    Chassis.setPose(0, 0, 0);
+Chassis.setPose(0, 0, 0);
 
   
 
-    intakeMotor1.moveVelocity(-600);
 
-     pros::delay(200);
-
-
-    intakeMotor1.moveVelocity(-600);
+    intakeMotor1.moveVelocity(600);
    pros::delay(100);
     
-    Chassis.moveToPose(0, -21, 0, 4000, {.forwards = false, .minSpeed = 75}); 
+    Chassis.moveToPoint(0, -15, 4000, false, 127); 
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
 
   pros::delay(300);
    
-    Chassis.moveToPose(0, -21, 90, 1000, {.forwards = false, .minSpeed = 75}); 
+    Chassis.moveToPose(0, -15, 90, 1000, {.forwards = false, .minSpeed = 75}); 
     
      pros::delay(400);
 
-   intakeMotor1.moveVelocity(600);
+   intakeMotor1.moveVelocity(-600);
 
  pros::delay(300);
 
-    Chassis.moveToPose(-6, -21, 90, 1000, {.forwards = false, .minSpeed = 75}); 
+    Chassis.moveToPose(-6, -15, 90, 1000, {.forwards = false, .minSpeed = 75}); 
     Chassis.waitUntil(5);
     Chassis.cancelMotion();
 
-      Chassis.moveToPose(0, -21, 90, 1000, {.forwards = false, .minSpeed = 75}); 
+      Chassis.moveToPose(0, -15, 90, 1000, {.forwards = false, .minSpeed = 75}); 
     Chassis.waitUntil(5);
     Chassis.cancelMotion();
 
-      intakeMotor1.moveVelocity(-600);
+      intakeMotor1.moveVelocity(600);
   
 
-    Chassis.moveToPose(10, -9, 280, 4000, {.forwards = false, .minSpeed = 75});
+    Chassis.moveToPose(9.5, -9, 280, 4000, {.forwards = false, .minSpeed = 75});
     Chassis.waitUntil(65);
     Chassis.cancelMotion();
 
 
-     pros::delay(400);
+     pros::delay(600);
 
-    Chassis.moveToPose(-8, -19, 90, 4000, {.forwards = false, .minSpeed = 75});
+    Chassis.moveToPose(-8, -16.5, 90, 4000, {.forwards = false, .minSpeed = 127});
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
 
-    intakeMotor1.moveVelocity(600);
+    intakeMotor1.moveVelocity(-600);
 
-    Chassis.moveToPose(-7, -19, 90, 1000, {.forwards = false, .minSpeed = 75});
+    Chassis.moveToPose(-7, -16.5, 90, 1000, {.forwards = false, .minSpeed = 75});
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
 
      pros::delay(50);
 
-    Chassis.moveToPose(-8, -19, 90, 1000, {.forwards = false, .minSpeed = 75});
+    Chassis.moveToPose(-8, -16.5, 90, 1000, {.forwards = false, .minSpeed = 75});
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
 
 
      pros::delay(400);
 
-
-
-
-
-    Chassis.moveToPose(6, -14, 0, 4000, {.forwards = false, .minSpeed = 75});
-     Chassis.waitUntil(55);
-    Chassis.cancelMotion();
-
-    Chassis.moveToPose(14, -14, 260, 2000, {.forwards = false, .minSpeed = 75});
+    Chassis.moveToPose(9, -14, 260, 2000, {.forwards = false, .minSpeed = 75});
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
 
   //  pros::delay(200);
 
-     intakeMotor1.moveVelocity(-600);
+     intakeMotor1.moveVelocity(600);
 
-    pros::delay(400);
+    pros::delay(900);
 
-    */
+  
 
 /*
  ELIMS AUTON CHANGE: SCORES THE THIRD TRIBALL NO BAR 
@@ -567,24 +549,25 @@ Chassis.moveToPose(15, -6, 0, 5000, {.forwards = true, .minSpeed = 90});
 */
 
 
-/*
-Chassis.moveToPose(-9, -19, 90, 1000, {.forwards = false, .minSpeed = 75});
+
+Chassis.moveToPose(-10, -19, 90, 2000, {.forwards = false, .minSpeed = 75});
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
 
 
 
-    Chassis.moveToPose(-5, -19, 90, 1000, {.forwards = false, .minSpeed = 75});
+    Chassis.moveToPose(-7, -19, 90, 1000, {.forwards = false, .minSpeed = 75});
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
-*/
 
 
 
 
-/*
 
-ENDING AWP TASKS: BARRIER 
+
+
+
+//ENDING AWP TASKS: BARRIER 
    Chassis.moveToPose(7, -2, 0, 2000, {.forwards = true, .minSpeed = 75});
     Chassis.waitUntil(55);
     Chassis.cancelMotion(); 
@@ -594,7 +577,7 @@ intakeMotor1.moveVelocity(300);
 
     flapjack1.set_value(true);
     flapjack2.set_value(true);
-*/
+
 
 
 
