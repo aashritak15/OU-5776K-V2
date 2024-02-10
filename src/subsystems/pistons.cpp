@@ -126,6 +126,7 @@ void DarshyMech(){
 
 
 void balanceInit (){balance.set_value(false);}
+void balanceTrue (){balance.set_value(true);}
 
 int balanceState = 0;
 

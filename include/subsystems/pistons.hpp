@@ -37,6 +37,7 @@ void updateBlocker();
 
 void lMechInit ();
 void balanceInit();
+void balanceTrue();
 void blockerInit();
 void DarshyMech();
 //void flipoutMech();

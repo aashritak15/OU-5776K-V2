@@ -332,6 +332,23 @@ cataMotor.moveVoltage(0);
 Chassis.moveToPose(0, 0, 0, 4000, {.forwards = true,  .minSpeed = 90} );
 */
 
+/*
+Chassis.setPose(0,0,0);
+Chassis.moveToPoint(0,0,5000);
+Chassis.moveToPose(-12.828, 33.341, -61, 4000, {.forwards = false,  .minSpeed = 90} );
+Chassis.moveToPose(-12.089, 14.428, -68, 4000, {.forwards = false,  .minSpeed = 90} );
+
+Chassis.moveToPose(102.563, 15.474, -42, 5000, {.forwards = true  .minSpeed = 90});
+
+Chassis.moveToPoint(106.262, 32.878, 5000);
+
+// out from the side 
+
+Chassis.moveToPose(88.866, 15.474, 5000);
+
+
+*/
+
 
 
 
@@ -472,19 +489,23 @@ Chassis.moveToPose(15, -6, 0, 5000, {.forwards = true, .minSpeed = 90});
 */
 
 
-Chassis.setPose(0, 0, 0);
+    Chassis.setPose(0, 0, 0);
+
+    balanceTrue();
 
   
 
 
     intakeMotor1.moveVelocity(600);
-   pros::delay(100);
+    pros::delay(100);
     
-    Chassis.moveToPoint(0, -15, 4000, false, 127); 
+    Chassis.moveToPoint(0, -14.5, 4000, false, 127); 
+
+    balanceInit();
+
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
 
-  pros::delay(300);
    
     Chassis.moveToPose(0, -15, 90, 1000, {.forwards = false, .minSpeed = 75}); 
     
@@ -494,7 +515,7 @@ Chassis.setPose(0, 0, 0);
 
  pros::delay(300);
 
-    Chassis.moveToPose(-6, -15, 90, 1000, {.forwards = false, .minSpeed = 75}); 
+     Chassis.moveToPose(-6.5, -15, 90, 1000, {.forwards = false, .minSpeed = 75}); 
     Chassis.waitUntil(5);
     Chassis.cancelMotion();
 
@@ -503,16 +524,51 @@ Chassis.setPose(0, 0, 0);
     Chassis.cancelMotion();
 
       intakeMotor1.moveVelocity(600);
+
+      Chassis.turnTo(-100, -14, 1000);
   
 
-    Chassis.moveToPose(9.5, -9, 280, 4000, {.forwards = false, .minSpeed = 75});
+     Chassis.moveToPose(5.5, -9, 280, 4000, {.forwards = false, .minSpeed = 80});
     Chassis.waitUntil(65);
     Chassis.cancelMotion();
+
+    pros::delay(600);
+    Chassis.turnTo(100, 14, 1500);
+
+    Chassis.moveToPose(-14, -18, 90, 4000, {.forwards = false, .minSpeed = 127});
+
+   // Chassis.moveToPose(-10, -17, 90, 4000, {.forwards = true, .minSpeed = 75});
+
+    Chassis.turnTo(-100, 90, 1000);
+    //-30, 0
+    Chassis.moveToPose(-3.5, -12, 290, 4000, {.forwards = false, .minSpeed = 127});
+
+    Chassis.turnTo(100, 8, 1000);
+
+    Chassis.moveToPose(-12, -18, 90, 2000, {.forwards = false, .minSpeed = 127});
+
+     flapjack1.set_value(true);
+    flapjack2.set_value(true);
+
+   
+    Chassis.moveToPose(1.5, -0.5, 15, 2000, {.forwards = true, .minSpeed = 127});
+    Chassis.waitUntil(55);
+    Chassis.cancelMotion(); 
+
+
+intakeMotor1.moveVelocity(300);
+
+
+    Chassis.turnTo(-15, 15, 1000);
+
+    /*
+
+
 
 
      pros::delay(600);
 
-    Chassis.moveToPose(-8, -16.5, 90, 4000, {.forwards = false, .minSpeed = 127});
+    Chassis.moveToPose(-11, -16.5, 90, 4000, {.forwards = false, .minSpeed = 127});
     Chassis.waitUntil(55);
     Chassis.cancelMotion();
 
@@ -540,7 +596,7 @@ Chassis.setPose(0, 0, 0);
      intakeMotor1.moveVelocity(600);
 
     pros::delay(900);
-
+*/
   
 
 /*
@@ -548,7 +604,7 @@ Chassis.setPose(0, 0, 0);
 
 */
 
-
+/*
 
 Chassis.moveToPose(-10, -19, 90, 2000, {.forwards = false, .minSpeed = 75});
     Chassis.waitUntil(55);
@@ -561,13 +617,14 @@ Chassis.moveToPose(-10, -19, 90, 2000, {.forwards = false, .minSpeed = 75});
     Chassis.cancelMotion();
 
 
-
-
+*/
 
 
 
 
 //ENDING AWP TASKS: BARRIER 
+
+/*
    Chassis.moveToPose(7, -2, 0, 2000, {.forwards = true, .minSpeed = 75});
     Chassis.waitUntil(55);
     Chassis.cancelMotion(); 
@@ -579,10 +636,12 @@ intakeMotor1.moveVelocity(300);
     flapjack2.set_value(true);
 
 
+*/
 
 
 
 
+/*
 
 /*
 
