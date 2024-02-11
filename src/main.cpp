@@ -308,7 +308,14 @@ intakeMotor1.moveVelocity(600);
   ______________________________________________________________________________________________
 
 */
+/*
 
+cataMotor.moveVoltage(10500);
+
+pros::delay(50000);  // <------------ IS THIS 30??
+
+cataMotor.moveVoltage(0);
+*/
 /*
 Chassis.setPose(0,0,0);
 
@@ -395,6 +402,57 @@ Chassis.moveToPose(-15, -6, 0, 2000, {.forwards = false, .chasePower = 18, .minS
 Chassis.waitUntil(15);
 Chassis.cancelAllMotions();
 */
+
+
+
+//CV #6 close side AWP 
+
+/*
+Chassis.setPose(0,0,0);
+
+Chassis.moveToPose(-2, -6, 48, 4000, {.forwards = false, .minSpeed = 127});
+Chassis.waitUntil(5);
+flapjack1.set_value(true);
+Chassis.turnTo(-2, 1, 3000);
+Chassis.waitUntil(13);
+
+pros::delay(100);
+
+flapjack1.set_value(false);
+
+Chassis.moveToPose(-10, 9, -90, 5000, {.forwards = true, .minSpeed = 100});
+
+pros::delay(200);
+
+flapjack1.set_value(true);
+flapjack1.set_value(true);
+*/
+
+//CV #6 close side AWP 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+pros::delay(100);
+flapjack1.set_value(false);
+Chassis.moveToPose(-6, -6, 90, 4000, {.forwards = false, .minSpeed = 90});
+Chassis.waitUntil(30);
+
+intakeMotor1.moveVelocity(-600);
+*/
+
+
 
 
 
@@ -489,6 +547,10 @@ Chassis.moveToPose(15, -6, 0, 5000, {.forwards = true, .minSpeed = 90});
 */
 
 
+
+//FAR SIDE CV #6
+
+
     Chassis.setPose(0, 0, 0);
 
     balanceTrue();
@@ -560,6 +622,14 @@ intakeMotor1.moveVelocity(300);
 
 
     Chassis.turnTo(-15, 15, 1000);
+
+    
+
+    //FAR SIDE CV #6
+
+
+
+
 
     /*
 
