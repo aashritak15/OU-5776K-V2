@@ -12,6 +12,9 @@ using namespace okapi;
 
 pros::ADIDigitalOut flapjack1 = pros::ADIDigitalOut(flapjackPort1);
 pros::ADIDigitalOut flapjack2 = pros::ADIDigitalOut(flapjackPort2);
+
+pros::ADIDigitalOut flapjack1V = pros::ADIDigitalOut(flapjackPort1V);
+pros::ADIDigitalOut flapjack2V = pros::ADIDigitalOut(flapjackPort2V);
 //pros::ADIDigitalOut flapjack2 = pros::ADIDigitalOut(flapjackPort2);
 
 //pros::ADIDigitalOut awpFlipout = pros::ADIDigitalOut(awpFlipoutPort);
@@ -185,16 +188,42 @@ void updateFlapjack(){
     }
 
     if(controller.getDigital(ControllerDigital::R1) == 1) {
-         flapjack1.set_value(true);
-         flapjack2.set_value(true);
-         
+         if(state == 0){
+            //lMech.set_value(true);
+            flapjack1.set_value(true);
+            flapjack2.set_value(true);
+            state++;
+            pros::delay(300);
+        }
+        else{
+            flapjack1.set_value(false);
+            flapjack2.set_value(false);
+            state--;
+            pros::delay(300);
+
+        }
     }
 
-     if(controller.getDigital(ControllerDigital::R2) == 1) {
-         flapjack1.set_value(false);
-         flapjack2.set_value(false);
-         
+      if(controller.getDigital(ControllerDigital::R2) == 1) {
+         if(state == 0){
+            //lMech.set_value(true);
+            flapjack1V.set_value(true);
+            flapjack2V.set_value(true);
+            state++;
+            pros::delay(300);
+        }
+        else{
+            flapjack1V.set_value(false);
+            flapjack2V.set_value(false);
+            state--;
+            pros::delay(300);
+
+        }
     }
+
+
+
+    
 
 }
 

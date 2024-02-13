@@ -16,15 +16,15 @@
 #include "lemlib/chassis/chassis.hpp"
 
 // drive motors
-pros::Motor lF(-12, pros::E_MOTOR_GEARSET_06); 
-pros::Motor lM(20, pros::E_MOTOR_GEARSET_06); 
-pros::Motor lB(-19, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lF(-10, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lM(9, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lB(-11, pros::E_MOTOR_GEARSET_06); 
 
-pros::Motor rF(11, pros::E_MOTOR_GEARSET_06); 
-pros::Motor rM(-9, pros::E_MOTOR_GEARSET_06); 
-pros::Motor rB(10, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rF(19, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rM(-20, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rB(12, pros::E_MOTOR_GEARSET_06); 
 
-pros::Motor test(2, pros::E_MOTOR_GEARSET_06); 
+
 
 // motor groups
 pros::MotorGroup leftMotors({lF, lM, lB}); // left motor group
@@ -35,23 +35,23 @@ pros::MotorGroup rightMotors({rF, rM, rB}); // right motor group
 lemlib::Drivetrain drive{
   &leftMotors,
   &rightMotors,
-  10,
-  lemlib::Omniwheel::NEW_325,
+  15.5,
+  4,
   300,
   2, 
 };
 
 
 lemlib::ControllerSettings movePID {
-  13, // kP
+  5, // kP
   0, //kI
-  6, // kD
+  0, // kD
   3, //anti windup
   1, // small error range
   100, // small error timeout 
   3, // large error range 
   500, // large error timeout 
-  20 // slew rate 
+  0 // slew rate 
 };
 
 pros::Imu intertial1(imuPort1);
@@ -67,9 +67,9 @@ lemlib::OdomSensors sensors {
 };
 
 lemlib::ControllerSettings turnPID {
-  2, // kP
-  0, // kI
-  10, // kD
+  2.55, // kP
+  0.1, // kI
+  17, // kD
   3, //anti windup 
   1, // small error range
   100, // small error timeout 
@@ -145,6 +145,8 @@ void initialize() {
    // selector::init();
     //IEInnit();
 
+    
+
     pros::Task screenTask([&]() {
         lemlib::Pose pose(0, 0, 0);
         while (true) {
@@ -152,6 +154,14 @@ void initialize() {
             pros::lcd::print(0, "X: %f", Chassis.getPose().x); // x
             pros::lcd::print(1, "Y: %f", Chassis.getPose().y); // y
             pros::lcd::print(2, "Theta: %f", Chassis.getPose().theta); 
+
+            pros::lcd::print(3, "Encoder 1: %f", lF.get_position());
+            pros::lcd::print(4, "Encoder 2: %f", lM.get_position());
+            pros::lcd::print(5, "Encoder 3: %f", lB.get_position());
+            pros::lcd::print(6, "Encoder 4: %f", rF.get_position());
+            pros::lcd::print(7, "Encoder 5: %f", rM.get_position());
+            pros::lcd::print(8, "Encoder 6: %f", rB.get_position());
+            
             // log position telemetry
             lemlib::telemetrySink()->info("Chassis pose: {}", Chassis.getPose());
             // delay to save resources$
@@ -231,6 +241,8 @@ void competition_initialize() {
 //tatic path =ASSET("path.jerryio.txt");
 
 void autonomous() {
+
+  Chassis.moveToPoint(0, 24, 100000, true, 127); //x =0, y=18
 
   /*
   ______________________________________________________________________________________________
@@ -549,7 +561,7 @@ Chassis.moveToPose(15, -6, 0, 5000, {.forwards = true, .minSpeed = 90});
 
 
 //FAR SIDE CV #6
-
+/*
 
     Chassis.setPose(0, 0, 0);
 
@@ -624,7 +636,7 @@ intakeMotor1.moveVelocity(300);
     Chassis.turnTo(-15, 15, 1000);
 
     
-
+*/
     //FAR SIDE CV #6
 
 
@@ -904,17 +916,16 @@ void opcontrol() {
 
     
     while (true) {
-
         int rightY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
         int leftY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 
         switch (reverseDrive) {
           case 1:
-            Chassis.tank(rightY, leftY, 2); 
+            Chassis.tank(-leftY, -rightY, 2); 
             
             break;
           case 2:
-            Chassis.tank(-leftY, -rightY, 2);
+            Chassis.tank(leftY, rightY, 2);
             break; 
         }
         /*if (controller.getDigital(ControllerDigital::X) == 1) {
