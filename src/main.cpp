@@ -16,6 +16,15 @@
 #include "lemlib/chassis/chassis.hpp"
 
 // drive motors
+pros::Motor lF(19, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lM(-20, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lB(12, pros::E_MOTOR_GEARSET_06); 
+
+pros::Motor rF(-10, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rM(9, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rB(-11, pros::E_MOTOR_GEARSET_06); 
+
+/* orig
 pros::Motor lF(-10, pros::E_MOTOR_GEARSET_06); 
 pros::Motor lM(9, pros::E_MOTOR_GEARSET_06); 
 pros::Motor lB(-11, pros::E_MOTOR_GEARSET_06); 
@@ -23,6 +32,7 @@ pros::Motor lB(-11, pros::E_MOTOR_GEARSET_06);
 pros::Motor rF(19, pros::E_MOTOR_GEARSET_06); 
 pros::Motor rM(-20, pros::E_MOTOR_GEARSET_06); 
 pros::Motor rB(12, pros::E_MOTOR_GEARSET_06); 
+*/
 
 
 

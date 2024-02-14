@@ -187,7 +187,7 @@ void updateFlapjack(){
         }
     }
 
-    if(controller.getDigital(ControllerDigital::R1) == 1) {
+    if(controller.getDigital(ControllerDigital::R2) == 1) {
          if(state == 0){
             //lMech.set_value(true);
             flapjack1.set_value(true);
@@ -204,7 +204,7 @@ void updateFlapjack(){
         }
     }
 
-      if(controller.getDigital(ControllerDigital::R2) == 1) {
+      if(controller.getDigital(ControllerDigital::R1) == 1) {
          if(state == 0){
             //lMech.set_value(true);
             flapjack1V.set_value(true);
