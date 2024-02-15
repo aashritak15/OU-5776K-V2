@@ -46,9 +46,12 @@ lemlib::Drivetrain drive{
 
 
 lemlib::ControllerSettings movePID {
-  11.5, // kP
+  7, // kP
   0, //kI
-  3, // kD
+  5, // kD
+  //11.5, // kP
+  //0, //kI
+  //3, // kD
   3, //anti windup
   1, // small error range
   100, // small error timeout 
@@ -242,7 +245,7 @@ void competition_initialize() {
 
 void autonomous() {
 
-  Chassis.moveToPoint(0, 48, 100000, true, 127); //x =0, y=18
+  Chassis.moveToPoint(0, 24, 100000, true, 127); //x =0, y=18
 
   /*
   ______________________________________________________________________________________________
