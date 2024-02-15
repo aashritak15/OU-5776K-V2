@@ -16,23 +16,16 @@
 #include "lemlib/chassis/chassis.hpp"
 
 // drive motors
-pros::Motor lF(19, pros::E_MOTOR_GEARSET_06); 
-pros::Motor lM(-20, pros::E_MOTOR_GEARSET_06); 
-pros::Motor lB(12, pros::E_MOTOR_GEARSET_06); 
 
-pros::Motor rF(-10, pros::E_MOTOR_GEARSET_06); 
-pros::Motor rM(9, pros::E_MOTOR_GEARSET_06); 
-pros::Motor rB(-11, pros::E_MOTOR_GEARSET_06); 
 
-/* orig
-pros::Motor lF(-10, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lF(-7, pros::E_MOTOR_GEARSET_06); 
 pros::Motor lM(9, pros::E_MOTOR_GEARSET_06); 
 pros::Motor lB(-11, pros::E_MOTOR_GEARSET_06); 
 
 pros::Motor rF(19, pros::E_MOTOR_GEARSET_06); 
 pros::Motor rM(-20, pros::E_MOTOR_GEARSET_06); 
 pros::Motor rB(12, pros::E_MOTOR_GEARSET_06); 
-*/
+
 
 
 
@@ -45,7 +38,7 @@ pros::MotorGroup rightMotors({rF, rM, rB}); // right motor group
 lemlib::Drivetrain drive{
   &leftMotors,
   &rightMotors,
-  15.5,
+  12.5,
   4,
   300,
   2, 
@@ -53,9 +46,9 @@ lemlib::Drivetrain drive{
 
 
 lemlib::ControllerSettings movePID {
-  5, // kP
+  11.5, // kP
   0, //kI
-  0, // kD
+  3, // kD
   3, //anti windup
   1, // small error range
   100, // small error timeout 
@@ -125,7 +118,7 @@ void screen(){
         lemlib::Pose pose = Chassis.getPose(); // get chassis position
         pros::lcd::print(0, "X: %f", pose.x);
         pros::lcd::print(1, "Y: %f", pose.y);
-        pros::lcd::print(2, "Theta: %f", pose.theta);
+        //pros::lcd::print(2, "Theta: %f", pose.theta);
         pros::delay(10);
     }
 }
@@ -155,22 +148,19 @@ void initialize() {
    // selector::init();
     //IEInnit();
 
-    
-
     pros::Task screenTask([&]() {
         lemlib::Pose pose(0, 0, 0);
         while (true) {
             // print robot location to the brain screen
             pros::lcd::print(0, "X: %f", Chassis.getPose().x); // x
             pros::lcd::print(1, "Y: %f", Chassis.getPose().y); // y
-            pros::lcd::print(2, "Theta: %f", Chassis.getPose().theta); 
-
-            pros::lcd::print(3, "Encoder 1: %f", lF.get_position());
-            pros::lcd::print(4, "Encoder 2: %f", lM.get_position());
-            pros::lcd::print(5, "Encoder 3: %f", lB.get_position());
-            pros::lcd::print(6, "Encoder 4: %f", rF.get_position());
-            pros::lcd::print(7, "Encoder 5: %f", rM.get_position());
-            pros::lcd::print(8, "Encoder 6: %f", rB.get_position());
+           // pros::lcd::print(2, "Theta: %f", Chassis.getPose().theta); 
+            pros::lcd::print(3, "Encoder LF: %f", lF.get_position());
+            pros::lcd::print(4, "Encoder LM: %f", lM.get_position());
+            pros::lcd::print(5, "Encoder LB: %f", lB.get_position());
+            pros::lcd::print(6, "Encoder RF: %f", rF.get_position());
+            pros::lcd::print(7, "Encoder RM: %f", rM.get_position());
+            pros::lcd::print(2, "Encoder RB: %f", rB.get_position());
             
             // log position telemetry
             lemlib::telemetrySink()->info("Chassis pose: {}", Chassis.getPose());
@@ -252,7 +242,7 @@ void competition_initialize() {
 
 void autonomous() {
 
-  Chassis.moveToPoint(0, 24, 100000, true, 127); //x =0, y=18
+  Chassis.moveToPoint(0, 48, 100000, true, 127); //x =0, y=18
 
   /*
   ______________________________________________________________________________________________
@@ -926,8 +916,8 @@ void opcontrol() {
 
     
     while (true) {
-        int rightY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-        int leftY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+        int rightY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+        int leftY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 
         switch (reverseDrive) {
           case 1:
