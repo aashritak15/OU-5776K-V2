@@ -46,12 +46,12 @@ lemlib::Drivetrain drive{
 
 
 lemlib::ControllerSettings movePID {
-  7, // kP
-  0, //kI
-  5, // kD
-  //11.5, // kP
+  //7, // kP
   //0, //kI
-  //3, // kD
+  //5, // kD
+  8.6, // kP
+  0, //kI
+  10.4, // kD
   3, //anti windup
   1, // small error range
   100, // small error timeout 
@@ -241,11 +241,11 @@ void competition_initialize() {
 
  
 
-//tatic path =ASSET("path.jerryio.txt");
+
 
 void autonomous() {
 
-  Chassis.moveToPoint(0, 24, 100000, true, 127); //x =0, y=18
+  //Chassis.moveToPoint(0, 48, 100000, true, 100); //x =0, y=18
 
   /*
   ______________________________________________________________________________________________
@@ -391,7 +391,7 @@ UNCOMMENT UNTILL HERE ----------------------------------------------------------
 
 */
 
-/*
+
 Chassis.setPose(0,0,0);
 
 
@@ -404,12 +404,16 @@ intakeMotor1.moveVelocity(0);
 
 flapjack1.set_value(true);
 
-Chassis.turnTo(-2, 1, 3000, true, 100);
+Chassis.turnTo(-2, 48, 3000, true, 100);
+
+
 Chassis.waitUntil(-13);
 
 pros::delay(200);
 
 flapjack1.set_value(false);
+
+/*
 
 Chassis.turnTo(0, 0, 1500, true, 100);
 
