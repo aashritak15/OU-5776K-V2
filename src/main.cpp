@@ -403,9 +403,9 @@ Chassis.turnTo(6.9, 9.6, 5000);
 Chassis.turnTo(6.9, 9.6, 5000, false);
 
 
-Chassis.moveToPose(14, 8, -90, 4000, {.forwards = false, .minSpeed = 127});
+Chassis.moveToPose(15, 8, -90, 4000, {.forwards = false, .minSpeed = 127});
 
-Chassis.moveToPose(-18, -35, -180, 4000, {.forwards = false, .minSpeed = 127});
+Chassis.moveToPose(-20, -35, -180, 4000, {.forwards = false, .minSpeed = 127});
 
 //Chassis.turnTo(9,3, 3000, false);
 
