@@ -157,13 +157,13 @@ void initialize() {
             // print robot location to the brain screen
             pros::lcd::print(0, "X: %f", Chassis.getPose().x); // x
             pros::lcd::print(1, "Y: %f", Chassis.getPose().y); // y
-           // pros::lcd::print(2, "Theta: %f", Chassis.getPose().theta); 
+            pros::lcd::print(2, "Theta: %f", Chassis.getPose().theta); 
             pros::lcd::print(3, "Encoder LF: %f", lF.get_position());
             pros::lcd::print(4, "Encoder LM: %f", lM.get_position());
             pros::lcd::print(5, "Encoder LB: %f", lB.get_position());
             pros::lcd::print(6, "Encoder RF: %f", rF.get_position());
             pros::lcd::print(7, "Encoder RM: %f", rM.get_position());
-            pros::lcd::print(2, "Encoder RB: %f", rB.get_position());
+            pros::lcd::print(8, "Encoder RB: %f", rB.get_position());
             
             // log position telemetry
             lemlib::telemetrySink()->info("Chassis pose: {}", Chassis.getPose());
@@ -391,7 +391,31 @@ UNCOMMENT UNTILL HERE ----------------------------------------------------------
 
 */
 
+Chassis.setPose(0, 0, 0);
 
+Chassis.moveToPose(6.9, 9.6, 45, 5000, {.minSpeed = 127});
+
+Chassis.turnTo(2.9, 9.6, 1600);
+
+Chassis.turnTo(6.9, 9.6, 5000);
+
+
+Chassis.turnTo(6.9, 9.6, 5000, false);
+
+
+Chassis.moveToPose(14, 8, -90, 4000, {.forwards = false, .minSpeed = 127});
+
+Chassis.moveToPose(-18, -35, -180, 4000, {.forwards = false, .minSpeed = 127});
+
+//Chassis.turnTo(9,3, 3000, false);
+
+
+
+//Chassis.moveToPoint(-60.379, -26.589, 5000);
+
+
+
+/*
 Chassis.setPose(0,0,0);
 
 
@@ -412,6 +436,7 @@ Chassis.waitUntil(-13);
 pros::delay(200);
 
 flapjack1.set_value(false);
+*/
 
 /*
 
