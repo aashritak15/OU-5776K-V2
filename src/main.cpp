@@ -391,9 +391,9 @@ UNCOMMENT UNTILL HERE ----------------------------------------------------------
 
 */
 
-/*
-Chassis.setPose(0, 0, 45);
 
+Chassis.setPose(0, 0, 45);
+balanceTrue();
 Chassis.moveToPose(-27, -19, 60, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
   Chassis.waitUntil(70);
 
@@ -413,9 +413,11 @@ pros::delay(300);
 pros::delay(680);
   flapjack2.set_value(false);
 
+  intakeMotor1.moveVelocity(-600);
+
 Chassis.moveToPose(-6, 35, 0, 3000, {.forwards = true, .chasePower = 20});
    Chassis.waitUntilDone();
-*/
+
 
 
 /*
@@ -634,8 +636,9 @@ Chassis.moveToPose(15, -6, 0, 5000, {.forwards = true, .minSpeed = 90});
 
 //NEW FAR SIDE RUN THIS FOR GOOGLE
  
-
+/*
 Chassis.setPose(0, 0, 0);
+balanceTrue();
 
 intakeMotor1.moveVelocity(600);
 
@@ -686,7 +689,7 @@ Chassis.waitUntilDone();
 
 Chassis.tank(127 , 127);
 
-pros::delay(400);
+pros::delay(600);
 
 Chassis.tank(0 , 0);
 
@@ -1111,17 +1114,17 @@ void opcontrol() {
 
            //updateDrive();
             //updateRVDrive();
-            //updateIntake();
+            updateIntake();
             updateCata();
             updateFlapjack();
             //updateDriverSkills();
            // updatelMech();
-            //updateBalance();
+            updateBalance();
            // updateBlocker();
             //DarshyMech();
            // PtoMech()
 
-          // mech();
+           mech();
 
           
 

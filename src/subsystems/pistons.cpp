@@ -104,7 +104,7 @@ CataState getCataState() {
 void setCataState(CataState CState) { 
   currentCataState = CState; 
   }
-
+*/
 
 int mechState = 0;
 
