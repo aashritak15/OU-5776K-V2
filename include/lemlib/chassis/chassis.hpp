@@ -118,7 +118,7 @@ struct Drivetrain {
 /**
  * @brief Parameters for Chassis::moveToPose
  *
- * We use a struct to simplify customization. Chassis::moveToPose has many
+ * We use a struct to simplify customization. Chassis::moveToPose has mov
  * parameters and specifying them all just to set one optional param ruins
  * readability. By passing a struct to the function, we can have named
  * parameters, overcoming the c/c++ limitation

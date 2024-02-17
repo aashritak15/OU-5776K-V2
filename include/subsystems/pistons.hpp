@@ -7,7 +7,8 @@ extern pros::ADIDigitalOut pistonPTO1;
 //extern pros::ADIDigitalOut autonFlipout;
 extern pros::ADIDigitalOut flapjack1;
 extern pros::ADIDigitalOut flapjack2;
-
+extern pros::ADIDigitalOut flapjack1V;
+extern pros::ADIDigitalOut flapjack2V;
 extern pros::ADIDigitalOut intakeFlipout;
 
 extern pros::ADIDigitalOut awpFlipout;
@@ -17,6 +18,8 @@ extern pros::ADIDigitalOut lMech;
 extern pros::ADIDigitalOut blocker;
 
 extern pros::ADIDigitalOut blocker1;
+
+void mech();
 
 //extern pros::ADIDigitalOut pistonPTO1;
 

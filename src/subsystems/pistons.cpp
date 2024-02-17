@@ -23,8 +23,16 @@ pros::ADIDigitalOut balance = pros::ADIDigitalOut(balancePort);
 pros::ADIDigitalOut blocker = pros::ADIDigitalOut(blockerPort);
 pros::ADIDigitalOut blocker1 = pros::ADIDigitalOut(blockerPort1);
 
+/*
+ControllerButton flapjackRightButton = ControllerButton(ControllerDigital::down);
+//ControllerButton cataMedButton = ControllerButton(ControllerDigital::up);
+ControllerButton flapjackLeftButton = ControllerButton(ControllerDigital::up);
 
+ControllerButton flapjackBothButton = ControllerButton(ControllerDigital::left);
 
+ControllerButton flapjackVertButton = ControllerButton(ControllerDigital::left);
+
+ControllerButton MECHButton = ControllerButton(ControllerDigital::left);
 //flapjack
 //pros::ADIDigitalOut flapjack1(flapjackPort1);
 //pros::ADIDigitalOut flapjack2(flapjackPort2);
@@ -34,6 +42,107 @@ pros::ADIDigitalOut blocker1 = pros::ADIDigitalOut(blockerPort1);
 
 //pros::ADIDigitalOut autonFlipout = pros::ADIDigitalOut(autonFlipoutPort);
 
+void PISTONS() {
+    
+  static FlapjackState currentFlapjackState = FlapjackState::STOPPED;
+  //static IntakeState previousIntakeState = IntakeState::STOPPED;
+
+
+
+  if (flapjackRightButton.changedToPressed()) {
+    if (currentFlapjackState == FlapjackState::HI) {
+      //previousIntakeState = currentIntakeState;
+      currentFlapjackState = FlapjackState::STOPPED;
+    } else {
+      //previousIntakeState = currentIntakeState;
+      currentFlapjackState = FlapjackState::HI;
+    }
+  } 
+
+
+
+  switch (currentFlapjackState) {
+    case CataState::STOPPED:
+      cataMotor.moveVoltage(0);
+      break;
+    case CataState::HI:
+      cataMotor.moveVoltage(12000);
+      break;
+   /* case CataState::MED:
+      cataMotor.moveVoltage(9000);
+      break;  
+      */
+
+      /*
+    case CataState::LO:
+      cataMotor.moveVoltage(10000);
+      break;
+    
+  }
+
+
+  // if (onePunchButton.changedToPressed()){
+
+  //   if (spin.get() < 57){
+  //     cataMotor.moveVoltage(9000);
+  //     pros::delay(3000);
+  //     cataMotor.moveVoltage(0);
+  //     } else {
+  //       cataMotor.moveVoltage(9000);
+  //     pros::delay(1500);
+  //     cataMotor.moveVoltage(0);
+  //  }
+ 
+  // }
+}
+
+ 
+CataState getCataState() { 
+  return currentCataState; 
+  }
+
+void setCataState(CataState CState) { 
+  currentCataState = CState; 
+  }
+
+
+int mechState = 0;
+
+void mech(){
+    if (controller.getDigital(ControllerDigital::B) == 1) {
+        if(mechState == 0){
+            //lMech.set_value(true);
+            balance.set_value(true);
+            pros::delay(300);
+            flapjack1V.set_value(true);
+            pros::delay(300);
+             balance.set_value(false);
+             pros::delay(300);
+             flapjack1V.set_value(false);
+
+
+            mechState++;
+            pros::delay(300);
+        }
+        else{
+            flapjack1V.set_value(true);
+            pros::delay(300);
+             balance.set_value(true);
+            pros::delay(300);
+            flapjack1V.set_value(false);
+            pros::delay(300);
+             balance.set_value(true);
+             
+             
+
+            
+            mechState--;
+            pros::delay(300);
+
+        }
+  }
+
+}
 
 void blockerInit (){blocker.set_value(false);}
 
@@ -147,11 +256,6 @@ void updateBalance(){
         }
     }
 }
-
-
-
-
-
 
 
 void updateFlapjack(){

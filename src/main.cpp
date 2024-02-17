@@ -141,8 +141,7 @@ void initialize() {
     pros::lcd::initialize();
     Chassis.calibrate();
    
-    
-    Chassis.setPose(0, 0, 0); // X: 0, Y: 0, Heading: 0
+  
 
 	// print odom values to the brain
     pros::lcd::initialize();
@@ -181,7 +180,7 @@ void initialize() {
     //pistonsInnit();
     //lMechInit();
     //balanceInit();
-    blockerInit();
+    //blockerInit();
     //PtoInit();
    
 
@@ -251,7 +250,7 @@ void autonomous() {
   ______________________________________________________________________________________________
 
   ADARSH 6 BALL AUTON 
-  ______________________________________________________________________________________________
+  ______________________________________fa_______________________________________________________
 
 
 */
@@ -389,13 +388,55 @@ UNCOMMENT UNTILL HERE ----------------------------------------------------------
   Close side AWP ONLY  (need to do file handling uh)
   ______________________________________________________________________________________________
 
+
 */
 
+/*
+Chassis.setPose(0, 0, 45);
+
+Chassis.moveToPose(-27, -19, 60, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
+  Chassis.waitUntil(70);
+
+Chassis.tank(-50, -50);
+pros::delay(200);
+Chassis.tank(0, 0);
+
+//-7.36,31/6,44.3
+
+Chassis.moveToPose(-7.5, -4, 45, 2000, {.forwards = true, .chasePower = 20});
+  Chassis.waitUntilDone();
+  flapjack2.set_value(true);
+pros::delay(300);
+
+  Chassis.turnTo(-11, -4, 2000);
+
+pros::delay(680);
+  flapjack2.set_value(false);
+
+Chassis.moveToPose(-6, 35, 0, 3000, {.forwards = true, .chasePower = 20});
+   Chassis.waitUntilDone();
+*/
+
+
+/*
+  flapjack1.set_value(false);
+
+  Chassis.moveToPose(-50, 20, -90, 2500, {.chasePower = 18, .minSpeed = 110});
+
+Chassis.moveToPose(-15, 1, -45, 2000, {.forwards = false, .chasePower = 18});
+  Chassis.waitUntilDone();
+ 
+  Chassis.cancelMotion();
+  */
+
+/*
 Chassis.setPose(0, 0, 0);
 
 Chassis.moveToPose(6.9, 9.6, 45, 5000, {.minSpeed = 127});
 
 Chassis.turnTo(2.9, 9.6, 1600);
+
+flapjack1.set_value(true);
 
 Chassis.turnTo(6.9, 9.6, 5000);
 
@@ -406,6 +447,7 @@ Chassis.turnTo(6.9, 9.6, 5000, false);
 Chassis.moveToPose(15, 8, -90, 4000, {.forwards = false, .minSpeed = 127});
 
 Chassis.moveToPose(-20, -35, -180, 4000, {.forwards = false, .minSpeed = 127});
+*/
 
 //Chassis.turnTo(9,3, 3000, false);
 
@@ -589,6 +631,94 @@ pros::delay(600);
 Chassis.moveToPose(15, -6, 0, 5000, {.forwards = true, .minSpeed = 90});
 
 */
+
+//NEW FAR SIDE RUN THIS FOR GOOGLE
+ 
+
+Chassis.setPose(0, 0, 0);
+
+intakeMotor1.moveVelocity(600);
+
+Chassis.moveToPoint(0, 51, 4000, true, 127); 
+
+Chassis.turnTo(100, 51, 1000);
+
+intakeMotor1.moveVelocity(-600);
+Chassis.moveToPoint(11, 53, 1000, true, 127);
+
+
+
+Chassis.moveToPoint(0, 51, 4000, false, 127); 
+
+Chassis.turnTo(-5, 39, 1000);
+
+
+intakeMotor1.moveVelocity(600);
+
+Chassis.moveToPoint(-5, 39, 5000, true,  80);
+
+Chassis.turnTo(-20, 39, 1000);
+
+Chassis.moveToPoint(-20, 39, 5000, true,  40);
+
+pros::delay(2000); //tune this later
+
+
+Chassis.turnTo(-14, 50 , 1000);
+
+Chassis.moveToPoint(-14, 50, 2000,  true,  127);
+flapjack1V.set_value(true);
+flapjack2V.set_value(true);
+
+Chassis.turnTo(-3, 68, 1000);
+
+Chassis.moveToPoint(-3, 68, 3000, true, 127);
+
+Chassis.turnTo(9.5, 68, 1000);
+
+flapjack1V.set_value(true);
+flapjack2V.set_value(true);
+
+intakeMotor1.moveVelocity(-600);
+
+Chassis.moveToPoint(14, 68, 1000, true, 127);
+Chassis.waitUntilDone();
+
+Chassis.tank(127 , 127);
+
+pros::delay(400);
+
+Chassis.tank(0 , 0);
+
+Chassis.moveToPoint(-5, 68, 1000, false, 127);
+
+
+/*
+Chassis.turnTo(100, 51, 1000);
+
+Chassis.waitUntil(55);
+
+intakeMotor1.moveVelocity(600);
+
+Chassis.moveToPoint(15, 51, 1000, true, 127);
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -981,16 +1111,17 @@ void opcontrol() {
 
            //updateDrive();
             //updateRVDrive();
-            updateIntake();
+            //updateIntake();
             updateCata();
             updateFlapjack();
             //updateDriverSkills();
            // updatelMech();
-            updateBalance();
-            updateBlocker();
+            //updateBalance();
+           // updateBlocker();
             //DarshyMech();
-           // PtoMech();
+           // PtoMech()
 
+          // mech();
 
           
 
