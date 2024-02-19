@@ -237,14 +237,144 @@ void competition_initialize() {
 * from where it left off.
 */
 
+void skills() {
+  
+  Chassis.setPose(0, 0, 45);
+balanceTrue();
+pros::delay(100);
+balanceInit();
+Chassis.moveToPose(-27, -19, 60, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
+  Chassis.waitUntil(70);
 
+Chassis.tank(-50, -50);
+pros::delay(200);
+Chassis.tank(0, 0);
+
+Chassis.moveToPoint(-13, -6, 2000, true, 80);
+
+Chassis.turnTo(-17, -0, 1000);
+Chassis.moveToPoint(-11, -10, 2000, false, 80);
+
+pros::delay(5000);
+
+Chassis.moveToPoint(-36, 22, 3000, true, 90);
+
+Chassis.turnTo(-37, 23, 1000);
+
+balanceTrue();
+pros::delay(100);
+flapjack1V.set_value(true);
+
+flapjack2V.set_value(true);
+
+Chassis.moveToPoint(-94, 23, 3000, true, 127);
+
+pros::delay(2000);
+
+flapjack1V.set_value(false);
+
+flapjack2V.set_value(false);
+balanceInit();
+
+Chassis.turnTo(-92, 2, 1000);
+
+Chassis.moveToPoint(-92, 2, 2000, true, 90);
+
+
+Chassis.turnTo(-110, -4, 1000);
+Chassis.moveToPoint(-110, -4, 2000, true, 90);
+
+Chassis.turnTo(-122, 20, 1000);
+Chassis.moveToPoint(-122, 20, 2000, true, 90);
+
+
+/*
+  Chassis.setPose(0, 0, 45);
+
+balanceTrue();
+
+pros::delay(200);
+
+balanceInit();
+
+
+Chassis.moveToPose(-27, -19, 60, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
+  Chassis.waitUntil(70);
+
+Chassis.tank(-60, -60);
+pros::delay(350);
+Chassis.tank(0, 0);
+
+//Chassis.moveToPose(4, -11, -77, 2000, {.forwards = true, .minSpeed = 90});
+//Chassis.turnTo(-18, -4, 1000);
+Chassis.moveToPoint(-13, -6, 2000, true, 80);
+
+Chassis.turnTo(-17, -0, 1000);
+Chassis.moveToPoint(-11, -10, 2000, false, 80);
+
+cataMotor.moveVelocity(10000);
+
+pros::delay(5000);
+
+cataMotor.moveVelocity(0);
+
+
+
+//BARRIER PUSH BARRIER PUSH 
+
+
+Chassis.moveToPoint(20, -5, 3000, true, 90);
+
+Chassis.turnTo(20, -2, 1000);
+/*
+balanceTrue();
+pros::delay(100);
+flapjack1V.set_value(true);
+
+flapjack2V.set_value(true);
+
+Chassis.moveToPoint(-94, 23, 3000, true, 127);
+
+pros::delay(2000);
+
+flapjack1V.set_value(false);
+
+flapjack2V.set_value(false);
+balanceInit();
+
+Chassis.turnTo(-92, 2, 1000);
+
+Chassis.moveToPoint(-92, 2, 2000, true, 90);
+
+
+Chassis.turnTo(-110, -4, 1000);
+Chassis.moveToPoint(-110, -4, 2000, true, 90);
+
+Chassis.turnTo(-122, 20, 1000);
+Chassis.moveToPoint(-122, 20, 2000, true, 90);
+*/
+/*
+
+ALLEY PUSH ALLEY PUSH 
+
+Chassis.moveToPose(-5, 35, 185, 3000, {.forwards = false, .chasePower = 20});
+//Chassis.turnTo(-12, 82, 1000, false);
+
+Chassis.moveToPoint(-5, 80, 2000, false, 80);
+Chassis.turnTo(-13, 83, 1000, false);
+
+Chassis.moveToPose(-44, -96, 0, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
+*/
+
+}
  
 
 
 
 void autonomous() {
 
-  //Chassis.moveToPoint(0, 48, 100000, true, 100); //x =0, y=18
+ skills(); 
+
 
   /*
   ______________________________________________________________________________________________
@@ -444,7 +574,7 @@ Chassis.moveToPose(-3, 35, 0, 3000, {.forwards = true, .chasePower = 20});
 
 //NEW FAR SIDE RUN THIS FOR GOOGLE
  
-
+/*
 Chassis.setPose(0, 0, 0);
 balanceTrue();
 
@@ -503,7 +633,7 @@ Chassis.tank(0 , 0);
 
 Chassis.moveToPoint(-5, 68, 1000, false, 127);
 
-
+*/
 
 
 
