@@ -8,6 +8,8 @@
 #include "subsystems/auton.hpp"
 #include "subsystems/skills.hpp"
 #include "globals.hpp"
+#include "pros/motors.h"
+#include "pros/rtos.hpp"
 
 #include "selection.h"
 
@@ -238,8 +240,9 @@ void competition_initialize() {
 */
 
 void skills() {
-  
-  Chassis.setPose(0, 0, 45);
+
+//going to score two preloads 
+Chassis.setPose(0, 0, 45);
 balanceTrue();
 pros::delay(100);
 balanceInit();
@@ -250,42 +253,99 @@ Chassis.tank(-50, -50);
 pros::delay(200);
 Chassis.tank(0, 0);
 
+//going to matchload zone 
 Chassis.moveToPoint(-13, -6, 2000, true, 80);
 
 Chassis.turnTo(-17, -0, 1000);
 Chassis.moveToPoint(-11, -10, 2000, false, 80);
 
-pros::delay(5000);
+//ADD MATCHLOADING PART HERE 
+pros::delay(5000);   // -------> 20 SECONDS 
 
-Chassis.moveToPoint(-36, 22, 3000, true, 90);
+// going to barrier to push over tribals over 
 
-Chassis.turnTo(-37, 23, 1000);
+Chassis.moveToPoint(-36, 18, 3000, true, 90);
+Chassis.waitUntilDone();
 
 balanceTrue();
-pros::delay(100);
+
+
 flapjack1V.set_value(true);
 
 flapjack2V.set_value(true);
 
-Chassis.moveToPoint(-94, 23, 3000, true, 127);
+intakeMotor1.moveVelocity(-600);
 
-pros::delay(2000);
+Chassis.moveToPoint(-80, 20, 3000, true, 127);
+
+Chassis.moveToPoint(-107, 20, 3000, true, 90);
+
+//going under alley 
+
+pros::delay(1000);
 
 flapjack1V.set_value(false);
 
 flapjack2V.set_value(false);
 balanceInit();
 
-Chassis.turnTo(-92, 2, 1000);
+Chassis.turnTo(-92, 2, 1000, false);
 
-Chassis.moveToPoint(-92, 2, 2000, true, 90);
+Chassis.moveToPoint(-98, 14, 2000, false, 90);
 
 
-Chassis.turnTo(-110, -4, 1000);
-Chassis.moveToPoint(-110, -4, 2000, true, 90);
+Chassis.turnTo(-110, -4, 1000, false);
+Chassis.moveToPoint(-130, -3, 2000, false, 90);
 
-Chassis.turnTo(-122, 20, 1000);
-Chassis.moveToPoint(-122, 20, 2000, true, 90);
+Chassis.turnTo(-136, 20, 1000, false);
+Chassis.waitUntilDone();
+
+
+flapjack1.set_value(true);
+flapjack2.set_value(true);
+
+Chassis.moveToPoint(-136, 70, 2000, false, 90);
+
+
+
+flapjack1.set_value(false);
+
+Chassis.moveToPose(-100, 113, 245, 5000,{.forwards = false, .minSpeed = 127});
+
+Chassis.tank(-60, -60);
+
+pros::delay(400);
+
+Chassis.tank(0, 0);
+
+
+Chassis.moveToPoint(-124, 94, 3000, true, 127);
+Chassis.turnTo(-91, 52, 3000, true);
+Chassis.moveToPoint(-91, 52, 3000, true,  127);
+Chassis.turnTo(-87, 65, 3000, false, 127);
+
+flapjack1.set_value(true);
+flapjack2.set_value(true);
+
+Chassis.moveToPoint(-85, 98, 3000, false, 127);
+
+Chassis.waitUntil(55);
+
+flapjack1.set_value(false);
+flapjack2.set_value(false);
+
+Chassis.moveToPoint(-59, 61, 3000, true, 127);
+
+Chassis.turnTo(-59, 100, 3000, false);
+
+
+flapjack1.set_value(true);
+flapjack2.set_value(true); 
+
+Chassis.moveToPoint(-59, 100, 3000, false, 127);
+
+
+
 
 
 /*
