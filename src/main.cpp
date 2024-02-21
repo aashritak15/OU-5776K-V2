@@ -927,7 +927,25 @@ void opcontrol() {
         */ // adarsh commented this out
 
 
+          if (controller.getDigital(ControllerDigital::left) == 1) {
+             Chassis.setPose(0, 0, 45);
+              balanceTrue();
+              pros::delay(100);
+              balanceInit();
+              Chassis.moveToPose(-27, -19, 60, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
+                Chassis.waitUntil(70);
 
+              Chassis.tank(-50, -50);
+              pros::delay(200);
+              Chassis.tank(0, 0);
+
+              //going to matchload zone 
+              Chassis.moveToPoint(-13, -6, 2000, true, 80);
+
+              Chassis.turnTo(-17, -0, 1000);
+              Chassis.moveToPoint(-11, -10, 2000, false, 80);
+          }
+            
 
 
         //all subsystem functions 
