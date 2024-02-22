@@ -80,7 +80,10 @@ lemlib::Chassis::Chassis(Drivetrain drivetrain, ControllerSettings lateralSettin
       lateralSmallExit(lateralSettings.smallError, lateralSettings.smallErrorTimeout),
       angularLargeExit(angularSettings.largeError, angularSettings.largeErrorTimeout),
       angularSmallExit(angularSettings.smallError, angularSettings.smallErrorTimeout) {}
-
+void lemlib::Chassis::setBrakeMode(pros::motor_brake_mode_e mode) {
+    drivetrain.leftMotors->set_brake_modes(mode);
+    drivetrain.rightMotors->set_brake_modes(mode);
+}
 /**
  * @brief Calibrate the chassis sensors
  *

@@ -169,9 +169,11 @@ float defaultDriveCurve(float input, float scale);
  *
  */
 class Chassis {
+    
     public:
         /**
          * @brief Construct a new Chassis
+
          *
          * @param drivetrain drivetrain to be used for the chassis
          * @param lateralSettings settings for the lateral controller
@@ -186,6 +188,7 @@ class Chassis {
          *
          * @param calibrateIMU whether the IMU should be calibrated. true by default
          */
+         void setBrakeMode(pros::motor_brake_mode_e mode);
         void calibrate(bool calibrateIMU = true);
         /**
          * @brief Set the pose of the chassis

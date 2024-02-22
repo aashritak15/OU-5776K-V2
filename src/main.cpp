@@ -140,8 +140,9 @@ void screen(){
 * to keep execution time for this mode under a few seconds.
 */
 void initialize() {
-    pros::lcd::initialize();
     Chassis.calibrate();
+
+     pros::lcd::initialize();
    
   
 
@@ -244,6 +245,7 @@ void skills() {
 //going to score two preloads 
 Chassis.setPose(0, 0, 45);
 
+
 Chassis.moveToPose(-27, -19, 60, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
   Chassis.waitUntil(70);
 
@@ -254,29 +256,78 @@ Chassis.tank(0, 0);
 //going to matchload zone 
 Chassis.moveToPoint(-13, -6, 2000, true, 80);
 
-Chassis.turnTo(-34, 28.5, 1000);
+Chassis.turnTo(-31, 28.5, 1000);
 Chassis.moveToPoint(-7.5, -8, 2000, false, 40);
 
 flapjack2.set_value(true);
 
-/*
 
 //ADD MATCHLOADING PART HERE 
-pros::delay(5000);   // -------> 20 SECONDS 
+Chassis.setBrakeMode(MOTOR_BRAKE_HOLD);
+leftMotors.move_velocity(0);
+rightMotors.move_velocity(0);
+pros::delay(100);
+
+cataMotor.moveVoltage(12000);
+
+pros::delay(4000);
+
+cataMotor.moveVoltage(0);
+
+pros::delay(1000);
+Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
+pros::delay(500);
+Chassis.moveToPoint(-7.5, -8, 2000, false, 40);
+
+
+
+flapjack2.set_value(false);
 
 // going to barrier to push over tribals over 
 
-Chassis.moveToPoint(-36, 18, 3000, true, 90);
+
+Chassis.moveToPoint(-38, 19, 3000, true, 90);
+
+intakeMotor1.moveVelocity(-600); 
+
+Chassis.turnTo(-48, 19, 3000);
 Chassis.waitUntilDone();
-
-balanceTrue();
-
 
 flapjack1V.set_value(true);
 
 flapjack2V.set_value(true);
+Chassis.moveToPoint(-83, 19, 3000, true);
 
-intakeMotor1.moveVelocity(-600);
+pros::delay(200);
+
+//Chassis.turnTo(-37, 23, 1000);
+
+balanceTrue();
+
+Chassis.moveToPoint(-120, 19, 3000, true, 50);
+Chassis.waitUntilDone();
+
+flapjack1V.set_value(false);
+
+flapjack2V.set_value(false);
+
+Chassis.turnTo(-110, 2, 1000, false);
+
+Chassis.moveToPoint(-110, 2, 3000, false, 50);
+
+Chassis.turnTo(-136, -3, 1000, false);
+
+Chassis.moveToPoint(-136, -3, 3000, false, 50);
+
+Chassis.turnTo(-143, 12, 1000, false);
+
+/*
+flapjack1V.set_value(true);
+
+flapjack2V.set_value(true);
+
+intakeMotor1.moveVelocity(-600); 
+
 
 Chassis.moveToPoint(-80, 20, 3000, true, 127);
 
@@ -346,7 +397,7 @@ flapjack2.set_value(true);
 
 Chassis.moveToPoint(-59, 100, 3000, false, 127);
 
-
+*/
 
 
 
