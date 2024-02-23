@@ -260,7 +260,14 @@ Chassis.turnTo(-31, 28.5, 1000);
 Chassis.moveToPoint(-7.5, -8, 2000, false, 40);
 
 flapjack2.set_value(true);
-
+/*
+balanceTrue();
+flapjack1V.set_value(true);
+flapjack2V.set_value(true);
+balanceFalse();
+flapjack1V.set_value(false);
+flapjack2V.set_value(false);
+*/
 
 //ADD MATCHLOADING PART HERE 
 Chassis.setBrakeMode(MOTOR_BRAKE_HOLD);
@@ -302,7 +309,7 @@ pros::delay(200);
 
 //Chassis.turnTo(-37, 23, 1000);
 
-balanceTrue();
+balanceInit();
 
 Chassis.moveToPoint(-120, 19, 3000, true, 50);
 Chassis.waitUntilDone();
@@ -981,6 +988,8 @@ void opcontrol() {
 
 
           if (controller.getDigital(ControllerDigital::left) == 1) {
+             /*
+             fatass code
              Chassis.setPose(0, 0, 45);
               balanceTrue();
               pros::delay(100);
@@ -997,6 +1006,69 @@ void opcontrol() {
 
               Chassis.turnTo(-17, -0, 1000);
               Chassis.moveToPoint(-11, -10, 2000, false, 80);
+              */
+              Chassis.setPose(0, 0, 45);
+
+
+              Chassis.moveToPose(-27, -19, 60, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
+              Chassis.waitUntil(70);
+
+              Chassis.tank(-80, -80);
+              pros::delay(400);
+              Chassis.tank(0, 0);
+
+              //going to matchload zone 
+              Chassis.moveToPoint(-13, -6, 2000, true, 80);
+
+              balanceTrue();
+            pros::delay(300);
+            flapjack1V.set_value(true);
+            pros::delay(300);
+             balanceInit();
+             pros::delay(300);
+             flapjack1V.set_value(false);
+
+              Chassis.turnTo(-31, 28.5, 1000);
+              Chassis.moveToPoint(-7.5, -8, 2000, false, 40);
+
+              flapjack2.set_value(true);
+
+              balanceTrue();
+              pros::delay(100);
+
+              flapjack1V.set_value(true);
+              flapjack2V.set_value(true);
+
+              
+             pros::delay(100);
+             balanceInit();
+              pros::delay(500);
+
+              flapjack1V.set_value(false);
+              flapjack2V.set_value(false);
+
+              cataMotor.moveVoltage(12000);
+
+              
+
+
+
+              //flapjack2V.set_value(true);
+
+
+
+              //calling button b goes here
+              // balanceTrue();
+              // pros::delay(100);
+              // balanceInit();
+              // pros::delay(1000);
+              // flapjack1V.set_value(true);
+              // flapjack2V.set_value(true);
+              // pros::delay(100);
+              // balanceFalse();
+              // flapjack1V.set_value(false);
+              // flapjack2V.set_value(false);
+              
           }
             
 
