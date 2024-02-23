@@ -246,28 +246,48 @@ void skills() {
 Chassis.setPose(0, 0, 45);
 
 
-Chassis.moveToPose(-27, -19, 60, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
-  Chassis.waitUntil(70);
+ Chassis.moveToPose(-27, -19, 60, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
+ Chassis.waitUntil(70);
 
-Chassis.tank(-80, -80);
-pros::delay(400);
-Chassis.tank(0, 0);
+
+ Chassis.tank(-80, -80);
+ pros::delay(400);
+ Chassis.tank(0, 0);
 
 //going to matchload zone 
-Chassis.moveToPoint(-13, -6, 2000, true, 80);
+//Chassis.moveToPoint(-13, -6, 2000, true, 80);
+ Chassis.moveToPoint(-11.5, -4, 2000, true, 80);
+ //Chassis.moveToPoint(-13, -6.5, 2000, true, 80);
+ Chassis.waitUntilDone();
 
-Chassis.turnTo(-31, 28.5, 1000);
-Chassis.moveToPoint(-7.5, -8, 2000, false, 40);
+ balanceTrue();
+ pros::delay(100);
+ flapjack1V.set_value(true);
+ pros::delay(100);
+ balanceInit();
+ pros::delay(100);
+ flapjack1V.set_value(false);
 
-flapjack2.set_value(true);
-/*
+ Chassis.turnTo(-32, 28.5, 1000);
+ //Chassis.moveToPoint(-6.5, -7, 2000, false, 40);
+ Chassis.moveToPoint(-10.26, -9, 2000, false, 40);
+
+//flapjack2.set_value(true);
+
 balanceTrue();
+ pros::delay(100);
+
 flapjack1V.set_value(true);
 flapjack2V.set_value(true);
-balanceFalse();
-flapjack1V.set_value(false);
+
+              
+ pros::delay(100);
+ balanceInit();
+ pros::delay(500);
+
+ flapjack1V.set_value(false);
 flapjack2V.set_value(false);
-*/
+
 
 //ADD MATCHLOADING PART HERE 
 Chassis.setBrakeMode(MOTOR_BRAKE_HOLD);
@@ -284,7 +304,7 @@ cataMotor.moveVoltage(0);
 pros::delay(1000);
 Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
 pros::delay(500);
-Chassis.moveToPoint(-7.5, -8, 2000, false, 40);
+Chassis.moveToPoint(-10.26, -9, 2000, false, 40);
 
 
 
@@ -1013,25 +1033,30 @@ void opcontrol() {
               Chassis.moveToPose(-27, -19, 60, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
               Chassis.waitUntil(70);
 
+
               Chassis.tank(-80, -80);
               pros::delay(400);
               Chassis.tank(0, 0);
 
               //going to matchload zone 
-              Chassis.moveToPoint(-13, -6, 2000, true, 80);
+              //Chassis.moveToPoint(-13, -6, 2000, true, 80);
+              Chassis.moveToPoint(-11.5, -4, 2000, true, 80);
+              //Chassis.moveToPoint(-13, -6.5, 2000, true, 80);
+              Chassis.waitUntilDone();
 
               balanceTrue();
-            pros::delay(300);
+            pros::delay(100);
             flapjack1V.set_value(true);
-            pros::delay(300);
+            pros::delay(100);
              balanceInit();
-             pros::delay(300);
+             pros::delay(100);
              flapjack1V.set_value(false);
 
-              Chassis.turnTo(-31, 28.5, 1000);
-              Chassis.moveToPoint(-7.5, -8, 2000, false, 40);
+              Chassis.turnTo(-32, 28.5, 1000);
+              //Chassis.moveToPoint(-6.5, -7, 2000, false, 40);
+              Chassis.moveToPoint(-10.26, -9, 2000, false, 40);
 
-              flapjack2.set_value(true);
+              //flapjack2.set_value(true);
 
               balanceTrue();
               pros::delay(100);
