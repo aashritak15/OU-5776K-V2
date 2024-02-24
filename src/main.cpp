@@ -243,64 +243,76 @@ void competition_initialize() {
 void skills() {
 
 //going to score two preloads 
-Chassis.setPose(0, 0, 45);
+ Chassis.setPose(0, 0, 45);
 
 
- Chassis.moveToPose(-27, -19, 60, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
- Chassis.waitUntil(70);
+              Chassis.moveToPose(-27, -19, 60, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
+              Chassis.waitUntil(70);
 
 
- Chassis.tank(-80, -80);
- pros::delay(400);
- Chassis.tank(0, 0);
+              Chassis.tank(-80, -80);
+              pros::delay(400);
+              Chassis.tank(0, 0);
 
-//going to matchload zone 
-//Chassis.moveToPoint(-13, -6, 2000, true, 80);
- Chassis.moveToPoint(-11.5, -4, 2000, true, 80);
- //Chassis.moveToPoint(-13, -6.5, 2000, true, 80);
- Chassis.waitUntilDone();
-
- balanceTrue();
- pros::delay(100);
- flapjack1V.set_value(true);
- pros::delay(100);
- balanceInit();
- pros::delay(100);
- flapjack1V.set_value(false);
-
- Chassis.turnTo(-32, 28.5, 1000);
- //Chassis.moveToPoint(-6.5, -7, 2000, false, 40);
- Chassis.moveToPoint(-10.26, -9, 2000, false, 40);
-
-//flapjack2.set_value(true);
-
-balanceTrue();
- pros::delay(100);
-
-flapjack1V.set_value(true);
-flapjack2V.set_value(true);
+              //going to matchload zone 
+              //Chassis.moveToPoint(-13, -6, 2000, true, 80);
+              Chassis.moveToPoint(-14, -4, 2000, true, 80);
+              //Chassis.moveToPoint(-13, -6.5, 2000, true, 80);
+              Chassis.waitUntilDone();
 
               
- pros::delay(100);
- balanceInit();
- pros::delay(500);
-
- flapjack1V.set_value(false);
-flapjack2V.set_value(false);
+             
+             
+      
+              // FATTTTTTTTTTSSSSSSS CHANGE ANGLE HERE
 
 
-//ADD MATCHLOADING PART HERE 
-Chassis.setBrakeMode(MOTOR_BRAKE_HOLD);
-leftMotors.move_velocity(0);
-rightMotors.move_velocity(0);
-pros::delay(100);
+              // ***********************************************************
 
-cataMotor.moveVoltage(12000);
+               balanceTrue();
 
-pros::delay(4000);
+              Chassis.turnTo(-21.3, 8.8, 1000, true);
 
-cataMotor.moveVoltage(0);
+             
+            pros::delay(150);
+            flapjack1V.set_value(true);
+            pros::delay(150);
+            balanceInit();
+            pros::delay(150);
+            flapjack1V.set_value(false);
+          
+              Chassis.moveToPoint(-12.96, -9, 2000, false, 40);
+              Chassis.waitUntilDone();
+              //Chassis.moveToPoint(-21.4, -7.5, 2000, false, 40);
 
+              flapjack2.set_value(true);
+
+              
+
+              cataMotor.moveVoltage(12000);
+
+              pros::delay(400);
+
+              cataMotor.moveVoltage(0);
+
+              flapjack2.set_value(false);
+
+             Chassis.moveToPoint(-14, -5.91, 2000, true, 40);
+
+              
+             Chassis.turnTo(-3, 5.13, 1000, false);
+
+             Chassis.moveToPoint(-5, 5.77, 2000, false, 127);
+
+             Chassis.turnTo(-4.65, 9.9, 2000, false);
+
+             Chassis.moveToPoint(-5.49, 70, 2000, false, 127);
+
+             Chassis.moveToPose(-41, 97, -240, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
+
+             
+             
+/*
 pros::delay(1000);
 Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
 pros::delay(500);
@@ -347,6 +359,7 @@ Chassis.turnTo(-136, -3, 1000, false);
 Chassis.moveToPoint(-136, -3, 3000, false, 50);
 
 Chassis.turnTo(-143, 12, 1000, false);
+*/
 
 /*
 flapjack1V.set_value(true);
@@ -1048,9 +1061,11 @@ void opcontrol() {
             pros::delay(100);
             flapjack1V.set_value(true);
             pros::delay(100);
-            flapjack1V.set_value(false);
+            balanceInit();
             pros::delay(100);
-             balanceInit();
+            flapjack1V.set_value(false);
+          
+             
              
       
               // FATTTTTTTTTTSSSSSSS CHANGE ANGLE HERE
