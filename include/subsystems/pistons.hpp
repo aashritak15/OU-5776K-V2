@@ -10,7 +10,7 @@ extern pros::ADIDigitalOut flapjack2;
 extern pros::ADIDigitalOut flapjack1V;
 extern pros::ADIDigitalOut flapjack2V;
 extern pros::ADIDigitalOut intakeFlipout;
-
+extern pros::ADIDigitalOut balance;
 extern pros::ADIDigitalOut awpFlipout;
 
 extern pros::ADIDigitalOut lMech;
