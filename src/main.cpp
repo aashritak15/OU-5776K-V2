@@ -1048,29 +1048,23 @@ void opcontrol() {
             pros::delay(100);
             flapjack1V.set_value(true);
             pros::delay(100);
+            flapjack1V.set_value(false);
+            pros::delay(100);
              balanceInit();
-             pros::delay(100);
-             flapjack1V.set_value(false);
+             
+      
+              // FATTTTTTTTTTSSSSSSS CHANGE ANGLE HERE
 
-              Chassis.turnTo(-32, 28.5, 1000);
+
+              // ***********************************************************
+
+              Chassis.turnTo(-27.5, 28.5, 1000);
               //Chassis.moveToPoint(-6.5, -7, 2000, false, 40);
-              Chassis.moveToPoint(-10.26, -9, 2000, false, 40);
+              Chassis.moveToPoint(-10.26, -7, 2000, false, 40);
 
-              //flapjack2.set_value(true);
-
-              balanceTrue();
-              pros::delay(100);
-
-              flapjack1V.set_value(true);
-              flapjack2V.set_value(true);
+              flapjack2.set_value(true);
 
               
-             pros::delay(100);
-             balanceInit();
-              pros::delay(500);
-
-              flapjack1V.set_value(false);
-              flapjack2V.set_value(false);
 
               cataMotor.moveVoltage(12000);
 
