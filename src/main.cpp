@@ -306,9 +306,13 @@ void skills() {
 
              Chassis.turnTo(-4.65, 9.9, 2000, false);
 
-             Chassis.moveToPoint(-5.49, 70, 2000, false, 127);
+             //GOING UNDER ALLEY TO PUSH 
 
-             Chassis.moveToPose(-41, 97, -240, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
+             Chassis.moveToPoint(-5.49, 78, 2000, false, 127);
+
+            Chassis.turnTo(-15, 89, 2000, false);
+
+            Chassis.moveToPose(-41, 97, -240, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
 
              
              
