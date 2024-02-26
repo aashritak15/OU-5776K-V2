@@ -886,6 +886,54 @@ Chassis.moveToPose(-44, -96, 0, 2500, {.forwards = false, .chasePower = 20, .min
 
 }
  
+void farTB() {
+  
+  // SCORE 3 TBS
+  Chassis.setPose(0, 0, 0);  
+  intakeMotor1.moveVelocity(-600);
+  Chassis.moveToPose(x, y, theta, 4000, {.forwards = false, .chasePower = 20, .minSpeed = 270}, true);  //drive back to mlz and turn to remove mlztb
+  pros::delay(1000);
+  flapjack1.set_value(true); //open right wing to descore mlztb (happens during moveToPose)
+  intakeMotor1.moveVelocity(0); //stop intake
+  Chassis.waitUntilDone();
+  flapjack1.set_value(false); //close wings (waits until mlztb is descored)
+  //Chassis.turnTo(x, y, 4000, true, 127, true); //turn back to face goal
+  Chassis.moveToPose(x, y, 180, 4000, {.forwards = false, .chasePower = 20, .minSpeed = 270}, true); //goes to goal
+  //move forward
+  //turn 180
+  //outtake
+  //drive forward and score preload
+
+  // 3 TB CLUMP SCORING
+  //drive back
+  //turn 90 left
+  //go for and intake first clump tb
+  //drive towards goal and outtake (dont score)
+  //turn & drive up to 2nd tb in clump and intake
+  //turn, outtake, and score all 3 clump tbs in goal
+
+
+  /* REFERENCE FUNCTIONS
+  Chassis.setPose(0, 0, 0);  
+  Chassis.moveToPose(x, y, theta, 4000, {.forwards = true, .chasePower = 20, .minSpeed = 270}, true);
+  Chassis.moveToPoint(x,y, 4000, true, 127, true);
+  Chassis.turnTo(x, y, 4000, true, 127, true);
+  Chassis.tank(left, right);
+
+  Chassis.waitUntilDone();
+  pros::delay(100);
+
+  flapjack2.set_value(true); // left wing
+  flapjack1.set_value(true); // right wing
+  flapjack1V.set_value(true); // either v wing code works
+  flapjack2V.set_value(true); // either v wing code works
+  balanceTrue();
+  balanceInit();
+  
+  intakeMotor1.moveVelocity(-600);
+  */
+
+}
 
 
 
@@ -893,8 +941,9 @@ void autonomous() {
 
  //skills(); 
  //closeSide();
- closeSideDisrupt();
+ //closeSideDisrupt();
  //farSide();
+ farTB();
 
 
   /*
