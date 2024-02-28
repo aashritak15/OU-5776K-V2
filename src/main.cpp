@@ -921,7 +921,7 @@ void farTB() {
   //Chassis.moveToPoint(40, -50, 1000, false, 127, true); //scores tbs
   //scores tbs
   Chassis.tank(-127,-127,0);
-  pros:delay(300);
+  pros::delay(300);
   Chassis.tank(0,0,0);
   flapjack1.set_value(false);
 
