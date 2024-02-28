@@ -914,27 +914,34 @@ void farTB() {
   Chassis.waitUntilDone();
   //Chassis.moveToPoint(15, -47, 1500, false, 127, true);
   Chassis.moveToPose(16, -52, -45, 1500, {.forwards = false, .chasePower=200}, true); //goes closer to perimeter 15 -47
-  Chassis.moveToPose(25, -50, -90, 700, {.forwards = false, .chasePower=200}, true); //pushes tb in with back
+  Chassis.moveToPose(25, -50, -70, 700, {.forwards = false, .chasePower=200}, true); //pushes 2 tbs next to goal
  // REPLACE PREVIOUS LINE WITH SWING TURN + MOVE BACK 
 
   //scores first 2 tbs (preload + mlz)
-  Chassis.moveToPoint(40, -50, 1000, false, 127, true); //scores tbs
+  //Chassis.moveToPoint(40, -50, 1000, false, 127, true); //scores tbs
+  //scores tbs
+  Chassis.tank(-127,-127,0);
+  pros:delay(300);
+  Chassis.tank(0,0,0);
   flapjack1.set_value(false);
 
   //score alley tb
   Chassis.moveToPoint(25,-50, 1000, true, 127, true); //move forward away from goal and get ready to turn 
-    Chassis.turnTo(100, -50, 1000, true, 127, true);
+  Chassis.turnTo(100, -50, 1000, true, 127, true);
   pros::delay(300); // outtake line begins at the very end of the turnTo function
   intakeMotor1.moveVelocity(-600);
   //Chassis.waitUntil(85);
   //Chassis.cancelAllMotions();
   Chassis.moveToPoint(50,-50, 700, true, 127, true); //score alley tb into goal
   intakeMotor1.moveVelocity(0);
-  //Chassis.moveToPose(22, -50, 0, 2000, {.forwards = false, .chasePower = 20, .minSpeed = 270}, true);  //align w perim
-  
+  pros::delay(3000); // temp testing delay
+  Chassis.moveToPose(22, -50, 0, 2000, {.forwards = false, .chasePower = 100}, true);  //align w perim
+  pros::delay(3000); // temp testing delay
   //Chassis.moveToPose(32.5, -4.1, 10, 2000, {.forwards = true, .chasePower = 20, .minSpeed = 270}, true);  //1st clump
-  //intakeMotor1.moveVelocity(600);
-  
+  Chassis.moveToPose(32.5, -4.1, 10, 2000, {.forwards = true, .chasePower = 100}, true);  //1st clump
+  intakeMotor1.moveVelocity(600);
+  pros::delay(1000); // temp testing delay
+
   //balance.set_value(true); // either v wing code works*/
 
   //Chassis.moveToPose(43.5, -17.5, 150, 2000, {.forwards = true, .chasePower = 20, .minSpeed = 270}, true);  //outtake 2nd clump
