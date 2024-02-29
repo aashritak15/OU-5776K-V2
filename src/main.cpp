@@ -240,6 +240,12 @@ void competition_initialize() {
 * from where it left off.
 */
 
+void closeSideNEW(){
+  Chassis.setPose(0,0,45);
+  
+}
+
+
 void closeSideDisrupt(){
   Chassis.setPose(0, 0, 0);
 
