@@ -241,7 +241,49 @@ void competition_initialize() {
 */
 
 void closeSideNEW(){
-  Chassis.setPose(0,0,45);
+  Chassis.setPose(0,0,-45);
+  Chassis.moveToPoint(14, -13, 1000, false, 127);
+  Chassis.moveToPose(20, -26, 0, 500, {.forwards = false, .chasePower = 200});
+  Chassis.waitUntil(80);
+  Chassis.cancelAllMotions();
+  Chassis.tank(-80, -80);
+pros::delay(500);
+Chassis.tank(0, 0);
+
+
+Chassis.moveToPose(8, -10, -45, 1000, {.forwards = true, .chasePower = 200});
+  Chassis.waitUntilDone();
+  flapjack2.set_value(true);
+pros::delay(300);
+
+Chassis.turnToHeading(-127, 700, true);
+
+pros::delay(680);
+  flapjack2.set_value(false);
+
+Chassis.turnToHeading(-40, 700, true);
+
+Chassis.moveToPose(-31, -4, -90, 2000, {.forwards = true, .chasePower = 200});
+
+
+  intakeMotor1.moveVelocity(-600);
+
+
+
+//13, -13, -45
+
+  /*
+  Chassis.setPose(0,0,-45);
+balanceTrue();
+
+pros::delay(200);
+
+balanceInit();
+
+
+Chassis.moveToPose(20, -20, 0, 700, {.forwards = false, .chasePower = 200});
+ // Chassis.waitUntil(70);
+ */
   
 }
 
@@ -278,6 +320,7 @@ void closeSideDisrupt(){
       Chassis.moveToPose(-29, 43, 180, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
 
       Chassis.turnTo(20, 10, 1000);
+      
 
      // Chassis.moveToPoint(-29, 40, 2000);
 
@@ -895,19 +938,18 @@ Chassis.moveToPose(-44, -96, 0, 2500, {.forwards = false, .chasePower = 20, .min
 void farTB() {
     
   // initializations
-  Chassis.setPose(0, 0, 0);  
-  Chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
+  Chassis.setPose(0, 0, 0); 
+  pros::delay(50);
+   Chassis.setBrakeMode(MOTOR_BRAKE_HOLD); // dont wanna get pushed around by other bots 
   
   // drop intake
   intakeMotor1.moveVelocity(600);
   balance.set_value(true);
   pros::delay(750);
 
-  // drive towards mlzb
-  Chassis.moveToPoint(0,-25.5, 4000, false, 127, true); //-26.5
+  // drive towards mlzb & swing turn that pushes mlztb out 
+  Chassis.moveToPoint(0,-25.5, 4000, false, 127, true); // -26.5
   balance.set_value(false);
-
-  // swing turn that pushes mlztb out 
   //Chassis.moveToPose(14, -48, -45, 4000, {.forwards = false, .chasePower=200}, true); //13.5 -46   // ADD BACK IF NEED 2 SEPARATE MOVEMENTS TO REMOVE MLZ TB
   Chassis.moveToPose(16, -51, -45, 1500, {.forwards = false, .chasePower=200}, true); //goes closer to perimeter 15 -47 // consolidates 2 movements for removing mlz tb
   pros::delay(100); // not an actual delay; prevents wing opening right after the moveToPose function starts
@@ -933,7 +975,7 @@ void farTB() {
   intakeMotor1.moveVelocity(0);
 
   // start 3 clump
-  Chassis.moveToPose(30, -52, 0, 2000, {.forwards = false, .chasePower = 100}, true);  //align w perim
+  Chassis.moveToPose(30, -52, 0, 2000, {.forwards = false, .chasePower = 100}, true);  //align w perim  BEFORE 30
   //Chassis.waitUntilDone();
    
 
@@ -971,8 +1013,8 @@ void farTB() {
   intakeMotor1.moveVelocity(-600);
   //pros::delay(500);
 
-  Chassis.moveToPose(63, -40, -180, 1500, {.forwards = true, .chasePower = 200, .minSpeed = 127}, true);  //score 3 //67
-  Chassis.moveToPose(63, -15, -180, 4000, {.forwards = false, .chasePower = 200}, true);  //move back
+  Chassis.moveToPose(67, -40, -180, 1500, {.forwards = true, .chasePower = 200, .minSpeed = 127}, true);  //score 3 //67
+  Chassis.moveToPose(67, -15, -180, 4000, {.forwards = false, .chasePower = 200}, true);  //move back
   pros::delay(300); // delay intaking
   flapjack1V.set_value(false); // either v wing code works
   intakeMotor1.moveVelocity(0);
@@ -1015,6 +1057,7 @@ void autonomous() {
  //closeSideDisrupt();
  //farSide();
  farTB();
+ //closeSideNEW();
 
 
   /*
