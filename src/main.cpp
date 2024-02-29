@@ -888,77 +888,94 @@ Chassis.moveToPose(-44, -96, 0, 2500, {.forwards = false, .chasePower = 20, .min
  
 void farTB() {
     
-  //initializations
+  // initializations
   Chassis.setPose(0, 0, 0);  
   Chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
   
-  //drop intake
+  // drop intake
   intakeMotor1.moveVelocity(600);
   balance.set_value(true);
-  pros::delay(400);
+  pros::delay(750);
 
-  //drive towards mlzb
-  Chassis.moveToPoint(0,-26.5, 4000, false, 127, true); //25y
+  // drive towards mlzb
+  Chassis.moveToPoint(0,-25.5, 4000, false, 127, true); //-26.5
   balance.set_value(false);
 
   // swing turn that pushes mlztb out 
-  //Chassis.moveToPose(10.7, -42, -45, 4000, {.forwards = false, .chasePower=100}, true);  
-  Chassis.moveToPose(14, -48, -45, 4000, {.forwards = false, .chasePower=200}, true); //13.5 -46  
+  //Chassis.moveToPose(14, -48, -45, 4000, {.forwards = false, .chasePower=200}, true); //13.5 -46   // ADD BACK IF NEED 2 SEPARATE MOVEMENTS TO REMOVE MLZ TB
+  Chassis.moveToPose(16, -51, -45, 1500, {.forwards = false, .chasePower=200}, true); //goes closer to perimeter 15 -47 // consolidates 2 movements for removing mlz tb
   pros::delay(100); // not an actual delay; prevents wing opening right after the moveToPose function starts
   flapjack1.set_value(true);
-  //pros::delay(1500); 
-  //flapjack1.set_value(false);
-  intakeMotor1.moveVelocity(0); //stop intake
+  //intakeMotor1.moveVelocity(0); //stop intake
   
-  //move towards side of goal
+  // move towards side of goal
   Chassis.waitUntilDone();
-  //Chassis.moveToPoint(15, -47, 1500, false, 127, true);
-  Chassis.moveToPose(16, -52, -45, 1500, {.forwards = false, .chasePower=200}, true); //goes closer to perimeter 15 -47
-  Chassis.moveToPose(25, -50, -70, 700, {.forwards = false, .chasePower=200}, true); //pushes 2 tbs next to goal
- // REPLACE PREVIOUS LINE WITH SWING TURN + MOVE BACK 
+  //Chassis.moveToPose(16, -52, -45, 1500, {.forwards = false, .chasePower=200}, true); //goes closer to perimeter 15 -47 // ADD BACK IF NEED 2 SEPARATE MOVEMENTS TO REMOVE MLZ TB
+  Chassis.moveToPose(25, -52, -90, 700, {.forwards = false, .chasePower=200}, true); //pushes 2 tbs next to goal
 
-  //scores first 2 tbs (preload + mlz)
-  //Chassis.moveToPoint(40, -50, 1000, false, 127, true); //scores tbs
-  //scores tbs
-  Chassis.tank(-127,-127,0);
-  pros::delay(300);
-  Chassis.tank(0,0,0);
+  // scores first 2 tbs (preload + mlz)
+  //Chassis.moveToPose(40, -52, -90, 700, {.forwards = false, .chasePower=200, .minSpeed=127}, true); //scores 2 tbs into goal ADD BACK IF MOVE TO POINT DOESNT WORK
+  Chassis.moveToPoint(40,-52, 700, false, 127, true); //scores 2 tbs into goal
   flapjack1.set_value(false);
 
-  //score alley tb
-  Chassis.moveToPoint(25,-50, 1000, true, 127, true); //move forward away from goal and get ready to turn 
-  Chassis.turnTo(100, -50, 1000, true, 127, true);
+  // scores alley tb
+  Chassis.moveToPoint(27.5,-52, 1000, true, 127, true); //move  away from goal 30x
+  Chassis.turnTo(100, -52, 1000, true, 127, true); //turn to face goal
   pros::delay(300); // outtake line begins at the very end of the turnTo function
   intakeMotor1.moveVelocity(-600);
-  //Chassis.waitUntil(85);
-  //Chassis.cancelAllMotions();
-  Chassis.moveToPoint(50,-50, 700, true, 127, true); //score alley tb into goal
+  Chassis.moveToPoint(50,-52, 700, true, 127, true); //score alley tb into goal
   intakeMotor1.moveVelocity(0);
-  pros::delay(3000); // temp testing delay
-  Chassis.moveToPose(22, -50, 0, 2000, {.forwards = false, .chasePower = 100}, true);  //align w perim
-  pros::delay(3000); // temp testing delay
-  //Chassis.moveToPose(32.5, -4.1, 10, 2000, {.forwards = true, .chasePower = 20, .minSpeed = 270}, true);  //1st clump
-  Chassis.moveToPose(32.5, -4.1, 10, 2000, {.forwards = true, .chasePower = 100}, true);  //1st clump
+
+  // start 3 clump
+  Chassis.moveToPose(30, -52, 0, 2000, {.forwards = false, .chasePower = 100}, true);  //align w perim
+  //Chassis.waitUntilDone();
+   
+
+  Chassis.moveToPose(36, -5, 24.6, 2000, {.forwards = true, .chasePower = 200}, true);  //1st clump  32.5 -4.1
+  pros::delay(700); // delay opening of balance
   intakeMotor1.moveVelocity(600);
-  pros::delay(1000); // temp testing delay
+  balance.set_value(true);
+  Chassis.waitUntilDone();
+  pros::delay(150); // intaking delay
 
-  //balance.set_value(true); // either v wing code works*/
-
-  //Chassis.moveToPose(43.5, -17.5, 150, 2000, {.forwards = true, .chasePower = 20, .minSpeed = 270}, true);  //outtake 2nd clump
-  //intakeMotor1.moveVelocity(-600);
-
-  //Chassis.moveToPose(52.5, -6, 46, 2000, {.forwards = true, .chasePower = 20, .minSpeed = 270}, true);  //2nd clump
-
-
-  //Chassis.moveToPose(40, -47, -90, 2000, {.forwards = true, .chasePower = 20, .minSpeed = 270}, true);  //drive back to mlz and turn to remove mlztb
-
-  //score tb in goal
-  /*flapjack1V.set_value(true); // either v wing code works
-  balance.set_value(false); // either v wing code works
-  flapjack1V.set_value(true); // either v wing code works*/
   intakeMotor1.moveVelocity(0);
-  pros::delay(2000);
+
+  Chassis.moveToPose(43, -15, 150, 2000, {.forwards = true, .chasePower = 200}, true);  //outtake 1st clump 43.5 -17.5    52
+  //Chassis.waitUntilDone();
+  //Chassis.cancelAllMotions();
+  pros::delay(300); // delay outtaking
+
+  intakeMotor1.moveVelocity(-600);
+  pros::delay(100); // delay outtaking
+  //Chassis.waitUntilDone();
+  //Chassis.cancelAllMotions();
+
+  //pros::delay(3000); // temp testing delay
+
+  Chassis.moveToPose(60, 1, 50, 2000, {.forwards = true, .chasePower = 200}, true);  //2nd clump 58 -1.7 30   PREEV 62, 2
+  intakeMotor1.moveVelocity(600);
+  pros::delay(150); // delay intaking
+  Chassis.turnTo(60, -100, 4000, true, 127, true); // turning to face goal //60
+  //Chassis.waitUntilDone();
+  //Chassis.cancelAllMotions();
+  pros::delay(300); // delay intaking
+
+  flapjack1V.set_value(true); // either v wing code works
+  balance.set_value(false); // either v wing code works
+  intakeMotor1.moveVelocity(-600);
+  //pros::delay(500);
+
+  Chassis.moveToPose(63, -40, -180, 1500, {.forwards = true, .chasePower = 200, .minSpeed = 127}, true);  //score 3 //67
+  Chassis.moveToPose(63, -15, -180, 4000, {.forwards = false, .chasePower = 200}, true);  //move back
+  pros::delay(300); // delay intaking
+  flapjack1V.set_value(false); // either v wing code works
+  intakeMotor1.moveVelocity(0);
+
+  pros::delay(500);
   Chassis.setBrakeMode(MOTOR_BRAKE_COAST); // for testing purposes only
+
+  //Chassis.moveToPose(-30, 7.5, 90, 4000, {.forwards = false, .chasePower = 200}, true);  //move back
+
  
 
   /* REFERENCE FUNCTIONS
