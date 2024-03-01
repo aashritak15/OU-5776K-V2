@@ -485,7 +485,7 @@ void lemlib::Chassis::swingLeft(float theta, int timeout, TurnToParams params, b
 
         // move the drivetrain
         drivetrain.leftMotors->move(0);  // <------ SWING SWING SWING 
-        drivetrain.rightMotors->move(motorPower);
+        drivetrain.rightMotors->move(-motorPower);
 
         pros::delay(10);
     }
