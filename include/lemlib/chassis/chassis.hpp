@@ -268,9 +268,8 @@ class Chassis {
          *
          */
 
-      
-        void swingRight(float theta, int timeout, TurnToParams params, bool async = true);
-        void swingLeft(float theta, int timeout, TurnToParams params, bool async = true);
+      void swingLeft(float theta, int timeout, bool async = true);
+      void swingRight(float theta, int timeout, bool async = true);
 
         void turnToHeading(float theta, int timeout, bool async = true);
         
