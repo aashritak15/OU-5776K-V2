@@ -214,8 +214,6 @@ void disabled() {
 int side = -1;
 //int num = -1;
 void competition_initialize() {
-    
-
 // if (selector::auton == 1){side = 2;}
 // if (selector::auton == 2){side = 1;}
 // if (selector::auton == 3) {side = 4;}
@@ -494,7 +492,7 @@ Chassis.tank(0 , 0);
 Chassis.moveToPoint(-5, 68, 1000, false, 127);
 
 */ 
-/*
+
   
 //NEW FAR SIDE
    Chassis.setPose(0, 0, 0);
@@ -580,425 +578,84 @@ flapjack1.set_value(true);
 void skills() {
 
 //going to score two preloads 
-/*
- Chassis.setPose(0, 0, 45);
 
 
-              Chassis.moveToPose(-27, -19, 60, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
-              Chassis.waitUntil(70);
+ Chassis.setPose(0, 0, 39);
+ 
 
+ Chassis.moveToPoint(-8.6, -10.2, 1000, false, 127);
 
-              Chassis.tank(-80, -80);
-              pros::delay(400);
-              Chassis.tank(0, 0);
+ Chassis.turnToHeading(-27, 2000, true);
 
-              //going to matchload zone 
-              //Chassis.moveToPoint(-13, -6, 2000, true, 80);
-              Chassis.moveToPoint(-14, -4, 2000, true, 80);
-              //Chassis.moveToPoint(-13, -6.5, 2000, true, 80);
-              Chassis.waitUntilDone();
-
-              
-             
-             
-      
-              // FATTTTTTTTTTSSSSSSS CHANGE ANGLE HERE
-
-
-              // ***********************************************************
-
-               
-              Chassis.turnTo(-21.3, 8.8, 1000, true);
-
-            balance.set_value(true);
-            pros::delay(500);
-            flapjack2V.set_value(true);
-            pros::delay(500);
-            balance.set_value(false);
-          
-              Chassis.moveToPoint(-12.96, -9, 2000, false, 40);
-              Chassis.waitUntilDone();
-
-              lemlib::Pose startingPose = Chassis.getPose();
-
-              flapjack2V.set_value(false);
-              //Chassis.moveToPoint(-21.4, -7.5, 2000, false, 40);
-
-              
-              flapjack2.set_value(true);
-
-            
-
-              cataMotor.moveVoltage(12000);
-
-              pros::delay(20000);
-
-              cataMotor.moveVoltage(0);
-
-              flapjack2.set_value(false);
-
-              pros::delay(200);
-
-              Chassis.setPose(startingPose);
-
-            pros::delay(50);
-
-             Chassis.moveToPoint(-14, -5.91, 2000, true, 40);
-
-
-              
-             Chassis.turnTo(-7, 5.13, 1000, false);
-
-             Chassis.moveToPoint(-7, 5.77, 400, false, 127);
-
-             Chassis.turnTo(-7, 9.9, 400, false);
-
-             //GOING UNDER ALLEY TO PUSH 
-
-              Chassis.moveToPoint(-7, 50, 2000, false, 127);
-
-               
-
-             Chassis.moveToPoint(-7, 70, 2000, false, 127);
-
-                flapjack2.set_value(true);
-
-             Chassis.moveToPose(-15, 91.8, -225, 3000, {.forwards = false}); //IF ON DRC FIELD IT IS GETTING STUCK ON THE MLZ ZONE MAKE X MORE NEGATIVE
-            
-            flapjack2.set_value(false);
-            Chassis.moveToPose(-40, 106, -250, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 100});
-
-         
-
-            Chassis.tank(-80, -80);
-              pros::delay(400);
-              Chassis.tank(0, 0);
-
-
-              Chassis.moveToPoint(-24, 103, 2000, true, 105);
-              Chassis.waitUntil(15);
-              Chassis.cancelAllMotions();
-
-              Chassis.tank(-127, -127);
-              pros::delay(900);
-              Chassis.tank(0, 0);
-
-              //Chassis.moveToPoint(-31, 104, 2000, true, 127);
-
-              flapjack2.set_value(false);
-
-      
-
-              Chassis.moveToPoint(-21.2, 93, 2000, true, 127);
-
-
-              Chassis.turnTo(-32, 77, 1000, false);
-              flapjack2.set_value(true);
-
-              Chassis.moveToPoint(-32, 77, 2000, false, 127);
-
-              Chassis.turnTo(-33, 70, 1000, false);
-
-              Chassis.moveToPoint(-32.7, 66.7, 2000, false, 127);
-
-              Chassis.turnTo(-46, 63, 1000, false);
-              Chassis.waitUntilDone();
-
-               Chassis.moveToPoint(-46, 63, 2000, false, 127);
-
-               Chassis.turnTo(-42, 59, 1000, true);
-
-               flapjack1.set_value(true);
-
-                Chassis.moveToPoint(-62, 90, 2000, false, 127);
-                Chassis.waitUntil(35);
-              Chassis.cancelAllMotions();
-
-                Chassis.tank(-100, -100);
-              pros::delay(500);
-              Chassis.tank(0, 0);
-
-
-              Chassis.moveToPoint(-48, 59, 3000, true, 127);
-
-              
-
-              flapjack1.set_value(false);
-              flapjack2.set_value(false);
-
-              Chassis.turnTo(-46, 63, 1000, true);
-
-              Chassis.moveToPoint(-85, 63, 2000, false, 127);
-
-              Chassis.turnTo(-79, 82, 1000, false);
-              flapjack1.set_value(true);
-              flapjack2.set_value(true);
-
-              Chassis.moveToPoint(-75, 82, 2000, false, 127);
-              Chassis.waitUntil(35);
-              Chassis.cancelAllMotions();
-
-              Chassis.tank(-100, -100);
-              pros::delay(500);
-              Chassis.tank(0, 0);
-
-              Chassis.moveToPoint(-85, 63, 2000, true, 127);
-
-               Chassis.turnTo(-79, 82, 1000, false);
-              flapjack1.set_value(true);
-              flapjack2.set_value(true);
-
-              Chassis.moveToPoint(-75, 82, 2000, false, 127);
-              Chassis.waitUntil(35);
-              Chassis.cancelAllMotions();
-
-              Chassis.tank(-100, -100);
-              pros::delay(500);
-              Chassis.tank(0, 0);
-
-
-              
-            */
-
-
-
-
-
-
-
-/*
-
-              flapjack1.set_value(true);
-              flapjack2.set_value(true);
-
-              Chassis.moveToPoint(-43, 65, 2000, false, 127);
-
-              flapjack1.set_value(false);
-
-              Chassis.turnTo(-44.92, 73.34, 1000, false);
-
-              flapjack2.set_value(true);
-
-              Chassis.moveToPoint(-55, 90, 2000, false, 127);
-
-              Chassis.waitUntil(45);
-
-              Chassis.cancelAllMotions();
-
-              Chassis.tank(-100, -100);
-              pros::delay(700);
-              Chassis.tank(0, 0);
-
-               
-
-*/
-              
-             
-             
-/*
-pros::delay(500);
-Chassis.moveToPoint(-10.26, -9, 2000, false, 40);
-
-
-
-flapjack2.set_value(false);
-
-// going to barrier to push over tribals over 
-
-
-Chassis.moveToPoint(-38, 19, 3000, true, 90);
-
-intakeMotor1.moveVelocity(-600); 
-
-Chassis.turnTo(-48, 19, 3000);
-Chassis.waitUntilDone();
-
-flapjack1V.set_value(true);
-
-flapjack2V.set_value(true);
-Chassis.moveToPoint(-83, 19, 3000, true);
-
-pros::delay(200);
-
-//Chassis.turnTo(-37, 23, 1000);
-
-balanceInit();
-
-Chassis.moveToPoint(-120, 19, 3000, true, 50);
-Chassis.waitUntilDone();
-
-flapjack1V.set_value(false);
-
-flapjack2V.set_value(false);
-
-Chassis.turnTo(-110, 2, 1000, false);
-
-Chassis.moveToPoint(-110, 2, 3000, false, 50);
-
-Chassis.turnTo(-136, -3, 1000, false);
-
-Chassis.moveToPoint(-136, -3, 3000, false, 50);
-
-Chassis.turnTo(-143, 12, 1000, false);
-*/
-
-/*
-flapjack1V.set_value(true);
-
-flapjack2V.set_value(true);
-
-intakeMotor1.moveVelocity(-600); 
-
-
-Chassis.moveToPoint(-80, 20, 3000, true, 127);
-
-Chassis.moveToPoint(-107, 20, 3000, true, 90);
-
-//going under alley 
-
-pros::delay(1000);
-
-flapjack1V.set_value(false);
-
-flapjack2V.set_value(false);
-balanceInit();
-
-Chassis.turnTo(-92, 2, 1000, false);
-
-Chassis.moveToPoint(-98, 14, 2000, false, 90);
-
-
-Chassis.turnTo(-110, -4, 1000, false);
-Chassis.moveToPoint(-130, -3, 2000, false, 90);
-
-Chassis.turnTo(-136, 20, 1000, false);
-Chassis.waitUntilDone();
-
-
-flapjack1.set_value(true);
+ Chassis.moveToPoint(-8.4, -16.2, 1000, false, 127);
+ Chassis.waitUntilDone();
+ Chassis.cancelAllMotions();
+  
 flapjack2.set_value(true);
 
-Chassis.moveToPoint(-136, 70, 2000, false, 90);
 
 
+cataMotor.moveVoltage(12000);
+Chassis.setBrakeMode(MOTOR_BRAKE_HOLD);
 
-flapjack1.set_value(false);
+pros::delay(20000);
 
-Chassis.moveToPose(-100, 113, 245, 5000,{.forwards = false, .minSpeed = 127});
+cataMotor.moveVoltage(0);
 
-Chassis.tank(-60, -60);
+pros::delay(50);
 
-pros::delay(400);
+Chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
 
-Chassis.tank(0, 0);
-
-
-Chassis.moveToPoint(-124, 94, 3000, true, 127);
-Chassis.turnTo(-91, 52, 3000, true);
-Chassis.moveToPoint(-91, 52, 3000, true,  127);
-Chassis.turnTo(-87, 65, 3000, false, 127);
-
-flapjack1.set_value(true);
-flapjack2.set_value(true);
-
-Chassis.moveToPoint(-85, 98, 3000, false, 127);
-
-Chassis.waitUntil(55);
-
-flapjack1.set_value(false);
+Chassis.moveToPoint(-8.6, -10.2, 1000, true, 127);
 flapjack2.set_value(false);
 
-Chassis.moveToPoint(-59, 61, 3000, true, 127);
+ Chassis.turnToHeading(45, 1000, true);
 
-Chassis.turnTo(-59, 100, 3000, false);
+ Chassis.moveToPose(-28, -23, 90, 1000,{.forwards = false, .chasePower = 200} );
+
+ Chassis.waitUntil(70);
+
+Chassis.moveToPoint(-40, -20, 650, false, 127);
 
 
+Chassis.moveToPose(-5, -1, 45, 1500, {.forwards = true, .chasePower = 200});
+
+Chassis.turnToHeading(180, 1000, true);
+
+
+Chassis.moveToPose(-2, 78, 180, 2000, {.forwards = false, .chasePower = 200});
+
+
+Chassis.moveToPose(-37, 104, 90, 1000, {.forwards = false, .chasePower = 200});
+
+Chassis.moveToPoint(-70, 104, 700, false, 90);
+
+Chassis.moveToPoint(-25, 104, 500, true, 127);
+
+Chassis.moveToPoint(-70, 104, 700, false, 90);
+
+Chassis.moveToPoint(-30, 104, 1000, true, 127);
+
+Chassis.turnToHeading(0, 1000, true);
+
+Chassis.moveToPoint(-39, 64, 1000, false, 127);
+
+flapjack2.set_value(true);
+
+Chassis.turnToHeading(90, 1000, true);
+
+Chassis.moveToPoint(-55, 64, 1000, false, 127);
+
+Chassis.moveToPose(-60, 67, 160,1000, {.forwards = false, .chasePower = 200, .minSpeed = 90} );
+
+Chassis.moveToPoint(-65, 95, 500, false, 127);
 flapjack1.set_value(true);
-flapjack2.set_value(true); 
 
-Chassis.moveToPoint(-59, 100, 3000, false, 127);
+//Chassis.turnToHeading(180, 500);
 
-*/
-
+//Chassis.moveToPoint( -3, 70, 2500, false, 127);
 
 
-/*
-  Chassis.setPose(0, 0, 45);
-
-balanceTrue();
-
-pros::delay(200);
-
-balanceInit();
-
-
-Chassis.moveToPose(-27, -19, 60, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
-  Chassis.waitUntil(70);
-
-Chassis.tank(-60, -60);
-pros::delay(350);
-Chassis.tank(0, 0);
-
-//Chassis.moveToPose(4, -11, -77, 2000, {.forwards = true, .minSpeed = 90});
-//Chassis.turnTo(-18, -4, 1000);
-Chassis.moveToPoint(-13, -6, 2000, true, 80);
-
-Chassis.turnTo(-17, -0, 1000);
-Chassis.moveToPoint(-11, -10, 2000, false, 80);
-
-cataMotor.moveVelocity(10000);
-
-pros::delay(5000);
-
-cataMotor.moveVelocity(0);
-
-
-
-//BARRIER PUSH BARRIER PUSH 
-
-
-Chassis.moveToPoint(20, -5, 3000, true, 90);
-
-Chassis.turnTo(20, -2, 1000);
-/*
-balanceTrue();
-pros::delay(100);
-flapjack1V.set_value(true);
-
-flapjack2V.set_value(true);
-
-Chassis.moveToPoint(-94, 23, 3000, true, 127);
-
-pros::delay(2000);
-
-flapjack1V.set_value(false);
-
-flapjack2V.set_value(false);
-balanceInit();
-
-Chassis.turnTo(-92, 2, 1000);
-
-Chassis.moveToPoint(-92, 2, 2000, true, 90);
-
-
-Chassis.turnTo(-110, -4, 1000);
-Chassis.moveToPoint(-110, -4, 2000, true, 90);
-
-Chassis.turnTo(-122, 20, 1000);
-Chassis.moveToPoint(-122, 20, 2000, true, 90);
-*/
-/*
-
-ALLEY PUSH ALLEY PUSH 
-
-Chassis.moveToPose(-5, 35, 185, 3000, {.forwards = false, .chasePower = 20});
-//Chassis.turnTo(-12, 82, 1000, false);
-
-Chassis.moveToPoint(-5, 80, 2000, false, 80);
-Chassis.turnTo(-13, 83, 1000, false);
-
-Chassis.moveToPose(-44, -96, 0, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
-*/
 
 }
  
@@ -1142,11 +799,12 @@ void farTB() {
 
 void autonomous() {
 
- //skills(); 
+
+ skills(); 
  //closeSide();
  //closeSideDisrupt();
  //farSide();
- farTB();
+ //farTB();
  //closeSideNEW();
 
 
