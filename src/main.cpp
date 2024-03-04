@@ -293,6 +293,8 @@ void closeSideDisrupt(){
 
   Chassis.setPose(0, 0, 12.1);
 
+  balance.set_value(true);
+
   
   Chassis.moveToPoint(12.7, 47.45, 2000, true, 127);
   intakeMotor1.moveVelocity(600);
@@ -306,6 +308,7 @@ flapjack1.set_value(false);
 
      flapjack2V.set_value(true);
 
+  balance.set_value(false);
    Chassis.moveToPoint(31, 47.5, 1000, true, 127);
    Chassis.waitUntilDone();
    Chassis.cancelAllMotions();
@@ -319,8 +322,8 @@ flapjack1.set_value(false);
 
   Chassis.moveToPose(-25.4, 25.8, 180, 3000, {.forwards = false, .chasePower = 200} );
 
-Chassis.waitUntilDone();
-Chassis.cancelAllMotions();
+Chassis.waitUntil(70);
+
 
 Chassis.tank(-100, -100);
 pros::delay(400);
@@ -598,7 +601,7 @@ flapjack2.set_value(true);
 cataMotor.moveVoltage(12000);
 Chassis.setBrakeMode(MOTOR_BRAKE_HOLD);
 
-pros::delay(20000);
+pros::delay(21000);
 
 cataMotor.moveVoltage(0);
 
@@ -618,24 +621,138 @@ flapjack2.set_value(false);
 Chassis.moveToPoint(-40, -20, 650, false, 127);
 
 
-Chassis.moveToPose(-5, -1, 45, 1500, {.forwards = true, .chasePower = 200});
+Chassis.moveToPose(-3, -1, 45, 1500, {.forwards = true, .chasePower = 200});
+
+Chassis.turnToHeading(-90, 1000, true);
 
 Chassis.turnToHeading(180, 1000, true);
 
-
-Chassis.moveToPose(-2, 78, 180, 2000, {.forwards = false, .chasePower = 200});
+Chassis.moveToPose(0, 78, 180, 2000, {.forwards = false, .chasePower = 200});
 
 
 Chassis.moveToPose(-37, 104, 90, 1000, {.forwards = false, .chasePower = 200});
 
 Chassis.moveToPoint(-70, 104, 700, false, 90);
 
-Chassis.moveToPoint(-25, 104, 500, true, 127);
+Chassis.moveToPoint(-24, 104, 500, true, 127);
 
 Chassis.moveToPoint(-70, 104, 700, false, 90);
 
-Chassis.moveToPoint(-30, 104, 1000, true, 127);
+Chassis.moveToPose(-15, 91, 135, 1000, {.forwards = true, .chasePower = 200});
 
+
+Chassis.turnToHeading(45, 1000, true);
+
+Chassis.moveToPoint(-25, 89, 500, false, 127);
+flapjack2.set_value(true);
+
+Chassis.moveToPose(-37, 86, 90, 1000, {.forwards = false, .chasePower = 200});
+
+
+Chassis.moveToPoint(-37, 86, 500, true, 127);
+Chassis.waitUntilDone();
+Chassis.cancelAllMotions();
+flapjack2.set_value(false);
+
+
+Chassis.turnToHeading(0, 700, true);
+Chassis.waitUntilDone();
+Chassis.cancelAllMotions();
+
+
+Chassis.moveToPoint(-37, 62, 1000, false, 127);
+
+Chassis.moveToPose(-56, 68, -40, 1000, {.forwards = false, .chasePower = 200});
+Chassis.waitUntilDone();
+Chassis.cancelAllMotions();
+flapjack1.set_value(true);
+flapjack2.set_value(true);
+
+Chassis.moveToPoint(-60, 120, 1200, false, 100); // PUSH #1
+Chassis.waitUntil(20);
+flapjack1.set_value(false);
+flapjack2.set_value(false);
+
+Chassis.moveToPose(-56, 62, 180, 2000, {.forwards = true, .chasePower = 200});
+
+
+Chassis.turnToHeading(90, 600, true);
+Chassis.waitUntilDone();
+Chassis.cancelAllMotions();
+flapjack2.set_value(true);
+
+Chassis.moveToPoint(-90, 62, 1000, false, 60);
+
+Chassis.turnToHeading(208, 700, true);
+
+Chassis.moveToPoint(-72, 120, 1200, false, 100); // PUSH #2
+flapjack1.set_value(true);
+flapjack2.set_value(true);
+
+pros::delay(400);
+flapjack2.set_value(false);
+
+Chassis.waitUntil(20);
+flapjack1.set_value(false);
+
+
+Chassis.moveToPoint(-90, 64, 1000, true, 127);
+
+
+Chassis.turnToHeading(270, 1000, true);
+
+Chassis.moveToPoint(-52, 64, 1000, false ,127);
+
+Chassis.turnToHeading(160, 1000, true);
+
+Chassis.moveToPoint(-52, 140, 1000, false, 100); // PUSH #3
+flapjack1.set_value(true);
+flapjack2.set_value(true);
+
+Chassis.moveToPoint(-52, 67, 1000, true, 127);
+
+Chassis.turnToHeading(90, 1000, true);
+
+Chassis.moveToPoint(-92, 67, 1000, false, 127);
+
+Chassis.moveToPose(-113, 94, 152, 2000, {.forwards = false, .chasePower = 200});
+
+
+
+Chassis.turnToHeading(225, 1000, true);
+Chassis.waitUntilDone();
+Chassis.cancelAllMotions();
+flapjack1.set_value(false);
+flapjack2.set_value(false);
+
+Chassis.moveToPose(-125, 73, 180, 2000, {.forwards = true, .chasePower = 200});
+
+Chassis.moveToPose(-94, 109, 270, 2000, {.forwards = false, .chasePower = 200} );
+
+Chassis.waitUntil(60);
+
+Chassis.moveToPoint(-30, 109, 1000, false, 90);
+
+Chassis.moveToPoint(-97, 109, 500, false, 127);
+
+Chassis.moveToPoint(-30, 109, 1000, false, 127);
+
+Chassis.moveToPoint(-97, 109, 500, false, 127);
+
+
+/*
+
+Chassis.moveToPoint(-42, 66, 1000, true, 127);
+
+Chassis.moveToPose(-62, 72, 180 , 1000, {.forwards = false, .chasePower = 200});
+
+flapjack1.set_value(true);
+
+
+Chassis.moveToPoint(-56, 120, 1000, false, 127);
+*/
+
+/*
 Chassis.turnToHeading(0, 1000, true);
 
 Chassis.moveToPoint(-39, 64, 1000, false, 127);
@@ -654,7 +771,7 @@ flapjack1.set_value(true);
 //Chassis.turnToHeading(180, 500);
 
 //Chassis.moveToPoint( -3, 70, 2500, false, 127);
-
+*/
 
 
 }
