@@ -12,6 +12,7 @@ using namespace okapi;
 
 pros::ADIDigitalOut flapjack1 = pros::ADIDigitalOut(flapjackPort1);
 pros::ADIDigitalOut flapjack2 = pros::ADIDigitalOut(flapjackPort2);
+pros::ADIDigitalOut flapjack2CAT = pros::ADIDigitalOut(flapjackPort2);
 
 pros::ADIDigitalOut flapjack1V = pros::ADIDigitalOut(flapjackPort1V);
 pros::ADIDigitalOut flapjack2V = pros::ADIDigitalOut(flapjackPort2V);

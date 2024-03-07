@@ -13,6 +13,8 @@ extern pros::ADIDigitalOut intakeFlipout;
 extern pros::ADIDigitalOut balance;
 extern pros::ADIDigitalOut awpFlipout;
 
+extern pros::ADIDigitalOut flapjack2CAT;
+
 extern pros::ADIDigitalOut lMech;
 
 extern pros::ADIDigitalOut blocker;

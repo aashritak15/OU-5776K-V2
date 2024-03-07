@@ -3,6 +3,7 @@
 #include "globals.hpp"
 #include "subsystems/odo.hpp"
 #include "subsystems/drive.hpp"
+#include "subsystems/pistons.hpp"
 
 
 
@@ -79,6 +80,7 @@ void updateCata() {
       break;
     case CataState::HI:
       cataMotor.moveVoltage(12000);
+      //flapjack2.set_value(true);
       break;
    /* case CataState::MED:
       cataMotor.moveVoltage(9000);
