@@ -258,6 +258,9 @@ void updateBalance(){
     }
 }
 
+int horizState = 0;
+
+int vertState = 0;
 
 void updateFlapjack(){
 
@@ -266,13 +269,13 @@ void updateFlapjack(){
             //lMech.set_value(true);
             flapjack1.set_value(true);
             state++;
-            pros::delay(300);
+            pros::delay(200);
         }
         else{
             //lMech.set_value(false);
             flapjack1.set_value(false);
             state--;
-            pros::delay(300);
+            pros::delay(200);
 
         }
   }
@@ -281,30 +284,85 @@ void updateFlapjack(){
             //lMech.set_value(true);
             flapjack2.set_value(true);
             state++;
-            pros::delay(300);
+            pros::delay(200);
         }
         else{
             //lMech.set_value(false);
             flapjack2.set_value(false);
             state--;
-            pros::delay(300);
+            pros::delay(200);
 
         }
     }
+    
+    // Horizontal wing toggle
+    if(controller.getDigital(ControllerDigital::R2) == 1) {
+        if(state == 0){
+            //lMech.set_value(true);
+            flapjack1.set_value(true);
+            flapjack2.set_value(true);
+            state++;
+            pros::delay(200);
+        }
+        else if (state == 2){
+            flapjack1.set_value(false);
+            flapjack2.set_value(false);
+            state++;
+            pros::delay(200);
 
+        }
+    }
+    else if(controller.getDigital(ControllerDigital::R2) == 0) {
+         if(state == 1){
+            //lMech.set_value(true);
+            state++;
+        }
+        else if (state == 3){
+            state = 0;
+        }
+    }
+
+    // Vertical wing toggle
+    if(controller.getDigital(ControllerDigital::R2) == 1) {
+        if(state == 0){
+            //lMech.set_value(true);
+            flapjack1.set_value(true);
+            flapjack2.set_value(true);
+            state++;
+            pros::delay(200);
+        }
+        else if (state == 2){
+            flapjack1.set_value(false);
+            flapjack2.set_value(false);
+            state++;
+            pros::delay(200);
+
+        }
+    }
+    else if(controller.getDigital(ControllerDigital::R2) == 0) {
+         if(state == 1){
+            //lMech.set_value(true);
+            vertState++;
+        }
+        else if (vertState == 3){
+            vertState = 0;
+        }
+    }
+    
+/*
     if(controller.getDigital(ControllerDigital::R2) == 1) {
          if(state == 0){
             //lMech.set_value(true);
             flapjack1.set_value(true);
             flapjack2.set_value(true);
             state++;
-            pros::delay(300);
+            pros::delay(200);
         }
         else{
             flapjack1.set_value(false);
             flapjack2.set_value(false);
             state--;
-            pros::delay(300);
+            pros::delay(200);
 
         }
     }
@@ -315,17 +373,18 @@ void updateFlapjack(){
             flapjack1V.set_value(true);
             flapjack2V.set_value(true);
             state++;
-            pros::delay(300);
+            pros::delay(200);
         }
         else{
             flapjack1V.set_value(false);
             flapjack2V.set_value(false);
             state--;
-            pros::delay(300);
+            pros::delay(200);
 
         }
     }
-
+    
+*/
 
 
     

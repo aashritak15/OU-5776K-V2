@@ -1469,7 +1469,8 @@ Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
                 Chassis.turnToHeading(-27, 500, true);
 
                 Chassis.moveToPoint(-8.4, -16.2, 1000, false, 127);
-                
+                Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
+
           }
             
 
