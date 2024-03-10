@@ -1390,18 +1390,33 @@ Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
        
 
 
-          if (controller.getDigital(ControllerDigital::left) == 1 && ! hasRunMacro) {
-               Chassis.setPose(0, 0, 39);
- 
-                pros::delay(200);
+          if (controller.getDigital(ControllerDigital::X) == 1 && ! hasRunMacro) {
+                Chassis.setPose(0, 0, 39);
+                balance.set_value(true);
+                //Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
+
+
+                pros::delay(100);
                 Chassis.moveToPoint(-8.6, -10.2, 1000, false, 127);
 
                 Chassis.turnToHeading(-27, 500, true);
+                pros::delay(100);
+
+                flapjack1V.set_value(true);
+
 
                 Chassis.moveToPoint(-8.4, -16.2, 1000, false, 127);
+                balance.set_value(false);
+                pros::delay(200);
+                flapjack1V.set_value(false);
                 Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
+                //cataMotor.moveVoltage(12000);
+
 
                 hasRunMacro = true;
+                //pros::delay(200);
+                //pros::delay(200);
+                
           }
             
 

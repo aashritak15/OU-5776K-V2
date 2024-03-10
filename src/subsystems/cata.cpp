@@ -47,9 +47,11 @@ void updateCata() {
     if (currentCataState == CataState::HI) {
       //previousIntakeState = currentIntakeState;
       currentCataState = CataState::STOPPED;
+      flapjack2.set_value(false);
     } else {
       //previousIntakeState = currentIntakeState;
       currentCataState = CataState::HI;
+      flapjack2.set_value(true);
     }
   } 
 
@@ -68,9 +70,11 @@ void updateCata() {
     if (currentCataState == CataState::LO) {
       //previousIntakeState = currentIntakeState;
       currentCataState = CataState::STOPPED;
+      flapjack2.set_value(false);
     } else {
       //previousIntakeState = currentIntakeState;
       currentCataState = CataState::LO;
+      flapjack2.set_value(true);
     }
   } 
 
@@ -80,7 +84,6 @@ void updateCata() {
       break;
     case CataState::HI:
       cataMotor.moveVoltage(12000);
-      //flapjack2.set_value(true);
       break;
    /* case CataState::MED:
       cataMotor.moveVoltage(9000);
