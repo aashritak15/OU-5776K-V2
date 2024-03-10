@@ -1392,14 +1392,15 @@ Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
 
           if (controller.getDigital(ControllerDigital::X) == 1 && ! hasRunMacro) {
                 Chassis.setPose(0, 0, 39);
+                pros::delay(200);
+
                 balance.set_value(true);
                 //Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
 
 
-                pros::delay(100);
                 Chassis.moveToPoint(-8.6, -10.2, 1000, false, 127);
 
-                Chassis.turnToHeading(-27, 500, true);
+                Chassis.turnToHeading(-26, 600, true); // -27 deg, 500 kill timer
                 pros::delay(100);
 
                 flapjack1V.set_value(true);

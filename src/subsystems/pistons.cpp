@@ -108,50 +108,50 @@ void setCataState(CataState CState) {
 */
 
 int mechState = 0;
-
+int pistonDelay = 101;
 void mech(){
     // open
     if (mechState == 10) {
         balance.set_value(true);
-        pros::delay(200);
+        pros::delay(pistonDelay);
         mechState++;    
     }
     else if (mechState == 11) {
         flapjack1V.set_value(true);
-        pros::delay(200);
+        pros::delay(pistonDelay);
         mechState++;    
     }
     else if (mechState == 12) {
         balance.set_value(false);
-        pros::delay(200);
+        pros::delay(pistonDelay);
         mechState++;    
     }
     else if (mechState == 13) {
         flapjack1V.set_value(false);
-        mechState = 1;
+        mechState = 3;
     }
     // close
     else if (mechState == 20) {
         flapjack1V.set_value(true);
-        pros::delay(200);
+        pros::delay(pistonDelay);
         mechState++;    
     }
     else if (mechState == 21) {
         balance.set_value(true);
-        pros::delay(200);
+        pros::delay(pistonDelay);
         mechState++;    
     }
     else if (mechState == 22) {
         flapjack1V.set_value(false);
-        pros::delay(200);
-        mechState = 3;    
+        pros::delay(pistonDelay);
+        mechState = 1;    
     }
     if(controller.getDigital(ControllerDigital::B) == 1) {
         if(mechState == 0){
-            mechState = 10;
+            mechState = 20;
         }
         else if (mechState == 2){
-            mechState = 20;
+            mechState = 10;
         }
     }
     else if(controller.getDigital(ControllerDigital::B) == 0) {
