@@ -553,7 +553,7 @@ Chassis.turnToHeading(140, 500, true);
 ///Chassis.moveToPose(-113, 104, 152, 2000, {.forwards = false, .chasePower = 200}); // pushes into the corner (last corner)
 
 
-Chassis.moveToPoint(-108, 101, 1000, false, 127);
+Chassis.moveToPoint(-115, 110, 1000, false, 127);
 
 
 flapjack2.set_value(true);
@@ -563,7 +563,7 @@ Chassis.cancelAllMotions();
 
 
 
-Chassis.turnToHeading(-118, 1000, {.maxSpeed = 60},  true);
+//Chassis.turnToHeading(-118, 1000, {.maxSpeed = 60},  true);
 Chassis.waitUntilDone();
 Chassis.cancelAllMotions();
 flapjack2.set_value(false);
@@ -572,7 +572,11 @@ flapjack2.set_value(false);
 // Chassis.moveToPose(-116, 108, -135, 2000, {.forwards = false, .chasePower = 200});
 // flapjack2.set_value(true);
 
+//Chassis.turnToHeading(135, 1000, {.maxSpeed = 60},  true);
+//Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
 
+
+Chassis.moveToPose(-109, 115, -135, 1500, {.forwards = false, .chasePower = 200} ); //waypoint
 Chassis.moveToPose(-94, 120, 270, 1500, {.forwards = false, .chasePower = 200} );
 
 
