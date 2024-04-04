@@ -6,24 +6,11 @@
 
 using namespace okapi;
 
-/*
-Motor intakeMotor1(intakePort1, true, AbstractMotor::gearset::blue,
-           AbstractMotor::encoderUnits::degrees);
-Motor intakeMotor2(intakePort2, false, AbstractMotor::gearset::blue,
-           AbstractMotor::encoderUnits::degrees);
-
-
-
-ControllerButton intakeButton = ControllerButton(ControllerDigital::L1);
-ControllerButton outakeButton = ControllerButton(ControllerDigital::L2);
-
-*/
-
-//bool toggle;
 
 
 void intakeInnit(){
     intakeMotor1.setBrakeMode(AbstractMotor::brakeMode::coast);
+    intakeMotor2.setBrakeMode(AbstractMotor::brakeMode::coast);
     //intakeMotor2.setBrakeMode(AbstractMotor::brakeMode::coast);
    //toggle = false; 
 }
@@ -32,6 +19,11 @@ void intakeInnit(){
 
 Motor intakeMotor1(intakePort1, true, AbstractMotor::gearset::blue,
                AbstractMotor::encoderUnits::degrees);
+
+
+Motor intakeMotor2(intakePort2, false, AbstractMotor::gearset::blue,
+               AbstractMotor::encoderUnits::degrees);
+          
 
 /*Motor intakeMotor2(intakePort2, false, AbstractMotor::gearset::blue,
                AbstractMotor::encoderUnits::degrees);*/
@@ -47,7 +39,7 @@ ControllerButton outakeButton = ControllerButton(ControllerDigital::L2);
 
 void intakeInit() { 
   intakeMotor1.setBrakeMode(AbstractMotor::brakeMode::hold); 
-  //intakeMotor2.setBrakeMode(AbstractMotor::brakeMode::hold); 
+  intakeMotor2.setBrakeMode(AbstractMotor::brakeMode::hold); 
   }
 
 /*
@@ -111,14 +103,15 @@ void updateIntake() {
     case IntakeState::STOPPED:
       //gradualStop();
       intakeMotor1.moveVoltage(0);
+       intakeMotor2.moveVoltage(0);
       break;
     case IntakeState::INTAKING:
       intakeMotor1.moveVoltage(12000);
-      //intakeMotor2.moveVoltage(12000);
+      intakeMotor2.moveVoltage(12000);
       break;
     case IntakeState::OUTTAKING:
       intakeMotor1.moveVoltage(-12000);
-      //intakeMotor2.moveVoltage(-12000);
+      intakeMotor2.moveVoltage(-12000);
       break;
   //case IntakeState::HALF:
     

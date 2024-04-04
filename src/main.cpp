@@ -20,13 +20,13 @@
 // drive motors
 
 
-pros::Motor lF(-7, pros::E_MOTOR_GEARSET_06); 
-pros::Motor lM(9, pros::E_MOTOR_GEARSET_06); 
-pros::Motor lB(-11, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lF(2, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lM(3, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lB(4, pros::E_MOTOR_GEARSET_06); 
 
-pros::Motor rF(19, pros::E_MOTOR_GEARSET_06); 
-pros::Motor rM(-20, pros::E_MOTOR_GEARSET_06); 
-pros::Motor rB(12, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rF(-12, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rM(-13, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rB(-14, pros::E_MOTOR_GEARSET_06); 
 
 
 
@@ -178,6 +178,7 @@ void initialize() {
     //imuInnit();
     intakeInit();
     cataInit();
+    hangInit();
     //flipoutMechInnit();
     //resetEncoders();
     //pistonsInnit();
@@ -255,7 +256,7 @@ void closeSideDisrupt(){
   
   Chassis.moveToPoint(12.7, 47.45, 2000, true, 127);
   intakeMotor1.moveVelocity(600);
-flapjack1.set_value(false);
+//flapjack1.set_value(false);
   pros::delay(100);
 
   Chassis.moveToPoint(13.1, 45.8, 1000, false, 127);
@@ -292,13 +293,13 @@ Chassis.moveToPoint(-25.4, 40, 600, false, 127 );
 
 
 Chassis.moveToPose(-14, 5.7 , 135, 3000, {.forwards = true, .chasePower = 200});
-flapjack2.set_value(true);
+//flapjack2.set_value(true);
 
 Chassis.turnToHeading(45, 500, true);
 
 Chassis.turnToHeading(180, 500, true);
 
-flapjack2.set_value(false);
+//flapjack2.set_value(false);
 
 
 Chassis.moveToPose(34, 1, 270, 2200, {.forwards = false, .chasePower = 200, .minSpeed = 100});
@@ -312,9 +313,9 @@ Chassis.moveToPose(-13.5, 11.1, 314, 2000, {.forwards = true, .chasePower = 200}
 
 pros::delay(200);
 
-flapjack1.set_value(true);
+//flapjack1.set_value(true);
 
-flapjack2.set_value(true);
+//flapjack2.set_value(true);
 
 }
 
@@ -347,13 +348,13 @@ Chassis.moveToPoint(-35, -19, 600, false, 127);
 
 Chassis.moveToPose(-7.5, -4, 45, 2000, {.forwards = true, .chasePower = 20});
   Chassis.waitUntilDone();
-  flapjack2.set_value(true);
+  //flapjack2.set_value(true);
 pros::delay(700);
 
   Chassis.turnTo(-11, -4, 2000);
 
 pros::delay(680);
-  flapjack2.set_value(false);
+  //flapjack2.set_value(false);
 
   intakeMotor1.moveVelocity(-600);
 
@@ -390,7 +391,7 @@ Chassis.setPose(0, 0, 39);
  lemlib::Pose startingPose = Chassis.getPose();
 
   
-flapjack2.set_value(true);
+//flapjack2.set_value(true);
 
 cataMotor.moveVoltage(12000);
 Chassis.setBrakeMode(MOTOR_BRAKE_HOLD);
@@ -406,7 +407,7 @@ pros::delay(50);
 Chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
 
 Chassis.moveToPoint(-8.6, -10.2, 1000, true, 127);
-flapjack2.set_value(false);
+//flapjack2.set_value(false);
 
  Chassis.turnToHeading(45, 1000, true);
 
@@ -427,13 +428,13 @@ Chassis.moveToPose(-3, 71, 180, 2000, {.forwards = false, .chasePower = 200}); /
 
 
 Chassis.moveToPose(-59, 104, 90, 800, {.forwards = false, .chasePower = 200}); 
-flapjack2.set_value(true);
+//flapjack2.set_value(true);
 pros::delay(100);
 
 Chassis.moveToPoint(-50, 104, 1100, false, 95); //first push from side 
 Chassis.waitUntilDone();
 Chassis.cancelAllMotions();
- flapjack2.set_value(false);
+ //flapjack2.set_value(false);
  Chassis.moveToPose(-15, 91, 135, 1000, {.forwards = true, .chasePower = 200});
 // going under alley 
 //Chassis.moveToPoint(-27, 104, 1200, true, 100); //first push from side
@@ -448,7 +449,7 @@ Chassis.moveToPose(-17, 100, 135, 1000, {.forwards = true, .chasePower = 200}); 
 Chassis.turnToHeading(45, 1000, {.minSpeed = 90}, true);
 
 //Chassis.moveToPoint(-25, 82, 500, false, 127);
-flapjack2.set_value(true);
+//flapjack2.set_value(true);
 
 Chassis.moveToPose(-42, 82, 90, 1000, {.forwards = false, .chasePower = 200}); //gets in position to push the tb (w left flap open
 
@@ -456,7 +457,7 @@ Chassis.moveToPose(-42, 82, 90, 1000, {.forwards = false, .chasePower = 200}); /
 Chassis.moveToPoint(-48, 82, 900, false, 127 ); 
 Chassis.waitUntilDone();
 Chassis.cancelAllMotions();
-flapjack2.set_value(false);
+//flapjack2.set_value(false);
 
 
 Chassis.moveToPoint(-37, 82, 500, true, 127);
@@ -469,7 +470,7 @@ Chassis.cancelAllMotions();
 
 
 Chassis.moveToPoint(-37, 67, 1000, false, 127);
-flapjack2.set_value(true);
+//flapjack2.set_value(true);
 
 Chassis.turnToHeading(65, 600, true);
 
@@ -479,14 +480,14 @@ Chassis.turnToHeading(135, 600, true);
 Chassis.waitUntilDone();
 Chassis.cancelAllMotions();
 
-flapjack2.set_value(true);
+//flapjack2.set_value(true);
 
 
 Chassis.moveToPoint(-72, 140, 1500, false, 90); // PUSH #1
 Chassis.waitUntilDone();
 Chassis.cancelAllMotions();
-flapjack1.set_value(false);
-flapjack2.set_value(false);
+//flapjack1.set_value(false);
+//flapjack2.set_value(false);
 
 
 
@@ -499,7 +500,7 @@ Chassis.moveToPose(-50, 66, 90, 1000, {.forwards = false, .chasePower = 200}, tr
 
 pros::delay(350);
 
-flapjack2.set_value(true);
+//flapjack2.set_value(true);
 
 
 
@@ -509,19 +510,19 @@ Chassis.moveToPoint(-108, 66, 1700, false, 60); //moving along middle barrier fo
 Chassis.turnToHeading(195, 600,  {.maxSpeed = 60}, true); //angle for second push 
 Chassis.waitUntilDone();
 Chassis.cancelAllMotions();
-flapjack1.set_value(true);
-flapjack2.set_value(true);
+//flapjack1.set_value(true);
+//flapjack2.set_value(true);
 
 
 Chassis.moveToPoint(-69.5, 127, 1500, false, 100); // PUSH #2
 
 pros::delay(1100);
-flapjack2.set_value(false);
+//flapjack2.set_value(false);
 
 Chassis.waitUntilDone();
 Chassis.cancelAllMotions();
 pros::delay(200);
-flapjack1.set_value(false);
+//flapjack1.set_value(false);
 
 
 Chassis.moveToPoint(-90, 73, 700, true, 127); //moves back to middle barrier 
@@ -534,20 +535,20 @@ Chassis.moveToPoint(-59, 72, 1000, false ,127);
 Chassis.turnToHeading(180, 500, true); //angle for third push
 
 Chassis.moveToPoint(-59, 140, 1000, false, 100); // PUSH #3
-flapjack1.set_value(true);
-flapjack2.set_value(true);
+//flapjack1.set_value(true);
+//flapjack2.set_value(true);
 Chassis.waitUntilDone();
 Chassis.cancelAllMotions();
-flapjack1.set_value(false);
-flapjack2.set_value(false);
+//flapjack1.set_value(false);
+//flapjack2.set_value(false);
 
 Chassis.moveToPoint(-52, 75, 1000, true, 127); 
 
 Chassis.turnToHeading(90, 1000, true);
 Chassis.waitUntilDone();
 Chassis.cancelAllMotions();
-flapjack1.set_value(true);
-flapjack2.set_value(true);
+//flapjack1.set_value(true);
+//flapjack2.set_value(true);
 
 Chassis.moveToPoint(-85, 73, 1000, false, 127);
 
@@ -561,10 +562,10 @@ Chassis.turnToHeading(140, 500, true);
 Chassis.moveToPoint(-115, 110, 1000, false, 127);
 
 
-flapjack2.set_value(true);
+//flapjack2.set_value(true);
 Chassis.waitUntilDone();
 Chassis.cancelAllMotions();
-flapjack2.set_value(false);
+//flapjack2.set_value(false);
 
 
 
@@ -646,7 +647,7 @@ void farTB() {
   //Chassis.moveToPose(15, -48, -45, 1000, {.forwards = false, .chasePower=200}, true); //13.5 -46   // ADD BACK IF NEED 2 SEPARATE MOVEMENTS TO REMOVE MLZ TB
   Chassis.moveToPose(16, -51, -45, 1000, {.forwards = false, .chasePower=200}, true); //goes closer to perimeter 15 -47 // consolidates 2 movements for removing mlz tb
   pros::delay(100); // not an actual delay; prevents wing opening right after the moveToPose function starts
-  flapjack1.set_value(true);
+  //flapjack1.set_value(true);
   //intakeMotor1.moveVelocity(0); //stop intake
   
   // move towards side of goal
@@ -659,7 +660,7 @@ void farTB() {
   // scores first 2 tbs (preload + mlz)
   //Chassis.moveToPose(40, -52, -90, 700, {.forwards = false, .chasePower=200, .minSpeed=127}, true); //scores 2 tbs into goal ADD BACK IF MOVE TO POINT DOESNT WORK
   Chassis.moveToPoint(40,-52, 600, false, 127, true); //scores 2 tbs into goal
-  flapjack1.set_value(false);
+  //flapjack1.set_value(false);
 
   // scores alley tb
   Chassis.moveToPoint(26,-52, 700, true, 127, true); //move  away from goal 30x  27.5 -52
@@ -795,7 +796,7 @@ void farSide() {
   //Chassis.moveToPose(15, -48, -45, 1000, {.forwards = false, .chasePower=200}, true); //13.5 -46   // ADD BACK IF NEED 2 SEPARATE MOVEMENTS TO REMOVE MLZ TB
   Chassis.moveToPose(16, -51, -45, 1000, {.forwards = false, .chasePower=200}, true); //goes closer to perimeter 15 -47 // consolidates 2 movements for removing mlz tb
   pros::delay(100); // not an actual delay; prevents wing opening right after the moveToPose function starts
-  flapjack1.set_value(true);
+  //flapjack1.set_value(true);
   //intakeMotor1.moveVelocity(0); //stop intake
   
   // move towards side of goal
@@ -808,7 +809,7 @@ void farSide() {
   // scores first 2 tbs (preload + mlz)
   //Chassis.moveToPose(40, -52, -90, 700, {.forwards = false, .chasePower=200, .minSpeed=127}, true); //scores 2 tbs into goal ADD BACK IF MOVE TO POINT DOESNT WORK
   Chassis.moveToPoint(40,-52, 600, false, 127, true); //scores 2 tbs into goal
-  flapjack1.set_value(false);
+  //flapjack1.set_value(false);
 
   // scores alley tb
   Chassis.moveToPoint(26,-52, 700, true, 127, true); //move  away from goal 30x  27.5 -52
@@ -912,19 +913,10 @@ void opcontrol() {
 Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
     
     while (true) {
-        int rightY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-        int leftY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        int leftJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y); //vert left joystick
+          int rightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X); //horiz right joystick
 
-        switch (reverseDrive) {
-          case 1:
-            Chassis.tank(-leftY, -rightY, 2); 
-            
-            break;
-          case 2:
-            Chassis.tank(leftY, rightY, 2);
-            break;  
-        }
-       
+          Chassis.arcade(-leftJoy, -1.05*rightJoy, 2);
 
 
           if (controller.getDigital(ControllerDigital::X) == 1 && ! hasRunMacro) {
@@ -969,6 +961,7 @@ Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
             //updateDriverSkills();
            // updatelMech();
             updateBalance();
+            updateHang();
            // updateBlocker();
             //DarshyMech();
            // PtoMech()

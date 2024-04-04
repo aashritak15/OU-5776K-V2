@@ -33,8 +33,8 @@ const std::uint8_t imuPort1 = 14; //imu port #1
 const std::uint8_t imuPort2 = 13; //imu port#2
 
 //const std::uint8_t pistonPort1 = 8;
-const std::uint8_t flapjackPort1 = 'A';
-const std::uint8_t flapjackPort2 = 'B';
+const std::uint8_t flapjackPort1 = 'B';
+
 const std::uint8_t flapjackPort1V = 'F';
 const std::uint8_t flapjackPort2V = 'F';
 
@@ -47,9 +47,13 @@ const std::uint8_t blockerPort1 = 'E';
 const std::uint8_t balancePort = 'D';
 
 
-const std::uint8_t intakePort1 = 1;
+const std::uint8_t intakePort1 = 20;
+const std::uint8_t intakePort2 = 10;
+
 //const std::uint8_t autonFlipoutPort = 'A';
 
 const std::uint8_t cataMotorPort = 2;
 
 //imu is 13
+
+const std::uint8_t hangPort1 = 'A';

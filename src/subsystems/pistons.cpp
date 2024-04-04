@@ -10,9 +10,9 @@
 using namespace okapi;
 
 
-pros::ADIDigitalOut flapjack1 = pros::ADIDigitalOut(flapjackPort1);
-pros::ADIDigitalOut flapjack2 = pros::ADIDigitalOut(flapjackPort2);
-pros::ADIDigitalOut flapjack2CAT = pros::ADIDigitalOut(flapjackPort2);
+pros::ADIDigitalOut flapjackBack = pros::ADIDigitalOut(flapjackPort1);
+
+
 
 pros::ADIDigitalOut flapjack1V = pros::ADIDigitalOut(flapjackPort1V);
 pros::ADIDigitalOut flapjack2V = pros::ADIDigitalOut(flapjackPort2V);
@@ -23,6 +23,8 @@ pros::ADIDigitalOut flapjack2V = pros::ADIDigitalOut(flapjackPort2V);
 pros::ADIDigitalOut balance = pros::ADIDigitalOut(balancePort);
 pros::ADIDigitalOut blocker = pros::ADIDigitalOut(blockerPort);
 pros::ADIDigitalOut blocker1 = pros::ADIDigitalOut(blockerPort1);
+
+pros::ADIDigitalOut hang1 = pros::ADIDigitalOut(hangPort1);
 
 /*
 ControllerButton flapjackRightButton = ControllerButton(ControllerDigital::down);
@@ -106,6 +108,35 @@ void setCataState(CataState CState) {
   currentCataState = CState; 
   }
 */
+
+
+void hangInit(){
+    hang1.set_value(false);
+    }
+
+    int hangState = 0;
+
+void updateHang(){
+
+    if(controller.getDigital(ControllerDigital::A) == 1) {
+        if(hangState == 0){
+            hang1.set_value(true);
+            hangState++;
+        }
+        else if (hangState == 2){
+            hang1.set_value(false);
+            hangState++;
+        }
+    }
+    else if(controller.getDigital(ControllerDigital::A) == 0) {
+         if(hangState == 1){
+            hangState++;
+        }
+        else if (hangState == 3){
+            hangState = 0;
+        }
+    }
+}
 
 int mechState = 0;
 int pistonDelay = 101;
@@ -255,7 +286,7 @@ void updateBlocker(){
 }
 
 void pistonsInnit(){
-    flapjack1.set_value(false);
+    //flapjack1.set_value(false);
     //lMech.set_value(false);
     blocker.set_value(false);
 
@@ -329,7 +360,7 @@ int balanceState = 0;
 
 void updateBalance(){
     
-    if(controller.getDigital(ControllerDigital::A) == 1) {
+    if(controller.getDigital(ControllerDigital::B) == 1) {
         if(balanceState == 0){
             balance.set_value(true);
             balanceState++;
@@ -339,7 +370,7 @@ void updateBalance(){
             balanceState++;
         }
     }
-    else if(controller.getDigital(ControllerDigital::A) == 0) {
+    else if(controller.getDigital(ControllerDigital::B) == 0) {
          if(balanceState == 1){
             balanceState++;
         }
@@ -376,14 +407,14 @@ void updateFlapjack(){
     if(controller.getDigital(ControllerDigital::Y) == 1) {
         if(Ystate == 0){
             //lMech.set_value(true);
-            flapjack1.set_value(true);
-            flapjack2.set_value(false);
+            //flapjack1.set_value(true);
+            //flapjack2.set_value(false);
             horizState = 0;
             Ystate++;
             Rstate = 0;
         }
         else if (Ystate == 2){
-            flapjack1.set_value(false);
+           // flapjack1.set_value(false);
             Ystate++;
         }
     }
@@ -418,14 +449,14 @@ void updateFlapjack(){
     if(controller.getDigital(ControllerDigital::right) == 1) {
         if(Rstate == 0){
             //lMech.set_value(true);
-            flapjack2.set_value(true);
-            flapjack1.set_value(false);
+            //flapjack2.set_value(true);
+            //flapjack1.set_value(false);
             horizState = 0;
             Rstate++;
             Ystate = 0;
         }
         else if (Rstate == 2){
-            flapjack2.set_value(false);
+            //flapjack2.set_value(false);
             Rstate++;
         }
     }
@@ -459,15 +490,14 @@ void updateFlapjack(){
     if(controller.getDigital(ControllerDigital::R2) == 1) {
         if(horizState == 0){
             //lMech.set_value(true);
-            flapjack1.set_value(true);
-            flapjack2.set_value(true);
+            flapjackBack.set_value(true);
+            
             horizState++;
             Rstate = 0;
             Ystate = 0;
         }
         else if (horizState == 2){
-            flapjack1.set_value(false);
-            flapjack2.set_value(false);
+             flapjackBack.set_value(false);
             horizState++;
         }
     }
