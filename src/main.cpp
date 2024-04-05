@@ -20,13 +20,13 @@
 // drive motors
 
 
-pros::Motor lF(2, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lF(4, pros::E_MOTOR_GEARSET_06); 
 pros::Motor lM(3, pros::E_MOTOR_GEARSET_06); 
-pros::Motor lB(4, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lB(2, pros::E_MOTOR_GEARSET_06); 
 
-pros::Motor rF(-12, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rF(-14, pros::E_MOTOR_GEARSET_06); 
 pros::Motor rM(-13, pros::E_MOTOR_GEARSET_06); 
-pros::Motor rB(-14, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rB(-12, pros::E_MOTOR_GEARSET_06); 
 
 
 
@@ -40,29 +40,26 @@ pros::MotorGroup rightMotors({rF, rM, rB}); // right motor group
 lemlib::Drivetrain drive{
   &leftMotors,
   &rightMotors,
-  12.5,
-  4,
-  300,
-  2, 
+  11.5,
+  lemlib::Omniwheel::NEW_325,
+  450,
+  4, 
 };
 
 
 lemlib::ControllerSettings movePID {
-  //7, // kP
-  //0, //kI
-  //5, // kD
-  8.6, // kP
+  6, // kP
   0, //kI
-  10.4, // kD
+  0, // kD
   3, //anti windup
   1, // small error range
   100, // small error timeout 
-  3, // large error range 
+  4, // large error range 
   500, // large error timeout 
   0 // slew rate 
 };
 
-pros::Imu intertial1(imuPort1);
+pros::Imu intertial1(1);
 
 //pros::Imu intertial2(imuPort2);
 
@@ -868,13 +865,15 @@ void farSide() {
 
 
 void autonomous() {
+ Chassis.setPose(0, 0, 0); 
 
+  Chassis.moveToPoint(0, -24, 3000, false, 127, true);
 
  //skills(); // SKILLS 
 
 //closeSide(); //AWP
 
- closeSideDisrupt(); //DISRUPT 
+ //closeSideDisrupt(); //DISRUPT 
 
  //farSide(); //AWP FAR SIDE
 
@@ -914,9 +913,10 @@ Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
     
     while (true) {
         int leftJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y); //vert left joystick
-          int rightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X); //horiz right joystick
+          int rightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y); //horiz right joystick
 
           Chassis.arcade(-leftJoy, -1.05*rightJoy, 2);
+         //Chassis.tank(-leftJoy, -rightJoy, 2);
 
 
           if (controller.getDigital(ControllerDigital::X) == 1 && ! hasRunMacro) {
