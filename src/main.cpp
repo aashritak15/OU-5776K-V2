@@ -22,11 +22,11 @@
 
 pros::Motor lF(4, pros::E_MOTOR_GEARSET_06); 
 pros::Motor lM(3, pros::E_MOTOR_GEARSET_06); 
-pros::Motor lB(2, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lB(5, pros::E_MOTOR_GEARSET_06); 
 
 pros::Motor rF(-14, pros::E_MOTOR_GEARSET_06); 
 pros::Motor rM(-13, pros::E_MOTOR_GEARSET_06); 
-pros::Motor rB(-12, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rB(-16, pros::E_MOTOR_GEARSET_06); 
 
 
 
@@ -48,9 +48,9 @@ lemlib::Drivetrain drive{
 
 
 lemlib::ControllerSettings movePID {
-  6, // kP
+  7, // kP
   0, //kI
-  0, // kD
+  1.5, // kD
   3, //anti windup
   1, // small error range
   100, // small error timeout 
@@ -72,9 +72,9 @@ lemlib::OdomSensors sensors {
 };
 
 lemlib::ControllerSettings turnPID {
-  2.55, // kP
-  0.1, // kI
-  17, // kD
+  2, // kP
+  0, // kI
+  15, // kD
   3, //anti windup 
   1, // small error range
   100, // small error timeout 
@@ -866,8 +866,10 @@ void farSide() {
 
 void autonomous() {
  Chassis.setPose(0, 0, 0); 
+ Chassis.moveToPoint(0,-20, 3000, false, 127, true);
+  // Chassis.turnToHeading(90,1000);
+//Chassis.moveToPose(0, -24, 180, 4000, {.forwards = false, .chasePower = 200}, true);
 
-  Chassis.moveToPoint(0, -24, 3000, false, 127, true);
 
  //skills(); // SKILLS 
 
@@ -908,15 +910,56 @@ void opcontrol() {
   int reverseDrive = 2;
   int driveState = 0;
 
+  int ArcadeTankToggle = 0;
+
 
 Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
     
     while (true) {
         int leftJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y); //vert left joystick
-          int rightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y); //horiz right joystick
+          int rightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X); //horiz right joystick
+          int tankRightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y); //horiz right joystick
 
-          Chassis.arcade(-leftJoy, -1.05*rightJoy, 2);
-         //Chassis.tank(-leftJoy, -rightJoy, 2);
+            //Chassis.tank(-leftJoy, -rightJoy, 2);
+
+
+            //Chassis.arcade(-leftJoy, -1.05*rightJoy, 2);
+            //Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
+             
+            //Chassis.tank(-leftJoy, -rightJoy, 2);
+            //Chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
+          
+          
+          
+          if (controller.getDigital(ControllerDigital::left) == 1){
+              if (ArcadeTankToggle == 0) {
+                ArcadeTankToggle = 1;
+              }
+              if (ArcadeTankToggle == 2) {
+                ArcadeTankToggle = 3;
+              }
+          }
+          else if (controller.getDigital(ControllerDigital::left) == 0){
+              if (ArcadeTankToggle == 1) {
+                ArcadeTankToggle = 2;
+              }
+              if (ArcadeTankToggle == 3) {
+                ArcadeTankToggle = 0;
+              }
+          }
+          
+          if (ArcadeTankToggle == 0 || ArcadeTankToggle == 3) {
+            Chassis.arcade(-leftJoy, -1.05*rightJoy, 2);
+            Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
+          }
+          else if (ArcadeTankToggle == 1 || ArcadeTankToggle == 2) {
+            Chassis.tank(-leftJoy, -tankRightJoy, 2);
+            Chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
+          }
+          
+          
+          
+         
 
 
           if (controller.getDigital(ControllerDigital::X) == 1 && ! hasRunMacro) {
