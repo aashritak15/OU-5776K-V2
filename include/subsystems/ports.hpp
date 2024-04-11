@@ -34,6 +34,7 @@ const std::uint8_t imuPort2 = 13; //imu port#2
 
 //const std::uint8_t pistonPort1 = 8;
 const std::uint8_t flapjackPort1 = 'B';
+const std::uint8_t flapjackPort2 = 'H';
 
 const std::uint8_t flapjackPort1V = 'F';
 const std::uint8_t flapjackPort2V = 'F';

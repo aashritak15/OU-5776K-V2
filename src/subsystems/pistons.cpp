@@ -12,8 +12,10 @@ using namespace okapi;
 
 pros::ADIDigitalOut flapjackBack = pros::ADIDigitalOut(flapjackPort1);
 
+pros::ADIDigitalOut flapjackFront = pros::ADIDigitalOut(flapjackPort2);
 
 
+// DONT USE THE PISTONS BELOW THEY ARE OLD 
 pros::ADIDigitalOut flapjack1V = pros::ADIDigitalOut(flapjackPort1V);
 pros::ADIDigitalOut flapjack2V = pros::ADIDigitalOut(flapjackPort2V);
 //pros::ADIDigitalOut flapjack2 = pros::ADIDigitalOut(flapjackPort2);
@@ -148,7 +150,7 @@ void mech(){
         mechState++;    
     }
     else if (mechState == 11) {
-        flapjack1V.set_value(true);
+        flapjackFront.set_value(true);
         pros::delay(pistonDelay);
         mechState++;    
     }
@@ -158,12 +160,12 @@ void mech(){
         mechState++;    
     }
     else if (mechState == 13) {
-        flapjack1V.set_value(false);
+        flapjackFront.set_value(false);
         mechState = 3;
     }
     // close
     else if (mechState == 20) {
-        flapjack1V.set_value(true);
+        flapjackFront.set_value(true);
         pros::delay(pistonDelay);
         mechState++;    
     }
@@ -173,7 +175,7 @@ void mech(){
         mechState++;    
     }
     else if (mechState == 22) {
-        flapjack1V.set_value(false);
+        flapjackFront.set_value(false);
         pros::delay(pistonDelay);
         mechState = 1;    
     }
@@ -194,7 +196,7 @@ void mech(){
         }
     }
     // V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2  V2 
-    /*
+    
     if(controller.getDigital(ControllerDigital::B) == 1) {
         if(mechState == 0){
             balance.set_value(true);
@@ -225,7 +227,7 @@ void mech(){
             mechState = 0;
         }
     }
-    */
+    
 
     /*
     if (controller.getDigital(ControllerDigital::B) == 1) {
@@ -427,23 +429,7 @@ void updateFlapjack(){
             Ystate = 0;
         }
     }
-    /*
-    if (controller.getDigital(ControllerDigital::Y) == 1) {
-        if(state == 0){
-            //lMech.set_value(true);
-            flapjack1.set_value(true);
-            state++;
-            pros::delay(200);
-        }
-        else{
-            //lMech.set_value(false);
-            flapjack1.set_value(false);
-            state--;
-            pros::delay(200);
-
-        }
-    }
-    */
+   
     
     //flapjack 2
     if(controller.getDigital(ControllerDigital::right) == 1) {
@@ -515,20 +501,17 @@ void updateFlapjack(){
     if(controller.getDigital(ControllerDigital::R1) == 1) {
         if(vertState == 0){
             //lMech.set_value(true);
-            flapjack1V.set_value(true);
-            flapjack2V.set_value(true);
+            flapjackFront.set_value(true);
             vertState++;
         }
         else if (vertState == 2){
-            flapjack1V.set_value(false);
-            flapjack2V.set_value(false);
+             flapjackFront.set_value(false);
             vertState++;
 
         }
     }
     else if(controller.getDigital(ControllerDigital::R1) == 0) {
          if(vertState == 1){
-            //lMech.set_value(true);
             vertState++;
         }
         else if (vertState == 3){

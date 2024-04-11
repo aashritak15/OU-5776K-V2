@@ -20,13 +20,13 @@
 // drive motors
 
 
-pros::Motor lF(4, pros::E_MOTOR_GEARSET_06); 
-pros::Motor lM(3, pros::E_MOTOR_GEARSET_06); 
-pros::Motor lB(5, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lF(-4, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lM(-3, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lB(-5, pros::E_MOTOR_GEARSET_06); 
 
-pros::Motor rF(-14, pros::E_MOTOR_GEARSET_06); 
-pros::Motor rM(-13, pros::E_MOTOR_GEARSET_06); 
-pros::Motor rB(-16, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rF(14, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rM(13, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rB(12, pros::E_MOTOR_GEARSET_06); 
 
 
 
@@ -50,7 +50,7 @@ lemlib::Drivetrain drive{
 lemlib::ControllerSettings movePID {
   7, // kP
   0, //kI
-  1.5, // kD
+  1, // kD
   3, //anti windup
   1, // small error range
   100, // small error timeout 
@@ -74,7 +74,7 @@ lemlib::OdomSensors sensors {
 lemlib::ControllerSettings turnPID {
   2, // kP
   0, // kI
-  15, // kD
+  11, // kD
   3, //anti windup 
   1, // small error range
   100, // small error timeout 
@@ -102,7 +102,6 @@ inline double remap(double d) {
     d = id + fp;
     return (d <= 180) ? d : (d - 360);
 }
-
 
 
 
@@ -153,7 +152,9 @@ void initialize() {
     pros::Task screenTask([&]() {
         lemlib::Pose pose(0, 0, 0);
         while (true) {
+           
             // print robot location to the brain screen
+            
             pros::lcd::print(0, "X: %f", Chassis.getPose().x); // x
             pros::lcd::print(1, "Y: %f", Chassis.getPose().y); // y
             pros::lcd::print(2, "Theta: %f", Chassis.getPose().theta); 
@@ -162,12 +163,13 @@ void initialize() {
             pros::lcd::print(5, "Encoder LB: %f", lB.get_position());
             pros::lcd::print(6, "Encoder RF: %f", rF.get_position());
             pros::lcd::print(7, "Encoder RM: %f", rM.get_position());
-            pros::lcd::print(8, "Encoder RB: %f", rB.get_position());
+          
             
             // log position telemetry
             lemlib::telemetrySink()->info("Chassis pose: {}", Chassis.getPose());
             // delay to save resources$
             pros::delay(50);
+            
         }
     });
 
@@ -339,18 +341,16 @@ balanceInit();
 Chassis.moveToPose(-27, -19, 60, 2500, {.forwards = false, .chasePower = 20, .minSpeed = 110});
   Chassis.waitUntil(70);
 
-Chassis.moveToPoint(-35, -19, 600, false, 127);
+Chassis.moveToPoint(-35, -19, 40, false, 127);
 
 //-7.36,31/6,44.3
 
 Chassis.moveToPose(-7.5, -4, 45, 2000, {.forwards = true, .chasePower = 20});
   Chassis.waitUntilDone();
   //flapjack2.set_value(true);
-pros::delay(700);
+
 
   Chassis.turnTo(-11, -4, 2000);
-
-pros::delay(680);
   //flapjack2.set_value(false);
 
   intakeMotor1.moveVelocity(-600);
@@ -865,15 +865,13 @@ void farSide() {
 
 
 void autonomous() {
- Chassis.setPose(0, 0, 0); 
- Chassis.moveToPoint(0,-20, 3000, false, 127, true);
-  // Chassis.turnToHeading(90,1000);
-//Chassis.moveToPose(0, -24, 180, 4000, {.forwards = false, .chasePower = 200}, true);
+ //Chassis.setPose(0, 0, 0); 
+ 
 
 
  //skills(); // SKILLS 
 
-//closeSide(); //AWP
+closeSide(); //AWP
 
  //closeSideDisrupt(); //DISRUPT 
 
