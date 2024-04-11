@@ -947,11 +947,11 @@ Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
           }
           
           if (ArcadeTankToggle == 0 || ArcadeTankToggle == 3) {
-            Chassis.arcade(-leftJoy, -1.05*rightJoy, 2);
+            Chassis.arcade(leftJoy, 1.05*rightJoy, 2);
             Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
           }
           else if (ArcadeTankToggle == 1 || ArcadeTankToggle == 2) {
-            Chassis.tank(-leftJoy, -tankRightJoy, 2);
+            Chassis.tank(leftJoy, tankRightJoy, 2);
             Chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
           }
           
