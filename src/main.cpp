@@ -20,13 +20,13 @@
 // drive motors
 
 
-pros::Motor lF(-4, pros::E_MOTOR_GEARSET_06); 
-pros::Motor lM(-3, pros::E_MOTOR_GEARSET_06); 
-pros::Motor lB(-5, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lF(-17, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lM(-16, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lB(-21, pros::E_MOTOR_GEARSET_06); 
 
-pros::Motor rF(14, pros::E_MOTOR_GEARSET_06); 
-pros::Motor rM(13, pros::E_MOTOR_GEARSET_06); 
-pros::Motor rB(12, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rF(15, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rM(12, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rB(1, pros::E_MOTOR_GEARSET_06); 
 
 
 
@@ -631,13 +631,8 @@ void farTB() {
  // initializations
   Chassis.setPose(0, 0, 0); 
   pros::delay(50);
-   Chassis.setBrakeMode(MOTOR_BRAKE_BRAKE); // dont wanna get pushed around by other bots 
-  
-  // drop intake
-  intakeMotor1.moveVelocity(600);
-  balance.set_value(true);
-  pros::delay(750);
 
+  
   // drive towards mlzb & swing turn that pushes mlztb out 
   Chassis.moveToPoint(0,-24.5, 600, false, 127, true); // -25.5
   balance.set_value(false);
@@ -871,13 +866,13 @@ void autonomous() {
 
  //skills(); // SKILLS 
 
-closeSide(); //AWP
+//closeSide(); //AWP
 
  //closeSideDisrupt(); //DISRUPT 
 
  //farSide(); //AWP FAR SIDE
 
- //farTB(); // SIX TRIBALL
+ farTB(); // SIX TRIBALL
 
 
  

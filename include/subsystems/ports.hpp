@@ -48,12 +48,12 @@ const std::uint8_t blockerPort1 = 'E';
 const std::uint8_t balancePort = 'D';
 
 
-const std::uint8_t intakePort1 = 20;
+const std::uint8_t intakePort1 = 8;
 const std::uint8_t intakePort2 = 10;
 
 //const std::uint8_t autonFlipoutPort = 'A';
 
-const std::uint8_t cataMotorPort = 2;
+const std::uint8_t cataMotorPort = 5;
 
 //imu is 13
 

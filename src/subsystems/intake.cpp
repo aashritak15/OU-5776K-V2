@@ -103,15 +103,15 @@ void updateIntake() {
     case IntakeState::STOPPED:
       //gradualStop();
       intakeMotor1.moveVoltage(0);
-       intakeMotor2.moveVoltage(0);
+      // intakeMotor2.moveVoltage(0);
       break;
     case IntakeState::INTAKING:
       intakeMotor1.moveVoltage(12000);
-      intakeMotor2.moveVoltage(12000);
+      //intakeMotor2.moveVoltage(12000);
       break;
     case IntakeState::OUTTAKING:
       intakeMotor1.moveVoltage(-12000);
-      intakeMotor2.moveVoltage(-12000);
+     // intakeMotor2.moveVoltage(-12000);
       break;
   //case IntakeState::HALF:
     
