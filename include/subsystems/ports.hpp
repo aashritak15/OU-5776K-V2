@@ -5,14 +5,14 @@
 using namespace okapi;
 
 // orig
-const std::uint8_t rightFrontPort = 11;
-const std::uint8_t leftFrontPort = 12; 
+const std::uint8_t rightFrontPort = 12;
+const std::uint8_t leftFrontPort = 3; 
 
-const std::uint8_t leftBackPort = 19;
-const std::uint8_t rightBackPort = 10; 
+const std::uint8_t leftBackPort = 5;
+const std::uint8_t rightBackPort = 14; 
  
-const std::uint8_t leftTopPort = 20; 
-const std::uint8_t rightTopPort = 9; 
+const std::uint8_t leftTopPort = 4; 
+const std::uint8_t rightTopPort = 13; 
 
 /* reverse left and right
 const std::uint8_t rightFrontPort = 12;
@@ -33,11 +33,11 @@ const std::uint8_t imuPort1 = 14; //imu port #1
 const std::uint8_t imuPort2 = 13; //imu port#2
 
 //const std::uint8_t pistonPort1 = 8;
-const std::uint8_t flapjackPort1 = 'B';
-const std::uint8_t flapjackPort2 = 'H';
+const std::uint8_t flapjackPort1 = 'E';
+const std::uint8_t flapjackPort2 = 'Go';
 
-const std::uint8_t flapjackPort1V = 'F';
-const std::uint8_t flapjackPort2V = 'F';
+const std::uint8_t flapjackPort1V = 'H';
+const std::uint8_t flapjackPort2V = 'H';
 
 //const std::uint8_t lMechPort = 'G';
 

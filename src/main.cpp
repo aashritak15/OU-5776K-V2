@@ -19,14 +19,22 @@
 
 // drive motors
 
+// const std::uint8_t rightFrontPort = 12;
+// const std::uint8_t leftFrontPort = 3; 
 
-pros::Motor lF(-17, pros::E_MOTOR_GEARSET_06); 
-pros::Motor lM(-16, pros::E_MOTOR_GEARSET_06); 
-pros::Motor lB(-21, pros::E_MOTOR_GEARSET_06); 
+// const std::uint8_t leftBackPort = 5;
+// const std::uint8_t rightBackPort = 14; 
+ 
+// const std::uint8_t leftTopPort = 4; 
+// const std::uint8_t rightTopPort = 13; 
 
-pros::Motor rF(15, pros::E_MOTOR_GEARSET_06); 
-pros::Motor rM(12, pros::E_MOTOR_GEARSET_06); 
-pros::Motor rB(1, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lF(-3, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lM(-4, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lB(-5, pros::E_MOTOR_GEARSET_06); 
+
+pros::Motor rF(12, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rM(13, pros::E_MOTOR_GEARSET_06); 
+pros::Motor rB(14, pros::E_MOTOR_GEARSET_06); 
 
 
 
@@ -941,13 +949,13 @@ Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
               }
           }
           
-          if (ArcadeTankToggle == 0 || ArcadeTankToggle == 3) {
+          if (ArcadeTankToggle == 0 || ArcadeTankToggle == 3) { //ARCADE TOGGLE
             Chassis.arcade(leftJoy, 1.05*rightJoy, 2);
             Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
           }
-          else if (ArcadeTankToggle == 1 || ArcadeTankToggle == 2) {
-            Chassis.tank(leftJoy, tankRightJoy, 2);
-            Chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
+          else if (ArcadeTankToggle == 1 || ArcadeTankToggle == 2) { //TANK TOGGLE
+            Chassis.tank(leftJoy, tankRightJoy, 10);
+            Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
           }
           
           
