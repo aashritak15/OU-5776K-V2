@@ -6,7 +6,8 @@ using namespace okapi;
 extern pros::ADIDigitalOut pistonPTO1;
 //extern pros::ADIDigitalOut autonFlipout;
 extern pros::ADIDigitalOut flapjackBack;
-extern pros::ADIDigitalOut flapjackFront;
+extern pros::ADIDigitalOut flapjackFront1;
+extern pros::ADIDigitalOut flapjackFront2;
 
 extern pros::ADIDigitalOut flapjack1V;
 extern pros::ADIDigitalOut flapjack2V;
