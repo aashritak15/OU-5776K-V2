@@ -419,7 +419,7 @@ void updateFlapjack(){
             Rstate = 0;
         }
         else if (Ystate == 2){
-           // flapjack1.set_value(false);
+           flapjackFront1.set_value(false);
             Ystate++;
         }
     }
@@ -445,7 +445,7 @@ void updateFlapjack(){
             Ystate = 0;
         }
         else if (Rstate == 2){
-            //flapjack2.set_value(false);
+            flapjackFront2.set_value(false);
             Rstate++;
         }
     }

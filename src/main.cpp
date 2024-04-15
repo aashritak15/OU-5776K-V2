@@ -258,31 +258,37 @@ void closeSideDisrupt(){
 
   Chassis.setPose(0, 0, 12.1);
 
-  balance.set_value(true);
+  flapjackFront2.set_value(true);
 
-  
-  Chassis.moveToPoint(12.7, 47.45, 2000, true, 127);
-  intakeMotor1.moveVelocity(600);
-//flapjack1.set_value(false);
   pros::delay(100);
 
-  Chassis.moveToPoint(13.1, 45.8, 1000, false, 127);
+  flapjackFront2.set_value(false);
+
+  
+  Chassis.moveToPoint(12.7, 50, 2000, true, 127);
+   intakeMotor1.moveVelocity(600);
+   intakeMotor2.moveVelocity(600);
+
+
+  pros::delay(100);
+
+  Chassis.moveToPoint(13.1, 50, 1000, false, 127);
    Chassis.turnToHeading(90, 500, true);
    Chassis.waitUntilDone();
    Chassis.cancelAllMotions();
 
-     flapjackFront1.set_value(true);
+     //flapjackFront1.set_value(true);
       flapjackFront2.set_value(true);
 
-  balance.set_value(false);
-   Chassis.moveToPoint(33, 47.5, 1000, true, 80);
+ // balance.set_value(false);
+   Chassis.moveToPoint(33, 55, 1000, true, 50);
    Chassis.waitUntilDone();
    Chassis.cancelAllMotions();
 
 
-   Chassis.moveToPose(3, 5.2 ,0, 2500, {.forwards = false, .chasePower = 200});
+   Chassis.moveToPose(6, 2 ,0, 2500, {.forwards = false, .chasePower = 200});
     flapjack2V.set_value(false);
-   Chassis.turnToHeading(90, 500, true);
+   Chassis.turnToHeading(100, 500, true);
      Chassis.waitUntilDone();
    Chassis.cancelAllMotions();
 
@@ -293,7 +299,7 @@ void closeSideDisrupt(){
      pros::delay(300);
 
 
-  Chassis.moveToPose(-25.4, 25.8, 180, 1000, {.forwards = false, .chasePower = 200} );
+  Chassis.moveToPose(-25.4, 20, 180, 1000, {.forwards = false, .chasePower = 200} );
 
 Chassis.waitUntil(30);
 
@@ -301,7 +307,7 @@ Chassis.moveToPoint(-25.4, 40, 600, false, 127 );
 
 
 Chassis.moveToPose(-14, 5.7 , 135, 3000, {.forwards = true, .chasePower = 200});
-//flapjack2.set_value(true);
+flapjack2V.set_value(true);
 
 Chassis.turnToHeading(45, 500, true);
 
@@ -312,7 +318,7 @@ Chassis.turnToHeading(180, 500, true);
 
 Chassis.moveToPose(34, 1, 270, 2200, {.forwards = false, .chasePower = 200, .minSpeed = 100});
 
-
+/*
 //Elims 
 
 Chassis.moveToPose(-13.5, 11.1, 314, 2000, {.forwards = true, .chasePower = 200});
@@ -324,7 +330,7 @@ pros::delay(200);
 //flapjack1.set_value(true);
 
 //flapjack2.set_value(true);
-
+*/
 }
 
 /*
@@ -888,6 +894,13 @@ void farSide() {
 
 
 void autonomous() {
+  rightMotors.move_velocity(600);
+  leftMotors.move_velocity(600);
+
+  pros::delay(1000);
+
+  rightMotors.move_velocity(0);
+  leftMotors.move_velocity(0);
   // Chassis.setPose(0, 0, 0); 
 
 
@@ -900,7 +913,7 @@ void autonomous() {
 
  //farSide(); //AWP FAR SIDE
 
- farTB(); // SIX TRIBALL
+ //farTB(); // SIX TRIBALL
 
 
  
@@ -941,10 +954,10 @@ Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
          int rightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X); //horiz right joystick
          int tankRightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y); //horiz right joystick
 
-           Chassis.tank(-leftJoy, -tankRightJoy, 2);
+           //Chassis.tank(-leftJoy, -tankRightJoy, 2);
     
 
-            //Chassis.arcade(-leftJoy, -rightJoy, 0);
+            Chassis.arcade(leftJoy, rightJoy, 0);
             Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
              
             //Chassis.tank(-leftJoy, -rightJoy, 2);
