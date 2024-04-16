@@ -894,14 +894,15 @@ void farSide() {
 
 
 void autonomous() {
-  rightMotors.move_velocity(600);
+  Chassis.tank(100,100);
+  /*rightMotors.move_velocity(600);
   leftMotors.move_velocity(600);
 
   pros::delay(1000);
 
   rightMotors.move_velocity(0);
   leftMotors.move_velocity(0);
-  // Chassis.setPose(0, 0, 0); 
+  // Chassis.setPose(0, 0, 0); */
 
 
  
@@ -937,9 +938,28 @@ bool hasRunMacro = false;
 
 void opcontrol() {
   
- 
-  pros::Controller controller1(pros::E_CONTROLLER_MASTER);
+ pros::Controller controller1(pros::E_CONTROLLER_MASTER);
    
+  //int reverseDrive = 2;
+  //int driveState = 0;
+    
+    while (true) {
+        //int rightY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        //int leftY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+       
+       //Chassis.tank(rightY, leftY);
+
+        int leftJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y); //vert left joystick
+        int rightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X); //horiz right joystick
+         int tankRightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y); //horiz right joystick
+
+          //Chassis.tank(leftJoy, tankRightJoy, 2);
+    
+        //Chassis.curvature(abs(leftJoy) > 16 ? leftJoy: 0, abs(rightJoy) > 16 ? rightJoy: 0);
+        //Chassis.tank(abs(leftJoy) > 5 ? leftJoy: 0, abs(tankRightJoy) > 30 ? tankRightJoy: 0);
+        Chassis.arcade(leftJoy, 1.05*rightJoy, 0);
+  /*pros::Controller controller1(pros::E_CONTROLLER_MASTER);
+
 
   int reverseDrive = 2;
   int driveState = 0;
@@ -954,15 +974,15 @@ Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
          int rightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X); //horiz right joystick
          int tankRightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y); //horiz right joystick
 
-           //Chassis.tank(-leftJoy, -tankRightJoy, 2);
+           Chassis.tank(leftJoy, tankRightJoy, 2);
     
 
-            Chassis.arcade(leftJoy, rightJoy, 0);
+            //Chassis.arcade(leftJoy, 1.05*rightJoy, 0);
             Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
              
             //Chassis.tank(-leftJoy, -rightJoy, 2);
             //Chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
-          
+          */
           /*
           
           if (controller.getDigital(ControllerDigital::left) == 1){
@@ -992,8 +1012,7 @@ Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
           }
           
           */
-          
-         
+                
 
 /*
           if (controller.getDigital(ControllerDigital::X) == 1 && ! hasRunMacro) {
