@@ -28,9 +28,9 @@
 // const std::uint8_t leftTopPort = 4; 
 // const std::uint8_t rightTopPort = 13; 
 
-pros::Motor lF(-3, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lF(-9, pros::E_MOTOR_GEARSET_06); 
 pros::Motor lM(-4, pros::E_MOTOR_GEARSET_06); 
-pros::Motor lB(-5, pros::E_MOTOR_GEARSET_06); 
+pros::Motor lB(-7, pros::E_MOTOR_GEARSET_06); 
 
 pros::Motor rF(12, pros::E_MOTOR_GEARSET_06); 
 pros::Motor rM(13, pros::E_MOTOR_GEARSET_06); 
@@ -894,7 +894,12 @@ void farSide() {
 
 
 void autonomous() {
-  Chassis.tank(100,100);
+  //Chassis.tank(100,100);
+  lF.move_velocity(600);
+  rF.move_velocity(600);
+    //lB.move_velocity(600);
+  //lM.move_velocity(600);
+
   /*rightMotors.move_velocity(600);
   leftMotors.move_velocity(600);
 
@@ -936,140 +941,70 @@ void autonomous() {
 */
 bool hasRunMacro = false;
 
+
+int ArcadeTankToggle = 0;
+
+
 void opcontrol() {
   
- pros::Controller controller1(pros::E_CONTROLLER_MASTER);
-   
-  //int reverseDrive = 2;
-  //int driveState = 0;
-    
-    while (true) {
-        //int rightY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-        //int leftY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+  pros::Controller controller1(pros::E_CONTROLLER_MASTER);
+  while (true) {
+      //int rightY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+      //int leftY = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
        
-       //Chassis.tank(rightY, leftY);
+      //Chassis.tank(rightY, leftY);
 
-        int leftJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y); //vert left joystick
-        int rightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X); //horiz right joystick
-         int tankRightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y); //horiz right joystick
+      int leftJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y); //vert left joystick
+      int rightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X); //horiz right joystick
+      int tankRightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y); //horiz right joystick
 
-          //Chassis.tank(leftJoy, tankRightJoy, 2);
+      //Chassis.tank(leftJoy, tankRightJoy, 0);
     
-        //Chassis.curvature(abs(leftJoy) > 16 ? leftJoy: 0, abs(rightJoy) > 16 ? rightJoy: 0);
-        //Chassis.tank(abs(leftJoy) > 5 ? leftJoy: 0, abs(tankRightJoy) > 30 ? tankRightJoy: 0);
-        Chassis.arcade(leftJoy, 1.05*rightJoy, 0);
-  /*pros::Controller controller1(pros::E_CONTROLLER_MASTER);
-
-
-  int reverseDrive = 2;
-  int driveState = 0;
-
-  int ArcadeTankToggle = 0;
-
-
-Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
-    
-    while (true) {
-        int leftJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y); //vert left joystick
-         int rightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X); //horiz right joystick
-         int tankRightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y); //horiz right joystick
-
-           Chassis.tank(leftJoy, tankRightJoy, 2);
-    
-
-            //Chassis.arcade(leftJoy, 1.05*rightJoy, 0);
-            Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
-             
-            //Chassis.tank(-leftJoy, -rightJoy, 2);
-            //Chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
-          */
-          /*
+      //Chassis.curvature(abs(leftJoy) > 16 ? leftJoy: 0, abs(rightJoy) > 16 ? rightJoy: 0);
+      //Chassis.tank(abs(leftJoy) > 5 ? leftJoy: 0, abs(tankRightJoy) > 30 ? tankRightJoy: 0);
+      //Chassis.arcade(leftJoy, 1.05*rightJoy, 0);
           
-          if (controller.getDigital(ControllerDigital::left) == 1){
-              if (ArcadeTankToggle == 0) {
-                ArcadeTankToggle = 1;
-              }
-              if (ArcadeTankToggle == 2) {
-                ArcadeTankToggle = 3;
-              }
-          }
-          else if (controller.getDigital(ControllerDigital::left) == 0){
-              if (ArcadeTankToggle == 1) {
-                ArcadeTankToggle = 2;
-              }
-              if (ArcadeTankToggle == 3) {
-                ArcadeTankToggle = 0;
-              }
-          }
+      if (controller.getDigital(ControllerDigital::left) == 1){
+        if (ArcadeTankToggle == 0) {
+          ArcadeTankToggle = 1;
+        }
+        if (ArcadeTankToggle == 2) {
+          ArcadeTankToggle = 3;
+        }
+      }
+      else if (controller.getDigital(ControllerDigital::left) == 0){
+        if (ArcadeTankToggle == 1) {
+          ArcadeTankToggle = 2;
+        }
+        if (ArcadeTankToggle == 3) {
+          ArcadeTankToggle = 0;
+        }
+      }
           
-          if (ArcadeTankToggle == 0 || ArcadeTankToggle == 3) { //ARCADE TOGGLE
-            Chassis.arcade(leftJoy, 0.95 * rightJoy, 2);
-            Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
-          }
-          else if (ArcadeTankToggle == 1 || ArcadeTankToggle == 2) { //TANK TOGGLE
-            Chassis.tank(leftJoy, tankRightJoy, 10);
-            Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
-          }
-          
-          */
-                
-
-/*
-          if (controller.getDigital(ControllerDigital::X) == 1 && ! hasRunMacro) {
-                Chassis.setPose(0, 0, 39);
-                pros::delay(200);
-
-                balance.set_value(true);
-                //Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
-
-
-                Chassis.moveToPoint(-8.6, -10.2, 1000, false, 127);
-
-                Chassis.turnToHeading(-26, 600, true); // -27 deg, 500 kill timer
-                pros::delay(100);
-
-                flapjack1V.set_value(true);
-
-
-                Chassis.moveToPoint(-8.4, -16.2, 1000, false, 127);
-                balance.set_value(false);
-                pros::delay(200);
-                flapjack1V.set_value(false);
-                Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
-                //cataMotor.moveVoltage(12000);
-
-
-                hasRunMacro = true;
-                //pros::delay(200);
-                //pros::delay(200);
-                
-          }
-            */
-
-
-        //all subsystem functions 
-
-           //updateDrive();
-            //updateRVDrive();
-            updateIntake();
-            updateCata();
-            updateFlapjack();
-            //updateDriverSkills();
-           // updatelMech();
-            updateBalance();
-            updateHang();
-           // updateBlocker();
-            //DarshyMech();
-           // PtoMech()
-
-           mech();
-
-          
-
-       
-
-
-           
-           pros::delay(10);
-}
+      if (ArcadeTankToggle == 0 || ArcadeTankToggle == 3) { //ARCADE TOGGLE
+        Chassis.arcade(leftJoy, 1.05*rightJoy, 2);
+        Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
+      }
+      else if (ArcadeTankToggle == 1 || ArcadeTankToggle == 2) { //TANK TOGGLE
+        Chassis.tank(leftJoy, tankRightJoy, 10);
+        Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
+      }
+ 
+      //all subsystem functions 
+      //updateDrive();
+      //updateRVDrive();
+      updateIntake();
+      updateCata();
+      updateFlapjack();
+      //updateDriverSkills();
+      //updatelMech();
+      updateBalance();
+      updateHang();
+      //updateBlocker();
+      //DarshyMech();
+      //PtoMech()
+      mech();
+               
+      pros::delay(10);
+  }     
 }

@@ -6,7 +6,7 @@ using namespace okapi;
 
 // orig
 const std::uint8_t rightFrontPort = 12;
-const std::uint8_t leftFrontPort = 3; 
+const std::uint8_t leftFrontPort =9; 
 
 const std::uint8_t leftBackPort = 5;
 const std::uint8_t rightBackPort = 14; 
