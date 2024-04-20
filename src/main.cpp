@@ -153,7 +153,7 @@ void initialize() {
 	// print odom values to the brain
     pros::lcd::initialize();
     pros::Task screen_task(screen);
-
+      selector::init();
    // selector::init();
     //IEInnit();
 
@@ -918,14 +918,22 @@ void farSide() {
 
 void autonomous() {
 
-
-  //Chassis.setPose(0, 0, 45);
+ 
+ if(selector::auton == 1){
+    closeSide();
+ }
+ else if(selector::auton == 2){
+    closeSideDisrupt(); 
+ }
+ else if(selector::auton == 3){
+    farTB();
+ }
  
  //skills(); // SKILLS 
 
 //closeSide(); //AWP
 
- closeSideDisrupt(); //DISRUPT 
+ //closeSideDisrupt(); //DISRUPT 
 
  //farSide(); //AWP FAR SIDE
 

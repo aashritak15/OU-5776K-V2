@@ -1,5 +1,5 @@
 #include "main.h"
-#include "selection.h"
+#include "autoSelect/selection.h"
 
 namespace selector{
 
@@ -82,17 +82,16 @@ void init(int hue, int default_auton, const char **autons){
 	selector::auton = default_auton;
 
 	// lvgl theme
-	lv_theme_t *th = lv_theme_alien_init(hue, NULL); //Set a HUE value and keep font default RED
+	lv_theme_t *th = lv_theme_alien_init(120, NULL); //Set a HUE value and keep font default RED
 	lv_theme_set_current(th);
 
 	// create a tab view object
 	tabview = lv_tabview_create(lv_scr_act(), NULL);
 
 	// add 3 tabs (the tabs are page (lv_page) and can be scrolled
-	lv_obj_t *redTab = lv_tabview_add_tab(tabview,"RED"); // "RED"
-	lv_obj_t *blueTab = lv_tabview_add_tab(tabview,"BLUE"); // "BLUE"
-	lv_obj_t *skillsTab = lv_tabview_add_tab(tabview,"Skills");
-	
+	lv_obj_t *redTab = lv_tabview_add_tab(tabview, "Red");
+	lv_obj_t *blueTab = lv_tabview_add_tab(tabview, "Blue");
+	lv_obj_t *skillsTab = lv_tabview_add_tab(tabview, "Skills");
 
 	//set default tab
 	if(auton < 0){
