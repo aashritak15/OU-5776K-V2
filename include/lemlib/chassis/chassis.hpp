@@ -328,7 +328,7 @@ class Chassis {
          * @param curveGain the scale inputted into the drive curve function. If you are using the default drive
          * curve, refer to the `defaultDriveCurve` documentation.
          */
-        void curvature(int throttle, int turn, float cureGain = 0.0);
+        void curvature(int throttle, int turn, float curveGain = 0.0);
         /**
          * @brief Cancels the currently running motion.
          * If there is a queued motion, then that queued motion will run.
