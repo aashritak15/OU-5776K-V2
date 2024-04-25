@@ -405,6 +405,8 @@ int Ystate = 0;
 
 int Rstate = 0;
 
+int macro1 = 0;
+
 void updateFlapjack(){
     //flapjack 1
     if(controller.getDigital(ControllerDigital::Y) == 1) {
@@ -479,14 +481,16 @@ void updateFlapjack(){
     if(controller.getDigital(ControllerDigital::R2) == 1) {
         if(horizState == 0){
             //lMech.set_value(true);
-            flapjackBack.set_value(true);
+              flapjackFront1.set_value(true);
+            flapjackFront2.set_value(true);
             
             horizState++;
             Rstate = 0;
             Ystate = 0;
         }
         else if (horizState == 2){
-             flapjackBack.set_value(false);
+            flapjackFront1.set_value(false);
+            flapjackFront2.set_value(false);
             horizState++;
         }
     }
@@ -504,13 +508,13 @@ void updateFlapjack(){
     if(controller.getDigital(ControllerDigital::R1) == 1) {
         if(vertState == 0){
             //lMech.set_value(true);
-            flapjackFront1.set_value(true);
-            flapjackFront2.set_value(true);
+              flapjackBack.set_value(true);
+        
             vertState++;
         }
         else if (vertState == 2){
-             flapjackFront1.set_value(false);
-            flapjackFront2.set_value(false);
+            flapjackBack.set_value(false);
+            
             vertState++;
 
         }
@@ -523,6 +527,72 @@ void updateFlapjack(){
             vertState = 0;
         }
     }
+
+
+    if(controller.getDigital(ControllerDigital::up) == 1) {
+        if(macro1 == 0){
+            flapjackBack.set_value(true);
+            flapjackFront2.set_value(true);
+            macro1++;
+            vertState = 1;
+            Rstate = 1;
+
+        }
+        else if (macro1 == 2){
+            flapjackBack.set_value(false);
+            flapjackFront2.set_value(true);
+            macro1++;
+            vertState = 0;
+
+        }
+        else if (macro1 == 4){
+            flapjackFront2.set_value(false);
+            macro1++;
+            Rstate = 0;
+
+        }
+        
+
+    }
+
+     if(controller.getDigital(ControllerDigital::up) == 0) {
+        if(macro1 == 1){
+            macro1++;
+
+        }
+        else if (macro1 == 3){
+            macro1++;
+
+        }
+
+        else if (macro1 == 5){
+            macro1 = 0;
+
+        }
+
+    }
+
+
+        
+
+    }
+
+   
+
+
+    /*
+LEFT SIDE (left)
+1. push vert wing go down left horizontal wing goes down
+2. closes vertical wings 
+3. closes horizontal wing 
+
+Up Right 
+1. push vert wing go down right horizontal wing goes down
+2. closes vertical wings 
+3. closes horizontal wing 
+*/
+
+
 
 /*
     if(controller.getDigital(ControllerDigital::R2) == 1) {
@@ -564,7 +634,6 @@ void updateFlapjack(){
 
     
 
-}
 
 /*
 void PtoInit(){pistonPTO1.set_value(false);}
