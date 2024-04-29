@@ -142,6 +142,7 @@ void updateHang(){
 }
 
 int mechState = 0;
+
 int pistonDelay = 101;
 void mech(){
     // open
@@ -406,6 +407,7 @@ int Ystate = 0;
 int Rstate = 0;
 
 int macro1 = 0;
+int macro2 = 0;
 
 void updateFlapjack(){
     //flapjack 1
@@ -529,7 +531,7 @@ void updateFlapjack(){
     }
 
 
-    if(controller.getDigital(ControllerDigital::up) == 1) {
+    if(controller.getDigital(ControllerDigital::down) == 1) {
         if(macro1 == 0){
             flapjackBack.set_value(true);
             flapjackFront2.set_value(true);
@@ -555,7 +557,7 @@ void updateFlapjack(){
 
     }
 
-     if(controller.getDigital(ControllerDigital::up) == 0) {
+     if(controller.getDigital(ControllerDigital::down) == 0) {
         if(macro1 == 1){
             macro1++;
 
@@ -570,12 +572,58 @@ void updateFlapjack(){
 
         }
 
+
+
+
+    if(controller.getDigital(ControllerDigital::B) == 1) {
+        if(macro2 == 0){
+            flapjackBack.set_value(true);
+            flapjackFront1.set_value(true);
+            macro1++;
+            vertState = 1;
+            Ystate = 1;
+
+        }
+        else if (macro2 == 2){
+            flapjackBack.set_value(false);
+            flapjackFront1.set_value(true);
+            macro2++;
+            vertState = 0;
+
+        }
+        else if (macro2 == 4){
+            flapjackFront2.set_value(false);
+            macro2++;
+            Ystate = 0;
+
+        }
+        
+
+    }
+
+     if(controller.getDigital(ControllerDigital::B) == 0) {
+        if(macro2 == 1){
+            macro2++;
+
+        }
+        else if (macro2 == 3){
+            macro2++;
+
+        }
+
+        else if (macro2 == 5){
+            macro2 = 0;
+
+        }
+
     }
 
 
         
 
     }
+
+}
 
    
 

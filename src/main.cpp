@@ -152,7 +152,7 @@ void initialize() {
 
 	// print odom values to the brain
     pros::lcd::initialize();
-    pros::Task screen_task(screen);
+    //pros::Task screen_task(screen);
       selector::init();
    // selector::init();
     //IEInnit();
@@ -380,6 +380,44 @@ Chassis.moveToPoint(-33, -19, 500, false, 80);
   intakeMotor2.moveVelocity(-600);
 
 Chassis.moveToPose(-4, 36, 0, 3000, {.forwards = true, .chasePower = 200});
+flapjackBack.set_value(false);
+   Chassis.waitUntilDone();
+
+  
+}
+
+
+void noPreload(){
+ Chassis.setPose(0, 0, 45);
+
+balanceTrue();
+
+pros::delay(200);
+
+balanceInit();
+
+Chassis.moveToPoint(-6, -6, 1000, false, 127);
+
+
+//Chassis.moveToPoint(-33, -19, 500, false, 80);
+
+//-7.36,31/6,44.3
+
+
+ Chassis.moveToPose(-6, -3, 45, 2000, {.forwards = true, .chasePower = 20}); // ------> this one 
+  Chassis.waitUntilDone();
+  flapjackBack.set_value(true);
+
+
+  Chassis.turnTo(-11, -4, 2000);
+ // flapjackBack.set_value(false);
+
+  intakeMotor1.moveVelocity(-600);
+  intakeMotor2.moveVelocity(-600);
+
+Chassis.moveToPose(-2, 36, 0, 3000, {.forwards = true, .chasePower = 200});
+ intakeMotor1.moveVelocity(-600);
+  intakeMotor2.moveVelocity(-600); 
 flapjackBack.set_value(false);
    Chassis.waitUntilDone();
 
@@ -704,92 +742,91 @@ void farTB() {
 
 
 
-//   //intakeMotor1.moveVelocity(0);
-//   //Chassis.setPose(29, -52, 90); 
+  //intakeMotor1.moveVelocity(0);
+  //Chassis.setPose(29, -52, 90); 
 
-//   //pros::delay(2000);
+  //pros::delay(2000);
 
-//   //Chassis.setPose(0, 0, 90); 
+  //Chassis.setPose(0, 0, 90); 
 
 
-//   // start 3 clump
-//   //Chassis.moveToPose(30, -48, 45, 2000, {.forwards = false, .chasePower = 200}, true);  //align w perim 
-//  Chassis.moveToPoint(26,-54, 700, false, 127, true);
-//   Chassis.turnToHeading(0,1000);
-//   //Chassis.turnTo(100, 0, 1000, true, 127, true); //turn to 1st tb clump
-//   //pros::delay(3000);
+  // start 3 clump
+  //Chassis.moveToPose(30, -48, 45, 2000, {.forwards = false, .chasePower = 200}, true);  //align w perim 
+ Chassis.moveToPoint(26,-54, 700, false, 127, true);
+  Chassis.turnToHeading(0,1000);
+  //Chassis.turnTo(100, 0, 1000, true, 127, true); //turn to 1st tb clump
+  //pros::delay(3000);
 
 
  
-//   //Chassis.moveToPose(26, -52, 0, 2000, {.forwards = false, .chasePower = 200}, true);  //align w perim  BEFORE 30     26
-//   //Chassis.waitUntilDone();
-//   //Chassis.turnTo(34, -6, 750, true, 127, true); //turn to face tb clump #1
-//   //Chassis.moveToPoint(34,-6, 700, true, 127, true); //move to 1st tb clump
+  //Chassis.moveToPose(26, -52, 0, 2000, {.forwards = false, .chasePower = 200}, true);  //align w perim  BEFORE 30     26
+  //Chassis.waitUntilDone();
+  //Chassis.turnTo(34, -6, 750, true, 127, true); //turn to face tb clump #1
+  //Chassis.moveToPoint(34,-6, 700, true, 127, true); //move to 1st tb clump
   
-//   Chassis.moveToPose(36, -5, 20, 2000, {.forwards = true, .chasePower = 200}, true);  //1st clump  32.5 -4.1      36 -5   -6   24.6    33 -6
-//   pros::delay(500); // delay opening of balance
-//   intakeMotor1.moveVelocity(600);
-//    intakeMotor2.moveVelocity(600);
-//   balance.set_value(true);
-//   Chassis.waitUntilDone();
-//   pros::delay(100); // intaking delay
+  Chassis.moveToPose(36, -5, 20, 2000, {.forwards = true, .chasePower = 200}, true);  //1st clump  32.5 -4.1      36 -5   -6   24.6    33 -6
+  pros::delay(500); // delay opening of balance
+  intakeMotor1.moveVelocity(600);
+   intakeMotor2.moveVelocity(600);
+  balance.set_value(true);
+  Chassis.waitUntilDone();
+  pros::delay(100); // intaking delay
 
-//   //intakeMotor1.moveVelocity(0);
+  //intakeMotor1.moveVelocity(0);
 
-//   Chassis.moveToPose(42, -8, 150, 4000, {.forwards = true, .chasePower = 200}, true);  //outtake 1st clump 43.5 -17.5    52    43 -15  50 -9      47.5 -9     46 -8
-//   //Chassis.turnToHeading(135,1000);
-//   //Chassis.waitUntilDone();
-//   //Chassis.cancelAllMotions();
-//   pros::delay(600); // delay outtaking
+  Chassis.moveToPose(42, -8, 150, 4000, {.forwards = true, .chasePower = 200}, true);  //outtake 1st clump 43.5 -17.5    52    43 -15  50 -9      47.5 -9     46 -8
+  //Chassis.turnToHeading(135,1000);
+  //Chassis.waitUntilDone();
+  //Chassis.cancelAllMotions();
+  pros::delay(600); // delay outtaking
 
-//   intakeMotor1.moveVelocity(-600);
-//   intakeMotor2.moveVelocity(-600);
-//   pros::delay(1000);
-//   //pros::delay(100); // delay outtaking
-//   //Chassis.waitUntilDone();
-//   //Chassis.cancelAllMotions();
+  intakeMotor1.moveVelocity(-600);
+  intakeMotor2.moveVelocity(-600);
+  pros::delay(1000);
+  //pros::delay(100); // delay outtaking
+  //Chassis.waitUntilDone();
+  //Chassis.cancelAllMotions();
 
-//   //pros::delay(3000); // temp testing delay
+  //pros::delay(3000); // temp testing delay
 
-//   // Chassis.moveToPose(55, -0.75, 45, 1000, {.forwards = true, .chasePower = 200}, true);  //2nd clump 58 -1.7 30   PREEV 62, 2    50    56 -0.5
-//     Chassis.turnToHeading(68, 700, true);
-//   Chassis.moveToPoint(55, 0, 1000, true, 127, true);
-//   intakeMotor1.moveVelocity(600);
-//     intakeMotor2.moveVelocity(600);
-//   pros::delay(600); // delay intaking
-
-
-
-//   Chassis.turnTo(60, -100, 700, true, 127, true); // turning to face goal //60
-//   //Chassis.turnToHeading(-180,1000);
-//   //Chassis.waitUntilDone();
-//   //Chassis.cancelAllMotions();
-//   pros::delay(500); // delay outtaking
-
-//   flapjackFront1.set_value(true);
-//   flapjackFront2.set_value(true); // either v wing code works
-//   balance.set_value(false); // either v wing code works
-//   intakeMotor1.moveVelocity(-600);
-//   intakeMotor2.moveVelocity(-600);
-//   pros::delay(500);
-//  intakeMotor1.moveVelocity(0);
-//   intakeMotor2.moveVelocity(0);
-//   //Chassis.moveToPose(65, -40, -180, 1500, {.forwards = true, .chasePower = 200}, true);  //score 3 //67
-//   Chassis.moveToPoint(60,-40, 1000, true, 127, true); //score front 3
-//   //Chassis.moveToPoint(60,-20, 700, false, 127, true); //move back
-//   Chassis.moveToPose(50, -20, 0, 1000, {.forwards = false, .chasePower = 200}, true);  //move back
-//   pros::delay(300); // delay wings
-//   Chassis.waitUntilDone();
-//   Chassis.cancelAllMotions();
-//   flapjackFront1.set_value(false);
-//   flapjackFront2.set_value(false); // either v wing code works
-//   intakeMotor1.moveVelocity(0);
+  // Chassis.moveToPose(55, -0.75, 45, 1000, {.forwards = true, .chasePower = 200}, true);  //2nd clump 58 -1.7 30   PREEV 62, 2    50    56 -0.5
+    Chassis.turnToHeading(68, 700, true);
+  Chassis.moveToPoint(55, 0, 1000, true, 127, true);
+  intakeMotor1.moveVelocity(600);
+    intakeMotor2.moveVelocity(600);
+  pros::delay(600); // delay intaking
 
 
-//   pros::delay(500);
-//   Chassis.setBrakeMode(MOTOR_BRAKE_COAST); // for testing purposes only
 
-//   //  qqq                                                                                                                                                                                                                                                                                       Chassis.moveToPose(-30, 7.5, 0, 4000, {.forwards = false, .chasePower = 200}, true);  //move back
+  Chassis.turnTo(60, -100, 700, true, 127, true); // turning to face goal //60
+  //Chassis.turnToHeading(-180,1000);
+  //Chassis.waitUntilDone();
+  //Chassis.cancelAllMotions();
+  pros::delay(500); // delay outtaking
+
+  flapjackFront1.set_value(true);
+  flapjackFront2.set_value(true); // either v wing code works
+  balance.set_value(false); // either v wing code works
+  intakeMotor1.moveVelocity(-600);
+  intakeMotor2.moveVelocity(-600);
+  pros::delay(500);
+ intakeMotor1.moveVelocity(0);
+  intakeMotor2.moveVelocity(0);
+  //Chassis.moveToPose(65, -40, -180, 1500, {.forwards = true, .chasePower = 200}, true);  //score 3 //67
+  Chassis.moveToPoint(60,-40, 1000, true, 127, true); //score front 3
+  //Chassis.moveToPoint(60,-20, 700, false, 127, true); //move back
+  Chassis.moveToPose(50, -20, 0, 1000, {.forwards = false, .chasePower = 200}, true);  //move back
+  pros::delay(300); // delay wings
+
+  flapjackFront1.set_value(false);
+  flapjackFront2.set_value(false); // either v wing code works
+  intakeMotor1.moveVelocity(0);
+                               
+
+  pros::delay(500);
+  Chassis.setBrakeMode(MOTOR_BRAKE_COAST); // for testing purposes only
+
+  //  qqq                                                                                                                                                                                                                                                                                       Chassis.moveToPose(-30, 7.5, 0, 4000, {.forwards = false, .chasePower = 200}, true);  //move back
 
  
 
@@ -842,7 +879,8 @@ void autonomous() {
     farTB();
  }
  else if(selector::auton == 3){
-   closeSideDisrupt();
+  noPreload();
+ 
  }
  
  //skills(); // SKILLS 
@@ -873,10 +911,10 @@ void autonomous() {
 * operator control task will be stopped. Re-enabling the robot will restart the
 * task, not resume it from where it left off.
 */
-bool hasRunMacro = false;
+//bool hasRunMacro = false;
 
 
-int ArcadeTankToggle = 0;
+//int ArcadeTankToggle = 0;
 
 
 void opcontrol() {
@@ -891,8 +929,8 @@ void opcontrol() {
       int leftJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y); //vert left joystick
       int rightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X); //horiz right joystick
       int tankRightJoy = controller1.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y); //horiz right joystick
-      //Chassis.tank(leftJoy, tankRightJoy, -10);
-      //Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
+      //Chassis.tank(leftJoy, tankRightJoy, -5);
+     Chassis.setBrakeMode(MOTOR_BRAKE_COAST);
       //Chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
 
 
@@ -937,11 +975,11 @@ void opcontrol() {
       //updateDrive();
       //updateRVDrive();
       updateIntake();
-      updateCata();
+      //updateCata();
       updateFlapjack();
       //updateDriverSkills();
       //updatelMech();
-      updateBalance();
+      //updateBalance();
       updateHang();
       //updateBlocker();
       //DarshyMech();
